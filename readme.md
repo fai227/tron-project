@@ -1,11 +1,3 @@
-# ファイル構成
-- server
-  - サーバー側プログラムを設置
-- vehicle
-  - 自動運転車プログラムを設置
-- utils
-  - その他プログラムを設置
-
 # ルール
 - include/tk/typedef.hで型を参照すること
   - signed char -> B
@@ -41,12 +33,6 @@
 - 最悪makecodeで実装するという手もある
 
 # util
-- iic.h
-  - I2C入出力インタフェース定義
-- nrf5_iic.c
-  - nRF5 I2C ドライバー
-- iic_reg.c
-  - I2Cデバイスのレジスタ操作用の関数（micro:bitのI2C_INT用）
 - maqueen.h
 - maqueen.c
   - maqueenとのI2C通信用の関数
@@ -65,13 +51,7 @@
       - 距離を返す
     - 他にも、iic_reg.cのwrite_reg、read_regのような、外部I2C通信を実装するためのwriteとread関数が必要
       - ER read_maqueen_reg(reg, dat)
-      - INT write_maqueen_reg(reg)
-```
-typedef enum {
-    Forward,
-    Backward
-} Direction;
-```
+
 - radio.h
 - radio.c
   - 関数群
