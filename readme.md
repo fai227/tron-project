@@ -55,21 +55,17 @@
   - 関数群
     - void I2C_init()
     - void control_motor(motor, direction, speed)
-    - void control_motor_stop(motor)
+    - void control_motor_stop()
     - void control_LED(led, switch)
-    - B read_line_sensor_state(sensor)
-      - Reg addr 29の方で01を返す
-    - UB read_line_sensor_state(sensor)
-      - Reg addr 30-38で0-255を返す
+    - B read_line_sensor_state(line)
+      - 0-1を返す
+    - UB read_line_sensor_value(line)
+      - 0-255を返す
     - UB or UH read_ultrasonic()
       - 距離を返す
     - 他にも、iic_reg.cのwrite_reg、read_regのような、外部I2C通信を実装するためのwriteとread関数が必要
       - ER read_maqueen_reg(reg, dat)
       - INT write_maqueen_reg(reg)
-  - 別ファイルからアクセスする際に分かりやすくすること
-    - 例
-      - control_motor(Left, Forward, 100)
-      - read_line_sensor_state(L1)
 ```
 typedef enum {
     Forward,
