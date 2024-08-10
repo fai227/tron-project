@@ -55,7 +55,7 @@
 - radio.h
 - radio.c
   - 関数群
-    - void radio_nit()
+    - void radio_init()
     - void transmit_data(検討中)
     - 戻り値の型 receive_data(検討中)
 
