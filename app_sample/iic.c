@@ -1,39 +1,42 @@
 #include "iic.h"
-#include "tk/tkernel.h"
+#include <tk/tkernel.h>
 
-ER iic_transfer(W ch, UH *cmd_dat, W words, W *xwords) {
-    // I2Cチャンネルとデータを使用して、I2C転送処理を行う
-    if (xwords != NULL) {
-        *xwords = words;  // 実際に転送されたワード数を返す
-    }
-    return E_OK;
-}
 
-ER iic_setup(BOOL start) {
-    if (start) {
-        // スタートコンディションの設定
-    } else {
-        // ストップコンディションの設定
-    }
+ER iicxfer(W ch, UH *cmd_dat, W words, W *xwords) {
+    // I2C転送処理を実装
     return E_OK;
 }
 
 ER iic_write(W ch, INT adr, INT reg, UB dat) {
-    UH cmd_dat[2];
-    cmd_dat[0] = (UH)(reg);  // 書き込むレジスタのアドレス
-    cmd_dat[1] = (UH)(dat);  // 書き込むデータ
+    UH c[4];
+    W n;
+    ER err;
 
-    W xwords;
-    return iic_transfer(ch, cmd_dat, 2, &xwords);  // データの転送
+    c[0] = IIC_START | WR(adr);
+    c[1] = IIC_SEND  | IIC_TOPDATA  | reg;
+    c[2] = IIC_SEND  | IIC_LASTDATA | dat;
+    c[3] = IIC_STOP;
+
+    err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
+    return err;
 }
 
 INT iic_read(W ch, INT adr, INT reg) {
-    UH cmd_dat[1];
-    cmd_dat[0] = (UH)(reg);  // 読み取るレジスタのアドレス
+    UH c[5];
+    W n;
+    ER err;
+    UB data = 0;
 
-    W xwords;
-    iic_transfer(ch, cmd_dat, 1, &xwords);  // データの転送
+    c[0] = IIC_START   | WR(adr);
+    c[1] = IIC_SEND    | IIC_TOPDATA | IIC_LASTDATA | reg;
+    c[2] = IIC_RESTART | RD(adr);
+    c[3] = IIC_RECV    | IIC_TOPDATA | IIC_LASTDATA;
+    c[4] = IIC_STOP;
 
-    return (INT)cmd_dat[0];  // 読み取ったデータを返す
+    err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
+    if (err == E_OK) {
+        data = c[3];  // 読み取ったデータ
+    }
+
+    return data;
 }
-
