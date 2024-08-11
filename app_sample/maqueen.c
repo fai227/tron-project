@@ -20,6 +20,7 @@ ER maqueen_init(void) {
     const int max_retries = 10;
 
     while (version == 0 && retry_count < max_retries) {
+        tm_printf("Attempting to write to sensor...\n");
         err = write_reg(1, MAQUEEN_ADDRESS, SENSOR, 0);  // チャンネル1を使用
         if (err != E_OK) {
             tm_printf("Failed to write to sensor. Error: %d\n", err);
@@ -46,6 +47,7 @@ ER maqueen_init(void) {
     tm_printf("Maqueen initialized successfully. Version: %d\n", version);
     return E_OK;
 }
+
 
 // モーターを制御する関数
 ER control_motor(B motor, B direction, B speed) {
