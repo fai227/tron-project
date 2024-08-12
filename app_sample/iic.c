@@ -1,211 +1,376 @@
-#include "iic.h"
+/*
+ *	@(#)nrf5_iic.c 2024-04-18
+ *
+ *	nRF5 I2C ドライバー
+ *	Copyright (C) 2024 by Personal Media Corporation
+ *
+ *	I2C を IIC と表記している。
+ */
+
+
 #include <tk/tkernel.h>
+#include <tm/tmonitor.h>
+#include <tstdlib.h>
+#include "iic.h"
 
-// 必要なハードウェアレジスタ定義
-#define ENABLE 0x500
-#define FREQUENCY 0x524
-#define INTENCLR 0x308
-#define PSEL_SCL 0x508
-#define PSEL_SDA 0x50C
 
-// IICマクロの定義
-#define IIC(cb, reg)  ((cb)->iob + (reg))
 
-// 割り込みハンドラの定義
-LOCAL void iic_inthdr(UINT dintno) {
-    // 割り込み処理の実装
-}
+//以下nrf5_iic.cより
+LOCAL FastMLock	IICLock;	/* 排他制御用ロック */
+LOCAL ID	IICFlgID;		/* 割込通知用イベントフラグ */
 
-// I2Cコントローラのベースアドレスやオフセットの定義
-#define I2C_BASE_ADDRESS  0x40003000  // 例: TWI0ベースアドレス
-#define I2C_CHANNEL_OFFSET 0x1000     // 例: チャンネルオフセット
-#define I2C_READY 0x01                // 例: I2C準備完了ビット
-
-// その他のコード（以前のコードと同様）
-
-// 排他制御用ロック
-LOCAL FastMLock IICLock;
-
-// 割込通知用イベントフラグ
-LOCAL ID IICFlgID;
-
-#define IICMAX 2  // 対応チャンネル数
-
+/*
+ * IIC 制御情報
+ */
 typedef struct iiccb {
-    UW iob;        // IIC レジスターアドレス
-    UH *cmddat;    // コマンド現在位置
-    UH *end;       // コマンド終了位置
+	UW	iob;		/* IIC レジスターアドレス */
+	UH	*cmddat;	/* コマンド現在位置 */
+	UH	*end;		/* コマンド終了位置 */
 } IICCB;
-LOCAL IICCB iiccb[IICMAX];
+LOCAL IICCB	iiccb[IICMAX];
 
-#define IRQ(cb) INTNO((cb)->iob)  // I2C 割込番号
-#define IRQ_LEVEL 3               // I2C 割込優先レベル
-
+/*
+ * nRF5 TWI (I2C) 構成情報
+ *	ピン割り当て
+ *	P0.08	I2C_INT_SCL
+ *	P0.16	I2C_INT_SDA
+ *	P0.26	I2C_EXT_SCL
+ *	P1.00	I2C_EXT_SDA
+ */
 LOCAL struct iic_conf {
-    UW iob;        // I/O ベースアドレス
-    UW psel_scl;   // SCL ピン設定
-    UW psel_sda;   // SDA ピン設定
-    UW freq;       // クロック設定
+	UW	iob;		/* I/O ベースアドレス */
+	UW	psel_scl;	/* SCL ピン設定 */
+	UW	psel_sda;	/* SDA ピン設定 */
+	UW	freq;		/* クロック設定 */
 } const iic_conf[IICMAX] = {
-    { 0x40003000, 0x08, 0x10, 0x06680000 },  // TWI0 I2C_INT 400KHz
-    { 0x40004000, 0x1a, 0x20, 0x06680000 }   // TWI1 I2C_EXT 400KHz
+	{ 0x40003000, 0x08, 0x10, 0x06680000 },	/* TWI0 I2C_INT 400KHz */
+	{ 0x40004000, 0x1a, 0x20, 0x06680000 }	/* TWI1 I2C_EXT 400KHz */
 };
 
-// IIC ドライバ起動/終了
-EXPORT ER iicsetup(BOOL start) {
-    ER err;
-    T_CFLG cflg;
-    T_DINT dint;
-    W ch;
-    IICCB *cb;
+/*
+ * 送受信開始
+ *	*cb->cmddat が IIC_START または IIC_RESTART であること。
+ *	戻値 0:正常 -1:異常
+ */
+LOCAL INT xfer_start( IICCB *cb )
+{
+	UW	d;
 
-    if (!start) {
-        // 終了処理
-        err = E_OK;
-        goto finish;
-    }
+	if ( cb->end - cb->cmddat < 3 ) return -1;
 
-    // 排他制御用ロック生成
-    err = CreateMLock(&IICLock, "IIC_");
-    if (err < E_OK) goto err_ret1;
+	d = *cb->cmddat++ & 0xff;
+	out_w(IIC(cb, ADDRESS), d >> 1);
 
-    // 割込通知用イベントフラグの作成
-    SetOBJNAME(cflg.exinf, "IIC_");
-    cflg.flgatr  = TA_TFIFO | TA_WMUL;
-    cflg.iflgptn = 0;
-    err = tk_cre_flg(&cflg);
-    if (err < E_OK) goto err_ret2;
-    IICFlgID = err;
+	if ( (d & 1) == 0 ) {
+		/* 送信開始 */
+		out_w(IIC(cb, SHORTS), 0);
+		out_w(IIC(cb, TASKS_STARTTX), 1);
+		out_w(IIC(cb, TXD), *cb->cmddat & 0xff);
+	} else {
+		/* 受信開始 */
+		if ( (*(cb->cmddat + 1) & 0xc000) == IIC_STOP ) {
+			out_w(IIC(cb, SHORTS), 2); /* BB_STOP */
+		} else {
+			out_w(IIC(cb, SHORTS), 1); /* BB_SUSPEND */
+		}
+		out_w(IIC(cb, TASKS_STARTRX), 1);
+	}
 
-    for (ch = 0; ch < IICMAX; ++ch) {
-        cb = &iiccb[ch];
-        cb->iob = iic_conf[ch].iob;
+	return 0;
+}
 
-        // 割込ハンドラ登録
-        dint.intatr = TA_HLNG;
-        dint.inthdr = iic_inthdr;
-        err = tk_def_int(DINTNO(IRQ(cb)), &dint);
-        if (err < E_OK) goto err_ret3;
+/*
+ * コマンド実行
+ *	戻値 0:継続 1:終了 -1:異常
+ */
+LOCAL INT xfer_cmddat( IICCB *cb )
+{
+	UW	cmd, d;
 
-        // TWI 初期設定
-        out_w(IIC(cb, ENABLE), 5);
-        out_w(IIC(cb, INTENCLR), 0xffffffff);
-        out_w(IIC(cb, PSEL_SCL), iic_conf[ch].psel_scl);
-        out_w(IIC(cb, PSEL_SDA), iic_conf[ch].psel_sda);
-        out_w(IIC(cb, FREQUENCY), iic_conf[ch].freq);
+	cmd = *cb->cmddat;
 
-        EnableInt(IRQ(cb), IRQ_LEVEL);
-    }
+	if ( (in_w(IIC(cb, EVENTS_ERROR)) & 1) != 0 ) {
+		out_w(IIC(cb, EVENTS_ERROR), 0);
+		goto err_stop;
+	}
 
-    return E_OK;
+	if ( (in_w(IIC(cb, EVENTS_TXDSENT)) & 1) != 0 ) {
+		out_w(IIC(cb, EVENTS_TXDSENT), 0);
+		if ( (cmd & IIC_SEND) != 0 ) {
+			/* データ送信完了 */
+			if ( ++cb->cmddat >= cb->end ) goto err_stop;
+			cmd = *cb->cmddat; /* 次へ */
+		}
+
+		if ( (cmd & IIC_SEND) != 0 ) {
+			/* 次のデータを送信 */
+			out_w(IIC(cb, TXD), cmd & 0xff);
+		} else if ( (cmd & 0xc000) == IIC_RESTART ) {
+			if ( xfer_start(cb) < 0 ) goto err_stop;
+		} else if ( (cmd & 0xc000) == IIC_STOP ) {
+			out_w(IIC(cb, TASKS_STOP), 1);
+		}
+	}
+
+	if ( (in_w(IIC(cb, EVENTS_RXDREADY)) & 1) != 0 ) {
+		out_w(IIC(cb, EVENTS_RXDREADY), 0);
+		d = in_w(IIC(cb, RXD)) & 0xff;
+		if ( (cmd & IIC_RECV) != 0 ) {
+			/* 受信データを保存 */
+			*cb->cmddat |= d;
+			if ( ++cb->cmddat >= cb->end ) goto err_stop;
+			cmd = *cb->cmddat; /* 次へ */
+		}
+	}
+
+	if ( (in_w(IIC(cb, EVENTS_SUSPENDED)) & 1) != 0 ) {
+		out_w(IIC(cb, EVENTS_SUSPENDED), 0);
+		if ( (cmd & IIC_LASTDATA) != 0 ) {
+			if ( cb->cmddat + 1 >= cb->end ) goto err_stop;
+			if ( (*(cb->cmddat + 1) & 0xc000) == IIC_STOP ) {
+				out_w(IIC(cb, SHORTS), 2); /* BB_STOP */
+			}
+		}
+		if ( (cmd & 0xc000) == IIC_RESTART ) {
+			if ( xfer_start(cb) < 0 ) goto err_stop;
+		} else {
+			/* 次のデータ受信開始 */
+			out_w(IIC(cb, TASKS_RESUME), 1);
+		}
+	}
+
+	if ( (in_w(IIC(cb, EVENTS_STOPPED)) & 1) != 0 ) {
+		out_w(IIC(cb, EVENTS_STOPPED), 0);
+		if ( (cmd & 0xc000) == IIC_STOP ) cb->cmddat++;
+		return 1;
+	}
+
+	return 0;
+
+  err_stop:
+	out_w(IIC(cb, TASKS_STOP), 1);
+	return -1;
+}
+
+/*
+ * 割込ハンドラ
+ */
+LOCAL void iic_inthdr( UINT dintno )
+{
+	IICCB	*cb;
+	UW	ch;
+
+	for ( ch = 0; ch < IICMAX; ch++ ) {
+		cb = &iiccb[ch];
+		if ( DINTNO(IRQ(cb)) == dintno ) break;
+	}
+	if ( ch >= IICMAX ) return;
+
+	if ( xfer_cmddat(cb) != 0 ) {
+		out_w(IIC(cb, INTENCLR), 0xffffffff);
+
+		/* 終了通知 */
+		tk_set_flg(IICFlgID, 1 << ch);
+	}
+}
+
+/*
+ * IIC 送受信処理
+ */
+EXPORT ER iicxfer( W ch, UH *cmddata, W words, W *xwords )
+{
+	IICCB	*cb;
+	UINT	ptn;
+	UW	n;
+	ER	err;
+
+	if ( ch < 0 || ch >= IICMAX ) { err = E_PAR; goto err_ret; }
+	if ( words < 3 ) { err = E_PAR; goto err_ret; }
+
+	err = MLock(&IICLock, ch);
+	if ( err < E_OK ) goto err_ret;
+
+	cb = &iiccb[ch];
+
+	/* イベント／ステータス・クリア */
+	out_w(IIC(cb, EVENTS_STOPPED),		0);
+	out_w(IIC(cb, EVENTS_RXDREADY),		0);
+	out_w(IIC(cb, EVENTS_TXDSENT),		0);
+	out_w(IIC(cb, EVENTS_ERROR),		0);
+	out_w(IIC(cb, EVENTS_BB),		0);
+	out_w(IIC(cb, EVENTS_SUSPENDED),	0);
+	out_w(IIC(cb, SHORTS),			0);
+	out_w(IIC(cb, ERRORSRC),		0xffffffff);
+	out_w(IIC(cb, INTENCLR),		0xffffffff);
+
+	/* 制御情報設定 */
+	cb->cmddat = cmddata;
+	cb->end	   = cmddata + words;
+
+	/* IIC 動作開始 */
+	n = xfer_start(cb);
+	if ( n == 0 ) {
+		out_w(IIC(cb, INTENSET),
+		      (1 << 1) |	/* STOPPED */
+		      (1 << 2) |	/* RXDREADY */
+		      (1 << 7) |	/* TXDSENT */
+		      (1 << 9) |	/* ERROR */
+		      (1 << 18));	/* SUSPENDED */
+
+		/* 終了待ち */
+		err = tk_wai_flg(IICFlgID, 1 << ch, TWF_ANDW|TWF_BITCLR,
+				 &ptn, 1000 + words * 10);
+
+		out_w(IIC(cb, INTENCLR), 0xffffffff);
+		if ( err < E_OK ) {
+			/* 強制終了 */
+			out_w(IIC(cb, TASKS_STOP), 1);
+		} else {
+			n = in_w(IIC(cb, ERRORSRC)) & 7;
+			if ( (n & 4) != 0 &&
+			     (*cb->cmddat & IIC_SEND) != 0 ) {
+				/* スレーブ側から停止した */
+				cb->cmddat++;
+			}
+			if ( n != 0 )	err = E_IO | n;
+			else		err = E_OK;
+		}
+	} else {
+		err = E_PAR;
+	}
+
+	/* 転送が完了したワード数の記録 */
+	if ( xwords != NULL ) *xwords = cb->cmddat - cmddata;
+
+	MUnlock(&IICLock, ch);
+
+	return err;
+
+  err_ret:
+	if ( xwords != NULL ) *xwords = 0;
+	return err;
+}
+
+/*
+ * IIC ドライバ起動/終了
+ */
+EXPORT ER iicsetup( BOOL start )
+{
+#define	IICTag	"IIC_"
+
+	ER	err;
+	T_CFLG	cflg;
+	T_DINT	dint;
+	W	ch;
+	IICCB	*cb;
+
+	if ( !start ) {
+		/* 終了処理 */
+		err = E_OK;
+		goto finish;
+	}
+
+	/* 排他制御用ロック生成 */
+	err = CreateMLock(&IICLock, IICTag);
+	if ( err < E_OK ) goto err_ret1;
+
+	/* 割込通知用イベントフラグの作成 */
+	SetOBJNAME(cflg.exinf, IICTag);
+	cflg.flgatr  = TA_TFIFO | TA_WMUL;
+	cflg.iflgptn = 0;
+	err = tk_cre_flg(&cflg);
+	if ( err < E_OK ) goto err_ret2;
+	IICFlgID = err;
+
+	for ( ch = 0; ch < IICMAX; ++ch ) {
+		cb = &iiccb[ch];
+		cb->iob = iic_conf[ch].iob;
+
+		/* 割込ハンドラ登録 */
+		dint.intatr = TA_HLNG;
+		dint.inthdr = iic_inthdr;
+		err = tk_def_int(DINTNO(IRQ(cb)), &dint);
+		if ( err < E_OK ) goto err_ret3;
+
+		/* TWI 初期設定 */
+		out_w(IIC(cb, ENABLE),    5);
+		out_w(IIC(cb, INTENCLR),  0xffffffff);
+		out_w(IIC(cb, PSEL_SCL),  iic_conf[ch].psel_scl);
+		out_w(IIC(cb, PSEL_SDA),  iic_conf[ch].psel_sda);
+		out_w(IIC(cb, FREQUENCY), iic_conf[ch].freq);
+
+		EnableInt(IRQ(cb), IRQ_LEVEL);
+	}
+
+	return E_OK;
 
   finish:
-    // 終了処理
-    ch = IICMAX;
+	/* 終了処理 */
+	ch = IICMAX;
   err_ret3:
-    while (ch-- > 0) {
-        cb = &iiccb[ch];
-        MLock(&IICLock, ch);
-        DisableInt(IRQ(cb));
-        tk_def_int(DINTNO(IRQ(cb)), NULL);
-    }
-    tk_del_flg(IICFlgID);
+	while ( ch-- > 0 ) {
+		cb = &iiccb[ch];
+		MLock(&IICLock, ch);
+		DisableInt(IRQ(cb));
+		tk_def_int(DINTNO(IRQ(cb)), NULL);
+	}
+	tk_del_flg(IICFlgID);
   err_ret2:
-    DeleteMLock(&IICLock);
+	DeleteMLock(&IICLock);
   err_ret1:
-    return err;
+	return err;
 }
 
-// I2C転送処理の実装
-ER iicxfer(W ch, UH *cmd_dat, W words, W *xwords) {
-    volatile UW *i2c_base = (UW *)(I2C_BASE_ADDRESS + ch * I2C_CHANNEL_OFFSET);
-    W i;
-    int timeout;
+/*
+ * レジスタ書き込み
+ */
+EXPORT ER write_reg(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
+{
+	UH	c[4];
+	W	n;
+	ER	err;
 
-    tm_printf("Starting I2C transfer on channel %d\n", ch);
+	c[0] = IIC_START | WR(adr);
+	c[1] = IIC_SEND  | IIC_TOPDATA  | reg;
+	c[2] = IIC_SEND  | IIC_LASTDATA | dat;
+	c[3] = IIC_STOP;
 
-    // コマンド送信
-    for (i = 0; i < words; i++) {
-        tm_printf("Sending command: 0x%04x to I2C\n", cmd_dat[i]);
-        *i2c_base = cmd_dat[i];
+	err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
 
-        // 送信完了待ち（簡略化のためポーリング）
-        timeout = 100000;  // タイムアウト値を設定
-        while (!(*i2c_base & I2C_READY) && --timeout);
+#if VERBOSE
+	tm_printf("write_reg 0x%02x 0x%02x <- 0x%02x : n=%d err=%d\n",
+		  adr, reg, dat, n, err);
+#endif
 
-        if (timeout == 0) {
-            tm_printf("I2C_READY timeout occurred on command %d\n", i);
-            return E_TMOUT;  // タイムアウトエラーを返す
-        }
-    }
-
-    // 転送完了
-    if (xwords != NULL) {
-        *xwords = i;
-    }
-
-    tm_printf("I2C transfer completed successfully.\n");
-
-    return E_OK;
+	return err;
 }
 
+/*
+ * レジスタ読み出し
+ */
+EXPORT INT read_reg(W ch, INT adr, INT reg ) /*チャンネル追加*/
+{
+	UH	c[5];
+	UB	dat;
+	W	n;
+	ER	err;
 
+	c[0] = IIC_START   | WR(adr);
+	c[1] = IIC_SEND    | IIC_TOPDATA | IIC_LASTDATA | reg;
+	c[2] = IIC_RESTART | RD(adr);
+	c[3] = IIC_RECV    | IIC_TOPDATA | IIC_LASTDATA;
+	c[4] = IIC_STOP;
 
-// I2Cレジスタ書き込み
-ER write_reg(W ch, INT adr, INT reg, UB dat) {
-    UH c[4];
-    W n;
-    ER err;
+	err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
 
-    tm_printf("Preparing to write to I2C register...\n");
+	dat = c[3] & 0xff;
 
-    c[0] = IIC_START | WR(adr);
-    c[1] = IIC_SEND  | IIC_TOPDATA  | reg;
-    c[2] = IIC_SEND  | IIC_LASTDATA | dat;
-    c[3] = IIC_STOP;
+#if VERBOSE
+	tm_printf("read_reg 0x%02x 0x%02x -> 0x%02x : n=%d err=%d\n",
+		  adr, reg, dat, n, err);
+#endif
 
-    tm_printf("Sending I2C command...\n");
-
-    err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
-
-    if (err != E_OK) {
-        tm_printf("iicxfer failed with error: %d\n", err);
-    } else {
-        tm_printf("I2C command sent successfully. Bytes transferred: %d\n", n);
-    }
-
-    return err;
+	return ( err < E_OK )? err: dat;
 }
 
-
-// I2Cレジスタ読み出し
-INT read_reg(W ch, INT adr, INT reg) {
-    UH c[5];
-    W n;
-    ER err;
-    UB data = 0;
-
-    c[0] = IIC_START   | WR(adr);
-    c[1] = IIC_SEND    | IIC_TOPDATA | IIC_LASTDATA | reg;
-    c[2] = IIC_RESTART | RD(adr);
-    c[3] = IIC_RECV    | IIC_TOPDATA | IIC_LASTDATA;
-    c[4] = IIC_STOP;
-
-    err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
-    if (err == E_OK) {
-        data = c[3];  // 読み取ったデータ
-    }
-
-    return data;
-}
-
-// I2C書き込み関数
-ER iic_write(W ch, INT adr, INT reg, UB dat) {
-    return write_reg(ch, adr, reg, dat);
-}
-
-// I2C読み出し関数
-INT iic_read(W ch, INT adr, INT reg) {
-    return read_reg(ch, adr, reg);
-}
 
