@@ -35,28 +35,28 @@ extern "C" {
  */
 #define	IIC(cb, reg)	( (cb)->iob + (reg) )
 
-#define	TASKS_STARTRX		0x000	/* Start TWI receive sequence */
-#define	TASKS_STARTTX		0x008	/* Start TWI transmit sequence */
-#define	TASKS_STOP			0x014	/* Stop TWI transaction */
-#define	TASKS_SUSPEND		0x01C	/* Suspend TWI transaction */
-#define	TASKS_RESUME		0x020	/* Resume TWI transaction */
-#define	EVENTS_STOPPED		0x104	/* TWI stopped */
-#define	EVENTS_RXDREADY		0x108	/* TWI RXD byte received */
-#define	EVENTS_TXDSENT		0x11C	/* TWI TXD byte sent */
-#define	EVENTS_ERROR		0x124	/* TWI error */
-#define	EVENTS_BB			0x138	/* TWI byte boundary */
-#define	EVENTS_SUSPENDED	0x148	/* TWI entered the suspended state */
-#define	SHORTS				0x200	/* Shortcuts */
-#define	INTENSET			0x304	/* Enable interrupt */
-#define	INTENCLR			0x308	/* Disable interrupt */
-#define	ERRORSRC			0x4C4	/* Error source */
-#define	ENABLE				0x500	/* Enable TWI */
-#define	PSEL_SCL			0x508	/* Pin select for SCL */
-#define	PSEL_SDA			0x50C	/* Pin select for SDA */
-#define	RXD					0x518	/* RXD register */
-#define	TXD					0x51C	/* TXD register */
-#define	FREQUENCY			0x524	/* TWI frequency */
-#define	ADDRESS				0x588	/* Address used in the TWI transfer */
+#define	IIC_TASKS_STARTRX		0x000	/* Start TWI receive sequence */
+#define	IIC_TASKS_STARTTX		0x008	/* Start TWI transmit sequence */
+#define	IIC_TASKS_STOP			0x014	/* Stop TWI transaction */
+#define	IIC_TASKS_SUSPEND		0x01C	/* Suspend TWI transaction */
+#define	IIC_TASKS_RESUME		0x020	/* Resume TWI transaction */
+#define	IIC_EVENTS_STOPPED		0x104	/* TWI stopped */
+#define	IIC_EVENTS_RXDREADY		0x108	/* TWI RXD byte received */
+#define	IIC_EVENTS_TXDSENT		0x11C	/* TWI TXD byte sent */
+#define	IIC_EVENTS_ERROR		0x124	/* TWI error */
+#define	IIC_EVENTS_BB			0x138	/* TWI byte boundary */
+#define	IIC_EVENTS_SUSPENDED	0x148	/* TWI entered the suspended state */
+#define	IIC_SHORTS				0x200	/* Shortcuts */
+#define	IIC_INTENSET			0x304	/* Enable interrupt */
+#define	IIC_INTENCLR			0x308	/* Disable interrupt */
+#define	IIC_ERRORSRC			0x4C4	/* Error source */
+#define	IIC_ENABLE				0x500	/* Enable TWI */
+#define	IIC_PSEL_SCL			0x508	/* Pin select for SCL */
+#define	IIC_PSEL_SDA			0x50C	/* Pin select for SDA */
+#define	IIC_RXD					0x518	/* RXD register */
+#define	IIC_TXD					0x51C	/* TXD register */
+#define	IIC_FREQUENCY			0x524	/* TWI frequency */
+#define	IIC_ADDRESS				0x588	/* Address used in the TWI transfer */
 
 //ここまでがもともとiic.cにあったもの
 
@@ -71,12 +71,12 @@ extern "C" {
 #define IIC_LASTDATA   (1 << 10)  /* 送受信データの末端 */
 
 /*nrf5_iic.cからの追加関数プロトタイプ*/
-IMPORT ER iicxfer(W ch, UH *cmddat, W words, W *xwords);
-IMPORT ER iicsetup(BOOL start);
+IMPORT ER iic_transfer(W ch, UH *cmddat, W words, W *xwords);
+IMPORT ER iic_setup(BOOL start);
 
 /* iic_reg.cからの追加関数プロトタイプ */
-IMPORT ER write_reg(W ch,INT adr, INT reg, UB dat);	/*引数にチャンネル追加*/
-IMPORT INT read_reg(W ch,INT adr, INT reg);			/*引数にチャンネル追加*/
+IMPORT ER iic_write(W ch,INT adr, INT reg, UB dat);	/*引数にチャンネル追加*/
+IMPORT INT iic_read(W ch,INT adr, INT reg);			/*引数にチャンネル追加*/
 
 
 #ifdef __cplusplus
