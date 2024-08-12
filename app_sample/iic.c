@@ -52,28 +52,28 @@ LOCAL struct iic_conf {
  *	*cb->cmddat が IIC_START または IIC_RESTART であること。
  *	戻値 0:正常 -1:異常
  */
-LOCAL INT xfer_start( IICCB *cb )
+LOCAL INT transfer_start( IICCB *cb )
 {
 	UW	d;
 
 	if ( cb->end - cb->cmddat < 3 ) return -1;
 
 	d = *cb->cmddat++ & 0xff;
-	out_w(IIC(cb, ADDRESS), d >> 1);
+	out_w(IIC(cb, IIC_ADDRESS), d >> 1);
 
 	if ( (d & 1) == 0 ) {
 		/* 送信開始 */
-		out_w(IIC(cb, SHORTS), 0);
-		out_w(IIC(cb, TASKS_STARTTX), 1);
-		out_w(IIC(cb, TXD), *cb->cmddat & 0xff);
+		out_w(IIC(cb, IIC_SHORTS), 0);
+		out_w(IIC(cb, IIC_TASKS_STARTTX), 1);
+		out_w(IIC(cb, IIC_TXD), *cb->cmddat & 0xff);
 	} else {
 		/* 受信開始 */
 		if ( (*(cb->cmddat + 1) & 0xc000) == IIC_STOP ) {
-			out_w(IIC(cb, SHORTS), 2); /* BB_STOP */
+			out_w(IIC(cb, IIC_SHORTS), 2); /* BB_STOP */
 		} else {
-			out_w(IIC(cb, SHORTS), 1); /* BB_SUSPEND */
+			out_w(IIC(cb, IIC_SHORTS), 1); /* BB_SUSPEND */
 		}
-		out_w(IIC(cb, TASKS_STARTRX), 1);
+		out_w(IIC(cb, IIC_TASKS_STARTRX), 1);
 	}
 
 	return 0;
@@ -83,19 +83,19 @@ LOCAL INT xfer_start( IICCB *cb )
  * コマンド実行
  *	戻値 0:継続 1:終了 -1:異常
  */
-LOCAL INT xfer_cmddat( IICCB *cb )
+LOCAL INT transfer_cmddat( IICCB *cb )
 {
 	UW	cmd, d;
 
 	cmd = *cb->cmddat;
 
-	if ( (in_w(IIC(cb, EVENTS_ERROR)) & 1) != 0 ) {
-		out_w(IIC(cb, EVENTS_ERROR), 0);
+	if ( (in_w(IIC(cb, IIC_EVENTS_ERROR)) & 1) != 0 ) {
+		out_w(IIC(cb, IIC_EVENTS_ERROR), 0);
 		goto err_stop;
 	}
 
-	if ( (in_w(IIC(cb, EVENTS_TXDSENT)) & 1) != 0 ) {
-		out_w(IIC(cb, EVENTS_TXDSENT), 0);
+	if ( (in_w(IIC(cb, IIC_EVENTS_TXDSENT)) & 1) != 0 ) {
+		out_w(IIC(cb, IIC_EVENTS_TXDSENT), 0);
 		if ( (cmd & IIC_SEND) != 0 ) {
 			/* データ送信完了 */
 			if ( ++cb->cmddat >= cb->end ) goto err_stop;
@@ -104,17 +104,17 @@ LOCAL INT xfer_cmddat( IICCB *cb )
 
 		if ( (cmd & IIC_SEND) != 0 ) {
 			/* 次のデータを送信 */
-			out_w(IIC(cb, TXD), cmd & 0xff);
+			out_w(IIC(cb, IIC_TXD), cmd & 0xff);
 		} else if ( (cmd & 0xc000) == IIC_RESTART ) {
-			if ( xfer_start(cb) < 0 ) goto err_stop;
+			if ( transfer_start(cb) < 0 ) goto err_stop;
 		} else if ( (cmd & 0xc000) == IIC_STOP ) {
-			out_w(IIC(cb, TASKS_STOP), 1);
+			out_w(IIC(cb, IIC_TASKS_STOP), 1);
 		}
 	}
 
-	if ( (in_w(IIC(cb, EVENTS_RXDREADY)) & 1) != 0 ) {
-		out_w(IIC(cb, EVENTS_RXDREADY), 0);
-		d = in_w(IIC(cb, RXD)) & 0xff;
+	if ( (in_w(IIC(cb, IIC_EVENTS_RXDREADY)) & 1) != 0 ) {
+		out_w(IIC(cb, IIC_EVENTS_RXDREADY), 0);
+		d = in_w(IIC(cb, IIC_RXD)) & 0xff;
 		if ( (cmd & IIC_RECV) != 0 ) {
 			/* 受信データを保存 */
 			*cb->cmddat |= d;
@@ -123,24 +123,24 @@ LOCAL INT xfer_cmddat( IICCB *cb )
 		}
 	}
 
-	if ( (in_w(IIC(cb, EVENTS_SUSPENDED)) & 1) != 0 ) {
-		out_w(IIC(cb, EVENTS_SUSPENDED), 0);
+	if ( (in_w(IIC(cb, IIC_EVENTS_SUSPENDED)) & 1) != 0 ) {
+		out_w(IIC(cb, IIC_EVENTS_SUSPENDED), 0);
 		if ( (cmd & IIC_LASTDATA) != 0 ) {
 			if ( cb->cmddat + 1 >= cb->end ) goto err_stop;
 			if ( (*(cb->cmddat + 1) & 0xc000) == IIC_STOP ) {
-				out_w(IIC(cb, SHORTS), 2); /* BB_STOP */
+				out_w(IIC(cb, IIC_SHORTS), 2); /* BB_STOP */
 			}
 		}
 		if ( (cmd & 0xc000) == IIC_RESTART ) {
-			if ( xfer_start(cb) < 0 ) goto err_stop;
+			if ( transfer_start(cb) < 0 ) goto err_stop;
 		} else {
 			/* 次のデータ受信開始 */
-			out_w(IIC(cb, TASKS_RESUME), 1);
+			out_w(IIC(cb, IIC_TASKS_RESUME), 1);
 		}
 	}
 
-	if ( (in_w(IIC(cb, EVENTS_STOPPED)) & 1) != 0 ) {
-		out_w(IIC(cb, EVENTS_STOPPED), 0);
+	if ( (in_w(IIC(cb, IIC_EVENTS_STOPPED)) & 1) != 0 ) {
+		out_w(IIC(cb, IIC_EVENTS_STOPPED), 0);
 		if ( (cmd & 0xc000) == IIC_STOP ) cb->cmddat++;
 		return 1;
 	}
@@ -148,14 +148,14 @@ LOCAL INT xfer_cmddat( IICCB *cb )
 	return 0;
 
   err_stop:
-	out_w(IIC(cb, TASKS_STOP), 1);
+	out_w(IIC(cb, IIC_TASKS_STOP), 1);
 	return -1;
 }
 
 /*
  * 割込ハンドラ
  */
-LOCAL void iic_inthdr( UINT dintno )
+LOCAL void iic_int_handler( UINT dintno )
 {
 	IICCB	*cb;
 	UW	ch;
@@ -166,8 +166,8 @@ LOCAL void iic_inthdr( UINT dintno )
 	}
 	if ( ch >= IICMAX ) return;
 
-	if ( xfer_cmddat(cb) != 0 ) {
-		out_w(IIC(cb, INTENCLR), 0xffffffff);
+	if ( transfer_cmddat(cb) != 0 ) {
+		out_w(IIC(cb, IIC_INTENCLR), 0xffffffff);
 
 		/* 終了通知 */
 		tk_set_flg(IICFlgID, 1 << ch);
@@ -177,7 +177,7 @@ LOCAL void iic_inthdr( UINT dintno )
 /*
  * IIC 送受信処理
  */
-EXPORT ER iicxfer( W ch, UH *cmddata, W words, W *xwords )
+EXPORT ER iic_transfer( W ch, UH *cmddata, W words, W *xwords )
 {
 	IICCB	*cb;
 	UINT	ptn;
@@ -193,24 +193,24 @@ EXPORT ER iicxfer( W ch, UH *cmddata, W words, W *xwords )
 	cb = &iiccb[ch];
 
 	/* イベント／ステータス・クリア */
-	out_w(IIC(cb, EVENTS_STOPPED),		0);
-	out_w(IIC(cb, EVENTS_RXDREADY),		0);
-	out_w(IIC(cb, EVENTS_TXDSENT),		0);
-	out_w(IIC(cb, EVENTS_ERROR),		0);
-	out_w(IIC(cb, EVENTS_BB),		0);
-	out_w(IIC(cb, EVENTS_SUSPENDED),	0);
-	out_w(IIC(cb, SHORTS),			0);
-	out_w(IIC(cb, ERRORSRC),		0xffffffff);
-	out_w(IIC(cb, INTENCLR),		0xffffffff);
+	out_w(IIC(cb, IIC_EVENTS_STOPPED),		0);
+	out_w(IIC(cb, IIC_EVENTS_RXDREADY),		0);
+	out_w(IIC(cb, IIC_EVENTS_TXDSENT),		0);
+	out_w(IIC(cb, IIC_EVENTS_ERROR),		0);
+	out_w(IIC(cb, IIC_EVENTS_BB),		0);
+	out_w(IIC(cb, IIC_EVENTS_SUSPENDED),	0);
+	out_w(IIC(cb, IIC_SHORTS),			0);
+	out_w(IIC(cb, IIC_ERRORSRC),		0xffffffff);
+	out_w(IIC(cb, IIC_INTENCLR),		0xffffffff);
 
 	/* 制御情報設定 */
 	cb->cmddat = cmddata;
 	cb->end	   = cmddata + words;
 
 	/* IIC 動作開始 */
-	n = xfer_start(cb);
+	n = transfer_start(cb);
 	if ( n == 0 ) {
-		out_w(IIC(cb, INTENSET),
+		out_w(IIC(cb, IIC_INTENSET),
 		      (1 << 1) |	/* STOPPED */
 		      (1 << 2) |	/* RXDREADY */
 		      (1 << 7) |	/* TXDSENT */
@@ -221,12 +221,12 @@ EXPORT ER iicxfer( W ch, UH *cmddata, W words, W *xwords )
 		err = tk_wai_flg(IICFlgID, 1 << ch, TWF_ANDW|TWF_BITCLR,
 				 &ptn, 1000 + words * 10);
 
-		out_w(IIC(cb, INTENCLR), 0xffffffff);
+		out_w(IIC(cb, IIC_INTENCLR), 0xffffffff);
 		if ( err < E_OK ) {
 			/* 強制終了 */
-			out_w(IIC(cb, TASKS_STOP), 1);
+			out_w(IIC(cb, IIC_TASKS_STOP), 1);
 		} else {
-			n = in_w(IIC(cb, ERRORSRC)) & 7;
+			n = in_w(IIC(cb, IIC_ERRORSRC)) & 7;
 			if ( (n & 4) != 0 &&
 			     (*cb->cmddat & IIC_SEND) != 0 ) {
 				/* スレーブ側から停止した */
@@ -254,7 +254,7 @@ EXPORT ER iicxfer( W ch, UH *cmddata, W words, W *xwords )
 /*
  * IIC ドライバ起動/終了
  */
-EXPORT ER iicsetup( BOOL start )
+EXPORT ER iic_setup( BOOL start )
 {
 #define	IICTag	"IIC_"
 
@@ -288,16 +288,16 @@ EXPORT ER iicsetup( BOOL start )
 
 		/* 割込ハンドラ登録 */
 		dint.intatr = TA_HLNG;
-		dint.inthdr = iic_inthdr;
+		dint.inthdr = iic_int_handler;
 		err = tk_def_int(DINTNO(IRQ(cb)), &dint);
 		if ( err < E_OK ) goto err_ret3;
 
 		/* TWI 初期設定 */
-		out_w(IIC(cb, ENABLE),    5);
-		out_w(IIC(cb, INTENCLR),  0xffffffff);
-		out_w(IIC(cb, PSEL_SCL),  iic_conf[ch].psel_scl);
-		out_w(IIC(cb, PSEL_SDA),  iic_conf[ch].psel_sda);
-		out_w(IIC(cb, FREQUENCY), iic_conf[ch].freq);
+		out_w(IIC(cb, IIC_ENABLE),    5);
+		out_w(IIC(cb, IIC_INTENCLR),  0xffffffff);
+		out_w(IIC(cb, IIC_PSEL_SCL),  iic_conf[ch].psel_scl);
+		out_w(IIC(cb, IIC_PSEL_SDA),  iic_conf[ch].psel_sda);
+		out_w(IIC(cb, IIC_FREQUENCY), iic_conf[ch].freq);
 
 		EnableInt(IRQ(cb), IRQ_LEVEL);
 	}
@@ -324,7 +324,7 @@ EXPORT ER iicsetup( BOOL start )
 /*
  * レジスタ書き込み
  */
-EXPORT ER write_reg(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
+EXPORT ER iic_write(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
 {
 	UH	c[4];
 	W	n;
@@ -335,10 +335,10 @@ EXPORT ER write_reg(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
 	c[2] = IIC_SEND  | IIC_LASTDATA | dat;
 	c[3] = IIC_STOP;
 
-	err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
+	err = iic_transfer(ch, c, sizeof(c) / sizeof(UH), &n);
 
 #if VERBOSE
-	tm_printf("write_reg 0x%02x 0x%02x <- 0x%02x : n=%d err=%d\n",
+	tm_printf("iic_write 0x%02x 0x%02x <- 0x%02x : n=%d err=%d\n",
 		  adr, reg, dat, n, err);
 #endif
 
@@ -348,7 +348,7 @@ EXPORT ER write_reg(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
 /*
  * レジスタ読み出し
  */
-EXPORT INT read_reg(W ch, INT adr, INT reg ) /*チャンネル追加*/
+EXPORT INT iic_read(W ch, INT adr, INT reg ) /*チャンネル追加*/
 {
 	UH	c[5];
 	UB	dat;
@@ -361,12 +361,12 @@ EXPORT INT read_reg(W ch, INT adr, INT reg ) /*チャンネル追加*/
 	c[3] = IIC_RECV    | IIC_TOPDATA | IIC_LASTDATA;
 	c[4] = IIC_STOP;
 
-	err = iicxfer(ch, c, sizeof(c) / sizeof(UH), &n);
+	err = iic_transfer(ch, c, sizeof(c) / sizeof(UH), &n);
 
 	dat = c[3] & 0xff;
 
 #if VERBOSE
-	tm_printf("read_reg 0x%02x 0x%02x -> 0x%02x : n=%d err=%d\n",
+	tm_printf("iic_read 0x%02x 0x%02x -> 0x%02x : n=%d err=%d\n",
 		  adr, reg, dat, n, err);
 #endif
 
