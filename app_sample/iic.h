@@ -12,10 +12,7 @@
 extern "C" {
 #endif
 
-//以下元もとiic.cにあったもの
 #define	VERBOSE		0	/* デバッグ用メッセージ 1:あり 0:なし */
-// #define VERBOSE	1	/* デバッグ用メッセージ 1:あり 0:なし */
-
 #define	I2C_CH		0	/* I2C チャンネル (micro:bitのI2C_INT用) */
 
 #define	WR(da)		(((da) << 1) | 0)
@@ -57,9 +54,6 @@ extern "C" {
 #define	IIC_TXD					0x51C	/* TXD register */
 #define	IIC_FREQUENCY			0x524	/* TWI frequency */
 #define	IIC_ADDRESS				0x588	/* Address used in the TWI transfer */
-
-//ここまでがもともとiic.cにあったもの
-
 
 /* IIC 操作マクロ */
 #define IIC_RESTART    (3 << 14)  /* リスタートコンディションを送信 */

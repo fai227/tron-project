@@ -7,15 +7,11 @@
  *	I2C を IIC と表記している。
  */
 
-
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
 #include <tstdlib.h>
 #include "iic.h"
 
-
-
-//以下nrf5_iic.cより
 LOCAL FastMLock	IICLock;	/* 排他制御用ロック */
 LOCAL ID	IICFlgID;		/* 割込通知用イベントフラグ */
 
@@ -155,7 +151,7 @@ LOCAL INT transfer_cmddat( IICCB *cb )
 /*
  * 割込ハンドラ
  */
-LOCAL void iic_int_handler( UINT dintno )
+LOCAL void iic_init_handler( UINT dintno )
 {
 	IICCB	*cb;
 	UW	ch;
@@ -288,7 +284,7 @@ EXPORT ER iic_setup( BOOL start )
 
 		/* 割込ハンドラ登録 */
 		dint.intatr = TA_HLNG;
-		dint.inthdr = iic_int_handler;
+		dint.inthdr = iic_init_handler;
 		err = tk_def_int(DINTNO(IRQ(cb)), &dint);
 		if ( err < E_OK ) goto err_ret3;
 
