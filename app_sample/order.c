@@ -1,6 +1,8 @@
 #include "order.h"
 #include <tk/typedef.h>
 
+#include "order.h"
+
 /*
 orderは全部で8bit
 上位4ビットで方向指示、下位4bitで継続時間
