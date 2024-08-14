@@ -16,7 +16,7 @@ orderは全部で8bit
  */
 BOOL is_forward(UB order) {
     // orderの上位4ビットをチェック
-    return ((order >> 4) == MOVE_FORWARD);
+    return ((order >> ORDER_BIT_SHIFT) == MOVE_FORWARD);
 }
 
 /*
@@ -24,7 +24,7 @@ BOOL is_forward(UB order) {
  *  上位4ビットがMOVE_BACKWARDと一致するかを確認
  */
 BOOL is_backward(UB order) {
-    return ((order >> 4) == MOVE_BACKWARD);
+    return ((order >> ORDER_BIT_SHIFT) == MOVE_BACKWARD);
 }
 
 /*
@@ -32,7 +32,7 @@ BOOL is_backward(UB order) {
  *  上位4ビットがTURN_LEFTと一致するかを確認
  */
 BOOL is_left(UB order) {
-    return ((order >> 4) == TURN_LEFT);
+    return ((order >> ORDER_BIT_SHIFT) == TURN_LEFT);
 }
 
 /*
@@ -40,7 +40,7 @@ BOOL is_left(UB order) {
  *  上位4ビットがTURN_RIGHTと一致するかを確認
  */
 BOOL is_right(UB order) {
-    return ((order >> 4) == TURN_RIGHT);
+    return ((order >> ORDER_BIT_SHIFT) == TURN_RIGHT);
 }
 
 /*
@@ -56,5 +56,5 @@ order & 0x0F は 1000 0010 と 0000 1111 のビットごとのAND演算
 */
 
 UB get_order_duration(UB order) {
-    return (order & 0x0F);  // 下位4ビットを抽出して持続時間
+    return (order & ORDER_MASK);  // 下位4ビットを抽出して持続時間
 }

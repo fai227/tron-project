@@ -78,12 +78,12 @@ ER turn_off_all_led(void){
 }
 
 BOOL read_line_state(B line) {
-	return (iic_read(EXTERNAL_IIC_CHANNEL, MAQUEEN_IIC_ADDRESS, MAQUEEN_LINE_SENSOR_29) >> line) & 0x01;
+	return (iic_read(EXTERNAL_IIC_CHANNEL, MAQUEEN_IIC_ADDRESS, MAQUEEN_LINE_SENSOR_BASE) >> line) & 0x01;
 }
 
 // ラインセンサーの値(0-256)を読み取る関数
 UB read_line_value(B ch, B line) {
-    return (UB)iic_read(EXTERNAL_IIC_CHANNEL, MAQUEEN_IIC_ADDRESS, MAQUEEN_LINE_SENSOR + 2*line);
+    return (UB)iic_read(EXTERNAL_IIC_CHANNEL, MAQUEEN_IIC_ADDRESS, MAQUEEN_LINE_SENSORS + 2*line);
 }
 
 
