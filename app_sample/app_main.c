@@ -1,4 +1,4 @@
-#include "tk/tkernel.h"
+#include <tk/tkernel.h>
 #include <tm/tmonitor.h>
 #include "maqueen.h"
 
@@ -10,6 +10,5 @@ EXPORT void usermain(void)
         tm_printf("Sensor State: %d\n", read_line_state(M));
         tk_dly_tsk(1000);
     }
-
     return 0;
 }
