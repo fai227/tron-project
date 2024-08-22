@@ -2,7 +2,7 @@
 
 #include "list.h"
 
-List *init_list()
+List *list_init()
 {
     List *list = (List *)Kmalloc(sizeof(List));
     list->head = NULL;

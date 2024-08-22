@@ -1,6 +1,8 @@
 #ifndef APP_SAMPLE_RADIO_H_
 #define APP_SAMPLE_RADIO_H_
 
+#include <tk/tkernel.h>
+
 #define RADIO_BASE 0x40001000
 
 #define RADIO(p) (RADIO_BASE + p)
