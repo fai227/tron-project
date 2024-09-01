@@ -41,6 +41,7 @@
 - Serial Monitor（Micro:bitのログを見れる，Tera Term不必要になるよ）
 
 # フローチャート
+## 通信プログラム
 ```mermaid
 flowchart LR
     A([Start]) --> B[直進<br>（M・L1・R1による補正）]
@@ -54,4 +55,38 @@ flowchart LR
     G -->|はい| H[通信プログラムを優先度'高'で起動<br>（別タスクで経路予約）]
     G -->|いいえ| B
     H --> B
+```
+
+## サーバー通信プログラム
+```mermaid
+flowchart LR
+  A([イベント割込]) --> B{イベント判定}
+  
+  B --> |DISABLED| C[RXEN送信]
+  C --> D([RXIDLE待機])
+
+  B --> |END| E{RX・TX判定}
+  E --> |RXIDLE| F[TXEN送信]
+  F --> G([TXIDLE待機])
+  E --> |TXIDLE| H[DISABLE送信]
+  H --> I([DISABLE待機])
+  
+  B --> |READY| J{RX・TX判定}
+  J --> |RXIDLE| K[送信準備]
+  K --> L[START送信]
+  J --> |TXIDLE| M[受信準備]
+  M --> L
+  L --> N([END待機])
+```
+
+## クライアント通信プログラム
+```mermaid
+flowchart LR
+A([タスク起動]) --> B[送信タスク起動] --> C([終了])
+
+D([送信タスク起動]) --> E[受信割込設定] --> F[送信] --> G[待機]
+G --> F
+
+H([受信割込]) --> I[送信タスク終了] --> J[割込削除] --> K[パケット読み取り]
+
 ```
