@@ -5,7 +5,7 @@
 #include "list.h"
 
 UINT request_departure_time_ms() {
-    // サーバーへ通信して，結果を受け取るまで待つ
+    // サーバーと通信して，結果を受け取るまで待つ
     tk_dly_tsk(1000);
 
     // 仮の値を返す 
@@ -13,8 +13,9 @@ UINT request_departure_time_ms() {
 }
 
 void reserve_order(List *order_list, UB delay_until_departure) {
-    // サーバーへの通信する，この関数は結果を受け取るまで待たない
-    // つまり，裏で動く
+    // サーバーと通信する，この関数は結果を受け取るまで待たない
+    // 通信が完了すると，order_listに命令を追加する
+    // 目的地はここで決定する
 
     // 一旦仮の値を返す
     /*
