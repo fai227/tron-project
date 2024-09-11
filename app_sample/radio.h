@@ -74,18 +74,18 @@
 #define STATE 0x550             // Current radio state
 #define DATAWHITEIV 0x554       // Data whitening initial value
 #define BCC 0x560               // Bit counter compare AB[n] 0x600 Device address base segment n DAP[n] 0x620 Device address prefix n
-#define DACNF 0x640 Device address match configuration
-#define MHRMATCHCONF 0x644  // Search pattern configuration
-#define MHRMATCHMAS 0x648   // Pattern mask
-#define MODECNF0 0x650      // Radio mode configuration register 0
-#define SFD 0x660           // IEEE 802.15.4 start of frame delimiter
-#define EDCNT 0x664         // IEEE 802.15.4 energy detect loop count
-#define EDSAMPLE 0x668      // IEEE 802.15.4 energy detect level
-#define CCACTRL 0x66C       // IEEE 802.15.4 clear channel assessment control
-#define DFEMODE 0x900       // Whether to use Angle-of-Arrival (AOA) or Angle-of-Departure (AOD)
-#define CTEINLINECONF 0x904 // Configuration for CTE inline mode
-#define DFECTRL1 0x910      // Various configuration for Direction finding
-#define DFECTRL2 0x914      // Start offset for Direction finding
-#define SWITCHPATTERN 0x928 // GPIO patterns to be used for each antenna
+#define DACNF 0x640             //Device address match configuration
+#define MHRMATCHCONF 0x644      // Search pattern configuration
+#define MHRMATCHMAS 0x648       // Pattern mask
+#define MODECNF0 0x650          // Radio mode configuration register 0
+#define SFD 0x660               // IEEE 802.15.4 start of frame delimiter
+#define EDCNT 0x664             // IEEE 802.15.4 energy detect loop count
+#define EDSAMPLE 0x668          // IEEE 802.15.4 energy detect level
+#define CCACTRL 0x66C           // IEEE 802.15.4 clear channel assessment control
+#define DFEMODE 0x900           // Whether to use Angle-of-Arrival (AOA) or Angle-of-Departure (AOD)
+#define CTEINLINECONF 0x904     // Configuration for CTE inline mode
+#define DFECTRL1 0x910          // Various configuration for Direction finding
+#define DFECTRL2 0x914          // Start offset for Direction finding
+#define SWITCHPATTERN 0x928     // GPIO patterns to be used for each antenna
 
 #endif /* APP_SAMPLE_RADIO_H_ */

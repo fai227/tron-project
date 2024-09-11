@@ -3,7 +3,7 @@
 
 #include <tk/typedef.h>
 
-#define ORDER UB
+typedef UB Order;
 
 #define MOVE_FORWARD 3
 #define MOVE_BACKWARD 2
@@ -16,26 +16,26 @@
 /*
  *  orderが前方かを判定
  */
-BOOL is_forward(ORDER order);
+BOOL is_forward(Order order);
 
 /*
  *  orderが後方かを判定
  */
-BOOL is_backward(ORDER order);
+BOOL is_backward(Order order);
 
 /*
  *  orderが左折かを判定
  */
-BOOL is_left(ORDER order);
+BOOL is_left(Order order);
 
 /*
  *  orderが右折かを判定
  */
-BOOL is_right(ORDER order);
+BOOL is_right(Order order);
 
 /*
  *  orderの持続時間を返す
  */
-UB get_order_duration(ORDER order);
+UB get_order_duration(Order order);
 
 #endif /* ORDER_H_ */
