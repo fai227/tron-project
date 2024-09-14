@@ -2,6 +2,8 @@
 #include <tm/tmonitor.h>
 #include <sys/sysdepend/cpu/nrf5/sysdef.h>
 #include "maqueen.h"
+#include "list.h"
+#include "client.h"
 #include "order.h"
 
 // 各区間の目標走行時間（ミリ秒）
@@ -15,7 +17,7 @@
 
 #define DRIVE_TIMER TIMER0_BASE
 
-#define DEBUG_PRINT 1  // 1でデバッグ出力を有効化、0で無効化
+#define DEBUG_PRINT 0  // 1でデバッグ出力を有効化、0で無効化
 
 #if DEBUG_PRINT
 #define DEBUG_LOG(fmt, ...) tm_printf(fmt, ##__VA_ARGS__)
@@ -39,10 +41,8 @@ UINT read_timer_value() {
     // キャプチャされた値を読み取り
     return (UINT)in_w(DRIVE_TIMER + TIMER_CC(0));
 }
-
-
-void start_timer() {
-    // 高周波クロックを開始
+void intialize_timer(){
+        // 高周波クロックを開始
     out_w(CLOCK_TASKS_HFCLKSTART, 1);
     while (!(in_w(CLOCK_EVENTS_HFCLKSTARTED)));
 
@@ -56,6 +56,11 @@ void start_timer() {
     out_w(DRIVE_TIMER + TIMER_PRESCALER, 4);
     // プリスケーラー値4: 16MHz / 2^4 = 1MHz
     // タイマーのティック間隔は1μs（1MHz）となる
+}
+
+
+void start_timer() {
+    out_w(DRIVE_TIMER + TIMER_TASKS_CLEAR, 1); 
     out_w(DRIVE_TIMER + TIMER_CC(0), 0xFFFFFFFF);
     // キャプチャ/コンペア値を最大値に設定
     // これにより、タイマーは連続的に動作し、オーバーフローしない
@@ -83,18 +88,13 @@ BOOL is_intersection() {
     return read_line_state(MAQUEEN_LINE_SENSOR_L2) || read_line_state(MAQUEEN_LINE_SENSOR_R2);
 }
 
-// 交差点で停止する関数
-void stop_at_intersection() {
-    stop_all_motor();
-    tk_slp_tsk(DEFAULT_DELAY_TIME);  // 1秒待機
-}
+
 
 // 残り時間を待機する関数
-void wait_remaining_time(UINT actual_duration,UINT duration) {
-    if (actual_duration < duration*1000) {
+void wait_remaining_time(UINT elapsed_time) {
+    if (elapsed_time < TARGET_INTERVAL) {
         stop_all_motor();
-        UINT remaining_time = duration*1000 - actual_duration;
-
+        UINT remaining_time = TARGET_INTERVAL - elapsed_time;
         DEBUG_LOG("Addtional waiting time: %d ms\n", remaining_time);
         tk_slp_tsk(remaining_time);
     }
@@ -121,11 +121,7 @@ void line_tracking() {
 
 		tk_slp_tsk(DETECTION_INTERVAL);  // ms待機
     }
-    DEBUG_LOG("INTERSECTION DETECTED\n");
-//     UINT tracking_time = stop_timer();
-//     DEBUG_LOG("tracking completed (Required Time: %d ms)\n", tracking_time);
-//     wait_remaining_time(tracking_time);
-//
+
 
  }
 
@@ -133,10 +129,11 @@ void line_tracking() {
 void turn_right() {
     DEBUG_LOG("Start Right Turn\n");
     //start_timer();
-    int flag = 0;
+    INT flag = 0;
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, FORWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_BACKWARD, BACKWARD_SPEED);
+
 
 
     BOOL complete_firststep = FALSE;//右折開始後、L1MR1がラインを離れたらTrue
@@ -161,19 +158,19 @@ void turn_right() {
 
          tk_slp_tsk(DETECTION_INTERVAL);  // ms待機
     }
-   
+  
 }
 
 // 左折関数
 void turn_left() {
-    DEBUG_LOG("Start Light Turn\n");
+    DEBUG_LOG("Start Right Turn\n");
     //start_timer();
-    int flag = 0;
+    INT flag = 0;
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_BACKWARD, BACKWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, FORWARD_SPEED);
 
-    
+  
     BOOL complete_firststep = FALSE;//右折開始後、L1MR1がラインを離れたらTrue
     while (TRUE) {
         if (!complete_firststep) {
@@ -195,10 +192,7 @@ void turn_left() {
         }
         tk_slp_tsk(DETECTION_INTERVAL);  // 10ms待機
     }
-    
 }
-
-// 指定された経路に従ってmaqueenを動かす関数
 
 void follow_path(Order order) {
 
@@ -218,12 +212,17 @@ void follow_path(Order order) {
     }
 
     actual_duration = stop_timer();
-    DEBUG_LOG("(Required Time: %d ms)\n", actual_duration);
-    // 指定された時間まで待機
-    if (actual_duration < duration * 1000) {  // durationを秒単位と仮定
     
+    // 指定された時間まで待機
+    if (actual_duration < duration * 1000) {  // durationは秒単位
+    
+    DEBUG_LOG("(Required Time: %d ms)\n", actual_duration);
+    DEBUG_LOG("Addtional waiting time: %d ms\n", duration * 1000 - actual_duration);
+    control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, STOP);
 
-    wait_remaining_time(actual_duration,duration);
+    tk_slp_tsk(duration * 1000 - actual_duration);
 }
         
-    }
+}
+
+
