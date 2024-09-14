@@ -13,6 +13,9 @@ ID transfer_task_id;
 UINT receive_interrupt_number = INTNO(RADIO_BASE);
 
 UINT request_departure_time_ms() {
+    // ラジオの初期化
+    radio_setup();
+
     // 受信アドレスの設定
     out_w(RADIO(RXADDRESSES), 0b1);  // 0を有効化
 

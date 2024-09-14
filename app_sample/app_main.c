@@ -28,8 +28,6 @@ EXPORT INT usermain(void)
 			} else {
 				tm_printf("Selected: Vehicle\n");
 
-				radio_setup();
-				
 				// 出発時刻を取得し表示
 				UINT delay_until_departure = request_departure_time_ms();
 				tm_printf("Departure Time: %d\n", delay_until_departure);
