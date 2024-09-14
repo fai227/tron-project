@@ -2,6 +2,8 @@
 #include <tm/tmonitor.h>
 
 #include "server.h"
+#include "client.h"
+#include "list.h"
 
 EXPORT INT usermain(void)
 {
@@ -25,7 +27,26 @@ EXPORT INT usermain(void)
 				tk_slp_tsk(TMO_FEVR);
 			} else {
 				tm_printf("Selected: Vehicle\n");
-				test_send(); // ここをdrive.cのメインループに変更
+
+				radio_setup();
+				
+				// 出発時刻を取得し表示
+				UINT delay_until_departure = request_departure_time_ms();
+				tm_printf("Departure Time: %d\n", delay_until_departure);
+
+
+				List* order_list = list_init();
+				while(TRUE) {
+					// Bが押されるまで待機
+					while((in_w(GPIO(P0, IN)) & (1 << 23)) != 0)  {
+						tk_slp_tsk(1);
+					}
+
+					// 予約しリストの長さを表示
+					reserve_order(order_list, delay_until_departure);
+					tk_slp_tsk(1000);					
+					tm_printf("Order List Length: %d\n", list_length(order_list));
+				}
 				tk_slp_tsk(TMO_FEVR);
 			}
 		}

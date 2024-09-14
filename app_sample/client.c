@@ -3,42 +3,190 @@
 #include "client.h"
 #include "order.h"
 #include "list.h"
+#include "radio.h"
+
+IMPORT UB packet[32];
+
+List* order_list_global;
+
+ID transfer_task_id;
+UINT receive_interrupt_number = INTNO(RADIO_BASE);
 
 UINT request_departure_time_ms() {
-    // サーバーと通信して，結果を受け取るまで待つ
-    tk_dly_tsk(1000);
+    // 受信アドレスの設定
+    out_w(RADIO(RXADDRESSES), 0b1);  // 0を有効化
 
-    // 仮の値を返す 
-    return 1000;
+    // 送信アドレスの設定
+    out_w(RADIO(TXADDRESS), 0);  // 論理アドレス0を送信アドレスに設定
+
+    // 受信が完了するまで繰り返し
+    while(TRUE) {
+        // 無効化設定
+        out_w(RADIO(EVENTS_DISABLED), 0);
+        out_w(RADIO(TASKS_DISABLE), 1);
+        while(!in_w(RADIO(EVENTS_DISABLED)));
+        out_w(RADIO(EVENTS_DISABLED), 0);
+
+        // 送信準備待機
+        out_w(RADIO(EVENTS_READY), 0);
+        out_w(RADIO(TASKS_TXEN), 1);
+        while(!in_w(RADIO(EVENTS_READY)));
+        out_w(RADIO(EVENTS_READY), 0);
+
+        // 送信
+        out_w(RADIO(EVENTS_END), 0);
+        out_w(RADIO(TASKS_START), 1);
+        while(!in_w(RADIO(EVENTS_END)));
+        out_w(RADIO(EVENTS_END), 0);
+
+        // 無効化設定
+        out_w(RADIO(EVENTS_DISABLED), 0);
+        out_w(RADIO(TASKS_DISABLE), 1);
+        while(!in_w(RADIO(EVENTS_DISABLED)));
+        out_w(RADIO(EVENTS_DISABLED), 0);
+
+        // 受信準備待機
+        out_w(RADIO(EVENTS_READY), 0);
+        out_w(RADIO(TASKS_RXEN), 1);
+        while(!in_w(RADIO(EVENTS_READY)));
+        out_w(RADIO(EVENTS_READY), 0);
+
+        // 受信
+        out_w(RADIO(EVENTS_END), 0);
+        out_w(RADIO(TASKS_START), 1);
+        // 1秒待機
+        tk_slp_tsk(1000);
+        if(in_w(RADIO(EVENTS_END))) {
+            out_w(RADIO(EVENTS_END), 0);
+            break;
+        }
+    }   
+
+    // 論理アドレスをパケットの1番目に設定
+    out_b(RADIO(TXADDRESS), packet[0]);
+
+    // ID表示
+    tm_printf("ID: %d\n", packet[0]);
+
+    // パケットの2番目をmsに変換して返す      
+    return packet[1] * 1000;
 }
 
-void reserve_order(List *order_list, UB delay_until_departure) {
-    // サーバーと通信する，この関数は結果を受け取るまで待たない
-    // 通信が完了すると，order_listに命令を追加する
-    // 目的地はここで決定する
+void receive_interrupt_handler(UINT interrupt_number) {
+    // EVENTS_ENDの立ち上がりチェック
+    // tm_printf("INTERRUPTED\n");
+    if(!in_w(RADIO(EVENTS_END))) {
+        return;
+    }
+    // tm_printf("EVENTS_END\n");
+    
+    // RECEIVEかチェック
+    if(in_w(RADIO(STATE)) != 2) { // RXIDLE
+        tm_printf("Current State: %d\n", in_w(RADIO(STATE)));
+        return;
+    }
+    // tm_printf("RXIDLE\n");
 
-    // 一旦仮の値を返す
-    /*
-        前1秒
-        前1秒
-        前1秒
-        前1秒
-        左2秒
-        前1秒
-        前1秒
-        前1秒
-        前1秒
-        左2秒: 次の旅行に向けてあらかじめ左に転回
-    */
+    out_w(RADIO(EVENTS_END), 0);
+    out_w(RADIO(TASKS_DISABLE), 1);
+    tm_printf("Received\n");
 
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, TURN_LEFT    << ORDER_BIT_SHIFT | 2);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list, TURN_LEFT    << ORDER_BIT_SHIFT | 2);    
+    // 送信タスク終了
+    tk_ter_tsk(transfer_task_id);
+
+
+    // 割込無効化
+    DisableInt(interrupt_number);
+
+    // パケット読取
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, TURN_LEFT    << ORDER_BIT_SHIFT | 2);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
+    list_append(order_list_global, TURN_LEFT    << ORDER_BIT_SHIFT | 2); 
+
+    tm_printf("Order Appeded\n");
 }
+
+void transfer_task(INT stacd, void *exinf) {
+    // 割込ハンドラー定義
+    T_DINT receive_interrupt_information;
+    receive_interrupt_information.intatr = TA_HLNG;
+    receive_interrupt_information.inthdr = receive_interrupt_handler;
+    tk_def_int(receive_interrupt_number, &receive_interrupt_information);
+    
+    // 受信割込設定
+    out_w(RADIO(INTENSET), 
+        (1 << 3)   // END
+    );
+    
+    // 割込でタスクが終了するまで繰り返し
+    tm_printf("Waiting for Interrupt\n");
+    while(TRUE) {
+        // 無効化
+        out_w(RADIO(EVENTS_DISABLED), 0);
+        out_w(RADIO(TASKS_DISABLE), 1);
+        tm_printf("Disabled\n");
+        while(!in_w(RADIO(EVENTS_DISABLED)));
+        out_w(RADIO(EVENTS_DISABLED), 0);
+
+        // 送信準備待機
+        out_w(RADIO(EVENTS_READY), 0);
+        out_w(RADIO(TASKS_TXEN), 1);
+        tm_printf("TX Ready\n");
+        while(!in_w(RADIO(EVENTS_READY)));
+        out_w(RADIO(EVENTS_READY), 0);
+
+        // 送信
+        out_w(RADIO(EVENTS_END), 0);
+        out_w(RADIO(TASKS_START), 1);
+        tm_printf("TX Start\n");
+        while(!in_w(RADIO(EVENTS_END)));
+        out_w(RADIO(EVENTS_END), 0);
+
+        // 無効化
+        out_w(RADIO(EVENTS_DISABLED), 0);
+        out_w(RADIO(TASKS_DISABLE), 1);
+        tm_printf("Disabled\n");
+        while(!in_w(RADIO(EVENTS_DISABLED)));
+        out_w(RADIO(EVENTS_DISABLED), 0);
+
+        // 受信準備待機
+        out_w(RADIO(EVENTS_READY), 0);
+        out_w(RADIO(TASKS_RXEN), 1);
+        tm_printf("RX Ready\n");
+        while(!in_w(RADIO(EVENTS_READY)));
+        out_w(RADIO(EVENTS_READY), 0);
+
+        // 受信
+        out_w(RADIO(EVENTS_END), 0);
+        out_w(RADIO(TASKS_START), 1);
+        EnableInt(receive_interrupt_number, 1);
+        tm_printf("RX Start\n");
+        tk_slp_tsk(1000);
+        DisableInt(receive_interrupt_number);
+        tm_printf("Could not receive, Trying again...\n");
+    }   
+}
+
+
+void reserve_order(List* order_list, UB delay_until_departure) {
+    order_list_global = order_list;
+
+    // 送信タスク起動
+    T_CTSK transfer_task_information;
+    transfer_task_information.exinf = (void*)('t' | 'x' << 8 | 'T' << 16);  // txT
+    transfer_task_information.tskatr = TA_HLNG;
+    transfer_task_information.task = transfer_task;
+    transfer_task_information.itskpri = 2;  // 起動優先度
+    transfer_task_information.stksz = 1024;  // スタックサイズ
+    
+    transfer_task_id = tk_cre_tsk(&transfer_task_information);
+    tk_sta_tsk(transfer_task_id, 0);
+}
+

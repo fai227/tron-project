@@ -88,4 +88,7 @@
 #define DFECTRL2 0x914          // Start offset for Direction finding
 #define SWITCHPATTERN 0x928     // GPIO patterns to be used for each antenna
 
+void print_packet();
+void radio_setup();
+
 #endif /* APP_SAMPLE_RADIO_H_ */
