@@ -15,21 +15,21 @@ typedef UB Position;
 /*
  * 時空間グリッドの初期化と立ち上げ
  */
-void stg_start(void);
+void start_stg(UB timer_number);
 
 /*
  * 時空間グリッドの予約処理
  */
-void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position end_position);
+void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position);
 
 /*
  * 時空間グリッドの読み取り
  */
-UB get_grid(UW time, Position position);
+UB stg_get_grid(UW time, Position position);
 
 /*
  * 時空間グリッドへの書き込み
  */
-void set_grid(UW time, Position position, UB value);
+void stg_set_grid(UW time, Position position, UB value);
 
 #endif /* STG_H_ */

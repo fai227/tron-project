@@ -15,7 +15,7 @@
 #define DEFAULT_DELAY_TIME 0
 #define DETECTION_INTERVAL 10
 
-#define DRIVE_TIMER TIMER0_BASE
+#define DRIVE_TIMER TIMER2_BASE
 
 #define DEBUG_PRINT 0  // 1でデバッグ出力を有効化、0で無効化
 
@@ -31,13 +31,6 @@ static UINT start_time = 0;
 volatile BOOL request_sent_flag = FALSE;
 volatile UH last_request_list_count = 0;
 
-// タイマーの現在値を読み取る関数
-// UINT read_timer_value() {
-//     *((volatile UW*)(DRIVE_TIMER + TIMER_TASKS_CAPTURE(0))) = 1;
-//     return *((volatile UW*)(DRIVE_TIMER + TIMER_CC(0)));
-
-
-// }
 UINT read_timer_value() {
     // タイマーのキャプチャタスクをトリガー
     out_w(DRIVE_TIMER + TIMER_TASKS_CAPTURE(0), 1);
@@ -45,7 +38,7 @@ UINT read_timer_value() {
     // キャプチャされた値を読み取り
     return (UINT)in_w(DRIVE_TIMER + TIMER_CC(0));
 }
-void intialize_timer(){
+void initialize_timer(){
         // 高周波クロックを開始
     out_w(CLOCK_TASKS_HFCLKSTART, 1);
     while (!(in_w(CLOCK_EVENTS_HFCLKSTARTED)));
@@ -125,15 +118,11 @@ void line_tracking() {
 
 		tk_slp_tsk(DETECTION_INTERVAL);  // ms待機
     }
-
-
- }
+}
 
 // 右折する関数
 void turn_right() {
     DEBUG_LOG("Start Right Turn\n");
-    //start_timer();
-    INT flag = 0;
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, FORWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_BACKWARD, BACKWARD_SPEED);
@@ -168,12 +157,9 @@ void turn_right() {
 // 左折関数
 void turn_left() {
     DEBUG_LOG("Start Right Turn\n");
-    //start_timer();
-    INT flag = 0;
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_BACKWARD, BACKWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, FORWARD_SPEED);
-
   
     BOOL complete_firststep = FALSE;//右折開始後、L1MR1がラインを離れたらTrue
     while (TRUE) {
@@ -199,8 +185,7 @@ void turn_left() {
 }
 
 void follow_path(Order order) {
-
-    UINT duration = order & ORDER_MASK;
+    UINT duration_ms = get_order_duration(order);
     UINT actual_duration = 0;
 
     start_timer();
@@ -218,27 +203,27 @@ void follow_path(Order order) {
     actual_duration = stop_timer();
     
     // 指定された時間まで待機
-    if (actual_duration < duration * 1000) {  // durationは秒単位
-    
-    DEBUG_LOG("(Required Time: %d ms)\n", actual_duration);
-    DEBUG_LOG("Addtional waiting time: %d ms\n", duration * 1000 - actual_duration);
-    control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, STOP);
-
-    tk_slp_tsk(duration * 1000 - actual_duration);
-}
+    if (actual_duration < duration_ms * 1000) {  // durationは秒単位
+        DEBUG_LOG("(Required Time: %d ms)\n", actual_duration);
+        DEBUG_LOG("Addtional waiting time: %d ms\n", duration_ms * 1000 - actual_duration);
         
+        stop_all_motor();
+        tk_slp_tsk(duration_ms * 1000 - actual_duration);
+    }
 }
 
 
 
-void start_drive(){
+void start_drive(UB timer_number) {
     List* order_list=list_init();//経路を保存するリストの作成
-    intialize_timer();//タイマの初期化
-    maqueen_init();//maqueenの初期化
-    UINT departure_ms=request_departure_time_ms();//待機時間受け取り
-    tm_printf("Departure Time: %d\n",departure_ms );
 
-    UINT departure_second=departure_ms/1000;
+    initialize_timer();//タイマの初期化
+    maqueen_init();//maqueenの初期化
+
+    UINT departure_ms=request_departure_time_ms();//待機時間受け取り
+    tm_printf("Departure Time: %d\n", departure_ms);
+
+    UINT departure_second = departure_ms / 1000;
     reserve_order(order_list,departure_second);//listをグローバル変数にするとともに、送信タスクを起動
     tk_slp_tsk(departure_ms);//侵入可能時間まで待機
 
@@ -247,20 +232,16 @@ void start_drive(){
         if(list_length(order_list)<LIST_MIN){
             INT departure_delay= calculate_departure_delay(order_list);
             process_orders(order_list);
-
         }
+
         void *data=list_get(order_list,0);
         Order* order = (Order*)data;
         if(data !=NULL){
             follow_path(*order);
         }
-        delete_first_element(order_list);
-
-
-
-        }
-
+        list_shift(order_list);
     }
+}
 
 
 INT calculate_departure_delay(List *order_list) { //リストにある経路の所要時間を計算
@@ -294,31 +275,3 @@ void process_orders(List *order_list) { //リクエスト後反映されるま�
         }
     }
 }
-// リストの先頭要素を削除する関数
-void delete_first_element(List *list)
-{
-    if (list == NULL || list->head == NULL)
-    {
-        // リストが空または無効な場合、何もしない
-        return;
-    }
-
-    Element *first = list->head;
-    list->head = first->next;
-
-    // リストの長さを減少
-    list->length--;
-
-    // リストが空になった場合、tail も NULL に設定
-    if (list->head == NULL)
-    {
-        list->tail = NULL;
-    }
-
-    // 先頭要素のメモリを解放
-    Kfree(first);
-
-}
-
-
-

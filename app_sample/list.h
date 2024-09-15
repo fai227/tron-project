@@ -56,7 +56,5 @@ void list_delete(List *list);
  * リストの長さを取得する関数
  */
 UH list_length(List *list);
-//リストの先頭を読み取って削除
-void delete_first_element(List *list);
 
 #endif /* LIST_H_ */

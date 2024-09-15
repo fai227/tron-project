@@ -1,0 +1,370 @@
+#include "STG.h"
+#include "order.h"
+#include "list.h"
+
+#define GRID_EMPTY 0
+
+#define UP_PATH 0b0001
+#define DOWN_PATH 0b0010
+#define LEFT_PATH 0b0100
+#define RIGHT_PATH 0b1000
+
+#define GRID_MOVE_TIME 1
+#define GRID_WAIT_TIME 1
+#define GRID_TURN_TIME 3
+
+UB ***spatio_temporal_grid;
+UW server_time;
+
+// グリッド移動可能方向の定義
+UB grid_directions[GRID_SIZE][GRID_SIZE] = {
+    {    DOWN_PATH || GRID_EMPTY,      LEFT_PATH || GRID_EMPTY,    LEFT_PATH || DOWN_PATH ,     LEFT_PATH || GRID_EMPTY,      LEFT_PATH || GRID_EMPTY      },
+    {    DOWN_PATH || GRID_EMPTY,     GRID_EMPTY || GRID_EMPTY,   GRID_EMPTY || DOWN_PATH ,    GRID_EMPTY || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
+    {    DOWN_PATH || RIGHT_PATH,     RIGHT_PATH || GRID_EMPTY,   RIGHT_PATH || DOWN_PATH ,    RIGHT_PATH || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
+    {    DOWN_PATH || GRID_EMPTY,     GRID_EMPTY || GRID_EMPTY,   GRID_EMPTY || DOWN_PATH ,    GRID_EMPTY || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
+    {   RIGHT_PATH || GRID_EMPTY,     RIGHT_PATH || GRID_EMPTY,   RIGHT_PATH || GRID_EMPTY,    RIGHT_PATH || GRID_EMPTY,        UP_PATH || GRID_EMPTY      }
+};
+
+// 探索用ノード構造体
+typedef struct Node {
+    struct Node *parent;
+    Position position;
+    UW h_departure_time; 
+    UW g_distance; 
+    BOOL has_moved;
+    BOOL has_turned;
+} Node;
+
+UB calculate_distance(Position start, Position target) {
+    UB x1 = POS_X(start);
+    UB y1 = POS_Y(start);
+    UB x2 = POS_X(target);
+    UB y2 = POS_Y(target);
+    return (x1 > x2 ? x1 - x2 : x2 - x1) + (y1 > y2 ? y1 - y2 : y2 - y1);
+}
+
+UW calculate_f(Node* node) {
+    return node->h_departure_time + node->g_distance;
+}
+
+UB get_moved_position(UB x, UB y, UB direction) {
+    switch (direction) {
+        case UP_PATH:
+            return POS(x, y - 1);
+        case DOWN_PATH:
+            return POS(x, y + 1);
+        case LEFT_PATH:
+            return POS(x - 1, y);
+        case RIGHT_PATH:    
+            return POS(x + 1, y);
+    }
+}
+
+BOOL has_turned(UB next_x, UB next_y, Node* current_node) {
+    // そこが初めての移動の場合は転回していないとする
+    if(current_node->parent == NULL) {
+        return FALSE;
+    }
+
+    UB previous_x = POS_X(current_node->parent->position);
+    UB previous_y = POS_Y(current_node->parent->position);    
+
+    // X・Y座標どちらも変化している場合は転回している
+    if(previous_x != next_x && previous_y != next_y) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL check_grid(UW from, UW to, Position position, UB vehicle_id) {
+    for(UW i = from; i <= to; i++) {
+        UB grid = stg_get_grid(i, position);
+        if(grid != GRID_EMPTY && grid != vehicle_id) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+void reserve_grid(UW from, UW to, Position position, UB vehicle_id) {
+    for(UW i = from; i <= to; i++) {
+        stg_set_grid(i, position, vehicle_id);
+    }
+}
+
+List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_id) {
+    UB x = POS_X(current_node->position);
+    UB y = POS_Y(current_node->position);
+    List* candidate_moves = list_init();
+
+    // 上の移動行動
+    if(grid_directions[y][x] &  UP_PATH) {
+        Node* up_node = (Node*)Kmalloc(sizeof(Node));
+        Position moved_position = get_moved_position(x, y, UP_PATH);
+
+        up_node->parent = current_node;
+        up_node->position = moved_position;
+        up_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
+        up_node->g_distance = calculate_distance(moved_position, target_position);
+
+        // 転回が入った場合は移動時間を加算
+        if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
+            up_node->h_departure_time += GRID_TURN_TIME;
+        }
+
+        list_append(candidate_moves, up_node);
+    }
+
+    // 下の移動行動
+    if(grid_directions[y][x] &  DOWN_PATH) {
+        Node* down_node = (Node*)Kmalloc(sizeof(Node));
+        Position moved_position = get_moved_position(x, y, DOWN_PATH);
+
+        down_node->parent = current_node;
+        down_node->position = moved_position;
+        down_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
+        down_node->g_distance = calculate_distance(moved_position, target_position);
+
+        // 転回が入った場合は移動時間を加算
+        if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
+            down_node->h_departure_time += GRID_TURN_TIME;
+        }
+
+        list_append(candidate_moves, down_node);
+    }
+
+    // 左の移動行動
+    if(grid_directions[y][x] &  LEFT_PATH) {
+        Node* left_node = (Node*)Kmalloc(sizeof(Node));
+        Position moved_position = get_moved_position(x, y, LEFT_PATH);
+
+        left_node->parent = current_node;
+        left_node->position = moved_position;
+        left_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
+        left_node->g_distance = calculate_distance(moved_position, target_position);
+
+        // 転回が入った場合は移動時間を加算
+        if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
+            left_node->h_departure_time += GRID_TURN_TIME;
+        }
+
+        list_append(candidate_moves, left_node);
+    }
+
+    // 右の移動行動
+    if(grid_directions[y][x] &  RIGHT_PATH) {
+        Node* right_node = (Node*)Kmalloc(sizeof(Node));
+        Position moved_position = get_moved_position(x, y, RIGHT_PATH);
+
+        right_node->parent = current_node;
+        right_node->position = moved_position;
+        right_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
+        right_node->g_distance = calculate_distance(moved_position, target_position);
+
+        // 転回が入った場合は移動時間を加算
+        if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
+            right_node->h_departure_time += GRID_TURN_TIME;
+        }
+
+        list_append(candidate_moves, right_node);
+    }
+
+
+    // 待機行動
+    Node* wait_node = (Node*)Kmalloc(sizeof(Node));
+    Position wait_position = current_node->position;
+    wait_node->parent = current_node;
+    wait_node->position = wait_position;
+    wait_node->h_departure_time = current_node->h_departure_time + GRID_WAIT_TIME;
+    wait_node->g_distance = calculate_distance(wait_position, target_position);
+    list_append(candidate_moves, wait_node);
+
+    // 予約不可能なものは除外
+    List* valid_moves = list_init();
+    while(list_length(candidate_moves) > 0) {
+        Node* candidate = (Node*)list_shift(candidate_moves);
+        // 開始位置と終了位置の両方で予約可能な場合のみ採用
+        if(
+            check_grid(current_node->h_departure_time, candidate->h_departure_time, current_node->position, vehicle_id)
+            &&
+            check_grid(current_node->h_departure_time, candidate->h_departure_time, candidate->position, vehicle_id)
+        ) {
+            list_append(valid_moves, candidate);
+        } else {
+            Kfree(candidate);
+        }
+    }
+
+    list_delete(candidate_moves);   
+    return valid_moves;
+}
+
+H index_of(Node *node, Node *list[], UH size) {
+    for(UH i = 0; i < size; i++) {
+        if(node->position == list[i]->position) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+Node* find_path(Position start_position, Position target_position, UW departure_time, UB vehicle_id) {
+    // 初期設定
+    Node *start = (Node*)Kmalloc(sizeof(Node));
+    Node *open_list[GRID_SIZE * GRID_SIZE];
+    Node *closed_list[GRID_SIZE * GRID_SIZE];
+    UH open_size = 0;
+    UH closed_size = 0;
+
+    start->parent = NULL;
+    start->position = start_position;
+    start->h_departure_time = departure_time;
+    start->g_distance = calculate_distance(start_position, target_position);
+    open_list[open_size++] = start;
+
+    // A*アルゴリズムにて経路探索
+    while (open_size > 0) {
+        // 最もF値が小さいノードを選択
+        UH current_index = 0;
+        for (UH i = 1; i < open_size; i++) {
+            if (calculate_f(open_list[i]) < calculate_f(open_list[current_index])) {
+                current_index = i;
+            }
+        }
+        Node *current_node = open_list[current_index];
+
+        // ゴールに到達した場合
+        if (current_node->position == target_position) {
+            return current_node;
+        }
+
+        // 現在のノードをオープンリストから削除し，クローズドリストに移動
+        for (UH i = current_index; i < open_size - 1; i++) {
+            open_list[i] = open_list[i + 1];
+        }
+        open_size--;
+        closed_list[closed_size++] = current_node;
+
+        // 移動可能な方向を取得
+        List* valid_moves = get_valid_moves(current_node, target_position, vehicle_id);
+        while(list_length(valid_moves) > 0) {
+            Node* neighbor = (Node*)list_shift(valid_moves);
+
+            // クローズドリストに含まれている場合（探索済み）はスキップ
+            if(index_of(neighbor, closed_list, closed_size) >= 0) {
+                Kfree(neighbor);
+                continue;
+            }
+
+            H index = index_of(neighbor, open_list, open_size);
+            // オープンリストに含まれていない場合
+            if(index < 0) {
+                // オープンリストに追加
+                open_list[open_size++] = neighbor;
+                neighbor->parent = current_node;
+            }
+            // オープンリストに含まれている場合
+            else {
+                // より良い経路の場合
+                if(neighbor->g_distance < open_list[index]->g_distance) {
+                    Kfree(open_list[index]);
+                    open_list[index] = neighbor;
+                    neighbor->parent = current_node;
+                }
+                // 別の経路がより良い場合はスキップ
+                else {
+                    Kfree(neighbor);
+                }
+            }
+        }
+    }
+
+    // ゴールに到達できなかった場合
+    tm_printf("\n---------- No path found!!! ----------\n");
+    tm_printf("Vehicle : %d\n", vehicle_id);
+    tm_printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
+    tm_printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
+    tm_printf("--------------------------------------\n");
+}
+
+void stg_handler() {
+
+}
+
+void start_stg(UB timer_number) {
+
+}
+
+void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position) {
+    UW departure_time = server_time + delay_until_departure;
+    
+    // 経路探索
+    Node* path = find_path(start_position, target_position, departure_time, vehicle_id);
+
+    // リストへの変換（ゴールから辿りリストの先頭に入れていく）
+    List* path_list = list_init();
+    while(path->parent != NULL) {
+        list_unshift(path_list, path);
+        path = path->parent;
+    }
+
+    // 経路予約と指示への変換
+    UH order_index = 0;
+    Node* previous_node = (Node*)list_shift(path_list);
+    while(list_length(path_list) > 0) {
+        Node* next_node = (Node*)list_shift(path_list);
+        
+        // 時空間グリッド予約
+        for(UW i = previous_node->h_departure_time; i <= next_node->h_departure_time; i++) {
+            stg_set_grid(i, previous_node->position, vehicle_id);
+            stg_set_grid(i, next_node->position, vehicle_id);
+        }
+
+        // 指示変換
+        if(!next_node->has_moved) {  // 待機指示
+            orders[order_index++] = 0b00000001; // 1秒待機
+        }
+        else if(next_node->has_turned) {  // 転回指示
+            // 中央の場合は右折
+            if(next_node->position == POS(2,3)) {
+                orders[order_index++] = 0b00010010; // 2秒右折
+            }
+            // それ以外は左折
+            else {
+                orders[order_index++] = 0b00100010; // 2秒左折
+            }
+            orders[order_index++] = 0b10000001; // 1秒前進
+        }
+        else {  // 前進指示
+            orders[order_index++] = 0b10000001; // 1秒前進
+        }
+
+        Kfree(previous_node);
+        previous_node = next_node;
+    }
+    // 最後に左折指示を追加
+    orders[order_index++] = 0b00100010; // 2秒左折  
+    for(UW i = previous_node->h_departure_time; i <= previous_node->h_departure_time + 2; i++) {
+        stg_set_grid(i, previous_node->position, vehicle_id);
+    }
+    Kfree(previous_node);
+
+#if VERBOSE
+    // 予約内容を表示
+    printf("\n---------- Reservation ----------\n");
+    printf("Time   : %d\n", departure_time);
+    printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
+    printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
+    printf("---------------------------------\n");
+#endif
+}
+
+UB stg_get_grid(UW time, Position Position) {
+    return spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH];
+}
+
+void stg_set_grid(UW time, Position Position, UB value) {
+    spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH] = value;
+}
+

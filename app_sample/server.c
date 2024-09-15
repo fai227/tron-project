@@ -122,5 +122,4 @@ void start_server() {
     // 無効化設定
     out_w(RADIO(EVENTS_DISABLED), 0);
     out_w(RADIO(TASKS_DISABLE), 1);
-
 }

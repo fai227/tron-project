@@ -16,12 +16,6 @@ void radio_setup() {
     out_w(RADIO(EVENTS_ADDRESS), 0);
     out_w(0x40000000 + 0x578, 1);
 
-    // 高周波数クロックを有効化
-    out_w(CLOCK_EVENTS_HFCLKSTARTED, 0);
-    out_w(CLOCK_TASKS_HFCLKSTART, 1);
-    while(!in_w(CLOCK_EVENTS_HFCLKSTARTED));
-    tm_printf("High Frequency Clock Enabled\n");
-
     // 出力パワー設定
     out_w(RADIO(TXPOWER), 8); // 最高出力
 
