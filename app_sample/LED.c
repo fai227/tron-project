@@ -63,11 +63,11 @@ LOCAL void led_switch_row_handler(void *exinf)
 }
 
 // 物理タイマによるダイナミック点灯
-T_DPTMR dynamic_physical_timer = {0, TA_HLNG, &led_switch_row_handler};	// ハンドラ定義情報
-const INT physical_timer_clock_mhz = 16;	// 物理タイマのクロック(MHz単位)
+T_DPTMR led_dynamic_physical_timer = {0, TA_HLNG, &led_switch_row_handler};	// ハンドラ定義情報
+const INT led_physical_timer_clock_mhz = 16;	// 物理タイマのクロック(MHz単位)
 
-const INT cycle_micros = 1000;		// ハンドラの起動周期(μs単位)、1000μs＝1ms
-INT limit = cycle_micros * physical_timer_clock_mhz - 1;	// 物理タイマの上限値
+const INT led_cycle_micros = 1000;		// ハンドラの起動周期(μs単位)、1000μs＝1ms
+INT led_limit = led_cycle_micros * led_physical_timer_clock_mhz - 1;	// 物理タイマの上限値
 
 void initialize_led(UB timer_number){
     // GPIOピンを出力に設定
@@ -86,8 +86,8 @@ void initialize_led(UB timer_number){
     clear_led();
 
     // 物理タイマーを起動
-    DefinePhysicalTimerHandler(timer_number, &dynamic_physical_timer);
-    StartPhysicalTimer(timer_number, limit, TA_CYC_PTMR);
+    DefinePhysicalTimerHandler(timer_number, &led_dynamic_physical_timer);
+    StartPhysicalTimer(timer_number, led_limit, TA_CYC_PTMR);
 }
 
 void clear_led(){

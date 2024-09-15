@@ -15,7 +15,7 @@ typedef UB Position;
 /*
  * 時空間グリッドの初期化と立ち上げ
  */
-void start_stg(UB timer_number);
+void stg_start(UB timer_number);
 
 /*
  * 時空間グリッドの予約処理

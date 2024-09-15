@@ -6,18 +6,24 @@
 #include "list.h"
 #include "LED.h"
 #include "button.h"
+#include "STG.h"
+
+#define LED_TIMER 1
+#define STG_TIMER 2
+#define DRIVE_TIMER 3
+
 
 void server_main() {
 	// 時空間グリッドを物理タイマー1で起動
-	start_stg(1);
+	stg_start(STG_TIMER);
 
 	// サーバー起動
 	start_server();
 }
 
 void vehicle_main() {
-	// 運転プログラムを物理タイマー2で起動
-	start_drive(2);
+	// 運転プログラムを起動
+	start_drive(DRIVE_TIMER);
 }
 
 void test_main() {
@@ -52,8 +58,8 @@ void test_main() {
 
 EXPORT INT usermain(void)
 {
-	// 表示用のLEDを物理タイマー0で初期化
-	initialize_led(0);
+	// 表示用のLEDをで初期化
+	initialize_led(LED_TIMER);
 
 	// ボタンの初期化
 	button_setup();

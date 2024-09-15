@@ -1,6 +1,7 @@
 #include "STG.h"
 #include "order.h"
 #include "list.h"
+#include "LED.h"
 
 #define GRID_EMPTY 0
 
@@ -288,12 +289,55 @@ Node* find_path(Position start_position, Position target_position, UW departure_
     tm_printf("--------------------------------------\n");
 }
 
-void stg_handler() {
 
+void stg_handler() {
+    // 古いデータを削除
+    for(UH x = 0; x < GRID_SIZE; x++) {
+        for(UH y = 0; y < GRID_SIZE; y++) {
+            stg_set_grid(server_time, POS(x, y), GRID_EMPTY);
+        }
+    }
+
+    // サーバー時間を進める
+    server_time++;
+
+    // グリッド状態を表示
+    clear_led();
+    for(UH y = 0; y < GRID_SIZE; y++) {
+        for(UH x = 0; x < GRID_SIZE; x++) {
+            if(stg_get_grid(server_time, POS(x, y)) != GRID_EMPTY) {
+                turn_on_led(y, x);
+            }
+        }
+    }
 }
 
-void start_stg(UB timer_number) {
+T_DPTMR stg_timer_handler = {
+    0,
+    TA_HLNG,
+    &stg_handler
+};
+const INT stg_physical_timer_clock_mhz = 16;	// 物理タイマのクロック(MHz単位)
 
+const INT stg_cycle_micros = 1000 * 1000;		// ハンドラの起動周期(μs単位)、1000*1000μs＝1s
+INT stg_limit = stg_cycle_micros * stg_physical_timer_clock_mhz - 1;	// 物理タイマの上限値
+void stg_start(UB timer_number) {
+    // 時空間グリッドの初期化
+    server_time = 0;
+    spatio_temporal_grid = (UB***)Kmalloc(sizeof(UB**) * GRID_SIZE);
+    for(UH y = 0; y < GRID_SIZE; y++) {
+        spatio_temporal_grid[y] = (UB**)Kmalloc(sizeof(UB*) * GRID_SIZE);
+        for(UH x = 0; x < GRID_SIZE; x++) {
+            spatio_temporal_grid[y][x] = (UB*)Kmalloc(sizeof(UB) * STG_BUFFER_LENGTH);
+            for(UW i = 0; i < STG_BUFFER_LENGTH; i++) {
+                spatio_temporal_grid[y][x][i] = GRID_EMPTY;
+            }
+        }
+    }
+
+    // 物理タイマーの起動
+    DefinePhysicalTimerHandler(timer_number, &stg_timer_handler);
+    StartPhysicalTimer(timer_number, stg_limit, TA_CYC_PTMR);
 }
 
 void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position) {
