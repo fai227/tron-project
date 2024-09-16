@@ -85,7 +85,7 @@ void receive_interrupt_handler(UINT interrupt_number) {
     
     // RECEIVEかチェック
     if(in_w(RADIO(STATE)) != 2) { // RXIDLE
-        tm_printf("Current State: %d\n", in_w(RADIO(STATE)));
+        // tm_printf("Current State: %d\n", in_w(RADIO(STATE)));
         return;
     }
     // tm_printf("RXIDLE\n");
@@ -97,23 +97,24 @@ void receive_interrupt_handler(UINT interrupt_number) {
     // 送信タスク終了
     tk_ter_tsk(transfer_task_id);
 
-
     // 割込無効化
     DisableInt(interrupt_number);
 
     // パケット読取
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, TURN_LEFT    << ORDER_BIT_SHIFT | 2);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, MOVE_FORWARD << ORDER_BIT_SHIFT | 1);
-    list_append(order_list_global, TURN_LEFT    << ORDER_BIT_SHIFT | 2); 
+    for(UB i = 0; i < 32; i++) {
+        // 指示がなくなったら終了
+        if(packet[i] == 0) {
+            break;
+        }
+
+        // 次の支持を追加
+        UB* order = (UB*)Kmalloc(sizeof(UB));
+        *order = packet[i];
+        list_append(order_list_global, order);
+    }
 
     tm_printf("Order Appeded\n");
+    tm_printf("Current Order Length: %d\n", list_length(order_list_global));
 }
 
 void transfer_task(INT stacd, void *exinf) {
