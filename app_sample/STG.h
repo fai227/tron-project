@@ -23,6 +23,11 @@ void stg_start(UB timer_number);
 void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position);
 
 /*
+ * (0, 0)に侵入可能時間を計算
+ */
+UW stg_get_departure_time();
+
+/*
  * 時空間グリッドの読み取り
  */
 UB stg_get_grid(UW time, Position position);

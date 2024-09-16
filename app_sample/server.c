@@ -61,8 +61,7 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
                 UB vehicle_id = ++current_id;
 
                 // 侵入可能時間
-                UB possible_departure_time = 10;
-                tm_printf("To Do: Check Grid and Get Possible Departure Time\n");
+                UB possible_departure_time = stg_get_departure_time();
 
                 // パケットに反映
                 packet[0] = vehicle_id;
@@ -76,8 +75,7 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
                 UB goal_position = packet[3];
 
                 // パケットに反映
-                tm_printf("To Do: Check Grid and Reserve\n");
-                // 直接パケットに指示を反映すればよい
+                stg_reserve(packet, 32, vehicle_id, departure_time, start_position, goal_position);
             }
         }
 

@@ -3,6 +3,8 @@
 #include "list.h"
 #include "LED.h"
 
+#define STG_VERBOSE 1
+
 #define GRID_EMPTY 0
 
 #define UP_PATH 0b0001
@@ -394,7 +396,7 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
     }
     Kfree(previous_node);
 
-#if VERBOSE
+#if STG_VERBOSE
     // 予約内容を表示
     printf("\n---------- Reservation ----------\n");
     printf("Time   : %d\n", departure_time);
@@ -402,6 +404,17 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
     printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
     printf("---------------------------------\n");
 #endif
+}
+
+UW stg_get_departure_time() {
+    // (0, 0)に侵入可能時間を計算
+    UW delay_until_departure = 0;
+    while(TRUE) {
+        if(stg_get_grid(delay_until_departure, POS(0, 0)) == GRID_EMPTY) {
+            return delay_until_departure;
+        }
+        delay_until_departure++;
+    }
 }
 
 UB stg_get_grid(UW time, Position Position) {
