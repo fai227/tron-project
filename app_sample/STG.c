@@ -183,6 +183,8 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
     wait_node->g_distance = calculate_distance(wait_position, target_position);
     list_append(candidate_moves, wait_node);
 
+    tm_printf("Ido Kano: %d\n", list_length(candidate_moves));
+
     // 予約不可能なものは除外
     List* valid_moves = list_init();
     while(list_length(candidate_moves) > 0) {

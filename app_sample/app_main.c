@@ -7,6 +7,8 @@
 #include "LED.h"
 #include "button.h"
 #include "STG.h"
+#include "list.h"
+#include "maqueen.h"
 
 #define LED_TIMER 1
 #define STG_TIMER 2
@@ -50,9 +52,17 @@ void test_main() {
 	// テスト開始
 	switch (test_number)
 	{
-		case 1:
-
+		case 1: {
+			// 時空間グリッド予約を行う
+			List *order_list = list_init();
+			maqueen_init();
+			UINT delay = request_departure_time_ms();
+			reserve_order(order_list, delay);
+			while(list_length(order_list) > 0) {
+				tm_printf("Order: %d\n", list_shift(order_list));
+			}
 			break;
+		}
 	}
 }
 

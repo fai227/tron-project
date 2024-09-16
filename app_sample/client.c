@@ -4,6 +4,7 @@
 #include "order.h"
 #include "list.h"
 #include "radio.h"
+#include "STG.h"
 
 IMPORT UB packet[32];
 

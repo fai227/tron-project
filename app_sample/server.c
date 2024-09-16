@@ -70,9 +70,9 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
             // グリッド予約
             else {
                 UB vehicle_id = address;
-                UH departure_time = packet[0] << 8 | packet[1];
-                UB start_position = packet[2];
-                UB goal_position = packet[3];
+                UH departure_time = packet[0];
+                UB start_position = packet[1];
+                UB goal_position = packet[2];
 
                 // パケットに反映
                 stg_reserve(packet, 32, vehicle_id, departure_time, start_position, goal_position);
