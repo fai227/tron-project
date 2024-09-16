@@ -71,6 +71,9 @@ EXPORT INT usermain(void)
 	// 表示用のLEDをで初期化
 	initialize_led(LED_TIMER);
 
+	// ロゴ表示
+	show_logo();
+
 	// ボタンの初期化
 	button_setup();
 
@@ -100,7 +103,7 @@ EXPORT INT usermain(void)
 				server_main();
 			} else if(b_pressed) {
 				tm_printf("Selected: Vehicle\n");
-				show_C();
+				show_V();
 				tk_slp_tsk(1000);
 
 				vehicle_main();

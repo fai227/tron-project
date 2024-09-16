@@ -3,7 +3,6 @@
 
 #include <tk/tkernel.h>
 
-
 void initialize_led(UB timer_number);
 void clear_led();
 
@@ -15,8 +14,10 @@ void show_circle();
 void show_cross();
 
 void show_S();
-void show_C();
+void show_V();
 void show_T();
+
+void show_logo();
 
 #define COL1 28
 #define COL2 11

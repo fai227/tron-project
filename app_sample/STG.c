@@ -21,11 +21,11 @@ UW server_time;
 
 // グリッド移動可能方向の定義
 UB grid_directions[GRID_SIZE][GRID_SIZE] = {
-    {    DOWN_PATH || GRID_EMPTY,      LEFT_PATH || GRID_EMPTY,    LEFT_PATH || DOWN_PATH ,     LEFT_PATH || GRID_EMPTY,      LEFT_PATH || GRID_EMPTY      },
-    {    DOWN_PATH || GRID_EMPTY,     GRID_EMPTY || GRID_EMPTY,   GRID_EMPTY || DOWN_PATH ,    GRID_EMPTY || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
-    {    DOWN_PATH || RIGHT_PATH,     RIGHT_PATH || GRID_EMPTY,   RIGHT_PATH || DOWN_PATH ,    RIGHT_PATH || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
-    {    DOWN_PATH || GRID_EMPTY,     GRID_EMPTY || GRID_EMPTY,   GRID_EMPTY || DOWN_PATH ,    GRID_EMPTY || GRID_EMPTY,        UP_PATH || GRID_EMPTY      },
-    {   RIGHT_PATH || GRID_EMPTY,     RIGHT_PATH || GRID_EMPTY,   RIGHT_PATH || GRID_EMPTY,    RIGHT_PATH || GRID_EMPTY,        UP_PATH || GRID_EMPTY      }
+    {    DOWN_PATH | GRID_EMPTY,      LEFT_PATH | GRID_EMPTY,    LEFT_PATH | DOWN_PATH ,     LEFT_PATH | GRID_EMPTY,      LEFT_PATH | GRID_EMPTY      },
+    {    DOWN_PATH | GRID_EMPTY,     GRID_EMPTY | GRID_EMPTY,   GRID_EMPTY | DOWN_PATH ,    GRID_EMPTY | GRID_EMPTY,        UP_PATH | GRID_EMPTY      },
+    {    DOWN_PATH | RIGHT_PATH,     RIGHT_PATH | GRID_EMPTY,   RIGHT_PATH | DOWN_PATH ,    RIGHT_PATH | GRID_EMPTY,        UP_PATH | GRID_EMPTY      },
+    {    DOWN_PATH | GRID_EMPTY,     GRID_EMPTY | GRID_EMPTY,   GRID_EMPTY | DOWN_PATH ,    GRID_EMPTY | GRID_EMPTY,        UP_PATH | GRID_EMPTY      },
+    {   RIGHT_PATH | GRID_EMPTY,     RIGHT_PATH | GRID_EMPTY,   RIGHT_PATH | GRID_EMPTY,    RIGHT_PATH | GRID_EMPTY,        UP_PATH | GRID_EMPTY      }
 };
 
 // 探索用ノード構造体
@@ -102,7 +102,7 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
     List* candidate_moves = list_init();
 
     // 上の移動行動
-    if(grid_directions[y][x] &  UP_PATH) {
+    if(grid_directions[y][x] & UP_PATH) {
         Node* up_node = (Node*)Kmalloc(sizeof(Node));
         Position moved_position = get_moved_position(x, y, UP_PATH);
 
@@ -117,6 +117,7 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         }
 
         list_append(candidate_moves, up_node);
+        tm_printf("Up Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 下の移動行動
@@ -135,6 +136,7 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         }
 
         list_append(candidate_moves, down_node);
+        tm_printf("Down Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 左の移動行動
@@ -153,10 +155,11 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         }
 
         list_append(candidate_moves, left_node);
+        tm_printf("Left Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 右の移動行動
-    if(grid_directions[y][x] &  RIGHT_PATH) {
+    if(grid_directions[y][x] & RIGHT_PATH) {
         Node* right_node = (Node*)Kmalloc(sizeof(Node));
         Position moved_position = get_moved_position(x, y, RIGHT_PATH);
 
@@ -171,8 +174,8 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         }
 
         list_append(candidate_moves, right_node);
+        tm_printf("Right Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
-
 
     // 待機行動
     Node* wait_node = (Node*)Kmalloc(sizeof(Node));
@@ -182,8 +185,9 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
     wait_node->h_departure_time = current_node->h_departure_time + GRID_WAIT_TIME;
     wait_node->g_distance = calculate_distance(wait_position, target_position);
     list_append(candidate_moves, wait_node);
+    tm_printf("Wait at (%d, %d)\n", POS_X(wait_position), POS_Y(wait_position));
 
-    tm_printf("Ido Kano: %d\n", list_length(candidate_moves));
+    tm_printf("Possible Move at (%d, %d): %d\n", POS_X(current_node->position), POS_Y(current_node->position), list_length(candidate_moves));
 
     // 予約不可能なものは除外
     List* valid_moves = list_init();

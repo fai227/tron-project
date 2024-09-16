@@ -213,12 +213,12 @@ void show_S() {
     led_matrix[4] = 0b01100;
 }
 
-void show_C() {
-    led_matrix[0] = 0b00110;
-    led_matrix[1] = 0b01000;
-    led_matrix[2] = 0b01000;
-    led_matrix[3] = 0b01000;
-    led_matrix[4] = 0b00110;
+void show_V() {
+    led_matrix[0] = 0b10001;
+    led_matrix[1] = 0b10001;
+    led_matrix[2] = 0b01010;
+    led_matrix[3] = 0b01010;
+    led_matrix[4] = 0b00100;
 }
 
 void show_T() {
@@ -227,4 +227,52 @@ void show_T() {
     led_matrix[2] = 0b00100;
     led_matrix[3] = 0b00100;
     led_matrix[4] = 0b00100;
+}
+
+void show_logo() {
+    // N
+    led_matrix[0] = 0b10001;
+    led_matrix[1] = 0b11001;
+    led_matrix[2] = 0b10101;
+    led_matrix[3] = 0b10011;
+    led_matrix[4] = 0b10001;
+    tk_slp_tsk(400);
+
+    // I
+    led_matrix[0] = 0b01110;
+    led_matrix[1] = 0b00100;
+    led_matrix[2] = 0b00100;
+    led_matrix[3] = 0b00100;
+    led_matrix[4] = 0b01110;
+    tk_slp_tsk(400);
+
+    // S
+    show_S();
+    tk_slp_tsk(400);
+    
+    // L
+    led_matrix[0] = 0b10000;
+    led_matrix[1] = 0b10000;
+    led_matrix[2] = 0b10000;
+    led_matrix[3] = 0b10000;
+    led_matrix[4] = 0b11111;
+    tk_slp_tsk(400);
+
+    // A
+    led_matrix[0] = 0b00100;
+    led_matrix[1] = 0b01010;
+    led_matrix[2] = 0b10001;
+    led_matrix[3] = 0b11111;
+    led_matrix[4] = 0b10001;
+    tk_slp_tsk(400);
+
+    // B
+    led_matrix[0] = 0b11110;
+    led_matrix[1] = 0b10001;
+    led_matrix[2] = 0b11110;
+    led_matrix[3] = 0b10001;
+    led_matrix[4] = 0b11110;
+    tk_slp_tsk(400);
+
+    clear_led();
 }
