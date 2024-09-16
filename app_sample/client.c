@@ -178,9 +178,10 @@ void transfer_task(INT stacd, void *exinf) {
     }   
 }
 
-
 void reserve_order(List* order_list, UB delay_until_departure) {
     order_list_global = order_list;
+
+    // 移動先を決定
 
     // 送信タスク起動
     T_CTSK transfer_task_information;

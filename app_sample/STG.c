@@ -302,6 +302,7 @@ void stg_handler() {
 
     // サーバー時間を進める
     server_time++;
+    tm_printf("Server Time: %d\n", server_time);
 
     // グリッド状態を表示
     clear_led();
@@ -398,19 +399,19 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
 
 #if STG_VERBOSE
     // 予約内容を表示
-    printf("\n---------- Reservation ----------\n");
-    printf("Time   : %d\n", departure_time);
-    printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
-    printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
-    printf("---------------------------------\n");
+    tm_printf("\n---------- Reservation ----------\n");
+    tm_printf("Time   : %d\n", departure_time);
+    tm_printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
+    tm_printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
+    tm_printf("---------------------------------\n");
 #endif
 }
 
 UW stg_get_departure_time() {
-    // (0, 0)に侵入可能時間を計算
-    UW delay_until_departure = 0;
+    // (0, 0)に侵入可能時間を計算（1秒はずらす）
+    UW delay_until_departure = 1;
     while(TRUE) {
-        if(stg_get_grid(delay_until_departure, POS(0, 0)) == GRID_EMPTY) {
+        if(stg_get_grid(delay_until_departure + server_time, POS(0, 0)) == GRID_EMPTY) {
             return delay_until_departure;
         }
         delay_until_departure++;
