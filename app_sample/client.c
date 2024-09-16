@@ -178,10 +178,25 @@ void transfer_task(INT stacd, void *exinf) {
     }   
 }
 
+Position previous_target = POS(0, 0);
+Position current_target = POS(0, 0);
 void reserve_order(List* order_list, UB delay_until_departure) {
     order_list_global = order_list;
 
     // 移動先を決定
+    if(current_target == POS(0, 0)) {
+        previous_target = current_target;
+        current_target = POS(4, 4);
+    }
+    else {
+        previous_target = current_target;
+        current_target = POS(0, 0);
+    }
+
+    // パケットに反映
+    packet[0] = delay_until_departure;
+    packet[1] = previous_target;
+    packet[2] = current_target;
 
     // 送信タスク起動
     T_CTSK transfer_task_information;
