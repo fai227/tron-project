@@ -19,6 +19,11 @@ void show_T();
 
 void show_logo();
 
+void show_strait();
+void show_left();
+void show_right();
+void show_stop();
+
 #define COL1 28
 #define COL2 11
 #define COL3 31

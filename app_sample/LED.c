@@ -276,3 +276,31 @@ void show_logo() {
 
     clear_led();
 }
+
+void show_strait() {
+    led_matrix[0] = 0b00100;
+    led_matrix[1] = 0b01110;
+    led_matrix[2] = 0b00100;
+    led_matrix[3] = 0b00100;
+    led_matrix[4] = 0b00100;
+}
+
+void show_left() {
+    led_matrix[0] = 0b01000;
+    led_matrix[1] = 0b11110;
+    led_matrix[2] = 0b01010;
+    led_matrix[3] = 0b00010;
+    led_matrix[4] = 0b00010;
+}
+
+void show_right() {
+    led_matrix[0] = 0b00010;
+    led_matrix[1] = 0b01111;
+    led_matrix[2] = 0b01010;
+    led_matrix[3] = 0b01000;
+    led_matrix[4] = 0b01000;
+}
+
+void show_stop() {
+    show_cross();
+}

@@ -5,6 +5,7 @@
 #include "list.h"
 #include "client.h"
 #include "order.h"
+#include "LED.h"
 
 // 各区間の目標走行時間（ミリ秒）
 #define TARGET_INTERVAL 2000
@@ -191,12 +192,18 @@ void follow_path(Order order) {
     start_timer();
 
     if(is_forward(order)){
+        clear_led();
+        show_strait();
         line_tracking();
     }
     else if(is_left(order)){
+        clear_led();
+        show_left();
         turn_left();
     }
     else if(is_right(order)){
+        clear_led();
+        show_right();
         turn_right();
     }
 
