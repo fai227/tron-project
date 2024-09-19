@@ -1,6 +1,7 @@
 #include <tk/tkernel.h>
 
 #include "radio.h"
+#include "STG.h"
 
 IMPORT UB packet[32];
 
@@ -76,6 +77,7 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
 
                 // パケットに反映
                 stg_reserve(packet, 32, vehicle_id, departure_time, start_position, goal_position);
+                print_packet();
             }
         }
 

@@ -110,14 +110,17 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         up_node->position = moved_position;
         up_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
         up_node->g_distance = calculate_distance(moved_position, target_position);
+        up_node->has_moved = TRUE;
+        up_node->has_turned = FALSE;
 
         // 転回が入った場合は移動時間を加算
         if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
             up_node->h_departure_time += GRID_TURN_TIME;
+            up_node->has_turned = TRUE;
         }
 
         list_append(candidate_moves, up_node);
-        tm_printf("Up Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
+        // tm_printf("Up Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 下の移動行動
@@ -129,14 +132,17 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         down_node->position = moved_position;
         down_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
         down_node->g_distance = calculate_distance(moved_position, target_position);
+        down_node->has_moved = TRUE;
+        down_node->has_turned = FALSE;
 
         // 転回が入った場合は移動時間を加算
         if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
             down_node->h_departure_time += GRID_TURN_TIME;
+            down_node->has_turned = TRUE;
         }
 
         list_append(candidate_moves, down_node);
-        tm_printf("Down Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
+        // tm_printf("Down Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 左の移動行動
@@ -148,14 +154,17 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         left_node->position = moved_position;
         left_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
         left_node->g_distance = calculate_distance(moved_position, target_position);
+        left_node->has_moved = TRUE;
+        left_node->has_turned = FALSE;
 
         // 転回が入った場合は移動時間を加算
         if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
             left_node->h_departure_time += GRID_TURN_TIME;
+            left_node->has_turned = TRUE;
         }
 
         list_append(candidate_moves, left_node);
-        tm_printf("Left Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
+        // tm_printf("Left Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 右の移動行動
@@ -167,14 +176,17 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
         right_node->position = moved_position;
         right_node->h_departure_time = current_node->h_departure_time + GRID_MOVE_TIME;
         right_node->g_distance = calculate_distance(moved_position, target_position);
+        right_node->has_moved = TRUE;
+        right_node->has_turned = FALSE;
 
         // 転回が入った場合は移動時間を加算
         if(has_turned(POS_X(moved_position), POS_Y(moved_position), current_node)) {
             right_node->h_departure_time += GRID_TURN_TIME;
+            right_node->has_turned = TRUE;
         }
 
         list_append(candidate_moves, right_node);
-        tm_printf("Right Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
+        // tm_printf("Right Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
     // 待機行動
@@ -184,10 +196,12 @@ List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_i
     wait_node->position = wait_position;
     wait_node->h_departure_time = current_node->h_departure_time + GRID_WAIT_TIME;
     wait_node->g_distance = calculate_distance(wait_position, target_position);
+    wait_node->has_moved = FALSE;
+    wait_node->has_turned = FALSE;
     list_append(candidate_moves, wait_node);
-    tm_printf("Wait at (%d, %d)\n", POS_X(wait_position), POS_Y(wait_position));
+    // tm_printf("Wait at (%d, %d)\n", POS_X(wait_position), POS_Y(wait_position));
 
-    tm_printf("Possible Move at (%d, %d): %d\n", POS_X(current_node->position), POS_Y(current_node->position), list_length(candidate_moves));
+    // tm_printf("Possible Move at (%d, %d): %d\n", POS_X(current_node->position), POS_Y(current_node->position), list_length(candidate_moves));
 
     // 予約不可能なものは除外
     List* valid_moves = list_init();
@@ -357,7 +371,7 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
 
     // リストへの変換（ゴールから辿りリストの先頭に入れていく）
     List* path_list = list_init();
-    while(path->parent != NULL) {
+    while(path != NULL) {
         list_unshift(path_list, path);
         path = path->parent;
     }
@@ -376,28 +390,29 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
 
         // 指示変換
         if(!next_node->has_moved) {  // 待機指示
-            orders[order_index++] = 0b00000001; // 1秒待機
+            orders[order_index++] = GRID_WAIT_TIME;
         }
         else if(next_node->has_turned) {  // 転回指示
             // 中央の場合は右折
             if(next_node->position == POS(2,3)) {
-                orders[order_index++] = 0b00010010; // 2秒右折
+                orders[order_index++] = (TURN_RIGHT << ORDER_BIT_SHIFT) | GRID_TURN_TIME;
+                tm_printf("(%d, %d)\n", POS_X(next_node->position), POS_Y(next_node->position));
             }
             // それ以外は左折
             else {
-                orders[order_index++] = 0b00100010; // 2秒左折
+                orders[order_index++] = (TURN_LEFT << ORDER_BIT_SHIFT) | GRID_TURN_TIME;
             }
-            orders[order_index++] = 0b10000001; // 1秒前進
+            orders[order_index++] = (MOVE_FORWARD << ORDER_BIT_SHIFT) | GRID_MOVE_TIME;
         }
         else {  // 前進指示
-            orders[order_index++] = 0b10000001; // 1秒前進
+            orders[order_index++] = (MOVE_FORWARD << ORDER_BIT_SHIFT) | GRID_MOVE_TIME;
         }
 
         Kfree(previous_node);
         previous_node = next_node;
     }
     // 最後に左折指示を追加
-    orders[order_index++] = 0b00100010; // 2秒左折  
+    orders[order_index++] = (TURN_LEFT << ORDER_BIT_SHIFT) | GRID_TURN_TIME;
     for(UW i = previous_node->h_departure_time; i <= previous_node->h_departure_time + 2; i++) {
         stg_set_grid(i, previous_node->position, vehicle_id);
     }

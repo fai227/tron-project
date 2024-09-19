@@ -108,14 +108,18 @@ void receive_interrupt_handler(UINT interrupt_number) {
             break;
         }
 
-        // 次の支持を追加
+        // 次の指示を追加
         UB* order = (UB*)Kmalloc(sizeof(UB));
         *order = packet[i];
         list_append(order_list_global, order);
     }
 
+    
+
     tm_printf("Order Appeded\n");
     tm_printf("Current Order Length: %d\n", list_length(order_list_global));
+
+    print_packet();
 }
 
 void transfer_task(INT stacd, void *exinf) {

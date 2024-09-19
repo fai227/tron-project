@@ -63,6 +63,42 @@ void test_main() {
 			}
 			break;
 		}
+
+		case 2: {
+			// maqueenのライントレーサーテスト
+			maqueen_init();
+			while(TRUE) {
+				clear_led();
+
+				UB line_state_l2 = read_line_state(MAQUEEN_LINE_SENSOR_L2);
+				if(line_state_l2) {
+					turn_on_led(2, 0);
+				}
+
+				UB line_state_l1 = read_line_state(MAQUEEN_LINE_SENSOR_L1);
+				if(line_state_l1) {
+					turn_on_led(2, 1);
+				}
+
+
+				UB line_state_m = read_line_state(MAQUEEN_LINE_SENSOR_M);
+				if(line_state_m) {
+					turn_on_led(2, 2);
+				}
+
+				UB line_state_r1 = read_line_state(MAQUEEN_LINE_SENSOR_R1);
+				if(line_state_r1) {
+					turn_on_led(2, 3);
+				}
+
+				UB line_state_r2 = read_line_state(MAQUEEN_LINE_SENSOR_R2);
+				if(line_state_r2) {
+					turn_on_led(2, 4);
+				}
+
+				tk_slp_tsk(100);
+			}
+		}
 	}
 }
 

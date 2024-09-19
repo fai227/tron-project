@@ -5,9 +5,9 @@
 
 typedef UB Position;
 
-#define POS(x, y) x << 4 | y
-#define POS_X(pos) pos >> 4
-#define POS_Y(pos) pos & 0x0F
+#define POS(x, y) ((x << 4) | y)
+#define POS_X(pos) (pos >> 4)
+#define POS_Y(pos) (pos & 0x0F)
 
 #define GRID_SIZE 5
 #define STG_BUFFER_LENGTH 100

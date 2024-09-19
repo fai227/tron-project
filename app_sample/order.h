@@ -5,10 +5,10 @@
 
 typedef UB Order;
 
-#define MOVE_FORWARD 3
-#define MOVE_BACKWARD 2
-#define TURN_LEFT 1
-#define TURN_RIGHT 0
+#define MOVE_FORWARD (1 << 3)
+#define MOVE_BACKWARD (1 << 2)
+#define TURN_LEFT (1 << 1)
+#define TURN_RIGHT (1 << 0)
 
 #define ORDER_BIT_SHIFT 4
 #define ORDER_MASK 0x0F

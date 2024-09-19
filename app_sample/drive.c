@@ -208,6 +208,12 @@ void start_drive(UINT timer_number) {
 
     UINT departure_s = departure_ms / 1000;
     reserve_order(order_list,departure_s);//listをグローバル変数にするとともに、送信タスクを起動
+
+    // 進入用の指示を追加
+    UB* order = (UB*)Kmalloc(sizeof(UB));
+    *order = 0b10000010;  // 2秒前進
+    list_unshift(order_list, order);
+
     tk_slp_tsk(departure_ms);//侵入可能時間まで待機
 
 
