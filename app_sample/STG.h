@@ -13,15 +13,6 @@ typedef UB Position;
 #define GRID_SIZE 5
 #define STG_BUFFER_LENGTH 100
 
-//LOCAL UB calculate_distance(Position start, Position target)
-//LOCAL UW calculate_f(Node* node)
-//LOCAl UB get_moved_position(UB x, UB y, UB direction)
-//LOCAL BOOL has_turned(UB next_x, UB next_y, Node* current_node)
-//LOCAL BOOL check_grid(UW from, UW to, Position position, UB vehicle_id)
-//EXPORT void reserve_grid(UW from, UW to, Position position, UB vehicle_id) 
-//LOCAL List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_id)
-//LOCAL Node* find_path(Position start_position, Position target_position, UW departure_time, UB vehicle_id)
-//LOCAL void stg_handler() 
 
 
 /*
