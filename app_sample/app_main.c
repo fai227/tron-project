@@ -14,6 +14,8 @@
 #define STG_TIMER 2
 #define DRIVE_TIMER 3
 
+//関数のインポート
+IMPORT void start_drive(UINT timer_number);
 
 
 EXPORT void server_main() {
