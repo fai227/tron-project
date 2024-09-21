@@ -2,6 +2,7 @@
 #define STG_H_
 
 #include "order.h"
+#include <tk/tkernel.h>
 
 typedef UB Position;
 

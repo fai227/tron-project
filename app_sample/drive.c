@@ -71,6 +71,38 @@ LOCAL UW stop_timer(UINT timer_number)
     return d_elapsed_count_s;
 }
 
+LOCAL INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
+    UB delay_until_departure_s = 0;
+    Element *pointer = order_list->head;
+
+    while (pointer != order_list->tail && pointer != NULL) {
+        delay_until_departure_s += get_order_duration(pointer->data);
+        pointer = pointer->next;
+    }
+
+    return delay_until_departure_s;
+}
+
+LOCAL void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
+    UH current_list_count = list_length(order_list);
+
+    if (!d_request_sent_flag && current_list_count <= 4) {
+        // リクエストを送信
+        INT departure_delay_s = calculate_departure_delay_s(order_list);
+        reserve_order(order_list, departure_delay_s);
+
+        // フラグを設定し、リスト個数を保存
+        d_request_sent_flag = TRUE;
+        d_last_request_list_count = current_list_count;
+    } else if (d_request_sent_flag) {
+        // リスト個数が増加したかチェック
+        if (current_list_count > d_last_request_list_count) {
+            // リスト個数が増加したのでフラグをリセット
+            d_request_sent_flag = FALSE;
+        }
+    }
+}
+
 // 交差点かどうかを判定する関数
 LOCAL BOOL is_intersection() {
     return read_line_state(MAQUEEN_LINE_SENSOR_L2) || read_line_state(MAQUEEN_LINE_SENSOR_R2);
@@ -219,7 +251,6 @@ EXPORT void start_drive(UINT timer_number) {
 
     while(TRUE){
         if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
-            INT departure_delay_s= calculate_departure_delay_s(order_list);
             process_orders(order_list);
         }
 
@@ -232,34 +263,3 @@ EXPORT void start_drive(UINT timer_number) {
     }
 }
 
-LOCAL INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
-    UB delay_until_departure_s = 0;
-    Element *pointer = order_list->head;
-
-    while (pointer != order_list->tail && pointer != NULL) {
-        delay_until_departure_s += get_order_duration((Order*)pointer->data);
-        pointer = pointer->next;
-    }
-
-    return delay_until_departure_s;
-}
-
-LOCAL void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
-    UH current_list_count = list_length(order_list);
-
-    if (!d_request_sent_flag && current_list_count <= 4) {
-        // リクエストを送信
-        INT departure_delay_s = calculate_departure_delay_s(order_list);
-        reserve_order(order_list, departure_delay_s);
-
-        // フラグを設定し、リスト個数を保存
-        d_request_sent_flag = TRUE;
-        d_last_request_list_count = current_list_count;
-    } else if (d_request_sent_flag) {
-        // リスト個数が増加したかチェック
-        if (current_list_count > d_last_request_list_count) {
-            // リスト個数が増加したのでフラグをリセット
-            d_request_sent_flag = FALSE;
-        }
-    }
-}
