@@ -2,7 +2,7 @@
 
 #include "list.h"
 
-List *list_init()
+EXPORT List *list_init()
 {
     List *list = (List *)Kmalloc(sizeof(List));
     list->head = NULL;
@@ -11,7 +11,7 @@ List *list_init()
     return list;
 }
 
-void list_unshift(List *list, void *data)
+EXPORT void list_unshift(List *list, void *data)
 {
     Element *new_element = (Element *)Kmalloc(sizeof(Element));
     new_element->data = data;
@@ -26,7 +26,7 @@ void list_unshift(List *list, void *data)
     list->length++;    
 }
 
-void list_append(List *list, void *data) {
+EXPORT void list_append(List *list, void *data) {
     Element* new_element = (Element*)Kmalloc(sizeof(Element));
     new_element->data = data;
     new_element->next = NULL;
@@ -42,7 +42,7 @@ void list_append(List *list, void *data) {
     list->length++;
 }
 
-void *list_shift(List *list)
+EXPORT void *list_shift(List *list)
 {
     // リストが空の場合
     if (list->head == NULL) {
@@ -63,7 +63,7 @@ void *list_shift(List *list)
     return data;
 }
 
-void *list_get(List *list, UH index)
+EXPORT void *list_get(List *list, UH index)
 {
     Element *current = list->head;
     for (UH i = 0; i < index && current != NULL; i++)
@@ -79,7 +79,7 @@ void *list_get(List *list, UH index)
     return current->data;
 }
 
-void list_delete(List *list)
+EXPORT void list_delete(List *list)
 {
     Element *current = list->head;
     while (current != NULL)
@@ -92,7 +92,7 @@ void list_delete(List *list)
     Kfree(list);
 }
 
-UH list_length(List *list)
+EXPORT UH list_length(List *list)
 {
     return list->length;
 }
