@@ -3,6 +3,10 @@
 
 #include <tk/tkernel.h>
 
+//LOCAL void set_gpio(UW pin, UW value)
+//LOCAL void set_led_col(UW column);
+//LOCAL void set_row_gpio(UW row);
+//LOCAL void led_switch_row_handler(void *exinf);
 EXPORT void initialize_led(UB timer_number);
 EXPORT void clear_led();
 
