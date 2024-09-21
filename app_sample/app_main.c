@@ -14,24 +14,6 @@
 #define STG_TIMER 2
 #define DRIVE_TIMER 3
 
-//関数のインポート
-IMPORT void stg_start(UB timer_number);
-IMPORT void start_server();
-IMPORT void start_drive(UINT timer_number);
-IMPORT void show_number(UB number);
-IMPORT List *list_init();
-IMPORT UINT request_departure_time_ms();
-IMPORT BOOL read_line_state(B line);
-IMPORT ER maqueen_init(void);
-IMPORT void clear_led();
-IMPORT void initialize_led(UB timer_number);
-IMPORT void show_logo();
-IMPORT void button_setup();
-IMPORT void show_T();
-IMPORT void test_main();
-IMPORT void server_main();
-IMPORT void show_V();
-IMPORT void vehicle_main();
 
 
 EXPORT void server_main() {
