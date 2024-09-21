@@ -2,7 +2,7 @@
 #include <tk/tkernel.h>
 
 
-UB led_matrix[5] = {
+LOCAL UB led_matrix[5] = {
     0b00000,
     0b00000,
     0b00000,
@@ -10,7 +10,7 @@ UB led_matrix[5] = {
     0b00000
 };
 
-void set_gpio(UW pin, UW value)
+LOCAL void set_gpio(UW pin, UW value)
 {
 	INT port_addr;
 
@@ -33,7 +33,7 @@ void set_gpio(UW pin, UW value)
 	out_w(port_addr, (1 << pin));
 }
 
-void set_led_col(UW column) {
+LOCAL void set_led_col(UW column) {
     set_gpio(COL1, led_matrix[column] & 0b10000 ? 0 : 1);
     set_gpio(COL2, led_matrix[column] & 0b01000 ? 0 : 1);
     set_gpio(COL3, led_matrix[column] & 0b00100 ? 0 : 1);
@@ -69,7 +69,7 @@ const INT led_physical_timer_clock_mhz = 16;	// 物理タイマのクロック(M
 const INT led_cycle_micros = 1000;		// ハンドラの起動周期(μs単位)、1000μs＝1ms
 INT led_limit = led_cycle_micros * led_physical_timer_clock_mhz - 1;	// 物理タイマの上限値
 
-void initialize_led(UB timer_number){
+EXPORT void initialize_led(UB timer_number){
     // GPIOピンを出力に設定
     out_w(GPIO(P0, PIN_CNF(COL1)), 1);
     out_w(GPIO(P0, PIN_CNF(COL2)), 1);
@@ -90,17 +90,17 @@ void initialize_led(UB timer_number){
     StartPhysicalTimer(timer_number, led_limit, TA_CYC_PTMR);
 }
 
-void clear_led(){
+EXPORT void clear_led(){
     for (int i = 0; i < 5; i++) {
         led_matrix[i] = 0b00000;
     }
 }
 
-void turn_on_led(UW row, UW column){
+EXPORT void turn_on_led(UW row, UW column){
     led_matrix[row] |= 1 << (4 - column);
 }
 
-void show_number(UB number) {
+EXPORT void show_number(UB number) {
     switch (number)
     {
         case 0:
@@ -189,7 +189,7 @@ void show_number(UB number) {
     }
 }
 
-void show_circle(){
+EXPORT void show_circle(){
     led_matrix[0] = 0b01110;
     led_matrix[1] = 0b10001;
     led_matrix[2] = 0b10001;
@@ -197,7 +197,7 @@ void show_circle(){
     led_matrix[4] = 0b01110;
 }
 
-void show_cross() {
+EXPORT void show_cross() {
     led_matrix[0] = 0b10001;
     led_matrix[1] = 0b01010;
     led_matrix[2] = 0b00100;
@@ -205,7 +205,7 @@ void show_cross() {
     led_matrix[4] = 0b10001;
 }
 
-void show_S() {
+EXPORT void show_S() {
     led_matrix[0] = 0b00110;
     led_matrix[1] = 0b01000;
     led_matrix[2] = 0b01110;
@@ -213,7 +213,7 @@ void show_S() {
     led_matrix[4] = 0b01100;
 }
 
-void show_V() {
+EXPORT void show_V() {
     led_matrix[0] = 0b10001;
     led_matrix[1] = 0b10001;
     led_matrix[2] = 0b01010;
@@ -221,7 +221,7 @@ void show_V() {
     led_matrix[4] = 0b00100;
 }
 
-void show_T() {
+EXPORT void show_T() {
     led_matrix[0] = 0b01110;
     led_matrix[1] = 0b00100;
     led_matrix[2] = 0b00100;
@@ -229,7 +229,7 @@ void show_T() {
     led_matrix[4] = 0b00100;
 }
 
-void show_logo() {
+EXPORT void show_logo() {
     // N
     led_matrix[0] = 0b10001;
     led_matrix[1] = 0b11001;
@@ -277,7 +277,7 @@ void show_logo() {
     clear_led();
 }
 
-void show_strait() {
+EXPORT void show_strait() {
     led_matrix[0] = 0b00100;
     led_matrix[1] = 0b01110;
     led_matrix[2] = 0b00100;
@@ -285,7 +285,7 @@ void show_strait() {
     led_matrix[4] = 0b00100;
 }
 
-void show_left() {
+EXPORT void show_left() {
     led_matrix[0] = 0b01000;
     led_matrix[1] = 0b11110;
     led_matrix[2] = 0b01010;
@@ -293,7 +293,7 @@ void show_left() {
     led_matrix[4] = 0b00010;
 }
 
-void show_right() {
+EXPORT void show_right() {
     led_matrix[0] = 0b00010;
     led_matrix[1] = 0b01111;
     led_matrix[2] = 0b01010;
@@ -301,6 +301,6 @@ void show_right() {
     led_matrix[4] = 0b01000;
 }
 
-void show_stop() {
+EXPORT void show_stop() {
     show_cross();
 }
