@@ -77,12 +77,6 @@ LOCAL BOOL check_grid(UW from, UW to, Position position, UB vehicle_id) {
     return TRUE;
 }
 
-EXPORT void reserve_grid(UW from, UW to, Position position, UB vehicle_id) {
-    for(UW i = from; i <= to; i++) {
-        stg_set_grid(i, position, vehicle_id);
-    }
-}
-
 LOCAL List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_id) {
     UB x = POS_X(current_node->position);
     UB y = POS_Y(current_node->position);
