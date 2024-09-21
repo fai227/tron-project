@@ -16,6 +16,10 @@ RM := rm -rf
 
 INCPATH = -I"../include" -I"../config" -I"../kernel/knlinc"
 
+# CAV内のヘッダーファイルを追加
+INCPATH += -I"../CAV/header"
+
+
 -include sources.mk
 
 include mtkernel_3/lib/libtm/subdir.mk
