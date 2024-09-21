@@ -18,7 +18,7 @@
 IMPORT void start_drive(UINT timer_number);
 
 
-EXPORT void server_main() {
+LOCAL void server_main() {
 	// 時空間グリッドを物理タイマー1で起動
 	stg_start(STG_TIMER);
 
@@ -26,12 +26,12 @@ EXPORT void server_main() {
 	start_server();
 }
 
-EXPORT void vehicle_main() {
+LOCAL void vehicle_main() {
 	// 運転プログラムを起動
 	start_drive(DRIVE_TIMER);
 }
 
-EXPORT void test_main() {
+LOCAL void test_main() {
 	UB test_number = 1;
 
 	show_number(test_number);

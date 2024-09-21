@@ -11,9 +11,9 @@ IMPORT UB packet[32];
 List* order_list_global;
 
 ID transfer_task_id;
-UINT receive_interrupt_number = INTNO(RADIO_BASE);
+LOCAL UINT receive_interrupt_number = INTNO(RADIO_BASE);
 
-UINT request_departure_time_ms() {
+EXPORT UINT request_departure_time_ms() {
     // ラジオの初期化
     radio_setup();
 
@@ -76,7 +76,7 @@ UINT request_departure_time_ms() {
     return packet[1] * 1000;
 }
 
-void receive_interrupt_handler(UINT interrupt_number) {
+LOCAL void receive_interrupt_handler(UINT interrupt_number) {
     // EVENTS_ENDの立ち上がりチェック
     // tm_printf("INTERRUPTED\n");
     if(!in_w(RADIO(EVENTS_END))) {
@@ -122,7 +122,7 @@ void receive_interrupt_handler(UINT interrupt_number) {
     print_packet();
 }
 
-void transfer_task(INT stacd, void *exinf) {
+LOCAL void transfer_task(INT stacd, void *exinf) {
     // 割込ハンドラー定義
     T_DINT receive_interrupt_information;
     receive_interrupt_information.intatr = TA_HLNG;
@@ -185,7 +185,7 @@ void transfer_task(INT stacd, void *exinf) {
 
 Position previous_target = POS(0, 0);
 Position current_target = POS(0, 0);
-void reserve_order(List* order_list, UB delay_until_departure) {
+EXPORT void reserve_order(List* order_list, UB delay_until_departure) {
     order_list_global = order_list;
 
     // 移動先を決定
