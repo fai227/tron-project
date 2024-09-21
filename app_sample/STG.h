@@ -22,7 +22,7 @@ typedef UB Position;
 #define LEFT_PATH 0b0100
 #define RIGHT_PATH 0b1000
 
-#define GRID_MOVE_TIME 1
+#define GRID_MOVE_TIME 2
 #define GRID_WAIT_TIME 1
 #define GRID_TURN_TIME 3
 
