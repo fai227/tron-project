@@ -6,18 +6,18 @@
 #define BUTTON_A 14
 #define BUTTON_B 23
 
-void button_setup()
+EXPORT void button_setup()
 {
     out_w(GPIO(P0, PIN_CNF(BUTTON_A)), 0);
     out_w(GPIO(P0, PIN_CNF(BUTTON_B)), 0);
 }
 
-BOOL is_a_pressed()
+EXPORT BOOL is_a_pressed()
 {
     return (in_w(GPIO(P0, IN)) & (1 << BUTTON_A)) == 0;
 }
 
-BOOL is_b_pressed()
+EXPORT BOOL is_b_pressed()
 {
     return (in_w(GPIO(P0, IN)) & (1 << BUTTON_B)) == 0;
 }

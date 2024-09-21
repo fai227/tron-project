@@ -6,8 +6,8 @@
 
 void client_setup();
 
-UINT request_departure_time_ms();
+EXPORT UINT request_departure_time_ms();
 
-void reserve_order(List* order_list, UB delay_until_departure);
+EXPORT void reserve_order(List* order_list, UB delay_until_departure);
 
 #endif /* CLIENT_H_ */

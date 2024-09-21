@@ -3,26 +3,26 @@
 
 #include <tk/tkernel.h>
 
-void initialize_led(UB timer_number);
-void clear_led();
+EXPORT void initialize_led(UB timer_number);
+EXPORT void clear_led();
 
-void turn_on_led(UW row, UW column);
+EXPORT void turn_on_led(UW row, UW column);
 
-void show_number(UB number);
+EXPORT void show_number(UB number);
 
-void show_circle();
-void show_cross();
+EXPORT void show_circle();
+EXPORT void show_cross();
 
-void show_S();
-void show_V();
-void show_T();
+EXPORT void show_S();
+EXPORT void show_V();
+EXPORT void show_T();
 
-void show_logo();
+EXPORT void show_logo();
 
-void show_strait();
-void show_left();
-void show_right();
-void show_stop();
+EXPORT void show_strait();
+EXPORT void show_left();
+EXPORT void show_right();
+EXPORT void show_stop();
 
 #define COL1 28
 #define COL2 11

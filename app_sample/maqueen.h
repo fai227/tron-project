@@ -38,13 +38,13 @@
 
 
 // 関数プロトタイプ
-ER maqueen_init(void);
-ER control_motor(B motor, UB direction, UB speed);
-ER stop_all_motor(void);
-ER control_led(B led, BOOL state);
-ER turn_off_all_led(void);
-BOOL read_line_state(B line);
-UB read_line_value(B ch, B line);
+EXPORT ER maqueen_init(void);
+EXPORT ER control_motor(B motor, UB direction, UB speed);
+EXPORT ER stop_all_motor(void);
+EXPORT ER control_led(B led, BOOL state);
+EXPORT ER turn_off_all_led(void);
+EXPORT BOOL read_line_state(B line);
+EXPORT UB read_line_value(B ch, B line);
 
 
 #endif /* MAQUEEN_H_ */

@@ -16,26 +16,26 @@ typedef UB Order;
 /*
  *  orderが前方かを判定
  */
-BOOL is_forward(Order order);
+EXPORT BOOL is_forward(Order order);
 
 /*
  *  orderが後方かを判定
  */
-BOOL is_backward(Order order);
+EXPORT BOOL is_backward(Order order);
 
 /*
  *  orderが左折かを判定
  */
-BOOL is_left(Order order);
+EXPORT BOOL is_left(Order order);
 
 /*
  *  orderが右折かを判定
  */
-BOOL is_right(Order order);
+EXPORT BOOL is_right(Order order);
 
 /*
  *  orderの持続時間を返す
  */
-UB get_order_duration(Order order);
+EXPORT UB get_order_duration(Order order);
 
 #endif /* ORDER_H_ */
