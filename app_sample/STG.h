@@ -13,7 +13,18 @@ typedef UB Position;
 #define GRID_SIZE 5
 #define STG_BUFFER_LENGTH 100
 
+#define STG_VERBOSE 1
 
+#define GRID_EMPTY 0
+
+#define UP_PATH 0b0001
+#define DOWN_PATH 0b0010
+#define LEFT_PATH 0b0100
+#define RIGHT_PATH 0b1000
+
+#define GRID_MOVE_TIME 1
+#define GRID_WAIT_TIME 1
+#define GRID_TURN_TIME 3
 
 /*
  * 時空間グリッドの初期化と立ち上げ

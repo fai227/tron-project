@@ -3,19 +3,6 @@
 #include "list.h"
 #include "LED.h"
 
-#define STG_VERBOSE 1
-
-#define GRID_EMPTY 0
-
-#define UP_PATH 0b0001
-#define DOWN_PATH 0b0010
-#define LEFT_PATH 0b0100
-#define RIGHT_PATH 0b1000
-
-#define GRID_MOVE_TIME 1
-#define GRID_WAIT_TIME 1
-#define GRID_TURN_TIME 3
-
 UB ***spatio_temporal_grid;
 UW server_time;
 

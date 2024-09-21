@@ -109,11 +109,11 @@ LOCAL void receive_interrupt_handler(UINT interrupt_number) {
             break;
         }
 
-        // 一つ前のパケットと同じ場合は，リスト最後の指示の時間を追加
-        if(i > 0 && packet[i] == packet[i - 1]) {
-            // 最後の指示を取得
-            UB* order = list_get(order_list_global, list_length(order_list_global) - 1);
-            *order = *order + get_order_duration(packet[i]);
+        // リストの最後の指示と同じ場合は，その指示の継続時間を更新
+        Order* last_order = (Order*)list_get_last(order_list_global);
+        if(list_length(order_list_global) > 0 && *last_order == packet[i]) {
+            *last_order = packet[i] + get_order_duration(packet[i]);
+            tm_printf("Same Order\n");
             continue;
         }
 

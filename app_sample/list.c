@@ -96,3 +96,8 @@ EXPORT UH list_length(List *list)
 {
     return list->length;
 }
+
+EXPORT void *list_get_last(List *list)
+{
+    return list->tail->data;
+}

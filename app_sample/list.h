@@ -57,4 +57,9 @@ EXPORT void list_delete(List *list);
  */
 EXPORT UH list_length(List *list);
 
+/*
+ * リストの最後の要素を取得
+ */
+EXPORT void *list_get_last(List *list);
+
 #endif /* LIST_H_ */

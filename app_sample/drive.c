@@ -1,10 +1,11 @@
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
-#include <sys/sysdepend/cpu/nrf5/sysdef.h>
+
 #include "maqueen.h"
 #include "list.h"
 #include "client.h"
 #include "order.h"
+#include "STG.h"
 #include "LED.h"
 
 // 各区間の目標走行時間（ミリ秒）
@@ -138,8 +139,6 @@ LOCAL void turn_right() {
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_BACKWARD, D_BACKWARD_SPEED);
 
-
-
     BOOL complete_firststep = FALSE;//右折開始後、L1MR1がラインを離れたらTrue
     while (TRUE) {
         if (!complete_firststep) {
@@ -230,24 +229,23 @@ LOCAL void follow_path(Order order,INT timer_number) {
 }
 
 EXPORT void start_drive(UINT timer_number) {
-    List* order_list=list_init();//経路を保存するリストの作成
+    List* order_list = list_init();//経路を保存するリストの作成
 
     initialize_timer(timer_number);//タイマの初期化
     maqueen_init();//maqueenの初期化
 
-    UINT departure_ms=request_departure_time_ms();//待機時間受け取り
+    UINT departure_ms = request_departure_time_ms();//待機時間受け取り
     tm_printf("Departure Time: %d\n", departure_ms);
 
     UINT departure_s = departure_ms / 1000;
     reserve_order(order_list,departure_s);//listをグローバル変数にするとともに、送信タスクを起動
 
-    // 進入用の指示を追加
-    UB* order = (UB*)Kmalloc(sizeof(UB));
-    *order = 0b10000010;  // 2秒前進
-    list_unshift(order_list, order);
-
     tk_slp_tsk(departure_ms);//侵入可能時間まで待機
 
+    // 進入用の指示を追加
+    UB* order = (UB*)Kmalloc(sizeof(UB));
+    *order = (MOVE_FORWARD << ORDER_BIT_SHIFT) | GRID_MOVE_TIME;  // 2秒前進
+    list_unshift(order_list, order);
 
     while(TRUE){
         if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
