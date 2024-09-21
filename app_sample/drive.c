@@ -44,18 +44,18 @@ INT d_timer_limit = d_timer_cycle_micros * d_timer_clock_mhz - 1;
 
 // 経過時間をカウントする変数
 UW d_elapsed_count_s = 0;
-void d_time_measurement_handler(void *exinf)
+LOCAL void d_time_measurement_handler(void *exinf)
 {
     d_elapsed_count_s++;
 }
 T_DPTMR d_time_measurement_timer = {0, TA_HLNG, &d_time_measurement_handler};
 
-void initialize_timer(UINT timer_number)
+LOCAL void initialize_timer(UINT timer_number)
 {
     DefinePhysicalTimerHandler(timer_number, &d_time_measurement_timer);
 }
 
-void start_timer(UINT timer_number)
+LOCAL void start_timer(UINT timer_number)
 {
 
     // 経過時間をリセット
@@ -65,19 +65,19 @@ void start_timer(UINT timer_number)
     StartPhysicalTimer(timer_number, d_timer_limit, TA_CYC_PTMR);
 }
 
-UW stop_timer(UINT timer_number)
+LOCAL UW stop_timer(UINT timer_number)
 {
     StopPhysicalTimer(timer_number);
     return d_elapsed_count_s;
 }
 
 // 交差点かどうかを判定する関数
-BOOL is_intersection() {
+LOCAL BOOL is_intersection() {
     return read_line_state(MAQUEEN_LINE_SENSOR_L2) || read_line_state(MAQUEEN_LINE_SENSOR_R2);
 }
 
 // ライントラッキングを行う関数
-void line_tracking() {
+LOCAL void line_tracking() {
     //start_timer();
     while (!is_intersection()) {
         BOOL right = read_line_state(MAQUEEN_LINE_SENSOR_R1);
@@ -100,7 +100,7 @@ void line_tracking() {
 }
 
 // 右折する関数
-void turn_right() {
+LOCAL void turn_right() {
     DEBUG_LOG("Start Right Turn\n");
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
@@ -134,7 +134,7 @@ void turn_right() {
 }
 
 // 左折関数
-void turn_left() {
+LOCAL void turn_left() {
     DEBUG_LOG("Start Right Turn\n");
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_BACKWARD, D_BACKWARD_SPEED);
@@ -163,7 +163,7 @@ void turn_left() {
     }
 }
 
-void follow_path(Order order,INT timer_number) {
+LOCAL void follow_path(Order order,INT timer_number) {
     UINT duration_s = get_order_duration(order);
     UINT actual_duration_ms = 0;
 
@@ -197,7 +197,7 @@ void follow_path(Order order,INT timer_number) {
     }
 }
 
-void start_drive(UINT timer_number) {
+EXPORT void start_drive(UINT timer_number) {
     List* order_list=list_init();//経路を保存するリストの作成
 
     initialize_timer(timer_number);//タイマの初期化
@@ -232,7 +232,7 @@ void start_drive(UINT timer_number) {
     }
 }
 
-INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
+LOCAL INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
     UB delay_until_departure_s = 0;
     Element *pointer = order_list->head;
 
@@ -244,7 +244,7 @@ INT calculate_departure_delay_s(List *order_list) { //リストにある経路�
     return delay_until_departure_s;
 }
 
-void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
+LOCAL void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
     UH current_list_count = list_length(order_list);
 
     if (!d_request_sent_flag && current_list_count <= 4) {
