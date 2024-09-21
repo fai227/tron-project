@@ -20,7 +20,7 @@ UB ***spatio_temporal_grid;
 UW server_time;
 
 // グリッド移動可能方向の定義
-UB grid_directions[GRID_SIZE][GRID_SIZE] = {
+LOCAL UB grid_directions[GRID_SIZE][GRID_SIZE] = {
     {    DOWN_PATH | GRID_EMPTY,      LEFT_PATH | GRID_EMPTY,    LEFT_PATH | DOWN_PATH ,     LEFT_PATH | GRID_EMPTY,      LEFT_PATH | GRID_EMPTY      },
     {    DOWN_PATH | GRID_EMPTY,     GRID_EMPTY | GRID_EMPTY,   GRID_EMPTY | DOWN_PATH ,    GRID_EMPTY | GRID_EMPTY,        UP_PATH | GRID_EMPTY      },
     {    DOWN_PATH | RIGHT_PATH,     RIGHT_PATH | GRID_EMPTY,   RIGHT_PATH | DOWN_PATH ,    RIGHT_PATH | GRID_EMPTY,        UP_PATH | GRID_EMPTY      },
@@ -38,7 +38,7 @@ typedef struct Node {
     BOOL has_turned;
 } Node;
 
-UB calculate_distance(Position start, Position target) {
+LOCAL UB calculate_distance(Position start, Position target) {
     UB x1 = POS_X(start);
     UB y1 = POS_Y(start);
     UB x2 = POS_X(target);
@@ -46,11 +46,11 @@ UB calculate_distance(Position start, Position target) {
     return (x1 > x2 ? x1 - x2 : x2 - x1) + (y1 > y2 ? y1 - y2 : y2 - y1);
 }
 
-UW calculate_f(Node* node) {
+LOCAL UW calculate_f(Node* node) {
     return node->h_departure_time + node->g_distance;
 }
 
-UB get_moved_position(UB x, UB y, UB direction) {
+LOCAl UB get_moved_position(UB x, UB y, UB direction) {
     switch (direction) {
         case UP_PATH:
             return POS(x, y - 1);
@@ -63,7 +63,7 @@ UB get_moved_position(UB x, UB y, UB direction) {
     }
 }
 
-BOOL has_turned(UB next_x, UB next_y, Node* current_node) {
+LOCAL BOOL has_turned(UB next_x, UB next_y, Node* current_node) {
     // そこが初めての移動の場合は転回していないとする
     if(current_node->parent == NULL) {
         return FALSE;
@@ -80,7 +80,7 @@ BOOL has_turned(UB next_x, UB next_y, Node* current_node) {
     return FALSE;
 }
 
-BOOL check_grid(UW from, UW to, Position position, UB vehicle_id) {
+LOCAL BOOL check_grid(UW from, UW to, Position position, UB vehicle_id) {
     for(UW i = from; i <= to; i++) {
         UB grid = stg_get_grid(i, position);
         if(grid != GRID_EMPTY && grid != vehicle_id) {
@@ -90,13 +90,13 @@ BOOL check_grid(UW from, UW to, Position position, UB vehicle_id) {
     return TRUE;
 }
 
-void reserve_grid(UW from, UW to, Position position, UB vehicle_id) {
+EXPORT void reserve_grid(UW from, UW to, Position position, UB vehicle_id) {
     for(UW i = from; i <= to; i++) {
         stg_set_grid(i, position, vehicle_id);
     }
 }
 
-List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_id) {
+LOCAL List* get_valid_moves(Node* current_node, Position target_position, UB vehicle_id) {
     UB x = POS_X(current_node->position);
     UB y = POS_Y(current_node->position);
     List* candidate_moves = list_init();
@@ -232,7 +232,7 @@ H index_of(Node *node, Node *list[], UH size) {
     return -1;
 }
 
-Node* find_path(Position start_position, Position target_position, UW departure_time, UB vehicle_id) {
+LOCAL Node* find_path(Position start_position, Position target_position, UW departure_time, UB vehicle_id) {
     // 初期設定
     Node *start = (Node*)Kmalloc(sizeof(Node));
     Node *open_list[GRID_SIZE * GRID_SIZE];
@@ -312,7 +312,7 @@ Node* find_path(Position start_position, Position target_position, UW departure_
 }
 
 
-void stg_handler() {
+LOCAL void stg_handler() {
     // 古いデータを削除
     for(UH x = 0; x < GRID_SIZE; x++) {
         for(UH y = 0; y < GRID_SIZE; y++) {
@@ -340,11 +340,11 @@ T_DPTMR stg_timer_handler = {
     TA_HLNG,
     &stg_handler
 };
-const INT stg_physical_timer_clock_mhz = 16;	// 物理タイマのクロック(MHz単位)
+LOCAL const INT stg_physical_timer_clock_mhz = 16;	// 物理タイマのクロック(MHz単位)
 
-const INT stg_cycle_micros = 1000 * 1000;		// ハンドラの起動周期(μs単位)、1000*1000μs＝1s
+LOCAL const INT stg_cycle_micros = 1000 * 1000;		// ハンドラの起動周期(μs単位)、1000*1000μs＝1s
 INT stg_limit = stg_cycle_micros * stg_physical_timer_clock_mhz - 1;	// 物理タイマの上限値
-void stg_start(UB timer_number) {
+EXPORT void stg_start(UB timer_number) {
     // 時空間グリッドの初期化
     server_time = 0;
     spatio_temporal_grid = (UB***)Kmalloc(sizeof(UB**) * GRID_SIZE);
@@ -363,7 +363,7 @@ void stg_start(UB timer_number) {
     StartPhysicalTimer(timer_number, stg_limit, TA_CYC_PTMR);
 }
 
-void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position) {
+EXPORT void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until_departure, Position start_position, Position target_position) {
     UW departure_time = server_time + delay_until_departure;
     
     // 経路探索
@@ -428,7 +428,7 @@ void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB delay_until
 #endif
 }
 
-UW stg_get_departure_time() {
+EXPORT UW stg_get_departure_time() {
     // (0, 0)に侵入可能時間を計算（1秒はずらす）
     UW delay_until_departure = 1;
     while(TRUE) {
@@ -439,11 +439,11 @@ UW stg_get_departure_time() {
     }
 }
 
-UB stg_get_grid(UW time, Position Position) {
+LOCAL UB stg_get_grid(UW time, Position Position) {
     return spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH];
 }
 
-void stg_set_grid(UW time, Position Position, UB value) {
+LOCAL void stg_set_grid(UW time, Position Position, UB value) {
     spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH] = value;
 }
 

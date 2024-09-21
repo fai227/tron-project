@@ -4,14 +4,14 @@
 
 EXPORT UB packet[32];
 
-void print_packet() {
+EXPORT void print_packet() {
 	for (size_t i = 0; i < 32; i++) {
 		tm_printf("%02X ", packet[i]);
 	}
 	tm_printf("\n");
 }
 
-void radio_setup() {
+EXPORT void radio_setup() {
     // ハードウェアの初期化
     out_w(RADIO(EVENTS_ADDRESS), 0);
     out_w(0x40000000 + 0x578, 1);

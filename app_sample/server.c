@@ -91,7 +91,7 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
 }
 
 
-void start_server() {
+EXPORT void start_server() {
     // 通信初期化
     radio_setup();
 
