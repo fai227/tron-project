@@ -50,7 +50,7 @@ LOCAL UW calculate_f(Node* node) {
     return node->h_departure_time + node->g_distance;
 }
 
-LOCAl UB get_moved_position(UB x, UB y, UB direction) {
+LOCAL UB get_moved_position(UB x, UB y, UB direction) {
     switch (direction) {
         case UP_PATH:
             return POS(x, y - 1);
@@ -189,18 +189,20 @@ LOCAL List* get_valid_moves(Node* current_node, Position target_position, UB veh
         // tm_printf("Right Move at (%d, %d)\n", POS_X(moved_position), POS_Y(moved_position));
     }
 
-    // 待機行動
-    Node* wait_node = (Node*)Kmalloc(sizeof(Node));
-    Position wait_position = current_node->position;
-    wait_node->parent = current_node;
-    wait_node->position = wait_position;
-    wait_node->h_departure_time = current_node->h_departure_time + GRID_WAIT_TIME;
-    wait_node->g_distance = calculate_distance(wait_position, target_position);
-    wait_node->has_moved = FALSE;
-    wait_node->has_turned = FALSE;
-    list_append(candidate_moves, wait_node);
-    // tm_printf("Wait at (%d, %d)\n", POS_X(wait_position), POS_Y(wait_position));
-
+    // 待機行動（直進のみでは待機できない）
+    if((x + y) % 2 == 0) {
+        Node* wait_node = (Node*)Kmalloc(sizeof(Node));
+        Position wait_position = current_node->position;
+        wait_node->parent = current_node;
+        wait_node->position = wait_position;
+        wait_node->h_departure_time = current_node->h_departure_time + GRID_WAIT_TIME;
+        wait_node->g_distance = calculate_distance(wait_position, target_position);
+        wait_node->has_moved = FALSE;
+        wait_node->has_turned = FALSE;
+        list_append(candidate_moves, wait_node);
+        // tm_printf("Wait at (%d, %d)\n", POS_X(wait_position), POS_Y(wait_position));
+    }
+    
     // tm_printf("Possible Move at (%d, %d): %d\n", POS_X(current_node->position), POS_Y(current_node->position), list_length(candidate_moves));
 
     // 予約不可能なものは除外
