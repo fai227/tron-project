@@ -1,11 +1,10 @@
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
-
+#include <sys/sysdepend/cpu/nrf5/sysdef.h>
 #include "maqueen.h"
 #include "list.h"
 #include "client.h"
 #include "order.h"
-#include "STG.h"
 #include "LED.h"
 
 // 各区間の目標走行時間（ミリ秒）
@@ -17,9 +16,7 @@
 #define D_DEFAULT_DELAY_TIME 0
 #define D_DETECTION_INTERVAL 10
 
-//#define D_DRIVE_TIMER TIMER2_BASE
-
-#define D_DEBUG_PRINT 0  // 1でデバッグ出力を有効化、0で無効化
+#define D_DEBUG_PRINT 1  // 1でデバッグ出力を有効化、0で無効化
 
 #if D_DEBUG_PRINT
 #define DEBUG_LOG(fmt, ...) tm_printf(fmt, ##__VA_ARGS__)
@@ -27,7 +24,7 @@
 #define DEBUG_LOG(fmt, ...) ((void)0)
 #endif
 
-UINT start_time = 0;
+
 
 #define D_LIST_MINIMUM_NUMBER 4 //リストがこの数を下回ったら、リクエスト送信
 
@@ -37,87 +34,47 @@ UH d_last_request_list_count = 0;
 // 物理タイマーのクロック(MHz単位)
 const INT d_timer_clock_mhz = 16;
 
-// ハンドラの起動周期(μs単位)、1000μs＝1ms
-const INT d_timer_cycle_micros = 1000;
 
 // 物理タイマーの上限値
-INT d_timer_limit = d_timer_cycle_micros * d_timer_clock_mhz - 1;
+INT d_timer_limit = 16 * 10 * 1000 * 1000;
 
-// 経過時間をカウントする変数
-UW d_elapsed_count_s = 0;
-LOCAL void d_time_measurement_handler(void *exinf)
-{
-    d_elapsed_count_s++;
-}
-T_DPTMR d_time_measurement_timer = {0, TA_HLNG, &d_time_measurement_handler};
+void line_tracking(INT timer_number, UINT duration_s) {
+    INT flag = 0;  // 0: 初期状態または交差点上, 1: 交差点を離れた後
+    UW current_time_count=0;
+    
 
-LOCAL void initialize_timer(UINT timer_number)
-{
-    DefinePhysicalTimerHandler(timer_number, &d_time_measurement_timer);
-}
 
-LOCAL void start_timer(UINT timer_number)
-{
-
-    // 経過時間をリセット
-    d_elapsed_count_s = 0;
-
-    // 物理タイマーを起動
-    StartPhysicalTimer(timer_number, d_timer_limit, TA_CYC_PTMR);
-}
-
-LOCAL UW stop_timer(UINT timer_number)
-{
-    StopPhysicalTimer(timer_number);
-    return d_elapsed_count_s;
-}
-
-LOCAL INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
-    UB delay_until_departure_s = 0;
-    Element *pointer = order_list->head;
-
-    while (pointer != order_list->tail && pointer != NULL) {
-        delay_until_departure_s += get_order_duration(pointer->data);
-        pointer = pointer->next;
-    }
-
-    return delay_until_departure_s;
-}
-
-LOCAL void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
-    UH current_list_count = list_length(order_list);
-
-    if (!d_request_sent_flag && current_list_count <= 4) {
-        // リクエストを送信
-        INT departure_delay_s = calculate_departure_delay_s(order_list);
-        reserve_order(order_list, departure_delay_s);
-
-        // フラグを設定し、リスト個数を保存
-        d_request_sent_flag = TRUE;
-        d_last_request_list_count = current_list_count;
-    } else if (d_request_sent_flag) {
-        // リスト個数が増加したかチェック
-        if (current_list_count > d_last_request_list_count) {
-            // リスト個数が増加したのでフラグをリセット
-            d_request_sent_flag = FALSE;
-        }
-    }
-}
-
-// 交差点かどうかを判定する関数
-LOCAL BOOL is_intersection() {
-    return read_line_state(MAQUEEN_LINE_SENSOR_L2) || read_line_state(MAQUEEN_LINE_SENSOR_R2);
-}
-
-// ライントラッキングを行う関数
-LOCAL void line_tracking() {
-    //start_timer();
-    while (!is_intersection()) {
+    while (1) {
         BOOL right = read_line_state(MAQUEEN_LINE_SENSOR_R1);
         BOOL left = read_line_state(MAQUEEN_LINE_SENSOR_L1);
         BOOL middle = read_line_state(MAQUEEN_LINE_SENSOR_M);
+        BOOL on_intersection = is_intersection();
 
-        // センサーの状態に応じてモーターを制御
+        // 現在の時間を取得
+        GetPhysicalTimerCount(timer_number, &current_time_count);
+        UW elapsed_time = current_time_count / (d_timer_clock_mhz * 1000);  // ミリ秒単位に変換
+
+        // 指定された時間を超えた場合、トラッキングを終了
+        if (elapsed_time >= duration_s * 1000) {
+            DEBUG_LOG("execute next order\n");
+            control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, D_STOP);
+            return;
+        }
+
+        // 交差点を離れた瞬間にフラグを1にする
+        if (!on_intersection && flag == 0) {
+            flag = 1;
+            DEBUG_LOG("Left intersection, flag set to 1\n");
+        }
+
+        // フラグが1かつ交差点を検知したら、トラッキングを終了
+        if (flag == 1 && on_intersection) {
+            DEBUG_LOG("Reached next intersection, stopping tracking\n");
+            control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, D_STOP);
+            return;
+        }
+
+        // ライン追跡のロジック（常に実行）
         if (middle) {
             control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
         } else if (right) {
@@ -128,16 +85,17 @@ LOCAL void line_tracking() {
             control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
         }
 
-		tk_slp_tsk(D_DETECTION_INTERVAL);  // ms待機
+        tk_slp_tsk(D_DETECTION_INTERVAL);  // ms待機
     }
 }
-
 // 右折する関数
-LOCAL void turn_right() {
+void turn_right() {
     DEBUG_LOG("Start Right Turn\n");
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
     control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_BACKWARD, D_BACKWARD_SPEED);
+
+
 
     BOOL complete_firststep = FALSE;//右折開始後、L1MR1がラインを離れたらTrue
     while (TRUE) {
@@ -165,7 +123,7 @@ LOCAL void turn_right() {
 }
 
 // 左折関数
-LOCAL void turn_left() {
+void turn_left() {
     DEBUG_LOG("Start Right Turn\n");
 
     control_motor(LEFT_MOTOR, MAQUEEN_MOVE_BACKWARD, D_BACKWARD_SPEED);
@@ -194,16 +152,19 @@ LOCAL void turn_left() {
     }
 }
 
-LOCAL void follow_path(Order order,INT timer_number) {
-    UINT duration_s = get_order_duration(order);
-    UINT actual_duration_ms = 0;
+void follow_path(Order order,INT timer_number) {
 
-    start_timer(timer_number);
+    UINT duration_s = get_order_duration(order);
+    UINT actual_duration_count=0;
+    UINT actual_duration_ms = 0;
+    
+
+    StartPhysicalTimer(timer_number, d_timer_limit, TA_CYC_PTMR);
 
     if(is_forward(order)){
         clear_led();
         show_strait();
-        line_tracking();
+        line_tracking(timer_number, duration_s);
     }
     else if(is_left(order)){
         clear_led();
@@ -216,8 +177,9 @@ LOCAL void follow_path(Order order,INT timer_number) {
         turn_right();
     }
 
-    actual_duration_ms = stop_timer(timer_number);
-    
+    GetPhysicalTimerCount(timer_number, &actual_duration_count);
+    actual_duration_ms = actual_duration_count /(d_timer_clock_mhz*1000);
+        //DEBUG_LOG("(Required Time: %d ms)\n", actual_duration_ms);
     // 指定された時間まで待機
     if (actual_duration_ms< duration_s * 1000) {  // durationは秒単位
         DEBUG_LOG("(Required Time: %d ms)\n", actual_duration_ms);
@@ -225,30 +187,35 @@ LOCAL void follow_path(Order order,INT timer_number) {
         
         stop_all_motor();
         tk_slp_tsk(duration_s * 1000 - actual_duration_ms);
+        
     }
 }
 
-EXPORT void start_drive(UINT timer_number) {
-    List* order_list = list_init();//経路を保存するリストの作成
 
-    initialize_timer(timer_number);//タイマの初期化
+void start_drive(UINT timer_number) {
+    List* order_list=list_init();//経路を保存するリストの作成
+
+    
     maqueen_init();//maqueenの初期化
 
-    UINT departure_ms = request_departure_time_ms();//待機時間受け取り
-    tm_printf("Departure Time: %d\n", departure_ms);
+    UINT departure_ms=request_departure_time_ms();//待機時間受け取り
+    DEBUG_LOG("Departure Time: %d\n", departure_ms);
 
     UINT departure_s = departure_ms / 1000;
     reserve_order(order_list,departure_s);//listをグローバル変数にするとともに、送信タスクを起動
 
-    tk_slp_tsk(departure_ms);//侵入可能時間まで待機
-
     // 進入用の指示を追加
     UB* order = (UB*)Kmalloc(sizeof(UB));
-    *order = (MOVE_FORWARD << ORDER_BIT_SHIFT) | GRID_MOVE_TIME;  // 2秒前進
+    *order = 0b10000010;  // 2秒前進
     list_unshift(order_list, order);
+   
+
+    tk_slp_tsk(departure_ms);//侵入可能時間まで待機
+
 
     while(TRUE){
         if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
+            INT departure_delay_s= calculate_departure_delay_s(order_list);
             process_orders(order_list);
         }
 
@@ -261,3 +228,34 @@ EXPORT void start_drive(UINT timer_number) {
     }
 }
 
+INT calculate_departure_delay_s(List *order_list) { //リストにある経路の所要時間を計算
+    UB delay_until_departure_s = 0;
+    Element *pointer = order_list->head;
+
+    while (pointer != order_list->tail && pointer != NULL) {
+        delay_until_departure_s += get_order_duration(*(Order*)pointer->data);
+        pointer = pointer->next;
+    }
+
+    return delay_until_departure_s;
+}
+
+void process_orders(List *order_list) { //リクエスト後反映されるまでにリクエストを行わないようにする
+    UH current_list_count = list_length(order_list);
+
+    if (!d_request_sent_flag) {
+        // リクエストを送信
+        INT departure_delay_s = calculate_departure_delay_s(order_list);
+        reserve_order(order_list, departure_delay_s);
+
+        // フラグを設定し、リスト個数を保存
+        d_request_sent_flag = TRUE;
+        d_last_request_list_count = current_list_count;
+    } else if (d_request_sent_flag) {
+        // リスト個数が増加したかチェック
+        if (current_list_count > d_last_request_list_count) {
+            // リスト個数が増加したのでフラグをリセット
+            d_request_sent_flag = FALSE;
+        }
+    }
+}
