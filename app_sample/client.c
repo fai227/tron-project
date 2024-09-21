@@ -1,4 +1,5 @@
 #include <tk/tkernel.h>
+#include <tm/tmonitor.h>
 
 #include "client.h"
 #include "order.h"
@@ -108,13 +109,19 @@ LOCAL void receive_interrupt_handler(UINT interrupt_number) {
             break;
         }
 
+        // 一つ前のパケットと同じ場合は，リスト最後の指示の時間を追加
+        if(i > 0 && packet[i] == packet[i - 1]) {
+            // 最後の指示を取得
+            UB* order = list_get(order_list_global, list_length(order_list_global) - 1);
+            *order = *order + get_order_duration(packet[i]);
+            continue;
+        }
+
         // 次の指示を追加
         UB* order = (UB*)Kmalloc(sizeof(UB));
         *order = packet[i];
         list_append(order_list_global, order);
-    }
-
-    
+    }    
 
     tm_printf("Order Appeded\n");
     tm_printf("Current Order Length: %d\n", list_length(order_list_global));
