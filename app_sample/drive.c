@@ -201,12 +201,12 @@ LOCAL void follow_path(Order order,INT timer_number) {
     }
     else if(is_left(order)){
         clear_led();
-        show_left();
+        show_right();  // 前から見て左になるように逆向きを表示
         turn_left();
     }
     else if(is_right(order)){
         clear_led();
-        show_right();
+        show_left(); // 前から見て右になるように逆向きを表示
         turn_right();
     }
 
