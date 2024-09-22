@@ -43,7 +43,11 @@ EXPORT ER control_motor(B motor, UB direction, UB speed);
 EXPORT ER stop_all_motor(void);
 EXPORT ER control_led(B led, BOOL state);
 EXPORT ER turn_off_all_led(void);
+
+//ライン上かどうかを返す
 EXPORT BOOL read_line_state(B line);
+
+//センサーの値を0（黒）から255（白）の範囲の値で取得する
 EXPORT UB read_line_value(B ch, B line);
 
 
