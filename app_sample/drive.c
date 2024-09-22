@@ -190,8 +190,8 @@ LOCAL void turn_left() {
 
 LOCAL void follow_path(Order order,INT timer_number) {
     UINT duration_s = get_order_duration(order);
-    UINT actual_duration_count=0;
-    UINT actual_duration_ms = 0;
+    UW actual_duration_count=0;
+    UW actual_duration_ms = 0;
 
     StartPhysicalTimer(timer_number, d_timer_limit, TA_CYC_PTMR);
     if(is_forward(order)){
