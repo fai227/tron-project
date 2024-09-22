@@ -100,28 +100,25 @@ https://github.com/fai227/tron-project
    - サーバーと通信して，指示リストに予約内容を追加する関数．
 
 ### drive.c
-移動やラインセンサーを使った交差点の検知など，Maqueen の運転に関する機能を実装した．  
-1. read\_timer\_value
-   - タイマーの現在値を読み取る関数．タイマーの値を取得することで，走行時間の計測が可能になる．  
-2. initialize_timer
-   - タイマーの初期化，設定を行う関数．  
-3. start\_timer
-   - 高周波クロックを開始し，タイマーを設定・クリアして，タイマーを開始する関数．この関数を使ってMaqueen Plusの動作時間を測定する準備する．  
-4. stop\_timer
-   - タイマーを停止し，経過した時間を返す関数．ミリ秒（ms）に変換して返す．  
-5. is\_intersection
+移動やラインセンサーを使った交差点の検知など，Maqueen の運転に関する機能を実装した．
+
+1. calculate\_departure\_delay\_s
+   - 現在残っている指示すべての所要時間の合計を計算する関数． 
+2. process\_orders
+   - 残りの指示が一定以下になると，reserve_orderを呼び出す．
+3. is\_intersection
    - Maqueen のライントラッキングセンサーを使って，現在位置が交差点かどうかを検知する関数．
    - この関数は，MaqueenのL2やR2センサの状態を確認し，交差点に到達したかを判定する．  
-6. turn\_left， turn\_right
+4. line\_tracking
+   - ライントラッキングを行い，常にラインの追跡を行う関数．
+5. turn\_right， turn\_left
    - 左折および右折のための関数．モーターの制御を行い，Maqueenが指定された方向に転回するように制御する．交差点での転回動作が完了した後，タイマーで測定した時間を使って，残りの時間を調整する．  
-7. follow\_path
+6. follow\_path
    - Maqueen が指示を実行する関数．直進ではline\_tracking（黒い線に沿った走行）を行い，交差点に到達すると，継続時間まで待機する．右左折では，turn_right，turn_leftの関数を呼び，継続時間まで待機する．
-8. start\_drive
+7. start\_drive
    - この関数は，Maqueenの走行を開始する関数．サーバーから出発時間を取得し，先に経路の予約を行い，待機する．ループの中で，follow_pathの呼び出しと新しい経路の予約，そして実行済みの指示の削除を行う．  
-9. calculate_departure_delay_s
-   - 現在残っている指示すべての所要時間の合計を計算する関数．  
-10. process_orders
-    - 残りの指示が一定以下になると，reserve_orderを呼び出す．
+ 
+
 
 ### iic.c
 I2CによるMaqueenなどの外部デバイスとの通信を実装しており，デバイスとの通信を円滑に行うためのインターフェースを提供する．
