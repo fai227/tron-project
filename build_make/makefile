@@ -16,6 +16,9 @@ RM := rm -rf
 
 INCPATH = -I"../include" -I"../config" -I"../kernel/knlinc"
 
+#ヘッダーのインクルードを追加
+INCPATH += -I"../CAV/header"
+
 -include sources.mk
 
 include mtkernel_3/lib/libtm/subdir.mk
@@ -44,7 +47,7 @@ ifeq ($(TARGET), _MICROBIT_)
 include microbit.mk
 endif
 
-APP = app_sample
+APP = CAV
 -include mtkernel_3/$(firstword $(subst /, ,$(APP)))/subdir.mk
 
 ifneq ($(MAKECMDGOALS),clean)
