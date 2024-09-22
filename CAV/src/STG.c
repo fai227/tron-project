@@ -195,8 +195,8 @@ LOCAL List* get_valid_moves(Node* current_node, Position target_position, UB veh
         // 開始位置と終了位置の両方で予約可能な場合のみ採用
         if(
             check_grid(current_node->h_departure_time, candidate->h_departure_time, current_node->position, vehicle_id)
-            &&
-            check_grid(current_node->h_departure_time, candidate->h_departure_time, candidate->position, vehicle_id)
+            // &&
+            // check_grid(current_node->h_departure_time, candidate->h_departure_time, candidate->position, vehicle_id)
         ) {
             list_append(valid_moves, candidate);
         } else {
@@ -296,20 +296,25 @@ LOCAL Node* find_path(Position start_position, Position target_position, UW depa
     tm_printf("Start   : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
     tm_printf("Target  : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
     tm_printf("--------------------------------------\n");
+
+    for(int i = 0; i < closed_size; i++) {
+        tm_printf("(%d, %d) not possible at %d\n", POS_X(closed_list[i]->position), POS_Y(closed_list[i]->position), closed_list[i]->h_departure_time);
+    }
 #endif
 }
 
 
 LOCAL void stg_handler() {
+    server_time++;
+
     // 古いデータを削除
     for(UH x = 0; x < GRID_SIZE; x++) {
         for(UH y = 0; y < GRID_SIZE; y++) {
-            stg_set_grid(server_time, POS(x, y), GRID_EMPTY);
+            stg_set_grid(server_time - 1, POS(x, y), GRID_EMPTY);
         }
     }
 
     // サーバー時間を進める
-    server_time++;
 #if STG_VERBOSE
     tm_printf("Server Time: %d\n", server_time);
 #endif
@@ -375,7 +380,7 @@ EXPORT void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB dela
         // 時空間グリッド予約
         for(UW i = previous_node->h_departure_time; i <= next_node->h_departure_time; i++) {
             stg_set_grid(i, previous_node->position, vehicle_id);
-            stg_set_grid(i, next_node->position, vehicle_id);
+            // stg_set_grid(i, next_node->position, vehicle_id);
         }
 
         // 指示変換
@@ -442,12 +447,13 @@ EXPORT UW stg_get_delay_until_departure(UB vehicle_id) {
                 tm_printf("It's Open Until: %d\n", delay_until_departure + server_time);
 #endif
                 // 1秒だけそのグリッドを予約
-                stg_set_grid(server_time + previous_delay_until_departure + 2, POS(0, 0), vehicle_id);
+                // stg_set_grid(server_time + previous_delay_until_departure + 2, POS(0, 0), vehicle_id);
                 return previous_delay_until_departure + 2;
             }
         }
         else {
             interval = 1;
+            return delay_until_departure;
         }
         delay_until_departure++;
     }

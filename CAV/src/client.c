@@ -228,13 +228,13 @@ EXPORT void reserve_order(List* order_list, UB delay_until_departure) {
     order_list_global = order_list;
 
     // 移動先を決定
-    if(current_target == POS(0, 0)) {
+    if(current_target == POS(4, 0)) {
         previous_target = current_target;
-        current_target = POS(4, 4);
+        current_target = POS(0, 4);
     }
     else {
         previous_target = current_target;
-        current_target = POS(0, 0);
+        current_target = POS(4, 0);
     }
 
     // パケットに反映

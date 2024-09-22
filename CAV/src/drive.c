@@ -10,7 +10,7 @@
 
 // 各区間の目標走行時間（ミリ秒）
 #define D_TARGET_INTERVAL 2000
-#define D_FORWARD_SPEED 45//辰己号　35 その他　45
+#define D_FORWARD_SPEED 60//辰己号　35 その他　45
 #define D_FORWARD_SLOW_SPPED 20//辰己号　0　その他 20
 #define D_BACKWARD_SPEED 25
 #define D_STOP 0
@@ -218,6 +218,7 @@ LOCAL void follow_path(Order order,INT timer_number) {
 
     GetPhysicalTimerCount(timer_number, &actual_duration_count);
     actual_duration_ms = actual_duration_count /(d_timer_clock_mhz*1000);
+    actual_duration_ms += (actual_duration_ms >> 4);
     
     // 指定された時間まで待機
     if (actual_duration_ms< duration_s * 1000) {  // durationは秒単位
@@ -225,7 +226,7 @@ LOCAL void follow_path(Order order,INT timer_number) {
         DEBUG_LOG("Addtional waiting time: %d ms\n", duration_s * 1000 - actual_duration_ms);
         
         stop_all_motor();
-        tk_slp_tsk(duration_s * 1000 - actual_duration_ms);
+        tk_dly_tsk(duration_s * 1000 - actual_duration_ms);
     }
 }
 
