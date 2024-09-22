@@ -81,7 +81,7 @@ LOCAL BOOL is_intersection() {
 LOCAL void line_tracking(INT timer_number, UINT duration_s) {
     INT flag = 0;  // 0: 初期状態または交差点上, 1: 交差点を離れた後
     UW current_time_count=0;
-     while (1) {
+     while (TRUE) {
         BOOL right = read_line_state(MAQUEEN_LINE_SENSOR_R1);
         BOOL left = read_line_state(MAQUEEN_LINE_SENSOR_L1);
         BOOL middle = read_line_state(MAQUEEN_LINE_SENSOR_M);
