@@ -70,7 +70,7 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
                 UB vehicle_id = ++current_id;
 
                 // 侵入可能時間
-                UB possible_departure_time = stg_get_departure_time();
+                UB possible_departure_time = stg_get_delay_until_departure(current_id);
 
                 // パケットに反映
                 packet[0] = vehicle_id;
@@ -79,12 +79,12 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
             // グリッド予約
             else {
                 UB vehicle_id = address;
-                UH departure_time = packet[0];
+                UH delay_until_departure = packet[0];
                 UB start_position = packet[1];
                 UB goal_position = packet[2];
 
                 // パケットに反映
-                stg_reserve(packet, 32, vehicle_id, departure_time, start_position, goal_position);
+                stg_reserve(packet, 32, vehicle_id, delay_until_departure, start_position, goal_position);
 #if SERVER_DEBUG
                 print_packet();
 #endif

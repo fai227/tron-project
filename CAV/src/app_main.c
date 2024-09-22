@@ -1,6 +1,6 @@
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
-
+#include "drive.h"
 #include "server.h"
 #include "client.h"
 #include "list.h"
@@ -101,7 +101,23 @@ LOCAL void test_main() {
 
 				tk_slp_tsk(100);
 			}
+			break;
 		}
+
+		case 3: {
+			maqueen_init();
+
+			control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
+            control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, D_STOP);
+
+			tk_slp_tsk(2000);
+
+			stop_all_motor();
+
+			break;
+		}
+
+
 	}
 }
 

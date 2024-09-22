@@ -291,9 +291,10 @@ LOCAL Node* find_path(Position start_position, Position target_position, UW depa
     // ゴールに到達できなかった場合
 #if STG_VERBOSE
     tm_printf("\n---------- No path found!!! ----------\n");
+    tm_printf("Time    : %d\n", departure_time);
     tm_printf("Vehicle : %d\n", vehicle_id);
-    tm_printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
-    tm_printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
+    tm_printf("Start   : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
+    tm_printf("Target  : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
     tm_printf("--------------------------------------\n");
 #endif
 }
@@ -411,28 +412,52 @@ EXPORT void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB dela
     // 予約内容を表示
     tm_printf("\n---------- Reservation ----------\n");
     tm_printf("Time   : %d\n", departure_time);
+    tm_printf("ID:    : %d\n", vehicle_id);
     tm_printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
     tm_printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
     tm_printf("---------------------------------\n");
 #endif
 }
 
-EXPORT UW stg_get_departure_time() {
+EXPORT UW stg_get_delay_until_departure(UB vehicle_id) {
     // (0, 0)に侵入可能時間を計算（1秒はずらす）
     UW delay_until_departure = 1;
+
+    UW previous_delay_until_departure = delay_until_departure;
+    UW interval = 1;
+
     while(TRUE) {
         if(stg_get_grid(delay_until_departure + server_time, POS(0, 0)) == GRID_EMPTY) {
-            return delay_until_departure;
+            // 8秒以上空いてるかチェック
+            if(interval < 8) {
+                // 初めて空いているところを見つけたら保存
+                if(interval == 1) {
+                    previous_delay_until_departure = delay_until_departure;
+                }
+                interval++;
+            }
+            else {
+#if STG_VERBOSE
+                tm_printf("Possible Departure Time: %d\n", previous_delay_until_departure + server_time);
+                tm_printf("It's Open Until: %d\n", delay_until_departure + server_time);
+#endif
+                // 1秒だけそのグリッドを予約
+                stg_set_grid(server_time + previous_delay_until_departure + 2, POS(0, 0), vehicle_id);
+                return previous_delay_until_departure + 2;
+            }
+        }
+        else {
+            interval = 1;
         }
         delay_until_departure++;
     }
 }
 
-LOCAL UB stg_get_grid(UW time, Position Position) {
-    return spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH];
+LOCAL UB stg_get_grid(UW time, Position position) {
+    return spatio_temporal_grid[POS_Y(position)][POS_X(position)][time % STG_BUFFER_LENGTH];
 }
 
-LOCAL void stg_set_grid(UW time, Position Position, UB value) {
-    spatio_temporal_grid[POS_Y(Position)][POS_X(Position)][time % STG_BUFFER_LENGTH] = value;
+LOCAL void stg_set_grid(UW time, Position position, UB value) {
+    spatio_temporal_grid[POS_Y(position)][POS_X(position)][time % STG_BUFFER_LENGTH] = value;
 }
 

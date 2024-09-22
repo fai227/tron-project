@@ -9,6 +9,8 @@
 
 #define CLIENT_DEBUG 0
 
+#define RETRY_TIME 10
+
 IMPORT UB packet[32];
 
 List* order_list_global;
@@ -61,8 +63,8 @@ EXPORT UINT request_departure_time_ms() {
         // 受信
         out_w(RADIO(EVENTS_END), 0);
         out_w(RADIO(TASKS_START), 1);
-        // 1秒待機
-        tk_slp_tsk(1000);
+        // 0.1秒待機
+        tk_slp_tsk(RETRY_TIME);
         if(in_w(RADIO(EVENTS_END))) {
             out_w(RADIO(EVENTS_END), 0);
             break;
@@ -211,7 +213,8 @@ LOCAL void transfer_task(INT stacd, void *exinf) {
 #if CLIENT_DEBUG
         tm_printf("RX Start\n");
 #endif
-        tk_slp_tsk(1000);
+        // 0.1秒待機
+        tk_slp_tsk(RETRY_TIME);
         DisableInt(receive_interrupt_number);
 #if CLIENT_DEBUG
         tm_printf("Could not receive, Trying again...\n");
