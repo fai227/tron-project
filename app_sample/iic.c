@@ -333,7 +333,7 @@ EXPORT ER iic_write(W ch, INT adr, INT reg, UB dat ) /*チャンネル追加*/
 
 	err = iic_transfer(ch, c, sizeof(c) / sizeof(UH), &n);
 
-#if VERBOSE
+#if IIC_VERBOSE
 	tm_printf("iic_write 0x%02x 0x%02x <- 0x%02x : n=%d err=%d\n",
 		  adr, reg, dat, n, err);
 #endif
@@ -361,7 +361,7 @@ EXPORT INT iic_read(W ch, INT adr, INT reg ) /*チャンネル追加*/
 
 	dat = c[3] & 0xff;
 
-#if VERBOSE
+#if IIC_VERBOSE
 	tm_printf("iic_read 0x%02x 0x%02x -> 0x%02x : n=%d err=%d\n",
 		  adr, reg, dat, n, err);
 #endif

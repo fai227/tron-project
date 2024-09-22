@@ -18,7 +18,9 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
 
     // イベント判定
     if(in_w(RADIO(EVENTS_DISABLED))) {
+#if SERVER_DEBUG
         tm_printf("INTERRUPT DISABLED\n");
+#endif
         
         // イベントクリア
         out_w(RADIO(EVENTS_DISABLED), 0);
@@ -27,7 +29,9 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
         out_w(RADIO(TASKS_RXEN), 1);        
     }
     else if(in_w(RADIO(EVENTS_END))) {
+#if SERVER_DEBUG
         tm_printf("INTERRUPT END\n");
+#endif
         
         // イベントクリア
         out_w(RADIO(EVENTS_END), 0);
@@ -43,14 +47,18 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
         }
     }
     else if(in_w(RADIO(EVENTS_READY))) {
+#if SERVER_DEBUG
         tm_printf("INTERRUPT READY\n");
+#endif
 
         // イベントクリア
         out_w(RADIO(EVENTS_READY), 0);
 
         // RX・TX判定
         if(in_w(RADIO(STATE)) == 2) {  // RXIDLE
+#if SERVER_DEBUG
             tm_printf("Start Waiting for Receiving Data\n");
+#endif
         }
         else if (in_w(RADIO(STATE)) == 10) {  // TXIDLE
             // 直前の通信の論理アドレスを取得
@@ -77,7 +85,9 @@ LOCAL void radio_interrupt_handler(UINT interrupt_number)
 
                 // パケットに反映
                 stg_reserve(packet, 32, vehicle_id, departure_time, start_position, goal_position);
+#if SERVER_DEBUG
                 print_packet();
+#endif
             }
         }
 

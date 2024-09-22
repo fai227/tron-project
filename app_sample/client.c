@@ -7,6 +7,8 @@
 #include "radio.h"
 #include "STG.h"
 
+#define CLIENT_DEBUG 0
+
 IMPORT UB packet[32];
 
 List* order_list_global;
@@ -70,8 +72,10 @@ EXPORT UINT request_departure_time_ms() {
     // 論理アドレスをパケットの1番目に設定
     out_b(RADIO(TXADDRESS), packet[0]);
 
+#if CLIENT_DEBUG
     // ID表示
     tm_printf("ID: %d\n", packet[0]);
+#endif
 
     // パケットの2番目をmsに変換して返す      
     return packet[1] * 1000;
@@ -94,7 +98,10 @@ LOCAL void receive_interrupt_handler(UINT interrupt_number) {
 
     out_w(RADIO(EVENTS_END), 0);
     out_w(RADIO(TASKS_DISABLE), 1);
+
+#if CLIENT_DEBUG
     tm_printf("Received\n");
+#endif
 
     // 送信タスク終了
     tk_ter_tsk(transfer_task_id);
@@ -113,7 +120,10 @@ LOCAL void receive_interrupt_handler(UINT interrupt_number) {
         Order* last_order = (Order*)list_get_last(order_list_global);
         if(list_length(order_list_global) > 0 && *last_order == packet[i]) {
             *last_order = packet[i] + get_order_duration(packet[i]);
+
+#if CLIENT_DEBUG
             tm_printf("Same Order\n");
+#endif
             continue;
         }
 
@@ -123,10 +133,12 @@ LOCAL void receive_interrupt_handler(UINT interrupt_number) {
         list_append(order_list_global, order);
     }    
 
+#if CLIENT_DEBUG
     tm_printf("Order Appeded\n");
     tm_printf("Current Order Length: %d\n", list_length(order_list_global));
 
     print_packet();
+#endif
 }
 
 LOCAL void transfer_task(INT stacd, void *exinf) {
@@ -142,40 +154,53 @@ LOCAL void transfer_task(INT stacd, void *exinf) {
     );
     
     // 割込でタスクが終了するまで繰り返し
+#if CLIENT_DEBUG
     tm_printf("Waiting for Interrupt\n");
+#endif
+
     while(TRUE) {
         // 無効化
         out_w(RADIO(EVENTS_DISABLED), 0);
         out_w(RADIO(TASKS_DISABLE), 1);
+#if CLIENT_DEBUG
         tm_printf("Disabled\n");
+#endif
         while(!in_w(RADIO(EVENTS_DISABLED)));
         out_w(RADIO(EVENTS_DISABLED), 0);
 
         // 送信準備待機
         out_w(RADIO(EVENTS_READY), 0);
         out_w(RADIO(TASKS_TXEN), 1);
+#if CLIENT_DEBUG
         tm_printf("TX Ready\n");
+#endif
         while(!in_w(RADIO(EVENTS_READY)));
         out_w(RADIO(EVENTS_READY), 0);
 
         // 送信
         out_w(RADIO(EVENTS_END), 0);
         out_w(RADIO(TASKS_START), 1);
+#if CLIENT_DEBUG
         tm_printf("TX Start\n");
+#endif
         while(!in_w(RADIO(EVENTS_END)));
         out_w(RADIO(EVENTS_END), 0);
 
         // 無効化
         out_w(RADIO(EVENTS_DISABLED), 0);
         out_w(RADIO(TASKS_DISABLE), 1);
+#if CLIENT_DEBUG
         tm_printf("Disabled\n");
+#endif
         while(!in_w(RADIO(EVENTS_DISABLED)));
         out_w(RADIO(EVENTS_DISABLED), 0);
 
         // 受信準備待機
         out_w(RADIO(EVENTS_READY), 0);
         out_w(RADIO(TASKS_RXEN), 1);
+#if CLIENT_DEBUG
         tm_printf("RX Ready\n");
+#endif
         while(!in_w(RADIO(EVENTS_READY)));
         out_w(RADIO(EVENTS_READY), 0);
 
@@ -183,10 +208,14 @@ LOCAL void transfer_task(INT stacd, void *exinf) {
         out_w(RADIO(EVENTS_END), 0);
         out_w(RADIO(TASKS_START), 1);
         EnableInt(receive_interrupt_number, 1);
+#if CLIENT_DEBUG
         tm_printf("RX Start\n");
+#endif
         tk_slp_tsk(1000);
         DisableInt(receive_interrupt_number);
+#if CLIENT_DEBUG
         tm_printf("Could not receive, Trying again...\n");
+#endif
     }   
 }
 

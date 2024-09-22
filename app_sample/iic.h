@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-#define	VERBOSE		0	/* デバッグ用メッセージ 1:あり 0:なし */
+#define	IIC_VERBOSE		0	/* デバッグ用メッセージ 1:あり 0:なし */
 #define	I2C_CH		0	/* I2C チャンネル (micro:bitのI2C_INT用) */
 
 #define	WR(da)		(((da) << 1) | 0)

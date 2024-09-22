@@ -287,11 +287,13 @@ LOCAL Node* find_path(Position start_position, Position target_position, UW depa
     }
 
     // ゴールに到達できなかった場合
+#if STG_VERBOSE
     tm_printf("\n---------- No path found!!! ----------\n");
     tm_printf("Vehicle : %d\n", vehicle_id);
     tm_printf("Start  : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
     tm_printf("Target : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
     tm_printf("--------------------------------------\n");
+#endif
 }
 
 
@@ -305,7 +307,9 @@ LOCAL void stg_handler() {
 
     // サーバー時間を進める
     server_time++;
+#if STG_VERBOSE
     tm_printf("Server Time: %d\n", server_time);
+#endif
 
     // グリッド状態を表示
     clear_led();
@@ -379,7 +383,7 @@ EXPORT void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB dela
             // 中央の場合は右折
             if(next_node->position == POS(2,3)) {
                 orders[order_index++] = (TURN_RIGHT << ORDER_BIT_SHIFT) | GRID_TURN_TIME;
-                tm_printf("(%d, %d)\n", POS_X(next_node->position), POS_Y(next_node->position));
+                // tm_printf("(%d, %d)\n", POS_X(next_node->position), POS_Y(next_node->position));
             }
             // それ以外は左折
             else {
