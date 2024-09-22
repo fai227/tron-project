@@ -10,8 +10,8 @@
 
 // 各区間の目標走行時間（ミリ秒）
 #define D_TARGET_INTERVAL 2000
-#define D_FORWARD_SPEED 35
-#define D_BACKWARD_SPEED 25
+#define D_FORWARD_SPEED 50
+#define D_BACKWARD_SPEED 35
 #define D_STOP 0
 
 #define D_DEFAULT_DELAY_TIME 0
@@ -57,6 +57,7 @@ LOCAL void process_orders(List *order_list) { //リクエスト後反映され�
 
     if (!d_request_sent_flag) {
         // リクエストを送信
+        DEBUG_LOG("呼びまーす\n");
         INT departure_delay_s = calculate_departure_delay_s(order_list);
         reserve_order(order_list, departure_delay_s);
 
@@ -65,10 +66,12 @@ LOCAL void process_orders(List *order_list) { //リクエスト後反映され�
         d_last_request_list_count = current_list_count;
     } else if (d_request_sent_flag) {
         // リスト個数が増加したかチェック
-        if (current_list_count > d_last_request_list_count) {
-            // リスト個数が増加したのでフラグをリセット
-            d_request_sent_flag = FALSE;
-        }
+        DEBUG_LOG("%d\n",current_list_count);
+        DEBUG_LOG("%d\n",d_last_request_list_count);
+        // if (current_list_count > d_last_request_list_count) {
+        //     // リスト個数が増加したのでフラグをリセット
+        //     d_request_sent_flag = FALSE;
+        // }
     }
 }
 
@@ -226,8 +229,8 @@ LOCAL void follow_path(Order order,INT timer_number) {
 EXPORT void start_drive(UINT timer_number) {
     List* order_list = list_init();//経路を保存するリストの作成
 
-
     maqueen_init();//maqueenの初期化
+    stop_all_motor();
 
     UINT departure_ms = request_departure_time_ms();//待機時間受け取り
     tm_printf("Departure Time: %d\n", departure_ms);
@@ -247,9 +250,13 @@ EXPORT void start_drive(UINT timer_number) {
     //tk_slp_tsk(departure_ms);//侵入可能時間まで待機
 
     while(TRUE){
-        if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
-            process_orders(order_list);
+        if (list_length(order_list) > d_last_request_list_count) {
+            // リスト個数が増加したのでフラグをリセット
+            d_request_sent_flag = FALSE;
         }
+            if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
+                process_orders(order_list);
+            }
 
         void *data=list_get(order_list,0);
         Order* order = (Order*)data;
