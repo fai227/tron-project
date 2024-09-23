@@ -10,12 +10,14 @@
 
 // 各区間の目標走行時間（ミリ秒）
 #define D_TARGET_INTERVAL 2000
-#define D_FORWARD_SPEED 35
+#define D_FORWARD_SPEED 60
+#define D_FORWARD_SLOW_SPPED 20
 #define D_BACKWARD_SPEED 25
 #define D_STOP 0
 
 #define D_DEFAULT_DELAY_TIME 0
-#define D_DETECTION_INTERVAL 50
+#define D_DETECTION_INTERVAL_TURN 10
+#define D_DETECTION_INTERVAL_TRACK 0
 
 //#define D_DRIVE_TIMER TIMER2_BASE
 
@@ -66,8 +68,8 @@ LOCAL void process_orders(List *order_list) { //リクエスト後反映され�
         d_last_request_list_count = current_list_count;
     } else if (d_request_sent_flag) {
         // リスト個数が増加したかチェック
-        DEBUG_LOG("%d\n",current_list_count);
-        DEBUG_LOG("%d\n",d_last_request_list_count);
+        // DEBUG_LOG("%d\n",current_list_count);
+        // DEBUG_LOG("%d\n",d_last_request_list_count);
         // if (current_list_count > d_last_request_list_count) {
         //     // リスト個数が増加したのでフラグをリセット
         //     d_request_sent_flag = FALSE;
@@ -119,13 +121,13 @@ LOCAL void line_tracking(INT timer_number, UINT duration_s) {
             control_motor(BOTH_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
         } else if (right) {
             control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
-            control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, D_STOP);
+            control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SLOW_SPPED);
         } else if (left) {
-            control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_STOP);
+            control_motor(LEFT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SLOW_SPPED);
             control_motor(RIGHT_MOTOR, MAQUEEN_MOVE_FORWARD, D_FORWARD_SPEED);
         }
 
-        tk_slp_tsk(D_DETECTION_INTERVAL);  // ms待機
+        tk_slp_tsk(D_DETECTION_INTERVAL_TRACK);  // ms待機
     }
 }
 
@@ -156,7 +158,7 @@ LOCAL void turn_right() {
             }
         }
 
-         tk_slp_tsk(D_DETECTION_INTERVAL);  // ms待機
+         tk_slp_tsk(D_DETECTION_INTERVAL_TURN);  // ms待機
     }
   
 }
@@ -183,12 +185,13 @@ LOCAL void turn_left() {
             if (read_line_state(MAQUEEN_LINE_SENSOR_M) &&
                 read_line_state(MAQUEEN_LINE_SENSOR_L1) &&
                 !read_line_state(MAQUEEN_LINE_SENSOR_R2)) {
-                DEBUG_LOG("New line found, stopping rotation\n");
+                //DEBUG_LOG("New line found, stopping rotation\n");
                 break;  // ループを抜けて回転を終了
             }
         }
-        tk_slp_tsk(D_DETECTION_INTERVAL);  // 10ms待機
+        tk_slp_tsk(D_DETECTION_INTERVAL_TURN);  // 10ms待機
     }
+    DEBUG_LOG("New line found, stopping rotation\n");
 }
 
 LOCAL void follow_path(Order order,INT timer_number) {
@@ -215,6 +218,7 @@ LOCAL void follow_path(Order order,INT timer_number) {
 
     GetPhysicalTimerCount(timer_number, &actual_duration_count);
     actual_duration_ms = actual_duration_count /(d_timer_clock_mhz*1000);
+    actual_duration_ms += (actual_duration_ms >> 4);
     
     // 指定された時間まで待機
     if (actual_duration_ms< duration_s * 1000) {  // durationは秒単位
@@ -254,9 +258,9 @@ EXPORT void start_drive(UINT timer_number) {
             // リスト個数が増加したのでフラグをリセット
             d_request_sent_flag = FALSE;
         }
-            if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
-                process_orders(order_list);
-            }
+        if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
+            process_orders(order_list);
+        }
 
         void *data=list_get(order_list,0);
         Order* order = (Order*)data;

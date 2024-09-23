@@ -1,3 +1,6 @@
+#ifndef DRIVE_H_
+#define DRIVE_H_
+
 #include <tm/tmonitor.h>
 #include <sys/sysdepend/cpu/nrf5/sysdef.h>
 #include "maqueen.h"
@@ -28,4 +31,4 @@
 
 EXPORT void start_drive(UINT timer_number);
 
-#endif /* __IIC_H__ */
+#endif /* DRIVE_H_ */

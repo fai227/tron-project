@@ -11,7 +11,7 @@ typedef UB Position;
 #define POS_Y(pos) (pos & 0x0F)
 
 #define GRID_SIZE 5
-#define STG_BUFFER_LENGTH 100
+#define STG_BUFFER_LENGTH 1000
 
 #define STG_VERBOSE 1
 
@@ -39,7 +39,7 @@ EXPORT void stg_reserve(Order *orders, UB max_order_size, UB vehicle_id, UB dela
 /*
  * (0, 0)に侵入可能時間を計算
  */
-EXPORT UW stg_get_departure_time();
+EXPORT UW stg_get_delay_until_departure(UB vehicle_id);
 
 /*
  * 時空間グリッドの読み取り
