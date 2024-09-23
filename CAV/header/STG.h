@@ -22,9 +22,9 @@ typedef UB Position;
 #define LEFT_PATH 0b0100
 #define RIGHT_PATH 0b1000
 
-#define GRID_MOVE_TIME 2
+#define GRID_MOVE_TIME 3
 #define GRID_WAIT_TIME 1
-#define GRID_TURN_TIME 3
+#define GRID_TURN_TIME 4
 
 /*
  * 時空間グリッドの初期化と立ち上げ
