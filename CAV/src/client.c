@@ -232,6 +232,10 @@ EXPORT void reserve_order(List* order_list, UB delay_until_departure) {
         previous_target = current_target;
         current_target = POS(0, 4);
     }
+    else if(current_target == POS(0, 4)) {
+        previous_target = current_target;
+        current_target = POS(4, 4);
+    }
     else {
         previous_target = current_target;
         current_target = POS(4, 0);
