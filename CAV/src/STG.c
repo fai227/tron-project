@@ -295,11 +295,10 @@ LOCAL Node* find_path(Position start_position, Position target_position, UW depa
     tm_printf("Vehicle : %d\n", vehicle_id);
     tm_printf("Start   : (%d, %d)\n", POS_X(start_position), POS_Y(start_position));
     tm_printf("Target  : (%d, %d)\n", POS_X(target_position), POS_Y(target_position));
-    tm_printf("--------------------------------------\n");
-
     for(int i = 0; i < closed_size; i++) {
         tm_printf("(%d, %d) not possible at %d\n", POS_X(closed_list[i]->position), POS_Y(closed_list[i]->position), closed_list[i]->h_departure_time);
     }
+    tm_printf("--------------------------------------\n");
 #endif
 }
 

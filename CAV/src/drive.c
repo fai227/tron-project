@@ -10,8 +10,8 @@
 
 // 各区間の目標走行時間（ミリ秒）
 #define D_TARGET_INTERVAL 2000
-#define D_FORWARD_SPEED 60//辰己号　35 その他　45
-#define D_FORWARD_SLOW_SPPED 20//辰己号　0　その他 20
+#define D_FORWARD_SPEED 60
+#define D_FORWARD_SLOW_SPPED 20
 #define D_BACKWARD_SPEED 25
 #define D_STOP 0
 
@@ -226,7 +226,7 @@ LOCAL void follow_path(Order order,INT timer_number) {
         DEBUG_LOG("Addtional waiting time: %d ms\n", duration_s * 1000 - actual_duration_ms);
         
         stop_all_motor();
-        tk_dly_tsk(duration_s * 1000 - actual_duration_ms);
+        tk_slp_tsk(duration_s * 1000 - actual_duration_ms);
     }
 }
 
