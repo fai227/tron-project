@@ -1,0 +1,129 @@
+microT-Kernel Version 3.00
+
+A:   Server
+B:   Vehicle
+A+B: Test
+Selected: Server
+Server Time: 1
+Server Time: 2
+Server Time: 3
+Server Time: 4
+Server Time: 5
+Server Time: 6
+Server Time: 7
+Server Time: 8
+Server Time: 9
+Server Time: 10
+Server Time: 11
+Possible Departure Time: 12
+It's Open Until: 19
+
+---------- Reservation ----------
+Time   : 14
+ID:    : 1
+Start  : (0, 0)
+Target : (4, 0)
+---------------------------------
+Server Time: 12
+Server Time: 13
+Server Time: 14
+Server Time: 15
+Server Time: 16
+Server Time: 17
+Server Time: 18
+Server Time: 19
+Server Time: 20
+Server Time: 21
+Server Time: 22
+Server Time: 23
+Server Time: 24
+Server Time: 25
+Server Time: 26
+Possible Departure Time: 27
+It's Open Until: 34
+
+---------- Reservation ----------
+Time   : 29
+ID:    : 2
+Start  : (0, 0)
+Target : (4, 0)
+---------------------------------
+Server Time: 27
+Server Time: 28
+Server Time: 29
+Server Time: 30
+Server Time: 31
+
+---------- Reservation ----------
+Time   : 38
+ID:    : 1
+Start  : (4, 0)
+Target : (0, 4)
+---------------------------------
+Server Time: 32
+Server Time: 33
+Server Time: 34
+Server Time: 35
+Server Time: 36
+Server Time: 37
+Server Time: 38
+Server Time: 39
+Server Time: 40
+Server Time: 41
+Server Time: 42
+Server Time: 43
+Server Time: 44
+Server Time: 45
+Server Time: 46
+Server Time: 47
+Server Time: 48
+Server Time: 49
+Server Time: 50
+Server Time: 51
+
+---------- Reservation ----------
+Time   : 59
+ID:    : 1
+Start  : (0, 4)
+Target : (4, 0)
+---------------------------------
+Server Time: 52
+Server Time: 53
+Server Time: 54
+Server Time: 55
+Server Time: 56
+Possible Departure Time: 57
+It's Open Until: 64
+
+---------- No path found!!! ----------
+Time    : 59
+Vehicle : 3
+Start   : (0, 0)
+Target  : (4, 0)
+(0, 0) not possible at 59
+(0, 1) not possible at 61
+(0, 2) not possible at 63
+(0, 3) not possible at 65
+(1, 2) not possible at 68
+(2, 2) not possible at 70
+(0, 4) not possible at 67
+(3, 2) not possible at 72
+(4, 2) not possible at 74
+(1, 4) not possible at 72
+(2, 3) not possible at 75
+(2, 4) not possible at 74
+(3, 4) not possible at 76
+(4, 4) not possible at 78
+(4, 3) not possible at 83
+--------------------------------------
+
+---------- Reservation ----------
+Time   : 59
+ID:    : 3
+Start  : (0, 0)
+Target : (4, 0)
+---------------------------------
+Server Time: 57
+Server Time: 58
+Server Time: 59
+*** Hard fault ***  ctxtsk:0  HFSR:40000000  CFSR:400
