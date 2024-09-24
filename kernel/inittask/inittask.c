@@ -125,6 +125,7 @@ LOCAL void init_task_main(void)
 #endif
 		if ( fin > 0 ) {
 			fin = usermain();	/* User Main Program */
+			tk_slp_tsk(TMO_FEVR);
 		}
 #if USE_USERINIT
 		/* Perform user defined finalization sequence */
