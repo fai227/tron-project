@@ -91,6 +91,28 @@ LOCAL void delDevCB( DevCB *devcb )
  * Device registration
  */
 SYSCALL ID tk_def_dev( CONST UB *devnm, CONST T_DDEV *pk_ddev, T_IDEV *pk_idev )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_def_dev( CONST UB *devnm, CONST T_DDEV *pk_ddev, T_IDEV *pk_idev );
+ID tk_def_dev( CONST UB *devnm, CONST T_DDEV *pk_ddev, T_IDEV *pk_idev )
+{
+	CONST W fncd = 0x80620300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, devnm, pk_ddev, pk_idev );
+	}
+	ID er = l_tk_def_dev( devnm, pk_ddev, pk_idev );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_def_dev( CONST UB *devnm, CONST T_DDEV *pk_ddev, T_IDEV *pk_idev )
+#endif /* USE_DBGSPT */
 {
 	DevCB	*devcb;
 	INT	len;
@@ -181,6 +203,28 @@ err_ret1:
  * Check device initial information
  */
 SYSCALL ER tk_ref_idv( T_IDEV *pk_idev )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_idv( T_IDEV *pk_idev );
+ER tk_ref_idv( T_IDEV *pk_idev )
+{
+	CONST W fncd = 0x80630100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_idev );
+	}
+	ER er = l_tk_ref_idv( pk_idev );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_idv( T_IDEV *pk_idev )
+#endif /* USE_DBGSPT */
 {
 	LockDM();
 	*pk_idev = knl_DefaultIDev;
@@ -252,6 +296,28 @@ LOCAL void logdevnm( UB *ldevnm, UB *pdevnm, INT unitno )
  * Get device name
  */
 SYSCALL ID tk_get_dev( ID devid, UB *devnm )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_get_dev( ID devid, UB *devnm );
+ID tk_get_dev( ID devid, UB *devnm )
+{
+	CONST W fncd = 0x805d0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, devid, devnm );
+	}
+	ID er = l_tk_get_dev( devid, devnm );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_get_dev( ID devid, UB *devnm )
+#endif /* USE_DBGSPT */
 {
 	DevCB	*devcb;
 	ER	ercd;
@@ -285,6 +351,28 @@ err_ret1:
  * Get device information
  */
 SYSCALL ID tk_ref_dev( CONST UB *devnm, T_RDEV *pk_rdev )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_ref_dev( CONST UB *devnm, T_RDEV *pk_rdev );
+ID tk_ref_dev( CONST UB *devnm, T_RDEV *pk_rdev )
+{
+	CONST W fncd = 0x805e0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, devnm, pk_rdev );
+	}
+	ID er = l_tk_ref_dev( devnm, pk_rdev );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_ref_dev( CONST UB *devnm, T_RDEV *pk_rdev )
+#endif /* USE_DBGSPT */
 {
 	UB	pdevnm[L_DEVNM + 1];
 	DevCB	*devcb;
@@ -321,6 +409,28 @@ err_ret2:
  * Get device information
  */
 SYSCALL ID tk_oref_dev( ID dd, T_RDEV *pk_rdev )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_oref_dev( ID dd, T_RDEV *pk_rdev );
+ID tk_oref_dev( ID dd, T_RDEV *pk_rdev )
+{
+	CONST W fncd = 0x805f0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, pk_rdev );
+	}
+	ID er = l_tk_oref_dev( dd, pk_rdev );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_oref_dev( ID dd, T_RDEV *pk_rdev )
+#endif /* USE_DBGSPT */
 {
 	OpnCB	*opncb;
 	DevCB	*devcb;
@@ -357,6 +467,28 @@ err_ret2:
  * Get registration device list
  */
 SYSCALL INT tk_lst_dev( T_LDEV *pk_ldev, INT start, INT ndev )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_lst_dev( T_LDEV *pk_ldev, INT start, INT ndev );
+INT tk_lst_dev( T_LDEV *pk_ldev, INT start, INT ndev )
+{
+	CONST W fncd = 0x80600300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_ldev, start, ndev );
+	}
+	INT er = l_tk_lst_dev( pk_ldev, start, ndev );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_lst_dev( T_LDEV *pk_ldev, INT start, INT ndev )
+#endif /* USE_DBGSPT */
 {
 	DevCB	*devcb;
 	QUEUE	*q;
@@ -402,6 +534,28 @@ err_ret:
  * Send driver request event
  */
 SYSCALL INT tk_evt_dev( ID devid, INT evttyp, void *evtinf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_evt_dev( ID devid, INT evttyp, void *evtinf );
+INT tk_evt_dev( ID devid, INT evttyp, void *evtinf )
+{
+	CONST W fncd = 0x80610300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, devid, evttyp, evtinf );
+	}
+	INT er = l_tk_evt_dev( devid, evttyp, evtinf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_evt_dev( ID devid, INT evttyp, void *evtinf )
+#endif /* USE_DBGSPT */
 {
 	DevCB	*devcb;
 	EVTFN	eventfn;

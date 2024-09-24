@@ -114,6 +114,28 @@ LOCAL void knl_mbf_wakeup( MBFCB *mbfcb )
  * Create message buffer
  */
 SYSCALL ID tk_cre_mbf( CONST T_CMBF *pk_cmbf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_mbf( CONST T_CMBF *pk_cmbf );
+ID tk_cre_mbf( CONST T_CMBF *pk_cmbf )
+{
+	CONST W fncd = 0x802b0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cmbf );
+	}
+	ID er = l_tk_cre_mbf( pk_cmbf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_mbf( CONST T_CMBF *pk_cmbf )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_MBFATR = {
@@ -209,6 +231,28 @@ SYSCALL ID tk_cre_mbf( CONST T_CMBF *pk_cmbf )
  * Delete message buffer
  */
 SYSCALL ER tk_del_mbf( ID mbfid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_mbf( ID mbfid );
+ER tk_del_mbf( ID mbfid )
+{
+	CONST W fncd = 0x802c0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbfid );
+	}
+	ER er = l_tk_del_mbf( mbfid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_mbf( ID mbfid )
+#endif /* USE_DBGSPT */
 {
 	MBFCB	*mbfcb;
 	VB	*msgbuf = NULL;
@@ -280,6 +324,28 @@ LOCAL CONST WSPEC knl_wspec_smbf_tpri  = { TTW_SMBF, knl_mbf_chg_pri,	knl_mbf_re
  * Send to message buffer
  */
 SYSCALL ER tk_snd_mbf( ID mbfid, CONST void *msg, INT msgsz, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_snd_mbf( ID mbfid, CONST void *msg, INT msgsz, TMO tmout );
+ER tk_snd_mbf( ID mbfid, CONST void *msg, INT msgsz, TMO tmout )
+{
+	CONST W fncd = 0x802d0400;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbfid, msg, msgsz, tmout );
+	}
+	ER er = l_tk_snd_mbf( mbfid, msg, msgsz, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_snd_mbf( ID mbfid, CONST void *msg, INT msgsz, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	MBFCB	*mbfcb;
 	TCB	*tcb;
@@ -378,6 +444,28 @@ LOCAL INT knl_mbf_to_msg( MBFCB *mbfcb, void *msg )
  * Receive from message buffer
  */
 SYSCALL INT tk_rcv_mbf( ID mbfid, void *msg, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_rcv_mbf( ID mbfid, void *msg, TMO tmout );
+INT tk_rcv_mbf( ID mbfid, void *msg, TMO tmout )
+{
+	CONST W fncd = 0x802e0300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbfid, msg, tmout );
+	}
+	INT er = l_tk_rcv_mbf( mbfid, msg, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_rcv_mbf( ID mbfid, void *msg, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	MBFCB	*mbfcb;
 	TCB	*tcb;
@@ -435,6 +523,28 @@ SYSCALL INT tk_rcv_mbf( ID mbfid, void *msg, TMO tmout )
  * Refer message buffer state
  */
 SYSCALL ER tk_ref_mbf( ID mbfid, T_RMBF *pk_rmbf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_mbf( ID mbfid, T_RMBF *pk_rmbf );
+ER tk_ref_mbf( ID mbfid, T_RMBF *pk_rmbf )
+{
+	CONST W fncd = 0x802f0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbfid, pk_rmbf );
+	}
+	ER er = l_tk_ref_mbf( mbfid, pk_rmbf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_mbf( ID mbfid, T_RMBF *pk_rmbf )
+#endif /* USE_DBGSPT */
 {
 	MBFCB	*mbfcb;
 	TCB	*tcb;

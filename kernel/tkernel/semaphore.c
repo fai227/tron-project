@@ -55,6 +55,28 @@ EXPORT ER knl_semaphore_initialize( void )
  * Create semaphore
  */
 SYSCALL ID tk_cre_sem( CONST T_CSEM *pk_csem )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_sem( CONST T_CSEM *pk_csem );
+ID tk_cre_sem( CONST T_CSEM *pk_csem )
+{
+	CONST W fncd = 0x80160100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_csem );
+	}
+	ID er = l_tk_cre_sem( pk_csem );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_sem( CONST T_CSEM *pk_csem )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_SEMATR = {
@@ -107,6 +129,28 @@ SYSCALL ID tk_cre_sem( CONST T_CSEM *pk_csem )
  * Delete semaphore
  */
 SYSCALL ER tk_del_sem( ID semid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_sem( ID semid );
+ER tk_del_sem( ID semid )
+{
+	CONST W fncd = 0x80170100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, semid );
+	}
+	ER er = l_tk_del_sem( semid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_sem( ID semid )
+#endif /* USE_DBGSPT */
 {
 	SEMCB	*semcb;
 	ER	ercd = E_OK;
@@ -136,6 +180,28 @@ SYSCALL ER tk_del_sem( ID semid )
  * Signal semaphore
  */
 SYSCALL ER tk_sig_sem( ID semid, INT cnt )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_sig_sem( ID semid, INT cnt );
+ER tk_sig_sem( ID semid, INT cnt )
+{
+	CONST W fncd = 0x80180200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, semid, cnt );
+	}
+	ER er = l_tk_sig_sem( semid, cnt );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_sig_sem( ID semid, INT cnt )
+#endif /* USE_DBGSPT */
 {
 	SEMCB	*semcb;
 	TCB	*tcb;
@@ -245,6 +311,28 @@ LOCAL CONST WSPEC knl_wspec_sem_tpri  = { TTW_SEM, sem_chg_pri, sem_rel_wai };
  * Wait on semaphore
  */
 SYSCALL ER tk_wai_sem( ID semid, INT cnt, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_wai_sem( ID semid, INT cnt, TMO tmout );
+ER tk_wai_sem( ID semid, INT cnt, TMO tmout )
+{
+	CONST W fncd = 0x80190300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, semid, cnt, tmout );
+	}
+	ER er = l_tk_wai_sem( semid, cnt, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_wai_sem( ID semid, INT cnt, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	SEMCB	*semcb;
 	ER	ercd = E_OK;
@@ -294,6 +382,28 @@ SYSCALL ER tk_wai_sem( ID semid, INT cnt, TMO tmout )
  * Refer semaphore state
  */
 SYSCALL ER tk_ref_sem( ID semid, T_RSEM *pk_rsem )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_sem( ID semid, T_RSEM *pk_rsem );
+ER tk_ref_sem( ID semid, T_RSEM *pk_rsem )
+{
+	CONST W fncd = 0x801a0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, semid, pk_rsem );
+	}
+	ER er = l_tk_ref_sem( semid, pk_rsem );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_sem( ID semid, T_RSEM *pk_rsem )
+#endif /* USE_DBGSPT */
 {
 	SEMCB	*semcb;
 	ER	ercd = E_OK;

@@ -57,6 +57,28 @@ EXPORT ER knl_fix_memorypool_initialize( void )
  * Create fixed size memory pool
  */
 SYSCALL ID tk_cre_mpf( CONST T_CMPF *pk_cmpf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_mpf( CONST T_CMPF *pk_cmpf );
+ID tk_cre_mpf( CONST T_CMPF *pk_cmpf )
+{
+	CONST W fncd = 0x803e0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cmpf );
+	}
+	ID er = l_tk_cre_mpf( pk_cmpf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_mpf( CONST T_CMPF *pk_cmpf )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_MPFATR = {
@@ -152,6 +174,28 @@ SYSCALL ID tk_cre_mpf( CONST T_CMPF *pk_cmpf )
  * Delete fixed size memory pool 
  */
 SYSCALL ER tk_del_mpf( ID mpfid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_mpf( ID mpfid );
+ER tk_del_mpf( ID mpfid )
+{
+	CONST W fncd = 0x803f0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mpfid );
+	}
+	ER er = l_tk_del_mpf( mpfid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_mpf( ID mpfid )
+#endif /* USE_DBGSPT */
 {
 	MPFCB	*mpfcb;
 	void	*mempool = NULL;
@@ -212,6 +256,28 @@ LOCAL CONST WSPEC knl_wspec_mpf_tpri  = { TTW_MPF, knl_mpf_chg_pri, NULL };
  * Get fixed size memory block 
  */
 SYSCALL ER tk_get_mpf( ID mpfid, void **p_blf, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_get_mpf( ID mpfid, void **p_blf, TMO tmout );
+ER tk_get_mpf( ID mpfid, void **p_blf, TMO tmout )
+{
+	CONST W fncd = 0x80400300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mpfid, p_blf, tmout );
+	}
+	ER er = l_tk_get_mpf( mpfid, p_blf, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_get_mpf( ID mpfid, void **p_blf, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	MPFCB	*mpfcb;
 	FREEL	*free;
@@ -269,6 +335,28 @@ wait_mpf:
  * Return fixed size memory block 
  */
 SYSCALL ER tk_rel_mpf( ID mpfid, void *blf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_rel_mpf( ID mpfid, void *blf );
+ER tk_rel_mpf( ID mpfid, void *blf )
+{
+	CONST W fncd = 0x80410200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mpfid, blf );
+	}
+	ER er = l_tk_rel_mpf( mpfid, blf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_rel_mpf( ID mpfid, void *blf )
+#endif /* USE_DBGSPT */
 {
 	MPFCB	*mpfcb;
 	TCB	*tcb;
@@ -320,6 +408,28 @@ error_exit:
  * Check fixed size pool state
  */
 SYSCALL ER tk_ref_mpf( ID mpfid, T_RMPF *pk_rmpf )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_mpf( ID mpfid, T_RMPF *pk_rmpf );
+ER tk_ref_mpf( ID mpfid, T_RMPF *pk_rmpf )
+{
+	CONST W fncd = 0x80420200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mpfid, pk_rmpf );
+	}
+	ER er = l_tk_ref_mpf( mpfid, pk_rmpf );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_mpf( ID mpfid, T_RMPF *pk_rmpf )
+#endif /* USE_DBGSPT */
 {
 	MPFCB	*mpfcb;
 	ER	ercd = E_OK;

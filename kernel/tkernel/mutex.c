@@ -209,6 +209,28 @@ EXPORT INT knl_chg_pri_mutex( TCB *tcb, INT priority )
  * Create mutex
  */
 SYSCALL ID tk_cre_mtx( CONST T_CMTX *pk_cmtx )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_mtx( CONST T_CMTX *pk_cmtx );
+ID tk_cre_mtx( CONST T_CMTX *pk_cmtx )
+{
+	CONST W fncd = 0x801b0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cmtx );
+	}
+	ID er = l_tk_cre_mtx( pk_cmtx );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_mtx( CONST T_CMTX *pk_cmtx )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_MTXATR = {
@@ -266,6 +288,28 @@ SYSCALL ID tk_cre_mtx( CONST T_CMTX *pk_cmtx )
  * Delete mutex
  */
 SYSCALL ER tk_del_mtx( ID mtxid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_mtx( ID mtxid );
+ER tk_del_mtx( ID mtxid )
+{
+	CONST W fncd = 0x801c0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mtxid );
+	}
+	ER er = l_tk_del_mtx( mtxid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_mtx( ID mtxid )
+#endif /* USE_DBGSPT */
 {
 	MTXCB	*mtxcb;
 	ER	ercd = E_OK;
@@ -356,6 +400,28 @@ LOCAL CONST WSPEC knl_wspec_mtx_inherit = { TTW_MTX, mtx_chg_pri, mtx_rel_wai };
  * Lock mutex
  */
 SYSCALL ER tk_loc_mtx( ID mtxid, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_loc_mtx( ID mtxid, TMO tmout );
+ER tk_loc_mtx( ID mtxid, TMO tmout )
+{
+	CONST W fncd = 0x801d0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mtxid, tmout );
+	}
+	ER er = l_tk_loc_mtx( mtxid, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_loc_mtx( ID mtxid, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	MTXCB	*mtxcb;
 	TCB	*mtxtsk;
@@ -440,6 +506,28 @@ SYSCALL ER tk_loc_mtx( ID mtxid, TMO tmout )
  * Unlock mutex
  */
 SYSCALL ER tk_unl_mtx( ID mtxid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_unl_mtx( ID mtxid );
+ER tk_unl_mtx( ID mtxid )
+{
+	CONST W fncd = 0x801e0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mtxid );
+	}
+	ER er = l_tk_unl_mtx( mtxid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_unl_mtx( ID mtxid )
+#endif /* USE_DBGSPT */
 {
 	MTXCB	*mtxcb;	
 	TCB	*tcb;
@@ -499,6 +587,28 @@ SYSCALL ER tk_unl_mtx( ID mtxid )
  * Refer mutex state
  */
 SYSCALL ER tk_ref_mtx( ID mtxid, T_RMTX *pk_rmtx )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_mtx( ID mtxid, T_RMTX *pk_rmtx );
+ER tk_ref_mtx( ID mtxid, T_RMTX *pk_rmtx )
+{
+	CONST W fncd = 0x801f0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mtxid, pk_rmtx );
+	}
+	ER er = l_tk_ref_mtx( mtxid, pk_rmtx );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_mtx( ID mtxid, T_RMTX *pk_rmtx )
+#endif /* USE_DBGSPT */
 {
 	MTXCB	*mtxcb;
 	ER	ercd = E_OK;

@@ -35,7 +35,7 @@ EXPORT UW exchdr_tbl[N_SYSVEC + N_INTVEC] __attribute__ ((section (".data_vector
  * HLL(High level programming language) Interrupt Handler
  */
 
-Noinit(LOCAL FP knl_inthdr_tbl[N_INTVEC]);	/* HLL Interrupt Handler Table */
+Noinit(EXPORT FP knl_inthdr_tbl[N_INTVEC]);	/* HLL Interrupt Handler Table */
 
 EXPORT void knl_hll_inthdr(void)
 {
@@ -47,7 +47,17 @@ EXPORT void knl_hll_inthdr(void)
 	intno	= knl_get_ipsr() - 16;
 	inthdr	= knl_inthdr_tbl[intno];
 
+#if USE_DBGSPT
+	IMPORT FP knl_hook_ienterfn;
+	if (knl_hook_ienterfn) { knl_hook_ienterfn(intno); }
+#endif /* USE_DBGSPT */
+
 	(*inthdr)(intno);
+
+#if USE_DBGSPT
+	IMPORT FP knl_hook_ileavefn;
+	if (knl_hook_ileavefn) { knl_hook_ileavefn(intno); }
+#endif /* USE_DBGSPT */
 
 	LEAVE_TASK_INDEPENDENT;
 }

@@ -77,6 +77,28 @@ EXPORT CONST WSPEC knl_wspec_rdv       = { TTW_RDV, NULL, NULL };
  * Create rendezvous port
  */
 SYSCALL ID tk_cre_por( CONST T_CPOR *pk_cpor )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_por( CONST T_CPOR *pk_cpor );
+ID tk_cre_por( CONST T_CPOR *pk_cpor )
+{
+	CONST W fncd = 0x80300100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cpor );
+	}
+	ID er = l_tk_cre_por( pk_cpor );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_por( CONST T_CPOR *pk_cpor )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_PORATR = {
@@ -129,6 +151,28 @@ SYSCALL ID tk_cre_por( CONST T_CPOR *pk_cpor )
  * Delete rendezvous port
  */
 SYSCALL ER tk_del_por( ID porid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_por( ID porid );
+ER tk_del_por( ID porid )
+{
+	CONST W fncd = 0x80310100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, porid );
+	}
+	ER er = l_tk_del_por( porid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_por( ID porid )
+#endif /* USE_DBGSPT */
 {
 	PORCB	*porcb;
 	ER	ercd = E_OK;
@@ -160,6 +204,28 @@ SYSCALL ER tk_del_por( ID porid )
  * Call rendezvous
  */
 SYSCALL INT tk_cal_por( ID porid, UINT calptn, void *msg, INT cmsgsz, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_cal_por( ID porid, UINT calptn, void *msg, INT cmsgsz, TMO tmout );
+INT tk_cal_por( ID porid, UINT calptn, void *msg, INT cmsgsz, TMO tmout )
+{
+	CONST W fncd = 0x80320500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, porid, calptn, msg, cmsgsz, tmout );
+	}
+	INT er = l_tk_cal_por( porid, calptn, msg, cmsgsz, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_cal_por( ID porid, UINT calptn, void *msg, INT cmsgsz, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	PORCB	*porcb;
 	TCB	*tcb;
@@ -244,6 +310,28 @@ LOCAL CONST WSPEC knl_wspec_acp       = { TTW_ACP, NULL, NULL };
  * Accept rendezvous
  */
 SYSCALL INT tk_acp_por( ID porid, UINT acpptn, RNO *p_rdvno, void *msg, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_acp_por( ID porid, UINT acpptn, RNO *p_rdvno, void *msg, TMO tmout );
+INT tk_acp_por( ID porid, UINT acpptn, RNO *p_rdvno, void *msg, TMO tmout )
+{
+	CONST W fncd = 0x80330500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, porid, acpptn, p_rdvno, msg, tmout );
+	}
+	INT er = l_tk_acp_por( porid, acpptn, p_rdvno, msg, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_acp_por( ID porid, UINT acpptn, RNO *p_rdvno, void *msg, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	PORCB	*porcb;
 	TCB	*tcb;
@@ -322,6 +410,28 @@ SYSCALL INT tk_acp_por( ID porid, UINT acpptn, RNO *p_rdvno, void *msg, TMO tmou
  * Forward Rendezvous to Other Port
  */
 SYSCALL ER tk_fwd_por( ID porid, UINT calptn, RNO rdvno, CONST void *msg, INT cmsgsz )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_fwd_por( ID porid, UINT calptn, RNO rdvno, CONST void *msg, INT cmsgsz );
+ER tk_fwd_por( ID porid, UINT calptn, RNO rdvno, CONST void *msg, INT cmsgsz )
+{
+	CONST W fncd = 0x80340500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, porid, calptn, rdvno, msg, cmsgsz );
+	}
+	ER er = l_tk_fwd_por( porid, calptn, rdvno, msg, cmsgsz );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_fwd_por( ID porid, UINT calptn, RNO rdvno, CONST void *msg, INT cmsgsz )
+#endif /* USE_DBGSPT */
 {
 	PORCB	*porcb;
 	TCB	*caltcb, *tcb;
@@ -424,6 +534,28 @@ SYSCALL ER tk_fwd_por( ID porid, UINT calptn, RNO rdvno, CONST void *msg, INT cm
  * Reply rendezvous
  */
 SYSCALL ER tk_rpl_rdv( RNO rdvno, CONST void *msg, INT rmsgsz )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_rpl_rdv( RNO rdvno, CONST void *msg, INT rmsgsz );
+ER tk_rpl_rdv( RNO rdvno, CONST void *msg, INT rmsgsz )
+{
+	CONST W fncd = 0x80350300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, rdvno, msg, rmsgsz );
+	}
+	ER er = l_tk_rpl_rdv( rdvno, msg, rmsgsz );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_rpl_rdv( RNO rdvno, CONST void *msg, INT rmsgsz )
+#endif /* USE_DBGSPT */
 {
 	TCB	*caltcb;
 	ER	ercd = E_OK;
@@ -466,6 +598,28 @@ SYSCALL ER tk_rpl_rdv( RNO rdvno, CONST void *msg, INT rmsgsz )
  * Refer rendezvous port
  */
 SYSCALL ER tk_ref_por( ID porid, T_RPOR *pk_rpor )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_por( ID porid, T_RPOR *pk_rpor );
+ER tk_ref_por( ID porid, T_RPOR *pk_rpor )
+{
+	CONST W fncd = 0x80360200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, porid, pk_rpor );
+	}
+	ER er = l_tk_ref_por( porid, pk_rpor );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_por( ID porid, T_RPOR *pk_rpor )
+#endif /* USE_DBGSPT */
 {
 	PORCB	*porcb;
 	ER	ercd = E_OK;

@@ -106,6 +106,19 @@ l_dispatch_010:			// End of FPU register save process
 	ldr	r2, =0
 	str	r2, [r0]			// ctxtsk = NULL
 
+#if USE_DBGSPT
+	ldr r5, =Csym(knl_hook_stopfn)
+	ldr r5, [r5]
+	cmp r5, #0
+	beq l_dispatch_020
+	push {r0}
+	ldr r0, [r1, #TCB_tskid]
+	ldr r2, [r1, #TCB_state]
+	mov r2, r2, lsl #1
+	blx r5
+	pop {r0}
+l_dispatch_020:
+#endif /* USE_DBGSPT */
 
 /*----------------- Dispatch from "ctxtsk" to "schedtsk" -----------------*/
 l_dispatch_100:
@@ -137,6 +150,16 @@ l_dispatch_120:			// Switch to 'schedtsk'
 
 
 /*----------------- Restore "schedtsk" context. -----------------*/
+
+#if USE_DBGSPT
+	ldr r5, =Csym(knl_hook_execfn)
+	ldr r5, [r5]
+	cmp r5, #0
+	beq l_dispatch_130
+	ldr r0, [r8, #TCB_tskid]
+	blx r5
+l_dispatch_130:
+#endif /* USE_DBGSPT */
 
 #if USE_FPU			// Restore FPU context
 	ldr	r0, [r8, #TCB_tskatr]
