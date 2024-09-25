@@ -1,5 +1,7 @@
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
+#include <trace/trace.h>
+
 #include "drive.h"
 #include "server.h"
 #include "client.h"
@@ -162,11 +164,13 @@ EXPORT INT usermain(void)
 				tk_slp_tsk(1000);
 
 				vehicle_main();
+				break;
 			} 
 			//tk_slp_tsk(TMO_FEVR);
 			DEBUG_LOG("finish process\n");
-			return E_OK;
+			
 
 		}
 	}
+	return E_OK;
 }

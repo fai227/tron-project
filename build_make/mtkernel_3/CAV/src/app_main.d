@@ -17,12 +17,13 @@ mtkernel_3/CAV/src/app_main.o: ../CAV/src/app_main.c \
  ../include/tk/syslib.h ../include/tk/sysdepend/microbit/syslib.h \
  ../include/tk/sysdepend/microbit/../cpu/nrf5/syslib.h \
  ../include/tk/sysdepend/microbit/../cpu/nrf5/../core/armv7m/syslib.h \
- ../include/tk/errno.h ../include/tm/tmonitor.h ../CAV/header/drive.h \
- ../include/sys/sysdepend/cpu/nrf5/sysdef.h ../CAV/header/maqueen.h \
- ../CAV/header/iic.h ../CAV/header/list.h ../CAV/header/client.h \
- ../CAV/header/order.h ../CAV/header/LED.h ../CAV/header/server.h \
- ../CAV/header/client.h ../CAV/header/list.h ../CAV/header/LED.h \
- ../CAV/header/button.h ../CAV/header/STG.h ../CAV/header/maqueen.h
+ ../include/tk/errno.h ../include/tm/tmonitor.h ../include/trace/trace.h \
+ ../CAV/header/drive.h ../include/sys/sysdepend/cpu/nrf5/sysdef.h \
+ ../CAV/header/maqueen.h ../CAV/header/iic.h ../CAV/header/list.h \
+ ../CAV/header/client.h ../CAV/header/order.h ../CAV/header/LED.h \
+ ../CAV/header/server.h ../CAV/header/client.h ../CAV/header/list.h \
+ ../CAV/header/LED.h ../CAV/header/button.h ../CAV/header/STG.h \
+ ../CAV/header/maqueen.h
 ../include/tk/tkernel.h:
 ../include/sys/machine.h:
 ../config/config.h:
@@ -52,6 +53,7 @@ mtkernel_3/CAV/src/app_main.o: ../CAV/src/app_main.c \
 ../include/tk/sysdepend/microbit/../cpu/nrf5/../core/armv7m/syslib.h:
 ../include/tk/errno.h:
 ../include/tm/tmonitor.h:
+../include/trace/trace.h:
 ../CAV/header/drive.h:
 ../include/sys/sysdepend/cpu/nrf5/sysdef.h:
 ../CAV/header/maqueen.h:
