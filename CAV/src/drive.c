@@ -253,7 +253,8 @@ EXPORT void start_drive(UINT timer_number) {
 
     //tk_slp_tsk(departure_ms);//侵入可能時間まで待機
 
-    while(TRUE){
+    //タスクトレーサーが動作するかの確認
+    for(UW i=0;i<10;i++){
         if (list_length(order_list) > d_last_request_list_count) {
             // リスト個数が増加したのでフラグをリセット
             d_request_sent_flag = FALSE;
@@ -269,4 +270,20 @@ EXPORT void start_drive(UINT timer_number) {
         }
         list_shift(order_list);
     }
+    // while(TRUE){
+    //     if (list_length(order_list) > d_last_request_list_count) {
+    //         // リスト個数が増加したのでフラグをリセット
+    //         d_request_sent_flag = FALSE;
+    //     }
+    //     if(list_length(order_list)<D_LIST_MINIMUM_NUMBER){
+    //         process_orders(order_list);
+    //     }
+
+    //     void *data=list_get(order_list,0);
+    //     Order* order = (Order*)data;
+    //     if(data !=NULL){
+    //         follow_path(*order,timer_number);
+    //     }
+    //     list_shift(order_list);
+    // }
 }

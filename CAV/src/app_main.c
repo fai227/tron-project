@@ -163,7 +163,9 @@ EXPORT INT usermain(void)
 
 				vehicle_main();
 			} 
-			tk_slp_tsk(TMO_FEVR);
+			//tk_slp_tsk(TMO_FEVR);
+			return E_OK;
+
 		}
 	}
 }
