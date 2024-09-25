@@ -1,5 +1,7 @@
 #include <tk/tkernel.h>
 #include <tm/tmonitor.h>
+#include <trace/trace.h>
+
 #include "drive.h"
 #include "server.h"
 #include "client.h"
@@ -156,6 +158,8 @@ EXPORT INT usermain(void)
 				tk_slp_tsk(1000);
 
 				server_main();
+				tk_slp_tsk(60000);//一定秒経過したらログをとる
+				break;
 			} else if(b_pressed) {
 				tm_printf("Selected: Vehicle\n");
 				show_V();
@@ -163,10 +167,11 @@ EXPORT INT usermain(void)
 
 				vehicle_main();
 			} 
-			DEBUG_LOG("finish process\n");
 			tk_slp_tsk(10000);
-			return E_OK;
+			DEBUG_LOG("finish process\n");
+			
 
 		}
 	}
+	return E_OK;
 }
