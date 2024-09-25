@@ -1,12 +1,12 @@
 Archive member included to satisfy reference by file (symbol)
 
-c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
                               ./mtkernel_3/kernel/tkernel/time_calls.o (__aeabi_ldivmod)
-c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                              c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
-c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
-                              c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
-c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                              c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                              c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
                               ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o (memcpy)
 
 Discarded input sections
@@ -64,7 +64,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtm/libtm_printf.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtm/libtm_printf.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtm/libtm_printf.o
@@ -112,7 +112,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/fastlock.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/fastlock.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/fastlock.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/fastlock.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/fastlock.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/fastlock.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/fastlock.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/fastlock.o
@@ -158,7 +158,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/fastmlock.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/fastmlock.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/fastmlock.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/fastmlock.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/fastmlock.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/fastmlock.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/fastmlock.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/fastmlock.o
@@ -204,7 +204,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/kmalloc.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/kmalloc.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/kmalloc.o
@@ -250,7 +250,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/usermain/usermain.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/usermain/usermain.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/usermain/usermain.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/usermain/usermain.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/usermain/usermain.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/usermain/usermain.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/usermain/usermain.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/usermain/usermain.o
@@ -296,7 +296,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tstdlib/bitop.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tstdlib/bitop.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tstdlib/bitop.o
@@ -350,7 +350,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tstdlib/string.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tstdlib/string.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tstdlib/string.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tstdlib/string.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tstdlib/string.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tstdlib/string.o
@@ -407,7 +407,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/cpuctl.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/cpuctl.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/cpuctl.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/cpuctl.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/cpuctl.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/cpuctl.o
@@ -472,7 +472,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/device.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/device.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/device.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/device.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/device.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/device.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/device.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/device.o
@@ -537,7 +537,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/deviceio.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/deviceio.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/deviceio.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/deviceio.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/deviceio.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/deviceio.o
@@ -606,7 +606,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/eventflag.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/eventflag.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/eventflag.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/eventflag.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/eventflag.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/eventflag.o
@@ -672,7 +672,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/int.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/int.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/int.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/int.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/int.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/int.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/int.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/int.o
@@ -736,7 +736,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/klock.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/klock.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/klock.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/klock.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/klock.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/klock.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/klock.o
@@ -803,7 +803,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/mailbox.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/mailbox.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/mailbox.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/mailbox.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/mailbox.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/mailbox.o
@@ -870,7 +870,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/memory.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/memory.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/memory.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/memory.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/memory.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/memory.o
@@ -937,7 +937,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/mempfix.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/mempfix.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/mempfix.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/mempfix.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/mempfix.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/mempfix.o
@@ -1008,7 +1008,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/mempool.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/mempool.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/mempool.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/mempool.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/mempool.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/mempool.o
@@ -1079,7 +1079,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/messagebuf.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/messagebuf.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/messagebuf.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/messagebuf.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/messagebuf.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/messagebuf.o
@@ -1145,7 +1145,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/misc_calls.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/misc_calls.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/misc_calls.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/misc_calls.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/misc_calls.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/misc_calls.o
@@ -1211,7 +1211,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/mutex.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/mutex.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/mutex.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/mutex.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/mutex.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/mutex.o
@@ -1276,7 +1276,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/objname.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/objname.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/objname.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/objname.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/objname.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/objname.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/objname.o
@@ -1339,7 +1339,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/power.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/power.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/power.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/power.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/power.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/power.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/power.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/power.o
@@ -1406,7 +1406,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/rendezvous.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/rendezvous.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/rendezvous.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/rendezvous.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/rendezvous.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/rendezvous.o
@@ -1475,7 +1475,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/semaphore.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/semaphore.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/semaphore.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/semaphore.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/semaphore.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/semaphore.o
@@ -1545,7 +1545,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/task.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/task.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/task.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/task.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/task.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/task.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/task.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/task.o
@@ -1615,7 +1615,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/task_manage.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/task_manage.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/task_manage.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/task_manage.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/task_manage.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/task_manage.o
@@ -1686,7 +1686,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/task_sync.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/task_sync.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/task_sync.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/task_sync.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/task_sync.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/task_sync.o
@@ -1757,7 +1757,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/time_calls.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/time_calls.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/time_calls.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/time_calls.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/time_calls.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/time_calls.o
@@ -1823,7 +1823,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/timer.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/timer.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/timer.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/timer.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/timer.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/timer.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/timer.o
@@ -1886,7 +1886,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/tkinit.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/tkinit.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/tkinit.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/tkinit.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/tkinit.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/tkinit.o
@@ -1950,7 +1950,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/tkernel/wait.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/tkernel/wait.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/tkernel/wait.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/tkernel/wait.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/tkernel/wait.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/tkernel/wait.o
@@ -2014,7 +2014,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysinit/sysinit.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysinit/sysinit.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysinit/sysinit.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysinit/sysinit.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysinit/sysinit.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysinit/sysinit.o
@@ -2078,7 +2078,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/inittask/inittask.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/inittask/inittask.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/inittask/inittask.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/inittask/inittask.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/inittask/inittask.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/inittask/inittask.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/inittask/inittask.o
@@ -2132,7 +2132,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/device/common/drvif/msdrvif.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/device/common/drvif/msdrvif.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/device/common/drvif/msdrvif.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/device/common/drvif/msdrvif.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/device/common/drvif/msdrvif.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/device/common/drvif/msdrvif.o
@@ -2181,7 +2181,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/device/adc/adc.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/device/adc/adc.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/device/adc/adc.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/device/adc/adc.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/device/adc/adc.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/device/adc/adc.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/device/adc/adc.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/device/adc/adc.o
@@ -2230,7 +2230,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/device/i2c/i2c.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/device/i2c/i2c.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/device/i2c/i2c.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/device/i2c/i2c.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/device/i2c/i2c.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/device/i2c/i2c.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/device/i2c/i2c.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/device/i2c/i2c.o
@@ -2285,7 +2285,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/device/ser/ser.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/device/ser/ser.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/device/ser/ser.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/device/ser/ser.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/device/ser/ser.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/device/ser/ser.o
@@ -2339,7 +2339,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
@@ -2385,7 +2385,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
@@ -2411,7 +2411,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
@@ -2447,7 +2447,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
@@ -2493,7 +2493,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
@@ -2539,7 +2539,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
@@ -2585,7 +2585,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
@@ -2643,7 +2643,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
@@ -2709,7 +2709,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
@@ -2771,7 +2771,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
@@ -2825,7 +2825,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
@@ -2880,7 +2880,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
@@ -2944,7 +2944,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
@@ -3010,7 +3010,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
@@ -3075,7 +3075,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
@@ -3139,7 +3139,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
@@ -3195,7 +3195,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/LED.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/LED.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/LED.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/LED.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/LED.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/LED.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/LED.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/LED.o
@@ -3244,7 +3244,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/STG.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/STG.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/STG.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/STG.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/STG.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/STG.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/STG.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/STG.o
@@ -3298,7 +3298,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/app_main.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/app_main.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/app_main.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/app_main.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/app_main.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/app_main.o
@@ -3349,7 +3349,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/client.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/client.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/client.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/client.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/client.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/client.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/client.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/client.o
@@ -3402,7 +3402,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/drive.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/drive.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/drive.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/drive.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/drive.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/drive.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/drive.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/drive.o
@@ -3454,7 +3454,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/iic.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/iic.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/iic.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/iic.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/iic.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/iic.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/iic.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/iic.o
@@ -3501,7 +3501,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/list.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/list.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/list.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/list.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/list.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/list.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/list.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/list.o
@@ -3549,7 +3549,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/maqueen.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/maqueen.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/maqueen.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/maqueen.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/maqueen.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/maqueen.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/maqueen.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/maqueen.o
@@ -3581,7 +3581,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/order.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/order.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/order.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/order.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/order.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/order.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/order.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/order.o
@@ -3612,7 +3612,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/radio.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/radio.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/radio.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/radio.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/radio.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/radio.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/radio.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/radio.o
@@ -3662,7 +3662,7 @@ Discarded input sections
  .group         0x00000000        0xc ./mtkernel_3/CAV/src/server.o
  .debug_macro   0x00000000      0xa6c ./mtkernel_3/CAV/src/server.o
  .debug_macro   0x00000000      0x169 ./mtkernel_3/CAV/src/server.o
- .debug_macro   0x00000000      0x29a ./mtkernel_3/CAV/src/server.o
+ .debug_macro   0x00000000      0x2af ./mtkernel_3/CAV/src/server.o
  .debug_macro   0x00000000       0x28 ./mtkernel_3/CAV/src/server.o
  .debug_macro   0x00000000       0x1c ./mtkernel_3/CAV/src/server.o
  .debug_macro   0x00000000       0x34 ./mtkernel_3/CAV/src/server.o
@@ -3762,13 +3762,14 @@ LOAD ./mtkernel_3/CAV/src/maqueen.o
 LOAD ./mtkernel_3/CAV/src/order.o
 LOAD ./mtkernel_3/CAV/src/radio.o
 LOAD ./mtkernel_3/CAV/src/server.o
+LOAD ./libtrace.a
 START GROUP
-LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a
-LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
+LOAD c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a
+LOAD c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
 END GROUP
 
-.text           0x00000000    0x1189e
+.text           0x00000000    0x13a6a
                 0x00000000                . = ALIGN (0x8)
                 0x00000000                __vector_org = .
  *(.vector)
@@ -3811,464 +3812,467 @@ END GROUP
                 0x00000f66                knl_strncpy
                 0x00000fb8                knl_strcmp
                 0x00000ffe                knl_strcat
- .text          0x0000103c      0x604 ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .text          0x0000103c      0x71c ./mtkernel_3/kernel/tkernel/cpuctl.o
                 0x0000105c                tk_dis_dsp
-                0x00001098                tk_ena_dsp
-                0x000010e8                tk_set_reg
-                0x000011dc                tk_get_reg
-                0x000012d0                tk_set_cpr
-                0x000013e8                tk_get_cpr
-                0x00001500                td_set_reg
-                0x000015a0                td_get_reg
- .text          0x00001640      0x930 ./mtkernel_3/kernel/tkernel/device.o
-                0x00001750                knl_searchDevCB
-                0x00001820                tk_def_dev
-                0x0000197c                tk_ref_idv
-                0x000019b0                knl_phydevnm
-                0x00001ac4                tk_get_dev
-                0x00001b64                tk_ref_dev
-                0x00001c0c                tk_oref_dev
-                0x00001ca4                tk_lst_dev
-                0x00001d6c                tk_evt_dev
-                0x00001ec4                knl_initialize_devmgr
-                0x00001f44                knl_finish_devmgr
- .text          0x00001f70     0x11c0 ./mtkernel_3/kernel/tkernel/deviceio.o
-                0x00002052                knl_GetResCB
-                0x00002084                knl_check_devdesc
-                0x000020f0                knl_delOpnCB
-                0x00002130                knl_delReqCB
-                0x0000215c                knl_chkopen
-                0x00002326                tk_opn_dev
-                0x000026b8                knl_close_device
-                0x000027c8                tk_cls_dev
-                0x00002860                knl_request
-                0x00002a20                tk_rea_dev
-                0x00002a4e                tk_srea_dev
-                0x00002aa6                tk_wri_dev
-                0x00002ad4                tk_swri_dev
-                0x00002b78                tk_wai_dev
-                0x00002ee4                tk_sus_dev
-                0x00002fe4                knl_devmgr_startup
-                0x00003010                knl_devmgr_cleanup
-                0x0000308c                knl_initDevIO
-                0x00003120                knl_finishDevIO
- .text          0x00003130      0x844 ./mtkernel_3/kernel/tkernel/eventflag.o
-                0x0000324a                knl_eventflag_initialize
-                0x00003294                tk_cre_flg
-                0x00003354                tk_del_flg
-                0x000033f4                tk_set_flg
-                0x00003504                tk_clr_flg
-                0x000035cc                tk_wai_flg
-                0x00003758                tk_ref_flg
-                0x000037fc                td_lst_flg
-                0x00003864                td_ref_flg
-                0x000038e0                td_flg_que
- .text          0x00003974       0xa0 ./mtkernel_3/kernel/tkernel/int.o
-                0x00003974                tk_def_int
-                0x00003a08                tk_ret_int
- .text          0x00003a14      0x3dc ./mtkernel_3/kernel/tkernel/klock.o
-                0x00003c72                knl_LockOBJ
-                0x00003d44                knl_UnlockOBJ
- .text          0x00003df0      0x72c ./mtkernel_3/kernel/tkernel/mailbox.o
-                0x00003f08                knl_mailbox_initialize
-                0x00003f54                tk_cre_mbx
-                0x00004010                tk_del_mbx
-                0x000040b0                tk_snd_mbx
-                0x000041e8                tk_rcv_mbx
-                0x00004300                tk_ref_mbx
-                0x000043a4                td_lst_mbx
-                0x0000440c                td_ref_mbx
-                0x00004488                td_mbx_que
- .text          0x0000451c      0x58c ./mtkernel_3/kernel/tkernel/memory.o
-                0x000045a0                knl_searchFreeArea
-                0x0000463e                knl_appendFreeArea
-                0x000046ec                knl_removeFreeQue
-                0x00004760                knl_insertAreaQue
-                0x0000479e                knl_removeAreaQue
-                0x000047dc                knl_Imalloc
-                0x00004888                knl_Icalloc
-                0x000048c2                knl_Irealloc
-                0x0000492a                knl_Ifree
-                0x000049dc                knl_init_Imalloc
- .text          0x00004aa8      0x8fc ./mtkernel_3/kernel/tkernel/mempfix.o
-                0x00004bd2                knl_fix_memorypool_initialize
-                0x00004c28                tk_cre_mpf
-                0x00004da4                tk_del_mpf
-                0x00004ebc                tk_get_mpf
-                0x00005020                tk_rel_mpf
-                0x00005140                tk_ref_mpf
-                0x00005200                td_lst_mpf
-                0x0000527c                td_ref_mpf
-                0x00005310                td_mpf_que
- .text          0x000053a4      0xc6c ./mtkernel_3/kernel/tkernel/mempool.o
-                0x000054c6                knl_memorypool_initialize
-                0x00005762                knl_mpl_wakeup
-                0x00005808                tk_cre_mpl
-                0x00005978                tk_del_mpl
-                0x00005ac2                tk_get_mpl
-                0x00005c28                tk_rel_mpl
-                0x00005d14                tk_ref_mpl
-                0x00005e34                td_lst_mpl
-                0x00005eb0                td_ref_mpl
-                0x00005f7c                td_mpl_que
- .text          0x00006010      0xc5c ./mtkernel_3/kernel/tkernel/messagebuf.o
-                0x0000612e                knl_messagebuffer_initialize
-                0x00006288                tk_cre_mbf
-                0x000063fc                tk_del_mbf
-                0x0000651e                tk_snd_mbf
-                0x0000678e                tk_rcv_mbf
-                0x0000690c                tk_ref_mbf
-                0x00006a08                td_lst_mbf
-                0x00006a70                td_ref_mbf
-                0x00006b44                td_smbf_que
-                0x00006bd8                td_rmbf_que
- .text          0x00006c6c      0x260 ./mtkernel_3/kernel/tkernel/misc_calls.o
-                0x00006c8c                tk_ref_sys
-                0x00006d88                tk_ref_ver
-                0x00006dd0                td_ref_sys
- .text          0x00006ecc      0xaf8 ./mtkernel_3/kernel/tkernel/mutex.o
-                0x00006ff4                knl_mutex_initialize
-                0x00007040                knl_release_mutex
-                0x000070e4                knl_signal_all_mutex
-                0x0000716a                knl_chg_pri_mutex
-                0x0000724c                tk_cre_mtx
-                0x0000733c                tk_del_mtx
-                0x000074a0                tk_loc_mtx
-                0x00007688                tk_unl_mtx
-                0x0000779c                tk_ref_mtx
-                0x00007848                td_lst_mtx
-                0x000078b0                td_ref_mtx
-                0x00007934                td_mtx_que
- .text          0x000079c4       0x38 ./mtkernel_3/kernel/tkernel/objname.o
-                0x000079c4                td_ref_dsname
-                0x000079e0                td_set_dsname
- .text          0x000079fc        0x0 ./mtkernel_3/kernel/tkernel/power.o
- .text          0x000079fc        0x0 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .text          0x000079fc      0x7a4 ./mtkernel_3/kernel/tkernel/semaphore.o
-                0x00007aa8                knl_semaphore_initialize
-                0x00007af4                tk_cre_sem
-                0x00007be8                tk_del_sem
-                0x00007c88                tk_sig_sem
-                0x00007e36                tk_wai_sem
-                0x00007f88                tk_ref_sem
-                0x0000802c                td_lst_sem
-                0x00008094                td_ref_sem
-                0x00008110                td_sem_que
- .text          0x000081a0      0x630 ./mtkernel_3/kernel/tkernel/task.o
-                0x00008522                knl_task_initialize
-                0x000085a4                knl_make_dormant
-                0x00008626                knl_make_ready
-                0x0000865c                knl_make_non_ready
-                0x00008694                knl_change_task_priority
-                0x0000870c                knl_rotate_ready_queue
-                0x0000872c                knl_rotate_ready_queue_run
-                0x00008758                td_rdy_que
- .text          0x000087d0      0xd20 ./mtkernel_3/kernel/tkernel/task_manage.o
-                0x00008954                tk_cre_tsk
-                0x00008af8                tk_del_tsk
-                0x00008bd8                tk_sta_tsk
-                0x00008d16                tk_ext_tsk
-                0x00008d98                tk_exd_tsk
-                0x00008e10                tk_ter_tsk
-                0x00008f14                tk_chg_pri
-                0x00009018                tk_rot_rdq
-                0x000090b0                tk_get_tid
-                0x000090d4                tk_ref_tsk
-                0x000091fc                tk_rel_wai
-                0x000092c0                td_lst_tsk
-                0x0000932c                td_ref_tsk
-                0x00009444                td_inf_tsk
- .text          0x000094f0      0x77c ./mtkernel_3/kernel/tkernel/task_sync.o
-                0x00009556                tk_sus_tsk
-                0x00009698                tk_rsm_tsk
-                0x000097d8                tk_frsm_tsk
-                0x000098f8                tk_slp_tsk
-                0x000099d0                tk_wup_tsk
-                0x00009af0                tk_can_wup
-                0x00009bb4                tk_dly_tsk
- .text          0x00009c6c     0x1308 ./mtkernel_3/kernel/tkernel/time_calls.o
-                0x0000a014                tk_set_utc
-                0x0000a08c                tk_get_utc
-                0x0000a108                tk_set_tim
-                0x0000a19c                tk_get_tim
-                0x0000a234                tk_get_otm
-                0x0000a29c                td_get_tim
-                0x0000a2fc                td_get_otm
-                0x0000a348                knl_cyclichandler_initialize
-                0x0000a390                knl_call_cychdr
-                0x0000a3fa                tk_cre_cyc
-                0x0000a530                tk_del_cyc
-                0x0000a5dc                tk_sta_cyc
-                0x0000a6e4                tk_stp_cyc
-                0x0000a78c                tk_ref_cyc
-                0x0000a880                td_lst_cyc
-                0x0000a8fc                td_ref_cyc
-                0x0000a9c8                knl_alarmhandler_initialize
-                0x0000aa10                knl_call_almhdr
-                0x0000aa42                tk_cre_alm
-                0x0000ab08                tk_del_alm
-                0x0000abe4                tk_sta_alm
-                0x0000acb0                tk_stp_alm
-                0x0000ad58                tk_ref_alm
-                0x0000ae3c                td_lst_alm
-                0x0000aeb8                td_ref_alm
- .text          0x0000af74      0x3d4 ./mtkernel_3/kernel/tkernel/timer.o
-                0x0000b0f8                knl_timer_startup
-                0x0000b134                knl_timer_shutdown
-                0x0000b1a0                knl_timer_insert
-                0x0000b1f0                knl_timer_insert_reltim
-                0x0000b230                knl_timer_insert_abs
-                0x0000b25e                knl_timer_handler
- .text          0x0000b348       0xb0 ./mtkernel_3/kernel/tkernel/tkinit.o
-                0x0000b348                knl_init_object
- .text          0x0000b3f8      0x3f0 ./mtkernel_3/kernel/tkernel/wait.o
-                0x0000b542                knl_wait_release_ok
-                0x0000b560                knl_wait_release_ok_ercd
-                0x0000b580                knl_wait_release_ng
-                0x0000b5b4                knl_wait_release_tmout
-                0x0000b5e6                knl_make_wait
-                0x0000b648                knl_make_wait_reltim
-                0x0000b6ac                knl_wait_delete
-                0x0000b6e2                knl_wait_tskid
-                0x0000b708                knl_gcb_make_wait
-                0x0000b774                knl_gcb_change_priority
-                0x0000b798                knl_gcb_top_of_wait_queue
- .text          0x0000b7e8       0xe0 ./mtkernel_3/kernel/sysinit/sysinit.o
-                0x0000b7e8                main
-                0x0000b8b8                knl_tkernel_exit
- .text          0x0000b8c8       0xb0 ./mtkernel_3/kernel/inittask/inittask.o
- .text          0x0000b978      0x2a4 ./mtkernel_3/device/common/drvif/msdrvif.o
-                0x0000baf2                msdi_def_dev
-                0x0000bbe0                msdi_del_dev
- .text          0x0000bc1c        0x0 ./mtkernel_3/device/adc/adc.o
- .text          0x0000bc1c        0x0 ./mtkernel_3/device/i2c/i2c.o
- .text          0x0000bc1c      0x7dc ./mtkernel_3/device/ser/ser.o
-                0x0000bc44                dev_ser_get_snddat
-                0x0000bcb8                dev_ser_notify_rcv
-                0x0000bd30                dev_ser_notify_err
-                0x0000c194                dev_ser_openfn
-                0x0000c1da                dev_ser_closefn
-                0x0000c206                dev_ser_readfn
-                0x0000c252                dev_ser_writefn
-                0x0000c29e                dev_ser_eventfn
-                0x0000c2ba                dev_init_ser
- .text          0x0000c3f8      0x470 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
-                0x0000c72c                dev_ser_llctl
-                0x0000c7f0                dev_ser_llinit
- .text          0x0000c868      0x1ac ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
-                0x0000c89c                tm_snd_dat
-                0x0000c8f0                tm_rcv_dat
-                0x0000c944                tm_com_init
- .text          0x0000ca14        0x0 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .text          0x0000ca14      0x11c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
-                0x0000caa8                EnableInt
-                0x0000cac2                DisableInt
-                0x0000cad8                ClearInt
-                0x0000caee                EndOfInt
-                0x0000cb02                CheckInt
-                0x0000cb1a                SetIntMode
- .text          0x0000cb30      0x3c0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
-                0x0000cc14                StartPhysicalTimer
-                0x0000cdac                StopPhysicalTimer
-                0x0000ce02                GetPhysicalTimerCount
-                0x0000ce4c                DefinePhysicalTimerHandler
-                0x0000ceb0                GetPhysicalTimerConfig
- .text          0x0000cef0       0xe6 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
-                0x0000cef0                set_basepri
-                0x0000cf0a                get_basepri
-                0x0000cf24                disint
-                0x0000cf48                SetCpuIntLevel
-                0x0000cf64                GetCpuIntLevel
-                0x0000cf8a                EnableInt_nvic
- *fill*         0x0000cfd6        0x2 
- .text          0x0000cfd8      0x11c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
-                0x0000d078                WaitUsec
-                0x0000d0ac                WaitNsec
- .text          0x0000d0f4       0x42 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
-                0x0000d0f4                knl_init_device
-                0x0000d104                knl_start_device
-                0x0000d126                knl_finish_device
- *fill*         0x0000d136        0x2 
- .text          0x0000d138       0xc8 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
-                0x0000d154                knl_startup_hw
-                0x0000d190                knl_shutdown_hw
-                0x0000d19a                knl_restart_hw
- .text          0x0000d200       0x1c ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
-                0x0000d200                low_pow
-                0x0000d20e                off_pow
- .text          0x0000d21c       0xb8 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
-                0x0000d250                startup_clock
-                0x0000d2c4                shutdown_clock
- .text          0x0000d2d4        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .text          0x0000d2d4      0x2dc ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
-                0x0000d2d4                knl_set_reg
-                0x0000d39c                knl_get_reg
-                0x0000d470                knl_set_cpr
-                0x0000d4ec                knl_get_cpr
-                0x0000d566                knl_force_dispatch
-                0x0000d594                knl_dispatch
- .text          0x0000d5b0       0xb4 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
-                0x0000d5b0                knl_dispatch_entry
- .text          0x0000d664      0x10c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
-                0x0000d664                NMI_Handler
-                0x0000d674                HardFault_Handler
-                0x0000d6d4                MemManage_Handler
-                0x0000d6e4                BusFault_Handler
-                0x0000d6f4                UsageFault_Handler
-                0x0000d704                Svcall_Handler
-                0x0000d714                DebugMon_Handler
-                0x0000d724                Default_Handler
- .text          0x0000d770      0x11c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
-                0x0000d7c4                knl_hll_inthdr
-                0x0000d7f8                knl_systim_inthdr
-                0x0000d80c                knl_define_inthdr
-                0x0000d86c                knl_return_inthdr
-                0x0000d87a                knl_init_interrupt
- .text          0x0000d88c      0x138 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
-                0x0000d88c                Reset_Handler
- .text          0x0000d9c4      0x704 ./mtkernel_3/CAV/src/LED.o
-                0x0000dba8                initialize_led
-                0x0000dc58                clear_led
-                0x0000dc8c                turn_on_led
-                0x0000dcd0                show_number
-                0x0000de60                show_circle
-                0x0000de90                show_cross
-                0x0000dec0                show_S
-                0x0000def0                show_V
-                0x0000df20                show_T
-                0x0000df50                show_logo
-                0x0000e02c                show_strait
-                0x0000e05c                show_left
-                0x0000e08c                show_right
-                0x0000e0bc                show_stop
- .text          0x0000e0c8      0xd6c ./mtkernel_3/CAV/src/STG.o
-                0x0000e634                index_of
-                0x0000ea58                stg_start
-                0x0000eb2c                stg_reserve
-                0x0000ecf4                stg_get_delay_until_departure
- .text          0x0000ee34      0x2e8 ./mtkernel_3/CAV/src/app_main.o
-                0x0000ee68                button_setup
-                0x0000ee88                is_a_pressed
-                0x0000eeac                is_b_pressed
-                0x0000f050                usermain
- .text          0x0000f11c      0x46c ./mtkernel_3/CAV/src/client.o
-                0x0000f16e                request_departure_time_ms
-                0x0000f4e4                reserve_order
- .text          0x0000f588      0x4e4 ./mtkernel_3/CAV/src/drive.o
-                0x0000f9ac                start_drive
- .text          0x0000fa6c      0x89c ./mtkernel_3/CAV/src/iic.o
-                0x0000fe40                iic_transfer
-                0x0001004c                iic_setup
-                0x0001022c                iic_write
-                0x0001028c                iic_read
- .text          0x00010308      0x1c8 ./mtkernel_3/CAV/src/list.o
-                0x00010308                list_init
-                0x00010332                list_unshift
-                0x0001037a                list_append
-                0x000103ca                list_shift
-                0x0001041e                list_get
-                0x0001046a                list_delete
-                0x0001049e                list_length
-                0x000104b6                list_get_last
- .text          0x000104d0      0x230 ./mtkernel_3/CAV/src/maqueen.o
-                0x000104d0                maqueen_init
-                0x000104e0                control_motor
-                0x000105d4                stop_all_motor
-                0x00010614                control_led
-                0x00010668                turn_off_all_led
-                0x000106a8                read_line_state
-                0x000106d2                read_line_value
- .text          0x00010700       0xb6 ./mtkernel_3/CAV/src/order.o
-                0x00010700                is_forward
-                0x00010726                is_backward
-                0x0001074c                is_left
-                0x00010772                is_right
-                0x00010798                get_order_duration
- *fill*         0x000107b6        0x2 
- .text          0x000107b8      0x160 ./mtkernel_3/CAV/src/radio.o
-                0x000107d4                print_packet
-                0x00010818                radio_setup
- .text          0x00010918      0x238 ./mtkernel_3/CAV/src/server.o
-                0x00010ab8                start_server
- .text          0x00010b50       0xa0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
-                0x00010b50                __aeabi_ldivmod
- .text          0x00010bf0      0x2d0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x00010bf0                __udivmoddi4
- .text          0x00010ec0        0x4 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
-                0x00010ec0                __aeabi_idiv0
-                0x00010ec0                __aeabi_ldiv0
- .text          0x00010ec4      0x134 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
-                0x00010ec4                memcpy
+                0x000010ec                tk_ena_dsp
+                0x00001190                tk_set_reg
+                0x00001284                tk_get_reg
+                0x000013e8                tk_set_cpr
+                0x00001500                tk_get_cpr
+                0x00001618                td_set_reg
+                0x000016b8                td_get_reg
+ .text          0x00001758      0xbe0 ./mtkernel_3/kernel/tkernel/device.o
+                0x00001868                knl_searchDevCB
+                0x00001938                tk_def_dev
+                0x00001afc                tk_ref_idv
+                0x00001b88                knl_phydevnm
+                0x00001c9c                tk_get_dev
+                0x00001d9c                tk_ref_dev
+                0x00001ea4                tk_oref_dev
+                0x00001f9c                tk_lst_dev
+                0x000020cc                tk_evt_dev
+                0x0000228c                knl_initialize_devmgr
+                0x0000230c                knl_finish_devmgr
+ .text          0x00002338     0x152c ./mtkernel_3/kernel/tkernel/deviceio.o
+                0x0000241a                knl_GetResCB
+                0x0000244c                knl_check_devdesc
+                0x000024b8                knl_delOpnCB
+                0x000024f8                knl_delReqCB
+                0x00002524                knl_chkopen
+                0x000026ee                tk_opn_dev
+                0x00002ae0                knl_close_device
+                0x00002bf0                tk_cls_dev
+                0x00002ce8                knl_request
+                0x00002ea8                tk_rea_dev
+                0x00002f4e                tk_srea_dev
+                0x0000301c                tk_wri_dev
+                0x000030c2                tk_swri_dev
+                0x000031dc                tk_wai_dev
+                0x000035c0                tk_sus_dev
+                0x00003718                knl_devmgr_startup
+                0x00003744                knl_devmgr_cleanup
+                0x000037c0                knl_initDevIO
+                0x00003854                knl_finishDevIO
+ .text          0x00003864      0xa8c ./mtkernel_3/kernel/tkernel/eventflag.o
+                0x0000397e                knl_eventflag_initialize
+                0x000039c8                tk_cre_flg
+                0x00003ae0                tk_del_flg
+                0x00003bd8                tk_set_flg
+                0x00003d48                tk_clr_flg
+                0x00003e70                tk_wai_flg
+                0x00004074                tk_ref_flg
+                0x00004178                td_lst_flg
+                0x000041e0                td_ref_flg
+                0x0000425c                td_flg_que
+ .text          0x000042f0      0x138 ./mtkernel_3/kernel/tkernel/int.o
+                0x000042f0                tk_def_int
+                0x000043e4                tk_ret_int
+ .text          0x00004428      0x3dc ./mtkernel_3/kernel/tkernel/klock.o
+                0x00004686                knl_LockOBJ
+                0x00004758                knl_UnlockOBJ
+ .text          0x00004804      0x904 ./mtkernel_3/kernel/tkernel/mailbox.o
+                0x0000491c                knl_mailbox_initialize
+                0x00004968                tk_cre_mbx
+                0x00004a7c                tk_del_mbx
+                0x00004b74                tk_snd_mbx
+                0x00004d0c                tk_rcv_mbx
+                0x00004e8c                tk_ref_mbx
+                0x00004f90                td_lst_mbx
+                0x00004ff8                td_ref_mbx
+                0x00005074                td_mbx_que
+ .text          0x00005108      0x58c ./mtkernel_3/kernel/tkernel/memory.o
+                0x0000518c                knl_searchFreeArea
+                0x0000522a                knl_appendFreeArea
+                0x000052d8                knl_removeFreeQue
+                0x0000534c                knl_insertAreaQue
+                0x0000538a                knl_removeAreaQue
+                0x000053c8                knl_Imalloc
+                0x00005474                knl_Icalloc
+                0x000054ae                knl_Irealloc
+                0x00005516                knl_Ifree
+                0x000055c8                knl_init_Imalloc
+ .text          0x00005694      0xad4 ./mtkernel_3/kernel/tkernel/mempfix.o
+                0x000057be                knl_fix_memorypool_initialize
+                0x00005814                tk_cre_mpf
+                0x000059e8                tk_del_mpf
+                0x00005b58                tk_get_mpf
+                0x00005d24                tk_rel_mpf
+                0x00005ea4                tk_ref_mpf
+                0x00005fc4                td_lst_mpf
+                0x00006040                td_ref_mpf
+                0x000060d4                td_mpf_que
+ .text          0x00006168      0xe4c ./mtkernel_3/kernel/tkernel/mempool.o
+                0x0000628a                knl_memorypool_initialize
+                0x00006526                knl_mpl_wakeup
+                0x000065cc                tk_cre_mpl
+                0x00006794                tk_del_mpl
+                0x00006936                tk_get_mpl
+                0x00006b0c                tk_rel_mpl
+                0x00006c58                tk_ref_mpl
+                0x00006dd8                td_lst_mpl
+                0x00006e54                td_ref_mpl
+                0x00006f20                td_mpl_que
+ .text          0x00006fb4      0xe3c ./mtkernel_3/kernel/tkernel/messagebuf.o
+                0x000070d2                knl_messagebuffer_initialize
+                0x0000722c                tk_cre_mbf
+                0x000073f8                tk_del_mbf
+                0x00007572                tk_snd_mbf
+                0x0000784e                tk_rcv_mbf
+                0x00007a30                tk_ref_mbf
+                0x00007b8c                td_lst_mbf
+                0x00007bf4                td_ref_mbf
+                0x00007cc8                td_smbf_que
+                0x00007d5c                td_rmbf_que
+ .text          0x00007df0      0x3f4 ./mtkernel_3/kernel/tkernel/misc_calls.o
+                0x00007e10                tk_ref_sys
+                0x00007f64                tk_ref_ver
+                0x00008004                td_ref_sys
+                0x00008100                td_hok_svc
+                0x0000814c                td_hok_dsp
+                0x00008198                td_hok_int
+ .text          0x000081e4      0xcc0 ./mtkernel_3/kernel/tkernel/mutex.o
+                0x0000830c                knl_mutex_initialize
+                0x00008358                knl_release_mutex
+                0x000083fc                knl_signal_all_mutex
+                0x00008482                knl_chg_pri_mutex
+                0x00008564                tk_cre_mtx
+                0x000086ac                tk_del_mtx
+                0x00008868                tk_loc_mtx
+                0x00008ab0                tk_unl_mtx
+                0x00008c1c                tk_ref_mtx
+                0x00008d28                td_lst_mtx
+                0x00008d90                td_ref_mtx
+                0x00008e14                td_mtx_que
+ .text          0x00008ea4       0x38 ./mtkernel_3/kernel/tkernel/objname.o
+                0x00008ea4                td_ref_dsname
+                0x00008ec0                td_set_dsname
+ .text          0x00008edc        0x0 ./mtkernel_3/kernel/tkernel/power.o
+ .text          0x00008edc        0x0 ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .text          0x00008edc      0x97c ./mtkernel_3/kernel/tkernel/semaphore.o
+                0x00008f88                knl_semaphore_initialize
+                0x00008fd4                tk_cre_sem
+                0x00009120                tk_del_sem
+                0x00009218                tk_sig_sem
+                0x00009426                tk_wai_sem
+                0x000095e0                tk_ref_sem
+                0x000096e4                td_lst_sem
+                0x0000974c                td_ref_sem
+                0x000097c8                td_sem_que
+ .text          0x00009858      0x630 ./mtkernel_3/kernel/tkernel/task.o
+                0x00009bda                knl_task_initialize
+                0x00009c5c                knl_make_dormant
+                0x00009cde                knl_make_ready
+                0x00009d14                knl_make_non_ready
+                0x00009d4c                knl_change_task_priority
+                0x00009dc4                knl_rotate_ready_queue
+                0x00009de4                knl_rotate_ready_queue_run
+                0x00009e10                td_rdy_que
+ .text          0x00009e88     0x10bc ./mtkernel_3/kernel/tkernel/task_manage.o
+                0x0000a00c                tk_cre_tsk
+                0x0000a208                tk_del_tsk
+                0x0000a340                tk_sta_tsk
+                0x0000a4de                tk_ext_tsk
+                0x0000a598                tk_exd_tsk
+                0x0000a648                tk_ter_tsk
+                0x0000a7a4                tk_chg_pri
+                0x0000a908                tk_rot_rdq
+                0x0000a9f8                tk_get_tid
+                0x0000aa70                tk_ref_tsk
+                0x0000abf8                tk_rel_wai
+                0x0000ad14                td_lst_tsk
+                0x0000ad80                td_ref_tsk
+                0x0000ae98                td_inf_tsk
+ .text          0x0000af44      0x9e4 ./mtkernel_3/kernel/tkernel/task_sync.o
+                0x0000afaa                tk_sus_tsk
+                0x0000b144                tk_rsm_tsk
+                0x0000b2dc                tk_frsm_tsk
+                0x0000b454                tk_slp_tsk
+                0x0000b584                tk_wup_tsk
+                0x0000b6fc                tk_can_wup
+                0x0000b818                tk_dly_tsk
+ .text          0x0000b928     0x1798 ./mtkernel_3/kernel/tkernel/time_calls.o
+                0x0000bcd0                tk_set_utc
+                0x0000bd48                tk_get_utc
+                0x0000bdc4                tk_set_tim
+                0x0000beb0                tk_get_tim
+                0x0000bfa0                tk_get_otm
+                0x0000c060                td_get_tim
+                0x0000c0c0                td_get_otm
+                0x0000c10c                knl_cyclichandler_initialize
+                0x0000c154                knl_call_cychdr
+                0x0000c1be                tk_cre_cyc
+                0x0000c34c                tk_del_cyc
+                0x0000c450                tk_sta_cyc
+                0x0000c5b0                tk_stp_cyc
+                0x0000c6b0                tk_ref_cyc
+                0x0000c804                td_lst_cyc
+                0x0000c880                td_ref_cyc
+                0x0000c94c                knl_alarmhandler_initialize
+                0x0000c994                knl_call_almhdr
+                0x0000c9c6                tk_cre_alm
+                0x0000cae4                tk_del_alm
+                0x0000cc18                tk_sta_alm
+                0x0000cd44                tk_stp_alm
+                0x0000ce44                tk_ref_alm
+                0x0000cf88                td_lst_alm
+                0x0000d004                td_ref_alm
+ .text          0x0000d0c0      0x3d4 ./mtkernel_3/kernel/tkernel/timer.o
+                0x0000d244                knl_timer_startup
+                0x0000d280                knl_timer_shutdown
+                0x0000d2ec                knl_timer_insert
+                0x0000d33c                knl_timer_insert_reltim
+                0x0000d37c                knl_timer_insert_abs
+                0x0000d3aa                knl_timer_handler
+ .text          0x0000d494       0xb0 ./mtkernel_3/kernel/tkernel/tkinit.o
+                0x0000d494                knl_init_object
+ .text          0x0000d544      0x3f0 ./mtkernel_3/kernel/tkernel/wait.o
+                0x0000d68e                knl_wait_release_ok
+                0x0000d6ac                knl_wait_release_ok_ercd
+                0x0000d6cc                knl_wait_release_ng
+                0x0000d700                knl_wait_release_tmout
+                0x0000d732                knl_make_wait
+                0x0000d794                knl_make_wait_reltim
+                0x0000d7f8                knl_wait_delete
+                0x0000d82e                knl_wait_tskid
+                0x0000d854                knl_gcb_make_wait
+                0x0000d8c0                knl_gcb_change_priority
+                0x0000d8e4                knl_gcb_top_of_wait_queue
+ .text          0x0000d934       0xe0 ./mtkernel_3/kernel/sysinit/sysinit.o
+                0x0000d934                main
+                0x0000da04                knl_tkernel_exit
+ .text          0x0000da14       0xb0 ./mtkernel_3/kernel/inittask/inittask.o
+ .text          0x0000dac4      0x2a4 ./mtkernel_3/device/common/drvif/msdrvif.o
+                0x0000dc3e                msdi_def_dev
+                0x0000dd2c                msdi_del_dev
+ .text          0x0000dd68        0x0 ./mtkernel_3/device/adc/adc.o
+ .text          0x0000dd68        0x0 ./mtkernel_3/device/i2c/i2c.o
+ .text          0x0000dd68      0x7dc ./mtkernel_3/device/ser/ser.o
+                0x0000dd90                dev_ser_get_snddat
+                0x0000de04                dev_ser_notify_rcv
+                0x0000de7c                dev_ser_notify_err
+                0x0000e2e0                dev_ser_openfn
+                0x0000e326                dev_ser_closefn
+                0x0000e352                dev_ser_readfn
+                0x0000e39e                dev_ser_writefn
+                0x0000e3ea                dev_ser_eventfn
+                0x0000e406                dev_init_ser
+ .text          0x0000e544      0x470 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+                0x0000e878                dev_ser_llctl
+                0x0000e93c                dev_ser_llinit
+ .text          0x0000e9b4      0x1ac ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+                0x0000e9e8                tm_snd_dat
+                0x0000ea3c                tm_rcv_dat
+                0x0000ea90                tm_com_init
+ .text          0x0000eb60        0x0 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .text          0x0000eb60      0x11c ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+                0x0000ebf4                EnableInt
+                0x0000ec0e                DisableInt
+                0x0000ec24                ClearInt
+                0x0000ec3a                EndOfInt
+                0x0000ec4e                CheckInt
+                0x0000ec66                SetIntMode
+ .text          0x0000ec7c      0x3c0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+                0x0000ed60                StartPhysicalTimer
+                0x0000eef8                StopPhysicalTimer
+                0x0000ef4e                GetPhysicalTimerCount
+                0x0000ef98                DefinePhysicalTimerHandler
+                0x0000effc                GetPhysicalTimerConfig
+ .text          0x0000f03c       0xe6 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+                0x0000f03c                set_basepri
+                0x0000f056                get_basepri
+                0x0000f070                disint
+                0x0000f094                SetCpuIntLevel
+                0x0000f0b0                GetCpuIntLevel
+                0x0000f0d6                EnableInt_nvic
+ *fill*         0x0000f122        0x2 
+ .text          0x0000f124      0x11c ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+                0x0000f1c4                WaitUsec
+                0x0000f1f8                WaitNsec
+ .text          0x0000f240       0x42 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+                0x0000f240                knl_init_device
+                0x0000f250                knl_start_device
+                0x0000f272                knl_finish_device
+ *fill*         0x0000f282        0x2 
+ .text          0x0000f284       0xc8 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+                0x0000f2a0                knl_startup_hw
+                0x0000f2dc                knl_shutdown_hw
+                0x0000f2e6                knl_restart_hw
+ .text          0x0000f34c       0x1c ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+                0x0000f34c                low_pow
+                0x0000f35a                off_pow
+ .text          0x0000f368       0xb8 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+                0x0000f39c                startup_clock
+                0x0000f410                shutdown_clock
+ .text          0x0000f420        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .text          0x0000f420      0x308 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+                0x0000f420                knl_set_reg
+                0x0000f4e8                knl_get_reg
+                0x0000f5bc                knl_set_cpr
+                0x0000f638                knl_get_cpr
+                0x0000f6b2                knl_force_dispatch
+                0x0000f70c                knl_dispatch
+ .text          0x0000f728       0xe0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+                0x0000f728                knl_dispatch_entry
+ .text          0x0000f808      0x10c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+                0x0000f808                NMI_Handler
+                0x0000f818                HardFault_Handler
+                0x0000f878                MemManage_Handler
+                0x0000f888                BusFault_Handler
+                0x0000f898                UsageFault_Handler
+                0x0000f8a8                Svcall_Handler
+                0x0000f8b8                DebugMon_Handler
+                0x0000f8c8                Default_Handler
+ .text          0x0000f914      0x144 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+                0x0000f968                knl_hll_inthdr
+                0x0000f9c4                knl_systim_inthdr
+                0x0000f9d8                knl_define_inthdr
+                0x0000fa38                knl_return_inthdr
+                0x0000fa46                knl_init_interrupt
+ .text          0x0000fa58      0x138 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+                0x0000fa58                Reset_Handler
+ .text          0x0000fb90      0x704 ./mtkernel_3/CAV/src/LED.o
+                0x0000fd74                initialize_led
+                0x0000fe24                clear_led
+                0x0000fe58                turn_on_led
+                0x0000fe9c                show_number
+                0x0001002c                show_circle
+                0x0001005c                show_cross
+                0x0001008c                show_S
+                0x000100bc                show_V
+                0x000100ec                show_T
+                0x0001011c                show_logo
+                0x000101f8                show_strait
+                0x00010228                show_left
+                0x00010258                show_right
+                0x00010288                show_stop
+ .text          0x00010294      0xd6c ./mtkernel_3/CAV/src/STG.o
+                0x00010800                index_of
+                0x00010c24                stg_start
+                0x00010cf8                stg_reserve
+                0x00010ec0                stg_get_delay_until_departure
+ .text          0x00011000      0x2e8 ./mtkernel_3/CAV/src/app_main.o
+                0x00011034                button_setup
+                0x00011054                is_a_pressed
+                0x00011078                is_b_pressed
+                0x0001121c                usermain
+ .text          0x000112e8      0x46c ./mtkernel_3/CAV/src/client.o
+                0x0001133a                request_departure_time_ms
+                0x000116b0                reserve_order
+ .text          0x00011754      0x4e4 ./mtkernel_3/CAV/src/drive.o
+                0x00011b78                start_drive
+ .text          0x00011c38      0x89c ./mtkernel_3/CAV/src/iic.o
+                0x0001200c                iic_transfer
+                0x00012218                iic_setup
+                0x000123f8                iic_write
+                0x00012458                iic_read
+ .text          0x000124d4      0x1c8 ./mtkernel_3/CAV/src/list.o
+                0x000124d4                list_init
+                0x000124fe                list_unshift
+                0x00012546                list_append
+                0x00012596                list_shift
+                0x000125ea                list_get
+                0x00012636                list_delete
+                0x0001266a                list_length
+                0x00012682                list_get_last
+ .text          0x0001269c      0x230 ./mtkernel_3/CAV/src/maqueen.o
+                0x0001269c                maqueen_init
+                0x000126ac                control_motor
+                0x000127a0                stop_all_motor
+                0x000127e0                control_led
+                0x00012834                turn_off_all_led
+                0x00012874                read_line_state
+                0x0001289e                read_line_value
+ .text          0x000128cc       0xb6 ./mtkernel_3/CAV/src/order.o
+                0x000128cc                is_forward
+                0x000128f2                is_backward
+                0x00012918                is_left
+                0x0001293e                is_right
+                0x00012964                get_order_duration
+ *fill*         0x00012982        0x2 
+ .text          0x00012984      0x160 ./mtkernel_3/CAV/src/radio.o
+                0x000129a0                print_packet
+                0x000129e4                radio_setup
+ .text          0x00012ae4      0x238 ./mtkernel_3/CAV/src/server.o
+                0x00012c84                start_server
+ .text          0x00012d1c       0xa0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+                0x00012d1c                __aeabi_ldivmod
+ .text          0x00012dbc      0x2d0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x00012dbc                __udivmoddi4
+ .text          0x0001308c        0x4 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x0001308c                __aeabi_idiv0
+                0x0001308c                __aeabi_ldiv0
+ .text          0x00013090      0x134 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+                0x00013090                memcpy
  *(.text.*)
  *(.rodata)
- .rodata        0x00010ff8        0x2 ./mtkernel_3/lib/libtm/libtm.o
- *fill*         0x00010ffa        0x2 
- .rodata        0x00010ffc       0x30 ./mtkernel_3/lib/libtm/libtm_printf.o
- .rodata        0x0001102c        0x5 ./mtkernel_3/lib/libtk/fastlock.o
- *fill*         0x00011031        0x3 
- .rodata        0x00011034        0x5 ./mtkernel_3/lib/libtk/fastmlock.o
- *fill*         0x00011039        0x3 
- .rodata        0x0001103c        0x5 ./mtkernel_3/kernel/tkernel/device.o
- *fill*         0x00011041        0x3 
- .rodata        0x00011044       0x10 ./mtkernel_3/kernel/tkernel/deviceio.o
- .rodata        0x00011054       0x18 ./mtkernel_3/kernel/tkernel/eventflag.o
- .rodata        0x0001106c       0x18 ./mtkernel_3/kernel/tkernel/mailbox.o
- .rodata        0x00011084       0x18 ./mtkernel_3/kernel/tkernel/mempfix.o
- .rodata        0x0001109c       0x18 ./mtkernel_3/kernel/tkernel/mempool.o
- .rodata        0x000110b4       0x24 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .rodata        0x000110d8       0x24 ./mtkernel_3/kernel/tkernel/mutex.o
- .rodata        0x000110fc       0x18 ./mtkernel_3/kernel/tkernel/semaphore.o
- .rodata        0x00011114       0xc0 ./mtkernel_3/kernel/tkernel/task_manage.o
- .rodata        0x000111d4       0x18 ./mtkernel_3/kernel/tkernel/task_sync.o
- .rodata        0x000111ec       0xd8 ./mtkernel_3/kernel/sysinit/sysinit.o
- .rodata        0x000112c4       0x6d ./mtkernel_3/kernel/inittask/inittask.o
-                0x000112c4                knl_init_ctsk
- *fill*         0x00011331        0x3 
- .rodata        0x00011334        0x4 ./mtkernel_3/device/ser/ser.o
- .rodata        0x00011338       0x98 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .rodata        0x000113d0       0x7b ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- *fill*         0x0001144b        0x1 
- .rodata        0x0001144c       0xca ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- *fill*         0x00011516        0x2 
- .rodata        0x00011518        0x8 ./mtkernel_3/CAV/src/LED.o
-                0x00011518                led_physical_timer_clock_mhz
-                0x0001151c                led_cycle_micros
- .rodata        0x00011520      0x19d ./mtkernel_3/CAV/src/STG.o
- *fill*         0x000116bd        0x3 
- .rodata        0x000116c0       0x83 ./mtkernel_3/CAV/src/app_main.o
- *fill*         0x00011743        0x1 
- .rodata        0x00011744      0x128 ./mtkernel_3/CAV/src/drive.o
-                0x00011744                d_timer_clock_mhz
- .rodata        0x0001186c       0x25 ./mtkernel_3/CAV/src/iic.o
- *fill*         0x00011891        0x3 
- .rodata        0x00011894        0xa ./mtkernel_3/CAV/src/radio.o
+ .rodata        0x000131c4        0x2 ./mtkernel_3/lib/libtm/libtm.o
+ *fill*         0x000131c6        0x2 
+ .rodata        0x000131c8       0x30 ./mtkernel_3/lib/libtm/libtm_printf.o
+ .rodata        0x000131f8        0x5 ./mtkernel_3/lib/libtk/fastlock.o
+ *fill*         0x000131fd        0x3 
+ .rodata        0x00013200        0x5 ./mtkernel_3/lib/libtk/fastmlock.o
+ *fill*         0x00013205        0x3 
+ .rodata        0x00013208        0x5 ./mtkernel_3/kernel/tkernel/device.o
+ *fill*         0x0001320d        0x3 
+ .rodata        0x00013210       0x10 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .rodata        0x00013220       0x18 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .rodata        0x00013238       0x18 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .rodata        0x00013250       0x18 ./mtkernel_3/kernel/tkernel/mempfix.o
+ .rodata        0x00013268       0x18 ./mtkernel_3/kernel/tkernel/mempool.o
+ .rodata        0x00013280       0x24 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .rodata        0x000132a4       0x24 ./mtkernel_3/kernel/tkernel/mutex.o
+ .rodata        0x000132c8       0x18 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .rodata        0x000132e0       0xc0 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .rodata        0x000133a0       0x18 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .rodata        0x000133b8       0xd8 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .rodata        0x00013490       0x6d ./mtkernel_3/kernel/inittask/inittask.o
+                0x00013490                knl_init_ctsk
+ *fill*         0x000134fd        0x3 
+ .rodata        0x00013500        0x4 ./mtkernel_3/device/ser/ser.o
+ .rodata        0x00013504       0x98 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .rodata        0x0001359c       0x7b ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ *fill*         0x00013617        0x1 
+ .rodata        0x00013618       0xca ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ *fill*         0x000136e2        0x2 
+ .rodata        0x000136e4        0x8 ./mtkernel_3/CAV/src/LED.o
+                0x000136e4                led_physical_timer_clock_mhz
+                0x000136e8                led_cycle_micros
+ .rodata        0x000136ec      0x19d ./mtkernel_3/CAV/src/STG.o
+ *fill*         0x00013889        0x3 
+ .rodata        0x0001388c       0x83 ./mtkernel_3/CAV/src/app_main.o
+ *fill*         0x0001390f        0x1 
+ .rodata        0x00013910      0x128 ./mtkernel_3/CAV/src/drive.o
+                0x00013910                d_timer_clock_mhz
+ .rodata        0x00013a38       0x25 ./mtkernel_3/CAV/src/iic.o
+ *fill*         0x00013a5d        0x3 
+ .rodata        0x00013a60        0xa ./mtkernel_3/CAV/src/radio.o
  *(.rodata.*)
 
-.ARM.extab      0x0001189e        0x0
- .ARM.extab     0x0001189e        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+.ARM.extab      0x00013a6a        0x0
+ .ARM.extab     0x00013a6a        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.ARM.exidx      0x000118a0        0x8
- .ARM.exidx     0x000118a0        0x8 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+.ARM.exidx      0x00013a6c        0x8
+ .ARM.exidx     0x00013a6c        0x8 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.glue_7         0x000118a8        0x0
- .glue_7        0x000118a8        0x0 linker stubs
+.glue_7         0x00013a74        0x0
+ .glue_7        0x00013a74        0x0 linker stubs
 
-.glue_7t        0x000118a8        0x0
- .glue_7t       0x000118a8        0x0 linker stubs
+.glue_7t        0x00013a74        0x0
+ .glue_7t       0x00013a74        0x0 linker stubs
 
-.vfp11_veneer   0x000118a8        0x0
- .vfp11_veneer  0x000118a8        0x0 linker stubs
+.vfp11_veneer   0x00013a74        0x0
+ .vfp11_veneer  0x00013a74        0x0 linker stubs
 
-.v4_bx          0x000118a8        0x0
- .v4_bx         0x000118a8        0x0 linker stubs
+.v4_bx          0x00013a74        0x0
+ .v4_bx         0x00013a74        0x0 linker stubs
 
-.iplt           0x000118a8        0x0
- .iplt          0x000118a8        0x0 ./mtkernel_3/lib/libtm/libtm.o
+.iplt           0x00013a74        0x0
+ .iplt          0x00013a74        0x0 ./mtkernel_3/lib/libtm/libtm.o
 
-.rel.dyn        0x000118a8        0x0
- .rel.iplt      0x000118a8        0x0 ./mtkernel_3/lib/libtm/libtm.o
-                0x000118a8                . = ALIGN (0x4)
-                0x000118a8                __data_org = .
+.rel.dyn        0x00013a74        0x0
+ .rel.iplt      0x00013a74        0x0 ./mtkernel_3/lib/libtm/libtm.o
+                0x00013a74                . = ALIGN (0x4)
+                0x00013a74                __data_org = .
 
 vector          0x20000000      0x100
                 0x20000000                __vector_start = .
@@ -4277,7 +4281,7 @@ vector          0x20000000      0x100
                 0x20000000                exchdr_tbl
                 0x20000100                __vector_end = .
 
-.data           0x20000100       0x98 load address 0x000118a8
+.data           0x20000100       0x98 load address 0x00013a74
                 0x20000100                __data_start = .
  *(.data)
  .data          0x20000100        0x0 ./mtkernel_3/lib/libtm/libtm.o
@@ -4352,18 +4356,18 @@ vector          0x20000000      0x100
  .data          0x20000194        0x0 ./mtkernel_3/CAV/src/radio.o
  .data          0x20000194        0x4 ./mtkernel_3/CAV/src/server.o
                 0x20000194                radio_interrupt_number
- .data          0x20000198        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
- .data          0x20000198        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .data          0x20000198        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
- .data          0x20000198        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+ .data          0x20000198        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x20000198        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .data          0x20000198        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .data          0x20000198        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
  *(.data.*)
                 0x20000198                . = ALIGN (0x4)
                 0x20000198                __data_end = .
 
-.igot.plt       0x20000198        0x0 load address 0x00011940
+.igot.plt       0x20000198        0x0 load address 0x00013b0c
  .igot.plt      0x20000198        0x0 ./mtkernel_3/lib/libtm/libtm.o
 
-.bss            0x20000198     0x2628 load address 0x00011940
+.bss            0x20000198     0x2640 load address 0x00013b0c
                 0x20000198                __bss_start = .
                 [!provide]                PROVIDE (__noinit_start = .)
  *(.noinit)
@@ -4421,6 +4425,7 @@ vector          0x20000000      0x100
  .noinit        0x20002570      0x100 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
                 0x20002570                knl_tmp_stack
  .noinit        0x20002670       0xc0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+                0x20002670                knl_inthdr_tbl
                 [!provide]                PROVIDE (__noinit_end = .)
  *(.bss)
  .bss           0x20002730        0x0 ./mtkernel_3/lib/libtm/libtm.o
@@ -4443,85 +4448,91 @@ vector          0x20000000      0x100
  .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/mempfix.o
  .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/mempool.o
  .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/mutex.o
- .bss           0x20002734        0x0 ./mtkernel_3/kernel/tkernel/objname.o
- .bss           0x20002734        0x4 ./mtkernel_3/kernel/tkernel/power.o
-                0x20002734                knl_lowpow_discnt
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/semaphore.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/task.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/task_manage.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/task_sync.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/time_calls.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/timer.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/tkinit.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/tkernel/wait.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/sysinit/sysinit.o
- .bss           0x20002738        0x0 ./mtkernel_3/kernel/inittask/inittask.o
- .bss           0x20002738        0x0 ./mtkernel_3/device/common/drvif/msdrvif.o
- .bss           0x20002738        0x0 ./mtkernel_3/device/adc/adc.o
- .bss           0x20002738        0x0 ./mtkernel_3/device/i2c/i2c.o
- .bss           0x20002738        0x4 ./mtkernel_3/device/ser/ser.o
- .bss           0x2000273c        0x0 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .bss           0x2000273c        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .bss           0x2000273c        0x0 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .bss           0x2000273c        0x0 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .bss           0x2000273c        0x0 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .bss           0x2000273c        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .bss           0x2000273c        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .bss           0x2000273c        0x4 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
-                0x2000273c                knl_taskindp
- .bss           0x20002740        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
- .bss           0x20002740        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .bss           0x20002740        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .bss           0x20002740        0x8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
-                0x20002740                knl_lowmem_top
-                0x20002744                knl_lowmem_limit
- .bss           0x20002748        0x5 ./mtkernel_3/CAV/src/LED.o
- *fill*         0x2000274d        0x3 
- .bss           0x20002750        0x8 ./mtkernel_3/CAV/src/STG.o
-                0x20002750                spatio_temporal_grid
-                0x20002754                server_time
- .bss           0x20002758        0x0 ./mtkernel_3/CAV/src/app_main.o
- .bss           0x20002758        0xa ./mtkernel_3/CAV/src/client.o
-                0x20002758                order_list_global
-                0x2000275c                transfer_task_id
-                0x20002760                previous_target
-                0x20002761                current_target
- *fill*         0x20002762        0x2 
- .bss           0x20002764        0x6 ./mtkernel_3/CAV/src/drive.o
-                0x20002764                d_request_sent_flag
-                0x20002768                d_last_request_list_count
- *fill*         0x2000276a        0x2 
- .bss           0x2000276c       0x2c ./mtkernel_3/CAV/src/iic.o
- .bss           0x20002798        0x0 ./mtkernel_3/CAV/src/list.o
- .bss           0x20002798        0x0 ./mtkernel_3/CAV/src/maqueen.o
- .bss           0x20002798        0x0 ./mtkernel_3/CAV/src/order.o
- .bss           0x20002798       0x20 ./mtkernel_3/CAV/src/radio.o
-                0x20002798                packet
- .bss           0x200027b8        0x5 ./mtkernel_3/CAV/src/server.o
-                0x200027b8                radio_task_id
-                0x200027bc                current_id
- .bss           0x200027bd        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
- .bss           0x200027bd        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .bss           0x200027bd        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
- .bss           0x200027bd        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+ .bss           0x20002734       0x18 ./mtkernel_3/kernel/tkernel/misc_calls.o
+                0x20002734                knl_hook_enterfn
+                0x20002738                knl_hook_leavefn
+                0x2000273c                knl_hook_execfn
+                0x20002740                knl_hook_stopfn
+                0x20002744                knl_hook_ienterfn
+                0x20002748                knl_hook_ileavefn
+ .bss           0x2000274c        0x0 ./mtkernel_3/kernel/tkernel/mutex.o
+ .bss           0x2000274c        0x0 ./mtkernel_3/kernel/tkernel/objname.o
+ .bss           0x2000274c        0x4 ./mtkernel_3/kernel/tkernel/power.o
+                0x2000274c                knl_lowpow_discnt
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/task.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/time_calls.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/timer.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/tkinit.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/tkernel/wait.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .bss           0x20002750        0x0 ./mtkernel_3/kernel/inittask/inittask.o
+ .bss           0x20002750        0x0 ./mtkernel_3/device/common/drvif/msdrvif.o
+ .bss           0x20002750        0x0 ./mtkernel_3/device/adc/adc.o
+ .bss           0x20002750        0x0 ./mtkernel_3/device/i2c/i2c.o
+ .bss           0x20002750        0x4 ./mtkernel_3/device/ser/ser.o
+ .bss           0x20002754        0x0 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .bss           0x20002754        0x0 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .bss           0x20002754        0x0 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .bss           0x20002754        0x0 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .bss           0x20002754        0x0 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .bss           0x20002754        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .bss           0x20002754        0x0 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .bss           0x20002754        0x4 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+                0x20002754                knl_taskindp
+ .bss           0x20002758        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+ .bss           0x20002758        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .bss           0x20002758        0x0 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .bss           0x20002758        0x8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+                0x20002758                knl_lowmem_top
+                0x2000275c                knl_lowmem_limit
+ .bss           0x20002760        0x5 ./mtkernel_3/CAV/src/LED.o
+ *fill*         0x20002765        0x3 
+ .bss           0x20002768        0x8 ./mtkernel_3/CAV/src/STG.o
+                0x20002768                spatio_temporal_grid
+                0x2000276c                server_time
+ .bss           0x20002770        0x0 ./mtkernel_3/CAV/src/app_main.o
+ .bss           0x20002770        0xa ./mtkernel_3/CAV/src/client.o
+                0x20002770                order_list_global
+                0x20002774                transfer_task_id
+                0x20002778                previous_target
+                0x20002779                current_target
+ *fill*         0x2000277a        0x2 
+ .bss           0x2000277c        0x6 ./mtkernel_3/CAV/src/drive.o
+                0x2000277c                d_request_sent_flag
+                0x20002780                d_last_request_list_count
+ *fill*         0x20002782        0x2 
+ .bss           0x20002784       0x2c ./mtkernel_3/CAV/src/iic.o
+ .bss           0x200027b0        0x0 ./mtkernel_3/CAV/src/list.o
+ .bss           0x200027b0        0x0 ./mtkernel_3/CAV/src/maqueen.o
+ .bss           0x200027b0        0x0 ./mtkernel_3/CAV/src/order.o
+ .bss           0x200027b0       0x20 ./mtkernel_3/CAV/src/radio.o
+                0x200027b0                packet
+ .bss           0x200027d0        0x5 ./mtkernel_3/CAV/src/server.o
+                0x200027d0                radio_task_id
+                0x200027d4                current_id
+ .bss           0x200027d5        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x200027d5        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .bss           0x200027d5        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .bss           0x200027d5        0x0 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
  *(.bss.*)
  *(COMMON)
-                0x200027c0                . = ALIGN (0x4)
- *fill*         0x200027bd        0x3 
-                0x200027c0                __bss_end = .
-                0x200027c0                __end = .
+                0x200027d8                . = ALIGN (0x4)
+ *fill*         0x200027d5        0x3 
+                0x200027d8                __bss_end = .
+                0x200027d8                __end = .
 OUTPUT(mtkernel_3.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000    0x19d99
+.debug_info     0x00000000    0x1cda2
  .debug_info    0x00000000      0x20b ./mtkernel_3/lib/libtm/libtm.o
  .debug_info    0x0000020b      0x43a ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_info    0x00000645      0x2ec ./mtkernel_3/lib/libtk/fastlock.o
@@ -4530,66 +4541,66 @@ LOAD linker stubs
  .debug_info    0x00000eef       0x99 ./mtkernel_3/kernel/usermain/usermain.o
  .debug_info    0x00000f88       0x6f ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_info    0x00000ff7      0x2e5 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_info    0x000012dc      0xb71 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_info    0x00001e4d     0x1215 ./mtkernel_3/kernel/tkernel/device.o
- .debug_info    0x00003062     0x183c ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_info    0x0000489e      0xefc ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_info    0x0000579a      0x73e ./mtkernel_3/kernel/tkernel/int.o
- .debug_info    0x00005ed8      0x99e ./mtkernel_3/kernel/tkernel/klock.o
- .debug_info    0x00006876      0xe92 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_info    0x00007708      0x4e8 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_info    0x00007bf0      0xf6c ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_info    0x00008b5c     0x11e9 ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_info    0x00009d45     0x1209 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_info    0x0000af4e      0x870 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_info    0x0000b7be     0x1038 ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_info    0x0000c7f6      0x14f ./mtkernel_3/kernel/tkernel/objname.o
- .debug_info    0x0000c945       0x94 ./mtkernel_3/kernel/tkernel/power.o
- .debug_info    0x0000c9d9       0x6f ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_info    0x0000ca48      0xe37 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_info    0x0000d87f      0xcff ./mtkernel_3/kernel/tkernel/task.o
- .debug_info    0x0000e57e     0x1174 ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_info    0x0000f6f2      0xa2c ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_info    0x0001011e     0x179f ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_info    0x000118bd      0xa5c ./mtkernel_3/kernel/tkernel/timer.o
- .debug_info    0x00012319       0xb4 ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_info    0x000123cd      0xab3 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_info    0x00012e80      0x1bf ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_info    0x0001303f      0x1f2 ./mtkernel_3/kernel/inittask/inittask.o
- .debug_info    0x00013231      0x734 ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_info    0x00013965       0x6f ./mtkernel_3/device/adc/adc.o
- .debug_info    0x000139d4       0x6f ./mtkernel_3/device/i2c/i2c.o
- .debug_info    0x00013a43      0xa7d ./mtkernel_3/device/ser/ser.o
- .debug_info    0x000144c0      0x552 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_info    0x00014a12      0x192 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_info    0x00014ba4       0x68 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .debug_info    0x00014c0c      0x22f ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_info    0x00014e3b      0x47b ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_info    0x000152b6      0x1df ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_info    0x00015495      0x176 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_info    0x0001560b       0xe4 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_info    0x000156ef      0x1b2 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_info    0x000158a1       0x9b ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_info    0x0001593c      0x112 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_info    0x00015a4e       0xa8 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_info    0x00015af6      0xb14 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_info    0x0001660a       0x26 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
- .debug_info    0x00016630      0x74c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_info    0x00016d7c      0x248 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_info    0x00016fc4      0x1b8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_info    0x0001717c      0x3e6 ./mtkernel_3/CAV/src/LED.o
- .debug_info    0x00017562      0xae3 ./mtkernel_3/CAV/src/STG.o
- .debug_info    0x00018045      0x2fd ./mtkernel_3/CAV/src/app_main.o
- .debug_info    0x00018342      0x470 ./mtkernel_3/CAV/src/client.o
- .debug_info    0x000187b2      0x434 ./mtkernel_3/CAV/src/drive.o
- .debug_info    0x00018be6      0x6bb ./mtkernel_3/CAV/src/iic.o
- .debug_info    0x000192a1      0x302 ./mtkernel_3/CAV/src/list.o
- .debug_info    0x000195a3      0x226 ./mtkernel_3/CAV/src/maqueen.o
- .debug_info    0x000197c9      0x16d ./mtkernel_3/CAV/src/order.o
- .debug_info    0x00019936      0x17c ./mtkernel_3/CAV/src/radio.o
- .debug_info    0x00019ab2      0x2e7 ./mtkernel_3/CAV/src/server.o
+ .debug_info    0x000012dc      0xcfa ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_info    0x00001fd6     0x15ef ./mtkernel_3/kernel/tkernel/device.o
+ .debug_info    0x000035c5     0x1d54 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_info    0x00005319     0x1249 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_info    0x00006562      0x823 ./mtkernel_3/kernel/tkernel/int.o
+ .debug_info    0x00006d85      0x99e ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_info    0x00007723     0x1136 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_info    0x00008859      0x4e8 ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_info    0x00008d41     0x1210 ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_info    0x00009f51     0x14a0 ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_info    0x0000b3f1     0x14cb ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_info    0x0000c8bc      0xb51 ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_info    0x0000d40d     0x12b9 ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_info    0x0000e6c6      0x14f ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_info    0x0000e815       0x94 ./mtkernel_3/kernel/tkernel/power.o
+ .debug_info    0x0000e8a9       0x6f ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_info    0x0000e918     0x10da ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_info    0x0000f9f2      0xcff ./mtkernel_3/kernel/tkernel/task.o
+ .debug_info    0x000106f1     0x1664 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_info    0x00011d55      0xd74 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_info    0x00012ac9     0x1dd4 ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_info    0x0001489d      0xa5c ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_info    0x000152f9       0xb4 ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_info    0x000153ad      0xab3 ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_info    0x00015e60      0x1bf ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_info    0x0001601f      0x1f2 ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_info    0x00016211      0x734 ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_info    0x00016945       0x6f ./mtkernel_3/device/adc/adc.o
+ .debug_info    0x000169b4       0x6f ./mtkernel_3/device/i2c/i2c.o
+ .debug_info    0x00016a23      0xa7d ./mtkernel_3/device/ser/ser.o
+ .debug_info    0x000174a0      0x552 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_info    0x000179f2      0x192 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_info    0x00017b84       0x68 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .debug_info    0x00017bec      0x22f ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_info    0x00017e1b      0x47b ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_info    0x00018296      0x1df ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_info    0x00018475      0x176 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_info    0x000185eb       0xe4 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_info    0x000186cf      0x1b2 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_info    0x00018881       0x9b ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_info    0x0001891c      0x112 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_info    0x00018a2e       0xa8 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_info    0x00018ad6      0xb25 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_info    0x000195fb       0x26 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+ .debug_info    0x00019621      0x74c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_info    0x00019d6d      0x260 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_info    0x00019fcd      0x1b8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_info    0x0001a185      0x3e6 ./mtkernel_3/CAV/src/LED.o
+ .debug_info    0x0001a56b      0xae3 ./mtkernel_3/CAV/src/STG.o
+ .debug_info    0x0001b04e      0x2fd ./mtkernel_3/CAV/src/app_main.o
+ .debug_info    0x0001b34b      0x470 ./mtkernel_3/CAV/src/client.o
+ .debug_info    0x0001b7bb      0x434 ./mtkernel_3/CAV/src/drive.o
+ .debug_info    0x0001bbef      0x6bb ./mtkernel_3/CAV/src/iic.o
+ .debug_info    0x0001c2aa      0x302 ./mtkernel_3/CAV/src/list.o
+ .debug_info    0x0001c5ac      0x226 ./mtkernel_3/CAV/src/maqueen.o
+ .debug_info    0x0001c7d2      0x16d ./mtkernel_3/CAV/src/order.o
+ .debug_info    0x0001c93f      0x17c ./mtkernel_3/CAV/src/radio.o
+ .debug_info    0x0001cabb      0x2e7 ./mtkernel_3/CAV/src/server.o
 
-.debug_abbrev   0x00000000     0x68a4
+.debug_abbrev   0x00000000     0x6c03
  .debug_abbrev  0x00000000       0xd7 ./mtkernel_3/lib/libtm/libtm.o
  .debug_abbrev  0x000000d7      0x1d5 ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_abbrev  0x000002ac      0x150 ./mtkernel_3/lib/libtk/fastlock.o
@@ -4598,64 +4609,64 @@ LOAD linker stubs
  .debug_abbrev  0x00000632       0x58 ./mtkernel_3/kernel/usermain/usermain.o
  .debug_abbrev  0x0000068a       0x29 ./mtkernel_3/kernel/tstdlib/bitop.o
  .debug_abbrev  0x000006b3       0xa9 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_abbrev  0x0000075c      0x221 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_abbrev  0x0000097d      0x38a ./mtkernel_3/kernel/tkernel/device.o
- .debug_abbrev  0x00000d07      0x412 ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_abbrev  0x00001119      0x2e0 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_abbrev  0x000013f9      0x1c2 ./mtkernel_3/kernel/tkernel/int.o
- .debug_abbrev  0x000015bb      0x261 ./mtkernel_3/kernel/tkernel/klock.o
- .debug_abbrev  0x0000181c      0x2d1 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_abbrev  0x00001aed      0x235 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_abbrev  0x00001d22      0x2f1 ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_abbrev  0x00002013      0x334 ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_abbrev  0x00002347      0x318 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_abbrev  0x0000265f      0x1e0 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_abbrev  0x0000283f      0x334 ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_abbrev  0x00002b73       0x9b ./mtkernel_3/kernel/tkernel/objname.o
- .debug_abbrev  0x00002c0e       0x58 ./mtkernel_3/kernel/tkernel/power.o
- .debug_abbrev  0x00002c66       0x29 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_abbrev  0x00002c8f      0x2e0 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_abbrev  0x00002f6f      0x2e7 ./mtkernel_3/kernel/tkernel/task.o
- .debug_abbrev  0x00003256      0x346 ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_abbrev  0x0000359c      0x28a ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_abbrev  0x00003826      0x366 ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_abbrev  0x00003b8c      0x2ac ./mtkernel_3/kernel/tkernel/timer.o
- .debug_abbrev  0x00003e38       0x69 ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_abbrev  0x00003ea1      0x247 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_abbrev  0x000040e8       0xf9 ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_abbrev  0x000041e1      0x117 ./mtkernel_3/kernel/inittask/inittask.o
- .debug_abbrev  0x000042f8      0x207 ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_abbrev  0x000044ff       0x29 ./mtkernel_3/device/adc/adc.o
- .debug_abbrev  0x00004528       0x29 ./mtkernel_3/device/i2c/i2c.o
- .debug_abbrev  0x00004551      0x2d6 ./mtkernel_3/device/ser/ser.o
- .debug_abbrev  0x00004827      0x1ca ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_abbrev  0x000049f1       0xdf ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_abbrev  0x00004ad0       0x29 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .debug_abbrev  0x00004af9      0x107 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_abbrev  0x00004c00      0x177 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_abbrev  0x00004d77       0xf7 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_abbrev  0x00004e6e       0xb5 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_abbrev  0x00004f23       0x87 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_abbrev  0x00004faa      0x133 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_abbrev  0x000050dd       0x47 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_abbrev  0x00005124       0xbc ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_abbrev  0x000051e0       0x6a ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_abbrev  0x0000524a      0x238 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_abbrev  0x00005482       0x14 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
- .debug_abbrev  0x00005496      0x1be ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_abbrev  0x00005654      0x16f ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_abbrev  0x000057c3       0xce ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_abbrev  0x00005891      0x1eb ./mtkernel_3/CAV/src/LED.o
- .debug_abbrev  0x00005a7c      0x25a ./mtkernel_3/CAV/src/STG.o
- .debug_abbrev  0x00005cd6      0x16c ./mtkernel_3/CAV/src/app_main.o
- .debug_abbrev  0x00005e42      0x1d1 ./mtkernel_3/CAV/src/client.o
- .debug_abbrev  0x00006013      0x153 ./mtkernel_3/CAV/src/drive.o
- .debug_abbrev  0x00006166      0x23e ./mtkernel_3/CAV/src/iic.o
- .debug_abbrev  0x000063a4      0x12b ./mtkernel_3/CAV/src/list.o
- .debug_abbrev  0x000064cf       0xb8 ./mtkernel_3/CAV/src/maqueen.o
- .debug_abbrev  0x00006587       0x96 ./mtkernel_3/CAV/src/order.o
- .debug_abbrev  0x0000661d      0x119 ./mtkernel_3/CAV/src/radio.o
- .debug_abbrev  0x00006736      0x16e ./mtkernel_3/CAV/src/server.o
+ .debug_abbrev  0x0000075c      0x28c ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_abbrev  0x000009e8      0x3ad ./mtkernel_3/kernel/tkernel/device.o
+ .debug_abbrev  0x00000d95      0x41b ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_abbrev  0x000011b0      0x329 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_abbrev  0x000014d9      0x207 ./mtkernel_3/kernel/tkernel/int.o
+ .debug_abbrev  0x000016e0      0x261 ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_abbrev  0x00001941      0x318 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_abbrev  0x00001c59      0x235 ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_abbrev  0x00001e8e      0x31a ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_abbrev  0x000021a8      0x350 ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_abbrev  0x000024f8      0x334 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_abbrev  0x0000282c      0x229 ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_abbrev  0x00002a55      0x36c ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_abbrev  0x00002dc1       0x9b ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_abbrev  0x00002e5c       0x58 ./mtkernel_3/kernel/tkernel/power.o
+ .debug_abbrev  0x00002eb4       0x29 ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_abbrev  0x00002edd      0x329 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_abbrev  0x00003206      0x2e7 ./mtkernel_3/kernel/tkernel/task.o
+ .debug_abbrev  0x000034ed      0x394 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_abbrev  0x00003881      0x2d3 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_abbrev  0x00003b54      0x382 ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_abbrev  0x00003ed6      0x2ac ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_abbrev  0x00004182       0x69 ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_abbrev  0x000041eb      0x247 ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_abbrev  0x00004432       0xf9 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_abbrev  0x0000452b      0x117 ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_abbrev  0x00004642      0x207 ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_abbrev  0x00004849       0x29 ./mtkernel_3/device/adc/adc.o
+ .debug_abbrev  0x00004872       0x29 ./mtkernel_3/device/i2c/i2c.o
+ .debug_abbrev  0x0000489b      0x2d6 ./mtkernel_3/device/ser/ser.o
+ .debug_abbrev  0x00004b71      0x1ca ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_abbrev  0x00004d3b       0xdf ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_abbrev  0x00004e1a       0x29 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .debug_abbrev  0x00004e43      0x107 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_abbrev  0x00004f4a      0x177 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_abbrev  0x000050c1       0xf7 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_abbrev  0x000051b8       0xb5 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_abbrev  0x0000526d       0x87 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_abbrev  0x000052f4      0x133 ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_abbrev  0x00005427       0x47 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_abbrev  0x0000546e       0xbc ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_abbrev  0x0000552a       0x6a ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_abbrev  0x00005594      0x23a ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_abbrev  0x000057ce       0x14 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+ .debug_abbrev  0x000057e2      0x1be ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_abbrev  0x000059a0      0x182 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_abbrev  0x00005b22       0xce ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_abbrev  0x00005bf0      0x1eb ./mtkernel_3/CAV/src/LED.o
+ .debug_abbrev  0x00005ddb      0x25a ./mtkernel_3/CAV/src/STG.o
+ .debug_abbrev  0x00006035      0x16c ./mtkernel_3/CAV/src/app_main.o
+ .debug_abbrev  0x000061a1      0x1d1 ./mtkernel_3/CAV/src/client.o
+ .debug_abbrev  0x00006372      0x153 ./mtkernel_3/CAV/src/drive.o
+ .debug_abbrev  0x000064c5      0x23e ./mtkernel_3/CAV/src/iic.o
+ .debug_abbrev  0x00006703      0x12b ./mtkernel_3/CAV/src/list.o
+ .debug_abbrev  0x0000682e       0xb8 ./mtkernel_3/CAV/src/maqueen.o
+ .debug_abbrev  0x000068e6       0x96 ./mtkernel_3/CAV/src/order.o
+ .debug_abbrev  0x0000697c      0x119 ./mtkernel_3/CAV/src/radio.o
+ .debug_abbrev  0x00006a95      0x16e ./mtkernel_3/CAV/src/server.o
 
 .debug_aranges  0x00000000      0x808
  .debug_aranges
@@ -4791,355 +4802,355 @@ LOAD linker stubs
  .debug_aranges
                 0x000007e8       0x20 ./mtkernel_3/CAV/src/server.o
 
-.debug_macro    0x00000000     0xa4c2
+.debug_macro    0x00000000     0xa4d7
  .debug_macro   0x00000000      0x167 ./mtkernel_3/lib/libtm/libtm.o
  .debug_macro   0x00000167      0xa6c ./mtkernel_3/lib/libtm/libtm.o
  .debug_macro   0x00000bd3      0x169 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00000d3c      0x29a ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00000fd6       0x28 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00000ffe       0x1c ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x0000101a       0x34 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x0000104e       0x46 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001094       0xa6 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x0000113a       0x1c ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001156      0x1cc ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001322      0x2ad ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x000015cf       0x10 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x000015df      0x238 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001817       0x16 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x0000182d       0x8e ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x000018bb       0x16 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x000018d1       0xa6 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001977      0x2aa ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001c21       0x16 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001c37      0x107 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001d3e       0x1c ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001d5a       0x2e ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001d88       0x19 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001da1       0x22 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001dc3       0x16 ./mtkernel_3/lib/libtm/libtm.o
- .debug_macro   0x00001dd9      0x194 ./mtkernel_3/lib/libtm/libtm_printf.o
- .debug_macro   0x00001f6d       0x58 ./mtkernel_3/lib/libtm/libtm_printf.o
- .debug_macro   0x00001fc5      0x14b ./mtkernel_3/lib/libtk/fastlock.o
- .debug_macro   0x00002110      0x14b ./mtkernel_3/lib/libtk/fastmlock.o
- .debug_macro   0x0000225b      0x14b ./mtkernel_3/lib/libtk/kmalloc.o
- .debug_macro   0x000023a6      0x155 ./mtkernel_3/kernel/usermain/usermain.o
- .debug_macro   0x000024fb      0x157 ./mtkernel_3/kernel/tstdlib/bitop.o
- .debug_macro   0x00002652      0x227 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x00002879       0x16 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x0000288f       0x46 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x000028d5       0x94 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x00002969       0x22 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x0000298b       0x1c ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x000029a7       0x1c ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x000029c3       0x52 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x00002a15       0x2e ./mtkernel_3/kernel/tstdlib/string.o
- .debug_macro   0x00002a43      0x24c ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_macro   0x00002c8f       0x22 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_macro   0x00002cb1       0x10 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_macro   0x00002cc1       0xab ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_macro   0x00002d6c      0x248 ./mtkernel_3/kernel/tkernel/device.o
- .debug_macro   0x00002fb4       0x46 ./mtkernel_3/kernel/tkernel/device.o
- .debug_macro   0x00002ffa       0x40 ./mtkernel_3/kernel/tkernel/device.o
- .debug_macro   0x0000303a       0x6a ./mtkernel_3/kernel/tkernel/device.o
- .debug_macro   0x000030a4      0x248 ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_macro   0x000032ec      0x263 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_macro   0x0000354f       0x10 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_macro   0x0000355f      0x230 ./mtkernel_3/kernel/tkernel/int.o
- .debug_macro   0x0000378f      0x244 ./mtkernel_3/kernel/tkernel/klock.o
- .debug_macro   0x000039d3      0x263 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_macro   0x00003c36       0x1c ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_macro   0x00003c52      0x23f ./mtkernel_3/kernel/tkernel/memory.o
- .debug_macro   0x00003e91       0x58 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_macro   0x00003ee9      0x26d ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_macro   0x00004156       0x1c ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_macro   0x00004172      0x27b ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_macro   0x000043ed       0x10 ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_macro   0x000043fd      0x263 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_macro   0x00004660       0x22 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_macro   0x00004682      0x230 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_macro   0x000048b2      0x25e ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_macro   0x00004b10      0x227 ./mtkernel_3/kernel/tkernel/objname.o
- .debug_macro   0x00004d37      0x230 ./mtkernel_3/kernel/tkernel/power.o
- .debug_macro   0x00004f67      0x263 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_macro   0x000051ca       0x10 ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_macro   0x000051da      0x263 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_macro   0x0000543d       0x10 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_macro   0x0000544d      0x280 ./mtkernel_3/kernel/tkernel/task.o
- .debug_macro   0x000056cd       0x1c ./mtkernel_3/kernel/tkernel/task.o
- .debug_macro   0x000056e9       0x16 ./mtkernel_3/kernel/tkernel/task.o
- .debug_macro   0x000056ff      0x280 ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_macro   0x0000597f      0x263 ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_macro   0x00005be2      0x28a ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_macro   0x00005e6c       0x1c ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_macro   0x00005e88       0x1c ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_macro   0x00005ea4      0x252 ./mtkernel_3/kernel/tkernel/timer.o
- .debug_macro   0x000060f6      0x22b ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_macro   0x00006321      0x251 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_macro   0x00006572      0x227 ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_macro   0x00006799      0x229 ./mtkernel_3/kernel/inittask/inittask.o
- .debug_macro   0x000069c2       0x2e ./mtkernel_3/kernel/inittask/inittask.o
- .debug_macro   0x000069f0       0x10 ./mtkernel_3/kernel/inittask/inittask.o
- .debug_macro   0x00006a00      0x161 ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_macro   0x00006b61      0x194 ./mtkernel_3/device/adc/adc.o
- .debug_macro   0x00006cf5       0x10 ./mtkernel_3/device/adc/adc.o
- .debug_macro   0x00006d05       0x1c ./mtkernel_3/device/adc/adc.o
- .debug_macro   0x00006d21       0x16 ./mtkernel_3/device/adc/adc.o
- .debug_macro   0x00006d37      0x194 ./mtkernel_3/device/i2c/i2c.o
- .debug_macro   0x00006ecb       0x1c ./mtkernel_3/device/i2c/i2c.o
- .debug_macro   0x00006ee7      0x1b4 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x0000709b       0x10 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x000070ab       0x52 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x000070fd       0x2e ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x0000712b       0x16 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x00007141       0x10 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x00007151       0x16 ./mtkernel_3/device/ser/ser.o
- .debug_macro   0x00007167      0x1b0 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_macro   0x00007317       0xf6 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_macro   0x0000740d       0x40 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_macro   0x0000744d       0x16 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_macro   0x00007463       0xac ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_macro   0x0000750f       0xa4 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .debug_macro   0x000075b3      0x159 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_macro   0x0000770c      0x15b ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_macro   0x00007867      0x155 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_macro   0x000079bc      0x151 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_macro   0x00007b0d      0x275 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_macro   0x00007d82      0x23f ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_macro   0x00007fc1      0x23f ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_macro   0x00008200      0x15f ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_macro   0x0000835f      0x248 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_macro   0x000085a7       0x1c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_macro   0x000085c3      0x251 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_macro   0x00008814      0x247 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_macro   0x00008a5b      0x248 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_macro   0x00008ca3      0x248 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_macro   0x00008eeb      0x15a ./mtkernel_3/CAV/src/LED.o
- .debug_macro   0x00009045       0x40 ./mtkernel_3/CAV/src/LED.o
- .debug_macro   0x00009085      0x17e ./mtkernel_3/CAV/src/STG.o
- .debug_macro   0x00009203       0x2e ./mtkernel_3/CAV/src/STG.o
- .debug_macro   0x00009231       0x58 ./mtkernel_3/CAV/src/STG.o
- .debug_macro   0x00009289       0x46 ./mtkernel_3/CAV/src/STG.o
- .debug_macro   0x000092cf      0x1e3 ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x000094b2       0xe8 ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x0000959a       0x7c ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x00009616       0x3a ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x00009650       0x10 ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x00009660       0x16 ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x00009676       0x5e ./mtkernel_3/CAV/src/app_main.o
- .debug_macro   0x000096d4      0x19e ./mtkernel_3/CAV/src/client.o
- .debug_macro   0x00009872      0x1f6 ./mtkernel_3/CAV/src/client.o
- .debug_macro   0x00009a68      0x1ec ./mtkernel_3/CAV/src/drive.o
- .debug_macro   0x00009c54      0x16f ./mtkernel_3/CAV/src/iic.o
- .debug_macro   0x00009dc3      0x155 ./mtkernel_3/CAV/src/list.o
- .debug_macro   0x00009f18      0x173 ./mtkernel_3/CAV/src/maqueen.o
- .debug_macro   0x0000a08b       0xe2 ./mtkernel_3/CAV/src/maqueen.o
- .debug_macro   0x0000a16d       0x6d ./mtkernel_3/CAV/src/order.o
- .debug_macro   0x0000a1da       0x28 ./mtkernel_3/CAV/src/order.o
- .debug_macro   0x0000a202      0x154 ./mtkernel_3/CAV/src/radio.o
- .debug_macro   0x0000a356      0x16c ./mtkernel_3/CAV/src/server.o
+ .debug_macro   0x00000d3c      0x2af ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00000feb       0x28 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001013       0x1c ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x0000102f       0x34 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001063       0x46 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x000010a9       0xa6 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x0000114f       0x1c ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x0000116b      0x1cc ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001337      0x2ad ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x000015e4       0x10 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x000015f4      0x238 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x0000182c       0x16 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001842       0x8e ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x000018d0       0x16 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x000018e6       0xa6 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x0000198c      0x2aa ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001c36       0x16 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001c4c      0x107 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001d53       0x1c ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001d6f       0x2e ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001d9d       0x19 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001db6       0x22 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001dd8       0x16 ./mtkernel_3/lib/libtm/libtm.o
+ .debug_macro   0x00001dee      0x194 ./mtkernel_3/lib/libtm/libtm_printf.o
+ .debug_macro   0x00001f82       0x58 ./mtkernel_3/lib/libtm/libtm_printf.o
+ .debug_macro   0x00001fda      0x14b ./mtkernel_3/lib/libtk/fastlock.o
+ .debug_macro   0x00002125      0x14b ./mtkernel_3/lib/libtk/fastmlock.o
+ .debug_macro   0x00002270      0x14b ./mtkernel_3/lib/libtk/kmalloc.o
+ .debug_macro   0x000023bb      0x155 ./mtkernel_3/kernel/usermain/usermain.o
+ .debug_macro   0x00002510      0x157 ./mtkernel_3/kernel/tstdlib/bitop.o
+ .debug_macro   0x00002667      0x227 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x0000288e       0x16 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x000028a4       0x46 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x000028ea       0x94 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x0000297e       0x22 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x000029a0       0x1c ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x000029bc       0x1c ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x000029d8       0x52 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x00002a2a       0x2e ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_macro   0x00002a58      0x24c ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_macro   0x00002ca4       0x22 ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_macro   0x00002cc6       0x10 ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_macro   0x00002cd6       0xab ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_macro   0x00002d81      0x248 ./mtkernel_3/kernel/tkernel/device.o
+ .debug_macro   0x00002fc9       0x46 ./mtkernel_3/kernel/tkernel/device.o
+ .debug_macro   0x0000300f       0x40 ./mtkernel_3/kernel/tkernel/device.o
+ .debug_macro   0x0000304f       0x6a ./mtkernel_3/kernel/tkernel/device.o
+ .debug_macro   0x000030b9      0x248 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_macro   0x00003301      0x263 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_macro   0x00003564       0x10 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_macro   0x00003574      0x230 ./mtkernel_3/kernel/tkernel/int.o
+ .debug_macro   0x000037a4      0x244 ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_macro   0x000039e8      0x263 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_macro   0x00003c4b       0x1c ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_macro   0x00003c67      0x23f ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_macro   0x00003ea6       0x58 ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_macro   0x00003efe      0x26d ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_macro   0x0000416b       0x1c ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_macro   0x00004187      0x27b ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_macro   0x00004402       0x10 ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_macro   0x00004412      0x263 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_macro   0x00004675       0x22 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_macro   0x00004697      0x230 ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_macro   0x000048c7      0x25e ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_macro   0x00004b25      0x227 ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_macro   0x00004d4c      0x230 ./mtkernel_3/kernel/tkernel/power.o
+ .debug_macro   0x00004f7c      0x263 ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_macro   0x000051df       0x10 ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_macro   0x000051ef      0x263 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_macro   0x00005452       0x10 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_macro   0x00005462      0x280 ./mtkernel_3/kernel/tkernel/task.o
+ .debug_macro   0x000056e2       0x1c ./mtkernel_3/kernel/tkernel/task.o
+ .debug_macro   0x000056fe       0x16 ./mtkernel_3/kernel/tkernel/task.o
+ .debug_macro   0x00005714      0x280 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_macro   0x00005994      0x263 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_macro   0x00005bf7      0x28a ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_macro   0x00005e81       0x1c ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_macro   0x00005e9d       0x1c ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_macro   0x00005eb9      0x252 ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_macro   0x0000610b      0x22b ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_macro   0x00006336      0x251 ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_macro   0x00006587      0x227 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_macro   0x000067ae      0x229 ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_macro   0x000069d7       0x2e ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_macro   0x00006a05       0x10 ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_macro   0x00006a15      0x161 ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_macro   0x00006b76      0x194 ./mtkernel_3/device/adc/adc.o
+ .debug_macro   0x00006d0a       0x10 ./mtkernel_3/device/adc/adc.o
+ .debug_macro   0x00006d1a       0x1c ./mtkernel_3/device/adc/adc.o
+ .debug_macro   0x00006d36       0x16 ./mtkernel_3/device/adc/adc.o
+ .debug_macro   0x00006d4c      0x194 ./mtkernel_3/device/i2c/i2c.o
+ .debug_macro   0x00006ee0       0x1c ./mtkernel_3/device/i2c/i2c.o
+ .debug_macro   0x00006efc      0x1b4 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x000070b0       0x10 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x000070c0       0x52 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x00007112       0x2e ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x00007140       0x16 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x00007156       0x10 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x00007166       0x16 ./mtkernel_3/device/ser/ser.o
+ .debug_macro   0x0000717c      0x1b0 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_macro   0x0000732c       0xf6 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_macro   0x00007422       0x40 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_macro   0x00007462       0x16 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_macro   0x00007478       0xac ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_macro   0x00007524       0xa4 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .debug_macro   0x000075c8      0x159 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_macro   0x00007721      0x15b ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_macro   0x0000787c      0x155 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_macro   0x000079d1      0x151 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_macro   0x00007b22      0x275 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_macro   0x00007d97      0x23f ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_macro   0x00007fd6      0x23f ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_macro   0x00008215      0x15f ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_macro   0x00008374      0x248 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_macro   0x000085bc       0x1c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_macro   0x000085d8      0x251 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_macro   0x00008829      0x247 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_macro   0x00008a70      0x248 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_macro   0x00008cb8      0x248 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_macro   0x00008f00      0x15a ./mtkernel_3/CAV/src/LED.o
+ .debug_macro   0x0000905a       0x40 ./mtkernel_3/CAV/src/LED.o
+ .debug_macro   0x0000909a      0x17e ./mtkernel_3/CAV/src/STG.o
+ .debug_macro   0x00009218       0x2e ./mtkernel_3/CAV/src/STG.o
+ .debug_macro   0x00009246       0x58 ./mtkernel_3/CAV/src/STG.o
+ .debug_macro   0x0000929e       0x46 ./mtkernel_3/CAV/src/STG.o
+ .debug_macro   0x000092e4      0x1e3 ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x000094c7       0xe8 ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x000095af       0x7c ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x0000962b       0x3a ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x00009665       0x10 ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x00009675       0x16 ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x0000968b       0x5e ./mtkernel_3/CAV/src/app_main.o
+ .debug_macro   0x000096e9      0x19e ./mtkernel_3/CAV/src/client.o
+ .debug_macro   0x00009887      0x1f6 ./mtkernel_3/CAV/src/client.o
+ .debug_macro   0x00009a7d      0x1ec ./mtkernel_3/CAV/src/drive.o
+ .debug_macro   0x00009c69      0x16f ./mtkernel_3/CAV/src/iic.o
+ .debug_macro   0x00009dd8      0x155 ./mtkernel_3/CAV/src/list.o
+ .debug_macro   0x00009f2d      0x173 ./mtkernel_3/CAV/src/maqueen.o
+ .debug_macro   0x0000a0a0       0xe2 ./mtkernel_3/CAV/src/maqueen.o
+ .debug_macro   0x0000a182       0x6d ./mtkernel_3/CAV/src/order.o
+ .debug_macro   0x0000a1ef       0x28 ./mtkernel_3/CAV/src/order.o
+ .debug_macro   0x0000a217      0x154 ./mtkernel_3/CAV/src/radio.o
+ .debug_macro   0x0000a36b      0x16c ./mtkernel_3/CAV/src/server.o
 
-.debug_line     0x00000000    0x1aed5
+.debug_line     0x00000000    0x1bb9f
  .debug_line    0x00000000      0x3f7 ./mtkernel_3/lib/libtm/libtm.o
- .debug_line    0x000003f7      0x7f9 ./mtkernel_3/lib/libtm/libtm_printf.o
- .debug_line    0x00000bf0      0x3c0 ./mtkernel_3/lib/libtk/fastlock.o
- .debug_line    0x00000fb0      0x43e ./mtkernel_3/lib/libtk/fastmlock.o
- .debug_line    0x000013ee      0x354 ./mtkernel_3/lib/libtk/kmalloc.o
- .debug_line    0x00001742      0x362 ./mtkernel_3/kernel/usermain/usermain.o
- .debug_line    0x00001aa4      0x32b ./mtkernel_3/kernel/tstdlib/bitop.o
- .debug_line    0x00001dcf      0x689 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_line    0x00002458      0x869 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_line    0x00002cc1      0x9b9 ./mtkernel_3/kernel/tkernel/device.o
- .debug_line    0x0000367a      0xdbf ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_line    0x00004439      0x9e9 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_line    0x00004e22      0x576 ./mtkernel_3/kernel/tkernel/int.o
- .debug_line    0x00005398      0x6f9 ./mtkernel_3/kernel/tkernel/klock.o
- .debug_line    0x00005a91      0x946 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_line    0x000063d7      0x801 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_line    0x00006bd8      0xa27 ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_line    0x000075ff      0xca9 ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_line    0x000082a8      0xc3f ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_line    0x00008ee7      0x6b2 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_line    0x00009599      0xbcf ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_line    0x0000a168      0x533 ./mtkernel_3/kernel/tkernel/objname.o
- .debug_line    0x0000a69b      0x519 ./mtkernel_3/kernel/tkernel/power.o
- .debug_line    0x0000abb4      0x55e ./mtkernel_3/kernel/tkernel/rendezvous.o
- .debug_line    0x0000b112      0x9b4 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_line    0x0000bac6      0x939 ./mtkernel_3/kernel/tkernel/task.o
- .debug_line    0x0000c3ff      0xe02 ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_line    0x0000d201      0x99f ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_line    0x0000dba0      0xf10 ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_line    0x0000eab0      0x7bd ./mtkernel_3/kernel/tkernel/timer.o
- .debug_line    0x0000f26d      0x5b3 ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_line    0x0000f820      0x718 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_line    0x0000ff38      0x586 ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_line    0x000104be      0x57c ./mtkernel_3/kernel/inittask/inittask.o
- .debug_line    0x00010a3a      0x490 ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_line    0x00010eca      0x3ca ./mtkernel_3/device/adc/adc.o
- .debug_line    0x00011294      0x3ca ./mtkernel_3/device/i2c/i2c.o
- .debug_line    0x0001165e      0x81d ./mtkernel_3/device/ser/ser.o
- .debug_line    0x00011e7b      0x698 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_line    0x00012513      0x376 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_line    0x00012889      0x211 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
- .debug_line    0x00012a9a      0x3e8 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_line    0x00012e82      0x50d ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_line    0x0001338f      0x3d8 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_line    0x00013767      0x3f2 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_line    0x00013b59      0x69e ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_line    0x000141f7      0x61c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_line    0x00014813      0x5c0 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_line    0x00014dd3      0x3ee ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_line    0x000151c1      0x628 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
- .debug_line    0x000157e9      0x868 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_line    0x00016051       0x9c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
- .debug_line    0x000160ed      0x70b ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_line    0x000167f8      0x6d1 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_line    0x00016ec9      0x72c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_line    0x000175f5      0x52b ./mtkernel_3/CAV/src/LED.o
- .debug_line    0x00017b20      0x91c ./mtkernel_3/CAV/src/STG.o
- .debug_line    0x0001843c      0x543 ./mtkernel_3/CAV/src/app_main.o
- .debug_line    0x0001897f      0x587 ./mtkernel_3/CAV/src/client.o
- .debug_line    0x00018f06      0x5d9 ./mtkernel_3/CAV/src/drive.o
- .debug_line    0x000194df      0x805 ./mtkernel_3/CAV/src/iic.o
- .debug_line    0x00019ce4      0x42e ./mtkernel_3/CAV/src/list.o
- .debug_line    0x0001a112      0x47e ./mtkernel_3/CAV/src/maqueen.o
- .debug_line    0x0001a590      0x19b ./mtkernel_3/CAV/src/order.o
- .debug_line    0x0001a72b      0x3a0 ./mtkernel_3/CAV/src/radio.o
- .debug_line    0x0001aacb      0x40a ./mtkernel_3/CAV/src/server.o
+ .debug_line    0x000003f7      0x7de ./mtkernel_3/lib/libtm/libtm_printf.o
+ .debug_line    0x00000bd5      0x3c0 ./mtkernel_3/lib/libtk/fastlock.o
+ .debug_line    0x00000f95      0x43e ./mtkernel_3/lib/libtk/fastmlock.o
+ .debug_line    0x000013d3      0x354 ./mtkernel_3/lib/libtk/kmalloc.o
+ .debug_line    0x00001727      0x362 ./mtkernel_3/kernel/usermain/usermain.o
+ .debug_line    0x00001a89      0x32b ./mtkernel_3/kernel/tstdlib/bitop.o
+ .debug_line    0x00001db4      0x689 ./mtkernel_3/kernel/tstdlib/string.o
+ .debug_line    0x0000243d      0x8cf ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_line    0x00002d0c      0xab5 ./mtkernel_3/kernel/tkernel/device.o
+ .debug_line    0x000037c1      0xee0 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_line    0x000046a1      0xabf ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_line    0x00005160      0x5b0 ./mtkernel_3/kernel/tkernel/int.o
+ .debug_line    0x00005710      0x6f9 ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_line    0x00005e09      0x9f8 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_line    0x00006801      0x801 ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_line    0x00007002      0xad9 ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_line    0x00007adb      0xd5b ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_line    0x00008836      0xcf0 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_line    0x00009526      0x752 ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_line    0x00009c78      0xc81 ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_line    0x0000a8f9      0x533 ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_line    0x0000ae2c      0x519 ./mtkernel_3/kernel/tkernel/power.o
+ .debug_line    0x0000b345      0x55e ./mtkernel_3/kernel/tkernel/rendezvous.o
+ .debug_line    0x0000b8a3      0xa67 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_line    0x0000c30a      0x939 ./mtkernel_3/kernel/tkernel/task.o
+ .debug_line    0x0000cc43      0xf6c ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_line    0x0000dbaf      0xa95 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_line    0x0000e644     0x10e3 ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_line    0x0000f727      0x7bd ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_line    0x0000fee4      0x5b3 ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_line    0x00010497      0x718 ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_line    0x00010baf      0x586 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_line    0x00011135      0x57c ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_line    0x000116b1      0x490 ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_line    0x00011b41      0x3ca ./mtkernel_3/device/adc/adc.o
+ .debug_line    0x00011f0b      0x3ca ./mtkernel_3/device/i2c/i2c.o
+ .debug_line    0x000122d5      0x81d ./mtkernel_3/device/ser/ser.o
+ .debug_line    0x00012af2      0x698 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_line    0x0001318a      0x376 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_line    0x00013500      0x211 ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+ .debug_line    0x00013711      0x3e8 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_line    0x00013af9      0x50d ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_line    0x00014006      0x3d8 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_line    0x000143de      0x3f2 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_line    0x000147d0      0x69e ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_line    0x00014e6e      0x61c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_line    0x0001548a      0x5c0 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_line    0x00015a4a      0x3ee ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_line    0x00015e38      0x628 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+ .debug_line    0x00016460      0x88b ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_line    0x00016ceb       0xb2 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+ .debug_line    0x00016d9d      0x70b ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_line    0x000174a8      0x6eb ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_line    0x00017b93      0x72c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_line    0x000182bf      0x52b ./mtkernel_3/CAV/src/LED.o
+ .debug_line    0x000187ea      0x91c ./mtkernel_3/CAV/src/STG.o
+ .debug_line    0x00019106      0x543 ./mtkernel_3/CAV/src/app_main.o
+ .debug_line    0x00019649      0x587 ./mtkernel_3/CAV/src/client.o
+ .debug_line    0x00019bd0      0x5d9 ./mtkernel_3/CAV/src/drive.o
+ .debug_line    0x0001a1a9      0x805 ./mtkernel_3/CAV/src/iic.o
+ .debug_line    0x0001a9ae      0x42e ./mtkernel_3/CAV/src/list.o
+ .debug_line    0x0001addc      0x47e ./mtkernel_3/CAV/src/maqueen.o
+ .debug_line    0x0001b25a      0x19b ./mtkernel_3/CAV/src/order.o
+ .debug_line    0x0001b3f5      0x3a0 ./mtkernel_3/CAV/src/radio.o
+ .debug_line    0x0001b795      0x40a ./mtkernel_3/CAV/src/server.o
 
-.debug_str      0x00000000     0xdd33
- .debug_str     0x00000000     0x6bec ./mtkernel_3/lib/libtm/libtm.o
-                               0x6ca5 (size before relaxing)
- .debug_str     0x00006bec      0x1f5 ./mtkernel_3/lib/libtm/libtm_printf.o
-                               0x6e7c (size before relaxing)
- .debug_str     0x00006de1       0x61 ./mtkernel_3/lib/libtk/fastlock.o
-                               0x6c34 (size before relaxing)
- .debug_str     0x00006e42       0x6e ./mtkernel_3/lib/libtk/fastmlock.o
-                               0x6c41 (size before relaxing)
- .debug_str     0x00006eb0       0x43 ./mtkernel_3/lib/libtk/kmalloc.o
-                               0x6bf0 (size before relaxing)
- .debug_str     0x00006ef3       0x27 ./mtkernel_3/kernel/usermain/usermain.o
-                               0x6be2 (size before relaxing)
- .debug_str     0x00006f1a       0x5f ./mtkernel_3/kernel/tstdlib/bitop.o
-                               0x6c07 (size before relaxing)
- .debug_str     0x00006f79      0xaf4 ./mtkernel_3/kernel/tstdlib/string.o
-                               0x76c3 (size before relaxing)
- .debug_str     0x00007a6d      0xb6f ./mtkernel_3/kernel/tkernel/cpuctl.o
-                               0x8211 (size before relaxing)
- .debug_str     0x000085dc      0x70e ./mtkernel_3/kernel/tkernel/device.o
-                               0x8006 (size before relaxing)
- .debug_str     0x00008cea      0x28c ./mtkernel_3/kernel/tkernel/deviceio.o
-                               0x8173 (size before relaxing)
- .debug_str     0x00008f76      0x1f4 ./mtkernel_3/kernel/tkernel/eventflag.o
-                               0x8326 (size before relaxing)
- .debug_str     0x0000916a       0x4b ./mtkernel_3/kernel/tkernel/int.o
-                               0x7fcf (size before relaxing)
- .debug_str     0x000091b5       0xe5 ./mtkernel_3/kernel/tkernel/klock.o
-                               0x7a4e (size before relaxing)
- .debug_str     0x0000929a      0x231 ./mtkernel_3/kernel/tkernel/mailbox.o
-                               0x8392 (size before relaxing)
- .debug_str     0x000094cb      0x3a4 ./mtkernel_3/kernel/tkernel/memory.o
-                               0x7b7c (size before relaxing)
- .debug_str     0x0000986f      0x27a ./mtkernel_3/kernel/tkernel/mempfix.o
-                               0x8400 (size before relaxing)
- .debug_str     0x00009ae9      0x20a ./mtkernel_3/kernel/tkernel/mempool.o
-                               0x877d (size before relaxing)
- .debug_str     0x00009cf3      0x2dc ./mtkernel_3/kernel/tkernel/messagebuf.o
-                               0x844e (size before relaxing)
- .debug_str     0x00009fcf       0xbb ./mtkernel_3/kernel/tkernel/misc_calls.o
-                               0x8050 (size before relaxing)
- .debug_str     0x0000a08a      0x1d2 ./mtkernel_3/kernel/tkernel/mutex.o
-                               0x836b (size before relaxing)
- .debug_str     0x0000a25c       0x3d ./mtkernel_3/kernel/tkernel/objname.o
-                               0x7688 (size before relaxing)
- .debug_str     0x0000a299       0x2c ./mtkernel_3/kernel/tkernel/power.o
-                               0x7d38 (size before relaxing)
- .debug_str     0x0000a2c5       0x61 ./mtkernel_3/kernel/tkernel/rendezvous.o
-                               0x7ea2 (size before relaxing)
- .debug_str     0x0000a326      0x187 ./mtkernel_3/kernel/tkernel/semaphore.o
-                               0x8302 (size before relaxing)
- .debug_str     0x0000a4ad      0x275 ./mtkernel_3/kernel/tkernel/task.o
-                               0x8450 (size before relaxing)
- .debug_str     0x0000a722      0x1c1 ./mtkernel_3/kernel/tkernel/task_manage.o
-                               0x847b (size before relaxing)
- .debug_str     0x0000a8e3       0x8f ./mtkernel_3/kernel/tkernel/task_sync.o
-                               0x8315 (size before relaxing)
- .debug_str     0x0000a972      0x57b ./mtkernel_3/kernel/tkernel/time_calls.o
-                               0x86cc (size before relaxing)
- .debug_str     0x0000aeed      0x121 ./mtkernel_3/kernel/tkernel/timer.o
-                               0x7b48 (size before relaxing)
- .debug_str     0x0000b00e       0x2b ./mtkernel_3/kernel/tkernel/tkinit.o
-                               0x766f (size before relaxing)
- .debug_str     0x0000b039      0x11a ./mtkernel_3/kernel/tkernel/wait.o
-                               0x7ba3 (size before relaxing)
- .debug_str     0x0000b153       0x3b ./mtkernel_3/kernel/sysinit/sysinit.o
-                               0x76ca (size before relaxing)
- .debug_str     0x0000b18e       0xf0 ./mtkernel_3/kernel/inittask/inittask.o
-                               0x7777 (size before relaxing)
- .debug_str     0x0000b27e      0x102 ./mtkernel_3/device/common/drvif/msdrvif.o
-                               0x6ddd (size before relaxing)
- .debug_str     0x0000b380       0xee ./mtkernel_3/device/adc/adc.o
-                               0x6cb4 (size before relaxing)
- .debug_str     0x0000b46e       0x95 ./mtkernel_3/device/i2c/i2c.o
-                               0x6ce8 (size before relaxing)
- .debug_str     0x0000b503      0x58d ./mtkernel_3/device/ser/ser.o
-                               0x72eb (size before relaxing)
- .debug_str     0x0000ba90       0xcf ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
-                               0x7172 (size before relaxing)
- .debug_str     0x0000bb5f       0x80 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
-                               0x542b (size before relaxing)
- .debug_str     0x0000bbdf       0x2a ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
-                               0x501d (size before relaxing)
- .debug_str     0x0000bc09       0xad ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
-                               0x6c6a (size before relaxing)
- .debug_str     0x0000bcb6      0x14a ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
-                               0x6d55 (size before relaxing)
- .debug_str     0x0000be00       0x8e ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
-                               0x6c6a (size before relaxing)
- .debug_str     0x0000be8e       0x68 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
-                               0x6c1f (size before relaxing)
- .debug_str     0x0000bef6       0xb9 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
-                               0x78f9 (size before relaxing)
- .debug_str     0x0000bfaf       0x6f ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
-                               0x7701 (size before relaxing)
- .debug_str     0x0000c01e       0x3a ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
-                               0x76b2 (size before relaxing)
- .debug_str     0x0000c058       0x46 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
-                               0x6c3e (size before relaxing)
- .debug_str     0x0000c09e       0xc1 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
-                               0x7739 (size before relaxing)
- .debug_str     0x0000c15f       0xa8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
-                               0x7ae8 (size before relaxing)
- .debug_str     0x0000c207       0x3d ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
+.debug_str      0x00000000     0xdef8
+ .debug_str     0x00000000     0x6c2b ./mtkernel_3/lib/libtm/libtm.o
+                               0x6ce4 (size before relaxing)
+ .debug_str     0x00006c2b      0x1f5 ./mtkernel_3/lib/libtm/libtm_printf.o
+                               0x6ebb (size before relaxing)
+ .debug_str     0x00006e20       0x61 ./mtkernel_3/lib/libtk/fastlock.o
+                               0x6c73 (size before relaxing)
+ .debug_str     0x00006e81       0x6e ./mtkernel_3/lib/libtk/fastmlock.o
+                               0x6c80 (size before relaxing)
+ .debug_str     0x00006eef       0x43 ./mtkernel_3/lib/libtk/kmalloc.o
+                               0x6c2f (size before relaxing)
+ .debug_str     0x00006f32       0x27 ./mtkernel_3/kernel/usermain/usermain.o
+                               0x6c21 (size before relaxing)
+ .debug_str     0x00006f59       0x5f ./mtkernel_3/kernel/tstdlib/bitop.o
+                               0x6c46 (size before relaxing)
+ .debug_str     0x00006fb8      0xaf4 ./mtkernel_3/kernel/tstdlib/string.o
+                               0x7702 (size before relaxing)
+ .debug_str     0x00007aac      0xba3 ./mtkernel_3/kernel/tkernel/cpuctl.o
+                               0x82a5 (size before relaxing)
+ .debug_str     0x0000864f      0x71c ./mtkernel_3/kernel/tkernel/device.o
+                               0x80cf (size before relaxing)
+ .debug_str     0x00008d6b      0x29c ./mtkernel_3/kernel/tkernel/deviceio.o
+                               0x824a (size before relaxing)
+ .debug_str     0x00009007      0x200 ./mtkernel_3/kernel/tkernel/eventflag.o
+                               0x83e1 (size before relaxing)
+ .debug_str     0x00009207       0x4f ./mtkernel_3/kernel/tkernel/int.o
+                               0x8056 (size before relaxing)
+ .debug_str     0x00009256       0xe5 ./mtkernel_3/kernel/tkernel/klock.o
+                               0x7a8d (size before relaxing)
+ .debug_str     0x0000933b      0x23b ./mtkernel_3/kernel/tkernel/mailbox.o
+                               0x8440 (size before relaxing)
+ .debug_str     0x00009576      0x3a4 ./mtkernel_3/kernel/tkernel/memory.o
+                               0x7bbb (size before relaxing)
+ .debug_str     0x0000991a      0x284 ./mtkernel_3/kernel/tkernel/mempfix.o
+                               0x84ae (size before relaxing)
+ .debug_str     0x00009b9e      0x214 ./mtkernel_3/kernel/tkernel/mempool.o
+                               0x882b (size before relaxing)
+ .debug_str     0x00009db2      0x2e6 ./mtkernel_3/kernel/tkernel/messagebuf.o
+                               0x84fc (size before relaxing)
+ .debug_str     0x0000a098      0x165 ./mtkernel_3/kernel/tkernel/misc_calls.o
+                               0x8191 (size before relaxing)
+ .debug_str     0x0000a1fd      0x1dc ./mtkernel_3/kernel/tkernel/mutex.o
+                               0x8419 (size before relaxing)
+ .debug_str     0x0000a3d9       0x3d ./mtkernel_3/kernel/tkernel/objname.o
+                               0x76c7 (size before relaxing)
+ .debug_str     0x0000a416       0x2c ./mtkernel_3/kernel/tkernel/power.o
+                               0x7d77 (size before relaxing)
+ .debug_str     0x0000a442       0x61 ./mtkernel_3/kernel/tkernel/rendezvous.o
+                               0x7ee1 (size before relaxing)
+ .debug_str     0x0000a4a3      0x191 ./mtkernel_3/kernel/tkernel/semaphore.o
+                               0x83b0 (size before relaxing)
+ .debug_str     0x0000a634      0x275 ./mtkernel_3/kernel/tkernel/task.o
+                               0x848f (size before relaxing)
+ .debug_str     0x0000a8a9      0x1d7 ./mtkernel_3/kernel/tkernel/task_manage.o
+                               0x8577 (size before relaxing)
+ .debug_str     0x0000aa80       0x9d ./mtkernel_3/kernel/tkernel/task_sync.o
+                               0x83de (size before relaxing)
+ .debug_str     0x0000ab1d      0x595 ./mtkernel_3/kernel/tkernel/time_calls.o
+                               0x87e2 (size before relaxing)
+ .debug_str     0x0000b0b2      0x121 ./mtkernel_3/kernel/tkernel/timer.o
+                               0x7b87 (size before relaxing)
+ .debug_str     0x0000b1d3       0x2b ./mtkernel_3/kernel/tkernel/tkinit.o
+                               0x76ae (size before relaxing)
+ .debug_str     0x0000b1fe      0x11a ./mtkernel_3/kernel/tkernel/wait.o
+                               0x7be2 (size before relaxing)
+ .debug_str     0x0000b318       0x3b ./mtkernel_3/kernel/sysinit/sysinit.o
+                               0x7709 (size before relaxing)
+ .debug_str     0x0000b353       0xf0 ./mtkernel_3/kernel/inittask/inittask.o
+                               0x77b6 (size before relaxing)
+ .debug_str     0x0000b443      0x102 ./mtkernel_3/device/common/drvif/msdrvif.o
+                               0x6e1c (size before relaxing)
+ .debug_str     0x0000b545       0xee ./mtkernel_3/device/adc/adc.o
+                               0x6cf3 (size before relaxing)
+ .debug_str     0x0000b633       0x95 ./mtkernel_3/device/i2c/i2c.o
+                               0x6d27 (size before relaxing)
+ .debug_str     0x0000b6c8      0x58d ./mtkernel_3/device/ser/ser.o
+                               0x732a (size before relaxing)
+ .debug_str     0x0000bc55       0xcf ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+                               0x71b1 (size before relaxing)
+ .debug_str     0x0000bd24       0x80 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+                               0x546a (size before relaxing)
+ .debug_str     0x0000bda4       0x2a ./mtkernel_3/lib/libtm/sysdepend/no_device/tm_com.o
+                               0x505c (size before relaxing)
+ .debug_str     0x0000bdce       0xad ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+                               0x6ca9 (size before relaxing)
+ .debug_str     0x0000be7b      0x14a ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+                               0x6d94 (size before relaxing)
+ .debug_str     0x0000bfc5       0x8e ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+                               0x6ca9 (size before relaxing)
+ .debug_str     0x0000c053       0x68 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+                               0x6c5e (size before relaxing)
+ .debug_str     0x0000c0bb       0xb9 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+                               0x7938 (size before relaxing)
+ .debug_str     0x0000c174       0x6f ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+                               0x7740 (size before relaxing)
+ .debug_str     0x0000c1e3       0x3a ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+                               0x76f1 (size before relaxing)
+ .debug_str     0x0000c21d       0x46 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+                               0x6c7d (size before relaxing)
+ .debug_str     0x0000c263       0xc1 ./mtkernel_3/kernel/sysdepend/cpu/nrf5/vector_tbl.o
+                               0x7778 (size before relaxing)
+ .debug_str     0x0000c324       0xa8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+                               0x7b37 (size before relaxing)
+ .debug_str     0x0000c3cc       0x3d ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/dispatch.o
                                  0x75 (size before relaxing)
- .debug_str     0x0000c244       0xf2 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
-                               0x7a34 (size before relaxing)
- .debug_str     0x0000c336       0xb6 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
-                               0x7812 (size before relaxing)
- .debug_str     0x0000c3ec       0x77 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
-                               0x77b1 (size before relaxing)
- .debug_str     0x0000c463      0x1bd ./mtkernel_3/CAV/src/LED.o
-                               0x6da0 (size before relaxing)
- .debug_str     0x0000c620      0x495 ./mtkernel_3/CAV/src/STG.o
-                               0x717f (size before relaxing)
- .debug_str     0x0000cab5      0x6cf ./mtkernel_3/CAV/src/app_main.o
-                               0x74cc (size before relaxing)
- .debug_str     0x0000d184      0x69d ./mtkernel_3/CAV/src/client.o
-                               0x74fb (size before relaxing)
- .debug_str     0x0000d821      0x1fa ./mtkernel_3/CAV/src/drive.o
-                               0x7586 (size before relaxing)
- .debug_str     0x0000da1b       0xdc ./mtkernel_3/CAV/src/iic.o
-                               0x704c (size before relaxing)
- .debug_str     0x0000daf7       0x83 ./mtkernel_3/CAV/src/list.o
-                               0x6c67 (size before relaxing)
- .debug_str     0x0000db7a       0x7c ./mtkernel_3/CAV/src/maqueen.o
-                               0x711d (size before relaxing)
- .debug_str     0x0000dbf6       0x4e ./mtkernel_3/CAV/src/order.o
-                               0x3cdb (size before relaxing)
- .debug_str     0x0000dc44       0x2c ./mtkernel_3/CAV/src/radio.o
-                               0x719f (size before relaxing)
- .debug_str     0x0000dc70       0xc3 ./mtkernel_3/CAV/src/server.o
-                               0x740e (size before relaxing)
+ .debug_str     0x0000c409       0xf2 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+                               0x7a73 (size before relaxing)
+ .debug_str     0x0000c4fb       0xb6 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+                               0x7875 (size before relaxing)
+ .debug_str     0x0000c5b1       0x77 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+                               0x77f0 (size before relaxing)
+ .debug_str     0x0000c628      0x1bd ./mtkernel_3/CAV/src/LED.o
+                               0x6ddf (size before relaxing)
+ .debug_str     0x0000c7e5      0x495 ./mtkernel_3/CAV/src/STG.o
+                               0x71be (size before relaxing)
+ .debug_str     0x0000cc7a      0x6cf ./mtkernel_3/CAV/src/app_main.o
+                               0x750b (size before relaxing)
+ .debug_str     0x0000d349      0x69d ./mtkernel_3/CAV/src/client.o
+                               0x753a (size before relaxing)
+ .debug_str     0x0000d9e6      0x1fa ./mtkernel_3/CAV/src/drive.o
+                               0x75c5 (size before relaxing)
+ .debug_str     0x0000dbe0       0xdc ./mtkernel_3/CAV/src/iic.o
+                               0x708b (size before relaxing)
+ .debug_str     0x0000dcbc       0x83 ./mtkernel_3/CAV/src/list.o
+                               0x6ca6 (size before relaxing)
+ .debug_str     0x0000dd3f       0x7c ./mtkernel_3/CAV/src/maqueen.o
+                               0x715c (size before relaxing)
+ .debug_str     0x0000ddbb       0x4e ./mtkernel_3/CAV/src/order.o
+                               0x3d1a (size before relaxing)
+ .debug_str     0x0000de09       0x2c ./mtkernel_3/CAV/src/radio.o
+                               0x71de (size before relaxing)
+ .debug_str     0x0000de35       0xc3 ./mtkernel_3/CAV/src/server.o
+                               0x744d (size before relaxing)
 
 .comment        0x00000000       0x49
  .comment       0x00000000       0x49 ./mtkernel_3/lib/libtm/libtm.o
@@ -5344,15 +5355,15 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000d20       0x34 ./mtkernel_3/CAV/src/server.o
  .ARM.attributes
-                0x00000d54       0x1e c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+                0x00000d54       0x1e c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x00000d72       0x34 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x00000d72       0x34 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000da6       0x1e c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x00000da6       0x1e c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000dc4       0x1c c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+                0x00000dc4       0x1c c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
 
-.debug_frame    0x00000000     0x5a18
+.debug_frame    0x00000000     0x67b0
  .debug_frame   0x00000000       0xbc ./mtkernel_3/lib/libtm/libtm.o
  .debug_frame   0x000000bc      0x120 ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_frame   0x000001dc       0xe8 ./mtkernel_3/lib/libtk/fastlock.o
@@ -5360,59 +5371,59 @@ LOAD linker stubs
  .debug_frame   0x00000418       0xa0 ./mtkernel_3/lib/libtk/kmalloc.o
  .debug_frame   0x000004b8       0x30 ./mtkernel_3/kernel/usermain/usermain.o
  .debug_frame   0x000004e8      0x134 ./mtkernel_3/kernel/tstdlib/string.o
- .debug_frame   0x0000061c      0x140 ./mtkernel_3/kernel/tkernel/cpuctl.o
- .debug_frame   0x0000075c      0x374 ./mtkernel_3/kernel/tkernel/device.o
- .debug_frame   0x00000ad0      0x484 ./mtkernel_3/kernel/tkernel/deviceio.o
- .debug_frame   0x00000f54      0x284 ./mtkernel_3/kernel/tkernel/eventflag.o
- .debug_frame   0x000011d8       0x50 ./mtkernel_3/kernel/tkernel/int.o
- .debug_frame   0x00001228      0x1b8 ./mtkernel_3/kernel/tkernel/klock.o
- .debug_frame   0x000013e0      0x260 ./mtkernel_3/kernel/tkernel/mailbox.o
- .debug_frame   0x00001640      0x218 ./mtkernel_3/kernel/tkernel/memory.o
- .debug_frame   0x00001858      0x2b0 ./mtkernel_3/kernel/tkernel/mempfix.o
- .debug_frame   0x00001b08      0x35c ./mtkernel_3/kernel/tkernel/mempool.o
- .debug_frame   0x00001e64      0x33c ./mtkernel_3/kernel/tkernel/messagebuf.o
- .debug_frame   0x000021a0       0xa0 ./mtkernel_3/kernel/tkernel/misc_calls.o
- .debug_frame   0x00002240      0x2ec ./mtkernel_3/kernel/tkernel/mutex.o
- .debug_frame   0x0000252c       0x60 ./mtkernel_3/kernel/tkernel/objname.o
- .debug_frame   0x0000258c      0x234 ./mtkernel_3/kernel/tkernel/semaphore.o
- .debug_frame   0x000027c0      0x344 ./mtkernel_3/kernel/tkernel/task.o
- .debug_frame   0x00002b04      0x39c ./mtkernel_3/kernel/tkernel/task_manage.o
- .debug_frame   0x00002ea0      0x17c ./mtkernel_3/kernel/tkernel/task_sync.o
- .debug_frame   0x0000301c      0x658 ./mtkernel_3/kernel/tkernel/time_calls.o
- .debug_frame   0x00003674      0x294 ./mtkernel_3/kernel/tkernel/timer.o
- .debug_frame   0x00003908       0x34 ./mtkernel_3/kernel/tkernel/tkinit.o
- .debug_frame   0x0000393c      0x2a4 ./mtkernel_3/kernel/tkernel/wait.o
- .debug_frame   0x00003be0       0x4c ./mtkernel_3/kernel/sysinit/sysinit.o
- .debug_frame   0x00003c2c       0x7c ./mtkernel_3/kernel/inittask/inittask.o
- .debug_frame   0x00003ca8      0x13c ./mtkernel_3/device/common/drvif/msdrvif.o
- .debug_frame   0x00003de4      0x23c ./mtkernel_3/device/ser/ser.o
- .debug_frame   0x00004020      0x138 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .debug_frame   0x00004158       0xc4 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
- .debug_frame   0x0000421c      0x168 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
- .debug_frame   0x00004384      0x160 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
- .debug_frame   0x000044e4       0xf4 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
- .debug_frame   0x000045d8       0xa4 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
- .debug_frame   0x0000467c       0x74 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
- .debug_frame   0x000046f0       0x9c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- .debug_frame   0x0000478c       0x50 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
- .debug_frame   0x000047dc       0x9c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
- .debug_frame   0x00004878       0xec ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
- .debug_frame   0x00004964       0xf8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- .debug_frame   0x00004a5c      0x120 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
- .debug_frame   0x00004b7c       0x30 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_frame   0x00004bac      0x298 ./mtkernel_3/CAV/src/LED.o
- .debug_frame   0x00004e44      0x230 ./mtkernel_3/CAV/src/STG.o
- .debug_frame   0x00005074      0x130 ./mtkernel_3/CAV/src/app_main.o
- .debug_frame   0x000051a4      0x110 ./mtkernel_3/CAV/src/client.o
- .debug_frame   0x000052b4      0x124 ./mtkernel_3/CAV/src/drive.o
- .debug_frame   0x000053d8      0x164 ./mtkernel_3/CAV/src/iic.o
- .debug_frame   0x0000553c      0x13c ./mtkernel_3/CAV/src/list.o
- .debug_frame   0x00005678      0x104 ./mtkernel_3/CAV/src/maqueen.o
- .debug_frame   0x0000577c       0xd8 ./mtkernel_3/CAV/src/order.o
- .debug_frame   0x00005854       0x78 ./mtkernel_3/CAV/src/radio.o
- .debug_frame   0x000058cc       0xd4 ./mtkernel_3/CAV/src/server.o
- .debug_frame   0x000059a0       0x44 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x000059e4       0x34 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000061c      0x1b0 ./mtkernel_3/kernel/tkernel/cpuctl.o
+ .debug_frame   0x000007cc      0x488 ./mtkernel_3/kernel/tkernel/device.o
+ .debug_frame   0x00000c54      0x5c0 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .debug_frame   0x00001214      0x36c ./mtkernel_3/kernel/tkernel/eventflag.o
+ .debug_frame   0x00001580       0x9c ./mtkernel_3/kernel/tkernel/int.o
+ .debug_frame   0x0000161c      0x1b8 ./mtkernel_3/kernel/tkernel/klock.o
+ .debug_frame   0x000017d4      0x320 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .debug_frame   0x00001af4      0x218 ./mtkernel_3/kernel/tkernel/memory.o
+ .debug_frame   0x00001d0c      0x370 ./mtkernel_3/kernel/tkernel/mempfix.o
+ .debug_frame   0x0000207c      0x41c ./mtkernel_3/kernel/tkernel/mempool.o
+ .debug_frame   0x00002498      0x3fc ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .debug_frame   0x00002894      0x154 ./mtkernel_3/kernel/tkernel/misc_calls.o
+ .debug_frame   0x000029e8      0x3a8 ./mtkernel_3/kernel/tkernel/mutex.o
+ .debug_frame   0x00002d90       0x60 ./mtkernel_3/kernel/tkernel/objname.o
+ .debug_frame   0x00002df0      0x2f4 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .debug_frame   0x000030e4      0x344 ./mtkernel_3/kernel/tkernel/task.o
+ .debug_frame   0x00003428      0x534 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .debug_frame   0x0000395c      0x278 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .debug_frame   0x00003bd4      0x838 ./mtkernel_3/kernel/tkernel/time_calls.o
+ .debug_frame   0x0000440c      0x294 ./mtkernel_3/kernel/tkernel/timer.o
+ .debug_frame   0x000046a0       0x34 ./mtkernel_3/kernel/tkernel/tkinit.o
+ .debug_frame   0x000046d4      0x2a4 ./mtkernel_3/kernel/tkernel/wait.o
+ .debug_frame   0x00004978       0x4c ./mtkernel_3/kernel/sysinit/sysinit.o
+ .debug_frame   0x000049c4       0x7c ./mtkernel_3/kernel/inittask/inittask.o
+ .debug_frame   0x00004a40      0x13c ./mtkernel_3/device/common/drvif/msdrvif.o
+ .debug_frame   0x00004b7c      0x23c ./mtkernel_3/device/ser/ser.o
+ .debug_frame   0x00004db8      0x138 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .debug_frame   0x00004ef0       0xc4 ./mtkernel_3/lib/libtm/sysdepend/microbit/tm_com.o
+ .debug_frame   0x00004fb4      0x168 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/int_nrf5.o
+ .debug_frame   0x0000511c      0x160 ./mtkernel_3/lib/libtk/sysdepend/cpu/nrf5/ptimer_nrf5.o
+ .debug_frame   0x0000527c       0xf4 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/int_armv7m.o
+ .debug_frame   0x00005370       0xa4 ./mtkernel_3/lib/libtk/sysdepend/cpu/core/armv7m/wusec_armv7m.o
+ .debug_frame   0x00005414       0x74 ./mtkernel_3/kernel/sysdepend/microbit/devinit.o
+ .debug_frame   0x00005488       0x9c ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ .debug_frame   0x00005524       0x50 ./mtkernel_3/kernel/sysdepend/microbit/power_save.o
+ .debug_frame   0x00005574       0x9c ./mtkernel_3/kernel/sysdepend/cpu/nrf5/cpu_clock.o
+ .debug_frame   0x00005610       0xec ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/cpu_cntl.o
+ .debug_frame   0x000056fc       0xf8 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ .debug_frame   0x000057f4      0x120 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
+ .debug_frame   0x00005914       0x30 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
+ .debug_frame   0x00005944      0x298 ./mtkernel_3/CAV/src/LED.o
+ .debug_frame   0x00005bdc      0x230 ./mtkernel_3/CAV/src/STG.o
+ .debug_frame   0x00005e0c      0x130 ./mtkernel_3/CAV/src/app_main.o
+ .debug_frame   0x00005f3c      0x110 ./mtkernel_3/CAV/src/client.o
+ .debug_frame   0x0000604c      0x124 ./mtkernel_3/CAV/src/drive.o
+ .debug_frame   0x00006170      0x164 ./mtkernel_3/CAV/src/iic.o
+ .debug_frame   0x000062d4      0x13c ./mtkernel_3/CAV/src/list.o
+ .debug_frame   0x00006410      0x104 ./mtkernel_3/CAV/src/maqueen.o
+ .debug_frame   0x00006514       0xd8 ./mtkernel_3/CAV/src/order.o
+ .debug_frame   0x000065ec       0x78 ./mtkernel_3/CAV/src/radio.o
+ .debug_frame   0x00006664       0xd4 ./mtkernel_3/CAV/src/server.o
+ .debug_frame   0x00006738       0x44 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x0000677c       0x34 c:/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_ranges   0x00000000       0x30
  .debug_ranges  0x00000000       0x30 ./mtkernel_3/CAV/src/client.o

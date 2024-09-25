@@ -36,7 +36,7 @@ mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o: \
  ../kernel/sysdepend/cpu/core/armv7m/../../../sysdepend.h \
  ../kernel/sysdepend/cpu/core/armv7m/../../../microbit/sysdepend.h \
  ../kernel/sysdepend/cpu/core/armv7m/../../../microbit/../cpu/nrf5/sysdepend.h \
- c:\users\admin\documents\github\tron-project\kernel\sysdepend\cpu\core\armv7m\sysdepend.h
+ c:\users\15ume\documents\github\tron-project\kernel\sysdepend\cpu\core\armv7m\sysdepend.h
 ../include/sys/machine.h:
 ../config/config.h:
 ../config/config_func.h:
@@ -89,4 +89,4 @@ mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o: \
 ../kernel/sysdepend/cpu/core/armv7m/../../../sysdepend.h:
 ../kernel/sysdepend/cpu/core/armv7m/../../../microbit/sysdepend.h:
 ../kernel/sysdepend/cpu/core/armv7m/../../../microbit/../cpu/nrf5/sysdepend.h:
-c:\users\admin\documents\github\tron-project\kernel\sysdepend\cpu\core\armv7m\sysdepend.h:
+c:\users\15ume\documents\github\tron-project\kernel\sysdepend\cpu\core\armv7m\sysdepend.h:
