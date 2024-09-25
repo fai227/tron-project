@@ -9,7 +9,7 @@
 
 int usermain(void)
 {
-    static char __attribute__ ((aligned(4))) trace_mem[3088 + ((7 + 5) * 4 * 80)];
+    static char __attribute__ ((aligned(4))) trace_mem[3088 + ((7 + 5) * 4 * 200)];
     extern int trace_init(void *mem, int memsz, int maxtskid, void *entry);
 #define usermain trace_umain
     extern int usermain();

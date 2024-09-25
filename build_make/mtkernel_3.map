@@ -3873,7 +3873,7 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
 LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
 END GROUP
 
-.text           0x00000000    0x157aa
+.text           0x00000000    0x1578a
                 0x00000000                . = ALIGN (0x8)
                 0x00000000                __vector_org = .
  *(.vector)
@@ -4234,172 +4234,172 @@ END GROUP
                 0x0000fa46                knl_init_interrupt
  .text          0x0000fa58      0x138 ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
                 0x0000fa58                Reset_Handler
- .text          0x0000fb90      0x704 ./mtkernel_3/CAV/src/LED.o
+ .text          0x0000fb90      0x6e4 ./mtkernel_3/CAV/src/LED.o
                 0x0000fd74                initialize_led
-                0x0000fe24                clear_led
-                0x0000fe58                turn_on_led
-                0x0000fe9c                show_number
-                0x0001002c                show_circle
-                0x0001005c                show_cross
-                0x0001008c                show_S
-                0x000100bc                show_V
-                0x000100ec                show_T
-                0x0001011c                show_logo
-                0x000101f8                show_strait
-                0x00010228                show_left
-                0x00010258                show_right
-                0x00010288                show_stop
- .text          0x00010294      0xd6c ./mtkernel_3/CAV/src/STG.o
-                0x00010800                index_of
-                0x00010c24                stg_start
-                0x00010cf8                stg_reserve
-                0x00010ec0                stg_get_delay_until_departure
- .text          0x00011000      0x324 ./mtkernel_3/CAV/src/app_main.o
-                0x00011034                usermain
-                0x00011054                button_setup
-                0x00011074                is_a_pressed
-                0x00011098                is_b_pressed
-                0x0001123c                trace_umain
- .text          0x00011324      0x46c ./mtkernel_3/CAV/src/client.o
-                0x00011376                request_departure_time_ms
-                0x000116ec                reserve_order
- .text          0x00011790      0x504 ./mtkernel_3/CAV/src/drive.o
-                0x00011bb4                start_drive
- .text          0x00011c94      0x89c ./mtkernel_3/CAV/src/iic.o
-                0x00012068                iic_transfer
-                0x00012274                iic_setup
-                0x00012454                iic_write
-                0x000124b4                iic_read
- .text          0x00012530      0x1c8 ./mtkernel_3/CAV/src/list.o
-                0x00012530                list_init
-                0x0001255a                list_unshift
-                0x000125a2                list_append
-                0x000125f2                list_shift
-                0x00012646                list_get
-                0x00012692                list_delete
-                0x000126c6                list_length
-                0x000126de                list_get_last
- .text          0x000126f8      0x230 ./mtkernel_3/CAV/src/maqueen.o
-                0x000126f8                maqueen_init
-                0x00012708                control_motor
-                0x000127fc                stop_all_motor
-                0x0001283c                control_led
-                0x00012890                turn_off_all_led
-                0x000128d0                read_line_state
-                0x000128fa                read_line_value
- .text          0x00012928       0xb6 ./mtkernel_3/CAV/src/order.o
-                0x00012928                is_forward
-                0x0001294e                is_backward
-                0x00012974                is_left
-                0x0001299a                is_right
-                0x000129c0                get_order_duration
- *fill*         0x000129de        0x2 
- .text          0x000129e0      0x160 ./mtkernel_3/CAV/src/radio.o
-                0x000129fc                print_packet
-                0x00012a40                radio_setup
- .text          0x00012b40      0x238 ./mtkernel_3/CAV/src/server.o
-                0x00012ce0                start_server
- .text          0x00012d78      0x4a8 ./libtrace.a(rsd.o)
-                0x0001318c                trace_init
- .text          0x00013220     0x1718 ./libtrace.a(tracedrv.o)
-                0x00013242                trc_addtsk
-                0x000132bc                trc_deltsk
-                0x00013428                trc_adddeltsk
-                0x000134f8                trc_suspend
-                0x000135b8                trc_lsttsk
-                0x0001380c                trc_lstint
-                0x0001428e                trc_adddelint
-                0x000142de                trc_clear
-                0x00014330                trc_start
-                0x0001443c                trc_stop
-                0x00014500                trc_log
-                0x00014770                trc_open
-                0x0001477e                trc_close
-                0x0001478c                trc_getmem
-                0x00014840                trc_init
- .text          0x00014938       0xa0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
-                0x00014938                __aeabi_ldivmod
- .text          0x000149d8      0x2d0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x000149d8                __udivmoddi4
- .text          0x00014ca8        0x4 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
-                0x00014ca8                __aeabi_idiv0
-                0x00014ca8                __aeabi_ldiv0
- .text          0x00014cac      0x134 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
-                0x00014cac                memcpy
- .text          0x00014de0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x0000fe04                clear_led
+                0x0000fe38                turn_on_led
+                0x0000fe7c                show_number
+                0x0001000c                show_circle
+                0x0001003c                show_cross
+                0x0001006c                show_S
+                0x0001009c                show_V
+                0x000100cc                show_T
+                0x000100fc                show_logo
+                0x000101d8                show_strait
+                0x00010208                show_left
+                0x00010238                show_right
+                0x00010268                show_stop
+ .text          0x00010274      0xd6c ./mtkernel_3/CAV/src/STG.o
+                0x000107e0                index_of
+                0x00010c04                stg_start
+                0x00010cd8                stg_reserve
+                0x00010ea0                stg_get_delay_until_departure
+ .text          0x00010fe0      0x324 ./mtkernel_3/CAV/src/app_main.o
+                0x00011014                usermain
+                0x00011034                button_setup
+                0x00011054                is_a_pressed
+                0x00011078                is_b_pressed
+                0x0001121c                trace_umain
+ .text          0x00011304      0x46c ./mtkernel_3/CAV/src/client.o
+                0x00011356                request_departure_time_ms
+                0x000116cc                reserve_order
+ .text          0x00011770      0x504 ./mtkernel_3/CAV/src/drive.o
+                0x00011b94                start_drive
+ .text          0x00011c74      0x89c ./mtkernel_3/CAV/src/iic.o
+                0x00012048                iic_transfer
+                0x00012254                iic_setup
+                0x00012434                iic_write
+                0x00012494                iic_read
+ .text          0x00012510      0x1c8 ./mtkernel_3/CAV/src/list.o
+                0x00012510                list_init
+                0x0001253a                list_unshift
+                0x00012582                list_append
+                0x000125d2                list_shift
+                0x00012626                list_get
+                0x00012672                list_delete
+                0x000126a6                list_length
+                0x000126be                list_get_last
+ .text          0x000126d8      0x230 ./mtkernel_3/CAV/src/maqueen.o
+                0x000126d8                maqueen_init
+                0x000126e8                control_motor
+                0x000127dc                stop_all_motor
+                0x0001281c                control_led
+                0x00012870                turn_off_all_led
+                0x000128b0                read_line_state
+                0x000128da                read_line_value
+ .text          0x00012908       0xb6 ./mtkernel_3/CAV/src/order.o
+                0x00012908                is_forward
+                0x0001292e                is_backward
+                0x00012954                is_left
+                0x0001297a                is_right
+                0x000129a0                get_order_duration
+ *fill*         0x000129be        0x2 
+ .text          0x000129c0      0x160 ./mtkernel_3/CAV/src/radio.o
+                0x000129dc                print_packet
+                0x00012a20                radio_setup
+ .text          0x00012b20      0x238 ./mtkernel_3/CAV/src/server.o
+                0x00012cc0                start_server
+ .text          0x00012d58      0x4a8 ./libtrace.a(rsd.o)
+                0x0001316c                trace_init
+ .text          0x00013200     0x1718 ./libtrace.a(tracedrv.o)
+                0x00013222                trc_addtsk
+                0x0001329c                trc_deltsk
+                0x00013408                trc_adddeltsk
+                0x000134d8                trc_suspend
+                0x00013598                trc_lsttsk
+                0x000137ec                trc_lstint
+                0x0001426e                trc_adddelint
+                0x000142be                trc_clear
+                0x00014310                trc_start
+                0x0001441c                trc_stop
+                0x000144e0                trc_log
+                0x00014750                trc_open
+                0x0001475e                trc_close
+                0x0001476c                trc_getmem
+                0x00014820                trc_init
+ .text          0x00014918       0xa0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+                0x00014918                __aeabi_ldivmod
+ .text          0x000149b8      0x2d0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x000149b8                __udivmoddi4
+ .text          0x00014c88        0x4 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x00014c88                __aeabi_idiv0
+                0x00014c88                __aeabi_ldiv0
+ .text          0x00014c8c      0x134 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+                0x00014c8c                memcpy
+ .text          0x00014dc0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
  *(.text.*)
- .text.memset   0x00014de0       0xa4 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
-                0x00014de0                memset
+ .text.memset   0x00014dc0       0xa4 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x00014dc0                memset
  *(.rodata)
- .rodata        0x00014e84        0x2 ./mtkernel_3/lib/libtm/libtm.o
- *fill*         0x00014e86        0x2 
- .rodata        0x00014e88       0x30 ./mtkernel_3/lib/libtm/libtm_printf.o
- .rodata        0x00014eb8        0x5 ./mtkernel_3/lib/libtk/fastlock.o
- *fill*         0x00014ebd        0x3 
- .rodata        0x00014ec0        0x5 ./mtkernel_3/lib/libtk/fastmlock.o
- *fill*         0x00014ec5        0x3 
- .rodata        0x00014ec8        0x5 ./mtkernel_3/kernel/tkernel/device.o
- *fill*         0x00014ecd        0x3 
- .rodata        0x00014ed0       0x10 ./mtkernel_3/kernel/tkernel/deviceio.o
- .rodata        0x00014ee0       0x18 ./mtkernel_3/kernel/tkernel/eventflag.o
- .rodata        0x00014ef8       0x18 ./mtkernel_3/kernel/tkernel/mailbox.o
- .rodata        0x00014f10       0x18 ./mtkernel_3/kernel/tkernel/mempfix.o
- .rodata        0x00014f28       0x18 ./mtkernel_3/kernel/tkernel/mempool.o
- .rodata        0x00014f40       0x24 ./mtkernel_3/kernel/tkernel/messagebuf.o
- .rodata        0x00014f64       0x24 ./mtkernel_3/kernel/tkernel/mutex.o
- .rodata        0x00014f88       0x18 ./mtkernel_3/kernel/tkernel/semaphore.o
- .rodata        0x00014fa0       0xc0 ./mtkernel_3/kernel/tkernel/task_manage.o
- .rodata        0x00015060       0x18 ./mtkernel_3/kernel/tkernel/task_sync.o
- .rodata        0x00015078       0xd8 ./mtkernel_3/kernel/sysinit/sysinit.o
- .rodata        0x00015150       0x6d ./mtkernel_3/kernel/inittask/inittask.o
-                0x00015150                knl_init_ctsk
- *fill*         0x000151bd        0x3 
- .rodata        0x000151c0        0x4 ./mtkernel_3/device/ser/ser.o
- .rodata        0x000151c4       0x98 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
- .rodata        0x0001525c       0x7b ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
- *fill*         0x000152d7        0x1 
- .rodata        0x000152d8       0xca ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
- *fill*         0x000153a2        0x2 
- .rodata        0x000153a4        0x8 ./mtkernel_3/CAV/src/LED.o
-                0x000153a4                led_physical_timer_clock_mhz
-                0x000153a8                led_cycle_micros
- .rodata        0x000153ac      0x19d ./mtkernel_3/CAV/src/STG.o
- *fill*         0x00015549        0x3 
- .rodata        0x0001554c       0x94 ./mtkernel_3/CAV/src/app_main.o
- .rodata        0x000155e0      0x138 ./mtkernel_3/CAV/src/drive.o
-                0x000155e0                d_timer_clock_mhz
- .rodata        0x00015718       0x25 ./mtkernel_3/CAV/src/iic.o
- *fill*         0x0001573d        0x3 
- .rodata        0x00015740        0xa ./mtkernel_3/CAV/src/radio.o
- *fill*         0x0001574a        0x2 
- .rodata        0x0001574c       0x5e ./libtrace.a(rsd.o)
+ .rodata        0x00014e64        0x2 ./mtkernel_3/lib/libtm/libtm.o
+ *fill*         0x00014e66        0x2 
+ .rodata        0x00014e68       0x30 ./mtkernel_3/lib/libtm/libtm_printf.o
+ .rodata        0x00014e98        0x5 ./mtkernel_3/lib/libtk/fastlock.o
+ *fill*         0x00014e9d        0x3 
+ .rodata        0x00014ea0        0x5 ./mtkernel_3/lib/libtk/fastmlock.o
+ *fill*         0x00014ea5        0x3 
+ .rodata        0x00014ea8        0x5 ./mtkernel_3/kernel/tkernel/device.o
+ *fill*         0x00014ead        0x3 
+ .rodata        0x00014eb0       0x10 ./mtkernel_3/kernel/tkernel/deviceio.o
+ .rodata        0x00014ec0       0x18 ./mtkernel_3/kernel/tkernel/eventflag.o
+ .rodata        0x00014ed8       0x18 ./mtkernel_3/kernel/tkernel/mailbox.o
+ .rodata        0x00014ef0       0x18 ./mtkernel_3/kernel/tkernel/mempfix.o
+ .rodata        0x00014f08       0x18 ./mtkernel_3/kernel/tkernel/mempool.o
+ .rodata        0x00014f20       0x24 ./mtkernel_3/kernel/tkernel/messagebuf.o
+ .rodata        0x00014f44       0x24 ./mtkernel_3/kernel/tkernel/mutex.o
+ .rodata        0x00014f68       0x18 ./mtkernel_3/kernel/tkernel/semaphore.o
+ .rodata        0x00014f80       0xc0 ./mtkernel_3/kernel/tkernel/task_manage.o
+ .rodata        0x00015040       0x18 ./mtkernel_3/kernel/tkernel/task_sync.o
+ .rodata        0x00015058       0xd8 ./mtkernel_3/kernel/sysinit/sysinit.o
+ .rodata        0x00015130       0x6d ./mtkernel_3/kernel/inittask/inittask.o
+                0x00015130                knl_init_ctsk
+ *fill*         0x0001519d        0x3 
+ .rodata        0x000151a0        0x4 ./mtkernel_3/device/ser/ser.o
+ .rodata        0x000151a4       0x98 ./mtkernel_3/device/ser/sysdepend/nrf5/ser_nrf5.o
+ .rodata        0x0001523c       0x7b ./mtkernel_3/kernel/sysdepend/microbit/hw_setting.o
+ *fill*         0x000152b7        0x1 
+ .rodata        0x000152b8       0xca ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
+ *fill*         0x00015382        0x2 
+ .rodata        0x00015384        0x8 ./mtkernel_3/CAV/src/LED.o
+                0x00015384                led_physical_timer_clock_mhz
+                0x00015388                led_cycle_micros
+ .rodata        0x0001538c      0x19d ./mtkernel_3/CAV/src/STG.o
+ *fill*         0x00015529        0x3 
+ .rodata        0x0001552c       0x94 ./mtkernel_3/CAV/src/app_main.o
+ .rodata        0x000155c0      0x138 ./mtkernel_3/CAV/src/drive.o
+                0x000155c0                d_timer_clock_mhz
+ .rodata        0x000156f8       0x25 ./mtkernel_3/CAV/src/iic.o
+ *fill*         0x0001571d        0x3 
+ .rodata        0x00015720        0xa ./mtkernel_3/CAV/src/radio.o
+ *fill*         0x0001572a        0x2 
+ .rodata        0x0001572c       0x5e ./libtrace.a(rsd.o)
  *(.rodata.*)
 
-.ARM.extab      0x000157aa        0x0
- .ARM.extab     0x000157aa        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+.ARM.extab      0x0001578a        0x0
+ .ARM.extab     0x0001578a        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.ARM.exidx      0x000157ac        0x8
- .ARM.exidx     0x000157ac        0x8 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+.ARM.exidx      0x0001578c        0x8
+ .ARM.exidx     0x0001578c        0x8 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.glue_7         0x000157b4        0x0
- .glue_7        0x000157b4        0x0 linker stubs
+.glue_7         0x00015794        0x0
+ .glue_7        0x00015794        0x0 linker stubs
 
-.glue_7t        0x000157b4        0x0
- .glue_7t       0x000157b4        0x0 linker stubs
+.glue_7t        0x00015794        0x0
+ .glue_7t       0x00015794        0x0 linker stubs
 
-.vfp11_veneer   0x000157b4        0x0
- .vfp11_veneer  0x000157b4        0x0 linker stubs
+.vfp11_veneer   0x00015794        0x0
+ .vfp11_veneer  0x00015794        0x0 linker stubs
 
-.v4_bx          0x000157b4        0x0
- .v4_bx         0x000157b4        0x0 linker stubs
+.v4_bx          0x00015794        0x0
+ .v4_bx         0x00015794        0x0 linker stubs
 
-.iplt           0x000157b4        0x0
- .iplt          0x000157b4        0x0 ./mtkernel_3/lib/libtm/libtm.o
+.iplt           0x00015794        0x0
+ .iplt          0x00015794        0x0 ./mtkernel_3/lib/libtm/libtm.o
 
-.rel.dyn        0x000157b4        0x0
- .rel.iplt      0x000157b4        0x0 ./mtkernel_3/lib/libtm/libtm.o
-                0x000157b4                . = ALIGN (0x4)
-                0x000157b4                __data_org = .
+.rel.dyn        0x00015794        0x0
+ .rel.iplt      0x00015794        0x0 ./mtkernel_3/lib/libtm/libtm.o
+                0x00015794                . = ALIGN (0x4)
+                0x00015794                __data_org = .
 
 vector          0x20000000      0x100
                 0x20000000                __vector_start = .
@@ -4408,7 +4408,7 @@ vector          0x20000000      0x100
                 0x20000000                exchdr_tbl
                 0x20000100                __vector_end = .
 
-.data           0x20000100       0x9c load address 0x000157b4
+.data           0x20000100       0x9c load address 0x00015794
                 0x20000100                __data_start = .
  *(.data)
  .data          0x20000100        0x0 ./mtkernel_3/lib/libtm/libtm.o
@@ -4494,10 +4494,10 @@ vector          0x20000000      0x100
                 0x2000019c                . = ALIGN (0x4)
                 0x2000019c                __data_end = .
 
-.igot.plt       0x2000019c        0x0 load address 0x00015850
+.igot.plt       0x2000019c        0x0 load address 0x00015830
  .igot.plt      0x2000019c        0x0 ./mtkernel_3/lib/libtm/libtm.o
 
-.bss            0x2000019c     0x41b4 load address 0x00015850
+.bss            0x2000019c     0x5834 load address 0x00015830
                 0x2000019c                __bss_start = .
                 [!provide]                PROVIDE (__noinit_start = .)
  *(.noinit)
@@ -4630,39 +4630,39 @@ vector          0x20000000      0x100
  .bss           0x20002770        0x8 ./mtkernel_3/CAV/src/STG.o
                 0x20002770                spatio_temporal_grid
                 0x20002774                server_time
- .bss           0x20002778     0x1b10 ./mtkernel_3/CAV/src/app_main.o
- .bss           0x20004288        0xa ./mtkernel_3/CAV/src/client.o
-                0x20004288                order_list_global
-                0x2000428c                transfer_task_id
-                0x20004290                previous_target
-                0x20004291                current_target
- *fill*         0x20004292        0x2 
- .bss           0x20004294        0x6 ./mtkernel_3/CAV/src/drive.o
-                0x20004294                d_request_sent_flag
-                0x20004298                d_last_request_list_count
- *fill*         0x2000429a        0x2 
- .bss           0x2000429c       0x2c ./mtkernel_3/CAV/src/iic.o
- .bss           0x200042c8        0x0 ./mtkernel_3/CAV/src/list.o
- .bss           0x200042c8        0x0 ./mtkernel_3/CAV/src/maqueen.o
- .bss           0x200042c8        0x0 ./mtkernel_3/CAV/src/order.o
- .bss           0x200042c8       0x20 ./mtkernel_3/CAV/src/radio.o
-                0x200042c8                packet
- .bss           0x200042e8        0x5 ./mtkernel_3/CAV/src/server.o
-                0x200042e8                radio_task_id
-                0x200042ec                current_id
- *fill*         0x200042ed        0x3 
- .bss           0x200042f0        0x4 ./libtrace.a(rsd.o)
- .bss           0x200042f4       0x5c ./libtrace.a(tracedrv.o)
- .bss           0x20004350        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
- .bss           0x20004350        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .bss           0x20004350        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
- .bss           0x20004350        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
- .bss           0x20004350        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+ .bss           0x20002778     0x3190 ./mtkernel_3/CAV/src/app_main.o
+ .bss           0x20005908        0xa ./mtkernel_3/CAV/src/client.o
+                0x20005908                order_list_global
+                0x2000590c                transfer_task_id
+                0x20005910                previous_target
+                0x20005911                current_target
+ *fill*         0x20005912        0x2 
+ .bss           0x20005914        0x6 ./mtkernel_3/CAV/src/drive.o
+                0x20005914                d_request_sent_flag
+                0x20005918                d_last_request_list_count
+ *fill*         0x2000591a        0x2 
+ .bss           0x2000591c       0x2c ./mtkernel_3/CAV/src/iic.o
+ .bss           0x20005948        0x0 ./mtkernel_3/CAV/src/list.o
+ .bss           0x20005948        0x0 ./mtkernel_3/CAV/src/maqueen.o
+ .bss           0x20005948        0x0 ./mtkernel_3/CAV/src/order.o
+ .bss           0x20005948       0x20 ./mtkernel_3/CAV/src/radio.o
+                0x20005948                packet
+ .bss           0x20005968        0x5 ./mtkernel_3/CAV/src/server.o
+                0x20005968                radio_task_id
+                0x2000596c                current_id
+ *fill*         0x2000596d        0x3 
+ .bss           0x20005970        0x4 ./libtrace.a(rsd.o)
+ .bss           0x20005974       0x5c ./libtrace.a(tracedrv.o)
+ .bss           0x200059d0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x200059d0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .bss           0x200059d0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .bss           0x200059d0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memcpy.o)
+ .bss           0x200059d0        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
  *(.bss.*)
  *(COMMON)
-                0x20004350                . = ALIGN (0x4)
-                0x20004350                __bss_end = .
-                0x20004350                __end = .
+                0x200059d0                . = ALIGN (0x4)
+                0x200059d0                __bss_end = .
+                0x200059d0                __end = .
 OUTPUT(mtkernel_3.elf elf32-littlearm)
 LOAD linker stubs
 
@@ -5098,7 +5098,7 @@ LOAD linker stubs
  .debug_macro   0x0000a84f      0x222 ./libtrace.a(tracedrv.o)
  .debug_macro   0x0000aa71       0x1c ./libtrace.a(tracedrv.o)
 
-.debug_line     0x00000000    0x1d254
+.debug_line     0x00000000    0x1d252
  .debug_line    0x00000000      0x3f7 ./mtkernel_3/lib/libtm/libtm.o
  .debug_line    0x000003f7      0x7de ./mtkernel_3/lib/libtm/libtm_printf.o
  .debug_line    0x00000bd5      0x3c0 ./mtkernel_3/lib/libtk/fastlock.o
@@ -5154,19 +5154,19 @@ LOAD linker stubs
  .debug_line    0x00016d9d      0x70b ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/exc_hdr.o
  .debug_line    0x000174a8      0x6eb ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/interrupt.o
  .debug_line    0x00017b93      0x72c ./mtkernel_3/kernel/sysdepend/cpu/core/armv7m/reset_hdl.o
- .debug_line    0x000182bf      0x52b ./mtkernel_3/CAV/src/LED.o
- .debug_line    0x000187ea      0x91c ./mtkernel_3/CAV/src/STG.o
- .debug_line    0x00019106      0x578 ./mtkernel_3/CAV/src/app_main.o
- .debug_line    0x0001967e      0x587 ./mtkernel_3/CAV/src/client.o
- .debug_line    0x00019c05      0x5f6 ./mtkernel_3/CAV/src/drive.o
- .debug_line    0x0001a1fb      0x805 ./mtkernel_3/CAV/src/iic.o
- .debug_line    0x0001aa00      0x42e ./mtkernel_3/CAV/src/list.o
- .debug_line    0x0001ae2e      0x47e ./mtkernel_3/CAV/src/maqueen.o
- .debug_line    0x0001b2ac      0x19b ./mtkernel_3/CAV/src/order.o
- .debug_line    0x0001b447      0x3a0 ./mtkernel_3/CAV/src/radio.o
- .debug_line    0x0001b7e7      0x40a ./mtkernel_3/CAV/src/server.o
- .debug_line    0x0001bbf1      0x706 ./libtrace.a(rsd.o)
- .debug_line    0x0001c2f7      0xf5d ./libtrace.a(tracedrv.o)
+ .debug_line    0x000182bf      0x529 ./mtkernel_3/CAV/src/LED.o
+ .debug_line    0x000187e8      0x91c ./mtkernel_3/CAV/src/STG.o
+ .debug_line    0x00019104      0x578 ./mtkernel_3/CAV/src/app_main.o
+ .debug_line    0x0001967c      0x587 ./mtkernel_3/CAV/src/client.o
+ .debug_line    0x00019c03      0x5f6 ./mtkernel_3/CAV/src/drive.o
+ .debug_line    0x0001a1f9      0x805 ./mtkernel_3/CAV/src/iic.o
+ .debug_line    0x0001a9fe      0x42e ./mtkernel_3/CAV/src/list.o
+ .debug_line    0x0001ae2c      0x47e ./mtkernel_3/CAV/src/maqueen.o
+ .debug_line    0x0001b2aa      0x19b ./mtkernel_3/CAV/src/order.o
+ .debug_line    0x0001b445      0x3a0 ./mtkernel_3/CAV/src/radio.o
+ .debug_line    0x0001b7e5      0x40a ./mtkernel_3/CAV/src/server.o
+ .debug_line    0x0001bbef      0x706 ./libtrace.a(rsd.o)
+ .debug_line    0x0001c2f5      0xf5d ./libtrace.a(tracedrv.o)
 
 .debug_str      0x00000000     0xe709
  .debug_str     0x00000000     0x6c2b ./mtkernel_3/lib/libtm/libtm.o
