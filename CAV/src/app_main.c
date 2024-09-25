@@ -164,6 +164,7 @@ EXPORT INT usermain(void)
 				vehicle_main();
 			} 
 			//tk_slp_tsk(TMO_FEVR);
+			DEBUG_LOG("finish process\n");
 			return E_OK;
 
 		}

@@ -270,6 +270,10 @@ EXPORT void start_drive(UINT timer_number) {
         }
         list_shift(order_list);
     }
+    DEBUG_LOG("finish driving\n");
+
+
+
     // while(TRUE){
     //     if (list_length(order_list) > d_last_request_list_count) {
     //         // リスト個数が増加したのでフラグをリセット
