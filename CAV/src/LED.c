@@ -86,8 +86,8 @@ EXPORT void initialize_led(UB timer_number){
     clear_led();
 
     // 物理タイマーを起動
-    DefinePhysicalTimerHandler(timer_number, &led_dynamic_physical_timer);
-    StartPhysicalTimer(timer_number, led_limit, TA_CYC_PTMR);
+    // DefinePhysicalTimerHandler(timer_number, &led_dynamic_physical_timer);
+    // StartPhysicalTimer(timer_number, led_limit, TA_CYC_PTMR);
 }
 
 EXPORT void clear_led(){
