@@ -15,7 +15,6 @@ TARGET := _MICROBIT_
 RM := rm -rf
 
 INCPATH = -I"../include" -I"../config" -I"../kernel/knlinc"
-
 #ヘッダーのインクルードを追加
 INCPATH += -I"../CAV/header"
 
@@ -67,7 +66,7 @@ all: $(EXE_FILE).elf
 
 $(EXE_FILE).elf: $(OBJS)
 	@echo 'Linker: $@'
-	$(LINK)  $(LFLAGS) -T $(LNKFILE) -Wl,-Map,"$(EXE_FILE).map" -o "$(EXE_FILE).elf" $(OBJS)
+	$(LINK)  $(LFLAGS) -T $(LNKFILE) -Wl,-Map,"$(EXE_FILE).map" -o "$(EXE_FILE).elf" $(OBJS) ./libtrace.a
 	@echo 'Finished building target: $@'
 	@echo ' '
 

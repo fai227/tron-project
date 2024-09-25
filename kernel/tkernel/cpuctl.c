@@ -27,6 +27,28 @@
  * Dispatch disable
  */
 SYSCALL ER tk_dis_dsp( void )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_dis_dsp( void );
+ER tk_dis_dsp( void )
+{
+	CONST W fncd = 0x80070000;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf );
+	}
+	ER er = l_tk_dis_dsp(  );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_dis_dsp( void )
+#endif /* USE_DBGSPT */
 {
 	CHECK_CTX(!in_loc());
 
@@ -43,6 +65,28 @@ SYSCALL ER tk_dis_dsp( void )
  */
 #ifdef USE_FUNC_TK_ENA_DSP
 SYSCALL ER tk_ena_dsp( void )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ena_dsp( void );
+ER tk_ena_dsp( void )
+{
+	CONST W fncd = 0x80080000;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf );
+	}
+	ER er = l_tk_ena_dsp(  );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ena_dsp( void )
+#endif /* USE_DBGSPT */
 {
 	CHECK_CTX(!in_loc());
 
@@ -91,6 +135,28 @@ SYSCALL ER tk_set_reg( ID tskid,
  * Get task register contents
  */
 SYSCALL ER tk_get_reg( ID tskid, T_REGS *pk_regs, T_EIT *pk_eit, T_CREGS *pk_cregs )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_get_reg( ID tskid, T_REGS *pk_regs, T_EIT *pk_eit, T_CREGS *pk_cregs );
+ER tk_get_reg( ID tskid, T_REGS *pk_regs, T_EIT *pk_eit, T_CREGS *pk_cregs )
+{
+	CONST W fncd = 0x800d0400;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid, pk_regs, pk_eit, pk_cregs );
+	}
+	ER er = l_tk_get_reg( tskid, pk_regs, pk_eit, pk_cregs );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_get_reg( ID tskid, T_REGS *pk_regs, T_EIT *pk_eit, T_CREGS *pk_cregs )
+#endif /* USE_DBGSPT */
 {
 	TCB		*tcb;
 	ER		ercd = E_OK;

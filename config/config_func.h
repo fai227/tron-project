@@ -152,4 +152,8 @@
 #define USE_FUNC_TD_REF_SYS
 #define USE_FUNC_TD_RDY_QUE
 
+#define USE_FUNC_TD_HOK_SVC
+#define USE_FUNC_TD_HOK_DSP
+#define USE_FUNC_TD_HOK_INT
+
 #endif /* _CONFIG_FUNC_H_ */

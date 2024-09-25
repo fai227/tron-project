@@ -54,6 +54,28 @@ EXPORT ER knl_eventflag_initialize( void )
  * Create event flag
  */
 SYSCALL ID tk_cre_flg( CONST T_CFLG *pk_cflg )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_flg( CONST T_CFLG *pk_cflg );
+ID tk_cre_flg( CONST T_CFLG *pk_cflg )
+{
+	CONST W fncd = 0x80200100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cflg );
+	}
+	ID er = l_tk_cre_flg( pk_cflg );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_flg( CONST T_CFLG *pk_cflg )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_FLGATR = {
@@ -102,6 +124,28 @@ SYSCALL ID tk_cre_flg( CONST T_CFLG *pk_cflg )
  * Delete event flag
  */
 SYSCALL ER tk_del_flg( ID flgid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_flg( ID flgid );
+ER tk_del_flg( ID flgid )
+{
+	CONST W fncd = 0x80210100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, flgid );
+	}
+	ER er = l_tk_del_flg( flgid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_flg( ID flgid )
+#endif /* USE_DBGSPT */
 {
 	FLGCB	*flgcb;
 	ER	ercd = E_OK;
@@ -131,6 +175,28 @@ SYSCALL ER tk_del_flg( ID flgid )
  * Event flag set
  */
 SYSCALL ER tk_set_flg( ID flgid, UINT setptn )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_set_flg( ID flgid, UINT setptn );
+ER tk_set_flg( ID flgid, UINT setptn )
+{
+	CONST W fncd = 0x80220200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, flgid, setptn );
+	}
+	ER er = l_tk_set_flg( flgid, setptn );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_set_flg( ID flgid, UINT setptn )
+#endif /* USE_DBGSPT */
 {
 	FLGCB	*flgcb;
 	TCB	*tcb;
@@ -189,6 +255,28 @@ SYSCALL ER tk_set_flg( ID flgid, UINT setptn )
  * Clear event flag 
  */
 SYSCALL ER tk_clr_flg( ID flgid, UINT clrptn )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_clr_flg( ID flgid, UINT clrptn );
+ER tk_clr_flg( ID flgid, UINT clrptn )
+{
+	CONST W fncd = 0x80230200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, flgid, clrptn );
+	}
+	ER er = l_tk_clr_flg( flgid, clrptn );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_clr_flg( ID flgid, UINT clrptn )
+#endif /* USE_DBGSPT */
 {
 	FLGCB	*flgcb;
 	ER	ercd = E_OK;
@@ -229,6 +317,28 @@ LOCAL CONST WSPEC knl_wspec_flg_tpri  = { TTW_FLG, flg_chg_pri, NULL };
  * Event flag wait
  */
 SYSCALL ER tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO tmout );
+ER tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO tmout )
+{
+	CONST W fncd = 0x80240500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, flgid, waiptn, wfmode, p_flgptn, tmout );
+	}
+	ER er = l_tk_wai_flg( flgid, waiptn, wfmode, p_flgptn, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	FLGCB	*flgcb;
 	ER	ercd = E_OK;
@@ -285,6 +395,28 @@ SYSCALL ER tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO t
  * Check event flag state
  */
 SYSCALL ER tk_ref_flg( ID flgid, T_RFLG *pk_rflg )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_flg( ID flgid, T_RFLG *pk_rflg );
+ER tk_ref_flg( ID flgid, T_RFLG *pk_rflg )
+{
+	CONST W fncd = 0x80250200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, flgid, pk_rflg );
+	}
+	ER er = l_tk_ref_flg( flgid, pk_rflg );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_flg( ID flgid, T_RFLG *pk_rflg )
+#endif /* USE_DBGSPT */
 {
 	FLGCB	*flgcb;
 	ER	ercd = E_OK;

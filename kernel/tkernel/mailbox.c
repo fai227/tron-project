@@ -55,6 +55,28 @@ EXPORT ER knl_mailbox_initialize( void )
  * Create mailbox
  */
 SYSCALL ID tk_cre_mbx( CONST T_CMBX *pk_cmbx )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_mbx( CONST T_CMBX *pk_cmbx );
+ID tk_cre_mbx( CONST T_CMBX *pk_cmbx )
+{
+	CONST W fncd = 0x80260100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_cmbx );
+	}
+	ID er = l_tk_cre_mbx( pk_cmbx );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_mbx( CONST T_CMBX *pk_cmbx )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_MBXATR = {
@@ -103,6 +125,28 @@ SYSCALL ID tk_cre_mbx( CONST T_CMBX *pk_cmbx )
  * Delete mailbox
  */
 SYSCALL ER tk_del_mbx( ID mbxid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_mbx( ID mbxid );
+ER tk_del_mbx( ID mbxid )
+{
+	CONST W fncd = 0x80270100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbxid );
+	}
+	ER er = l_tk_del_mbx( mbxid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_mbx( ID mbxid )
+#endif /* USE_DBGSPT */
 {
 	MBXCB	*mbxcb;
 	ER	ercd = E_OK;
@@ -132,6 +176,28 @@ SYSCALL ER tk_del_mbx( ID mbxid )
  * Send to mailbox
  */
 SYSCALL ER tk_snd_mbx( ID mbxid, T_MSG *pk_msg )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_snd_mbx( ID mbxid, T_MSG *pk_msg );
+ER tk_snd_mbx( ID mbxid, T_MSG *pk_msg )
+{
+	CONST W fncd = 0x80280200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbxid, pk_msg );
+	}
+	ER er = l_tk_snd_mbx( mbxid, pk_msg );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_snd_mbx( ID mbxid, T_MSG *pk_msg )
+#endif /* USE_DBGSPT */
 {
 	MBXCB	*mbxcb;
 	TCB	*tcb;
@@ -204,6 +270,28 @@ LOCAL CONST WSPEC knl_wspec_mbx_tpri  = { TTW_MBX, mbx_chg_pri, NULL };
  * Receive from mailbox
  */
 SYSCALL ER tk_rcv_mbx( ID mbxid, T_MSG **ppk_msg, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_rcv_mbx( ID mbxid, T_MSG **ppk_msg, TMO tmout );
+ER tk_rcv_mbx( ID mbxid, T_MSG **ppk_msg, TMO tmout )
+{
+	CONST W fncd = 0x80290300;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbxid, ppk_msg, tmout );
+	}
+	ER er = l_tk_rcv_mbx( mbxid, ppk_msg, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_rcv_mbx( ID mbxid, T_MSG **ppk_msg, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	MBXCB	*mbxcb;
 	ER	ercd = E_OK;
@@ -244,6 +332,28 @@ SYSCALL ER tk_rcv_mbx( ID mbxid, T_MSG **ppk_msg, TMO tmout )
  * Refer mailbox state 
  */
 SYSCALL ER tk_ref_mbx( ID mbxid, T_RMBX *pk_rmbx )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_mbx( ID mbxid, T_RMBX *pk_rmbx );
+ER tk_ref_mbx( ID mbxid, T_RMBX *pk_rmbx )
+{
+	CONST W fncd = 0x802a0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mbxid, pk_rmbx );
+	}
+	ER er = l_tk_ref_mbx( mbxid, pk_rmbx );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_mbx( ID mbxid, T_RMBX *pk_rmbx )
+#endif /* USE_DBGSPT */
 {
 	MBXCB	*mbxcb;
 	ER	ercd = E_OK;

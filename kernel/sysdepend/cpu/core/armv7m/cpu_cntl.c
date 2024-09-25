@@ -184,6 +184,12 @@ EXPORT ER knl_get_cpr( TCB *tcb, INT copno, T_COPREGS *copregs)
 EXPORT void knl_force_dispatch( void )
 {
 	knl_dispatch_disabled = DDS_DISABLE_IMPLICIT;
+#if USE_DBGSPT
+	IMPORT FP knl_hook_stopfn;
+	if (knl_hook_stopfn != NULL && knl_ctxtsk != NULL) {
+		knl_hook_stopfn(knl_ctxtsk -> tskid, knl_ctxtsk -> state << 1);
+	}
+#endif /* USE_DBGSPT */
 	knl_ctxtsk = NULL;
 	*(_UW*)SCB_ICSR = ICSR_PENDSVSET;	/* pendsv exception */
 	set_basepri(0);

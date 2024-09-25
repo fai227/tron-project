@@ -209,6 +209,28 @@ LOCAL ER chkopenmode( DevCB *devcb, INT unitno, UINT omode )
  * Device open
  */
 SYSCALL ID tk_opn_dev( CONST UB *devnm, UINT omode )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_opn_dev( CONST UB *devnm, UINT omode );
+ID tk_opn_dev( CONST UB *devnm, UINT omode )
+{
+	CONST W fncd = 0x80550200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, devnm, omode );
+	}
+	ID er = l_tk_opn_dev( devnm, omode );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_opn_dev( CONST UB *devnm, UINT omode )
+#endif /* USE_DBGSPT */
 {
 	OPNFN	openfn;
 	void	*exinf;
@@ -455,6 +477,28 @@ EXPORT ER knl_close_device( OpnCB *opncb, UINT option )
  * Device close
  */
 SYSCALL ER tk_cls_dev( ID dd, UINT option )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_cls_dev( ID dd, UINT option );
+ER tk_cls_dev( ID dd, UINT option )
+{
+	CONST W fncd = 0x80560200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, option );
+	}
+	ER er = l_tk_cls_dev( dd, option );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_cls_dev( ID dd, UINT option )
+#endif /* USE_DBGSPT */
 {
 	OpnCB	*opncb;
 	ER	ercd;
@@ -593,6 +637,28 @@ err_ret1:
  * Start reading from device
  */
 SYSCALL ID tk_rea_dev( ID dd, W start, void *buf, SZ size, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_rea_dev( ID dd, W start, void *buf, SZ size, TMO tmout );
+ID tk_rea_dev( ID dd, W start, void *buf, SZ size, TMO tmout )
+{
+	CONST W fncd = 0x80570500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, start, buf, size, tmout );
+	}
+	ID er = l_tk_rea_dev( dd, start, buf, size, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_rea_dev( ID dd, W start, void *buf, SZ size, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd;
 
@@ -605,6 +671,28 @@ SYSCALL ID tk_rea_dev( ID dd, W start, void *buf, SZ size, TMO tmout )
  * Synchronous reading from device
  */
 SYSCALL ER tk_srea_dev( ID dd, W start, void *buf, SZ size, SZ *asize )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_srea_dev( ID dd, W start, void *buf, SZ size, SZ *asize );
+ER tk_srea_dev( ID dd, W start, void *buf, SZ size, SZ *asize )
+{
+	CONST W fncd = 0x80580500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, start, buf, size, asize );
+	}
+	ER er = l_tk_srea_dev( dd, start, buf, size, asize );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_srea_dev( ID dd, W start, void *buf, SZ size, SZ *asize )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd, ioercd;
 
@@ -628,6 +716,28 @@ err_ret:
  * Start writing to device
  */
 SYSCALL ID tk_wri_dev( ID dd, W start, CONST void *buf, SZ size, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_wri_dev( ID dd, W start, CONST void *buf, SZ size, TMO tmout );
+ID tk_wri_dev( ID dd, W start, CONST void *buf, SZ size, TMO tmout )
+{
+	CONST W fncd = 0x80590500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, start, buf, size, tmout );
+	}
+	ID er = l_tk_wri_dev( dd, start, buf, size, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_wri_dev( ID dd, W start, CONST void *buf, SZ size, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd;
 
@@ -640,6 +750,28 @@ SYSCALL ID tk_wri_dev( ID dd, W start, CONST void *buf, SZ size, TMO tmout )
  * Synchronous writing to device
  */
 SYSCALL ER tk_swri_dev( ID dd, W start, CONST void *buf, SZ size, SZ *asize )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_swri_dev( ID dd, W start, CONST void *buf, SZ size, SZ *asize );
+ER tk_swri_dev( ID dd, W start, CONST void *buf, SZ size, SZ *asize )
+{
+	CONST W fncd = 0x805a0500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, start, buf, size, asize );
+	}
+	ER er = l_tk_swri_dev( dd, start, buf, size, asize );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_swri_dev( ID dd, W start, CONST void *buf, SZ size, SZ *asize )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd, ioercd;
 
@@ -681,6 +813,28 @@ LOCAL ReqCB* knl_check_reqid( ID reqid, OpnCB *opncb )
  * Request completion wait
  */
 SYSCALL ID tk_wai_dev( ID dd, ID reqid, SZ *asize, ER *ioer, TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_wai_dev( ID dd, ID reqid, SZ *asize, ER *ioer, TMO tmout );
+ID tk_wai_dev( ID dd, ID reqid, SZ *asize, ER *ioer, TMO tmout )
+{
+	CONST W fncd = 0x805b0500;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dd, reqid, asize, ioer, tmout );
+	}
+	ID er = l_tk_wai_dev( dd, reqid, asize, ioer, tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_wai_dev( ID dd, ID reqid, SZ *asize, ER *ioer, TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	WAIFN	waitfn;
 	void	*exinf;
@@ -900,6 +1054,28 @@ LOCAL ER do_suspend( void )
  * Suspend processing
  */
 SYSCALL INT tk_sus_dev( UINT mode )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_sus_dev( UINT mode );
+INT tk_sus_dev( UINT mode )
+{
+	CONST W fncd = 0x805c0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, mode );
+	}
+	INT er = l_tk_sus_dev( mode );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_sus_dev( UINT mode )
+#endif /* USE_DBGSPT */
 {
 	ResCB	*rescb;
 	BOOL	suspend = FALSE;

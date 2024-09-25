@@ -26,6 +26,28 @@
  * Suspend task
  */
 SYSCALL ER tk_sus_tsk( ID tskid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_sus_tsk( ID tskid );
+ER tk_sus_tsk( ID tskid )
+{
+	CONST W fncd = 0x80100100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid );
+	}
+	ER er = l_tk_sus_tsk( tskid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_sus_tsk( ID tskid )
+#endif /* USE_DBGSPT */
 {
 	TCB	*tcb;
 	TSTAT	state;
@@ -75,6 +97,28 @@ SYSCALL ER tk_sus_tsk( ID tskid )
  * Resume task
  */
 SYSCALL ER tk_rsm_tsk( ID tskid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_rsm_tsk( ID tskid );
+ER tk_rsm_tsk( ID tskid )
+{
+	CONST W fncd = 0x80110100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid );
+	}
+	ER er = l_tk_rsm_tsk( tskid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_rsm_tsk( ID tskid )
+#endif /* USE_DBGSPT */
 {
 	TCB	*tcb;
 	ER	ercd = E_OK;
@@ -122,6 +166,28 @@ SYSCALL ER tk_rsm_tsk( ID tskid )
  * Force resume task
  */
 SYSCALL ER tk_frsm_tsk( ID tskid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_frsm_tsk( ID tskid );
+ER tk_frsm_tsk( ID tskid )
+{
+	CONST W fncd = 0x80120100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid );
+	}
+	ER er = l_tk_frsm_tsk( tskid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_frsm_tsk( ID tskid )
+#endif /* USE_DBGSPT */
 {
 	TCB	*tcb;
 	ER	ercd = E_OK;
@@ -174,6 +240,28 @@ LOCAL CONST WSPEC knl_wspec_slp = { TTW_SLP, NULL, NULL };
  * Move its own task state to wait state
  */
 SYSCALL ER tk_slp_tsk( TMO tmout )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_slp_tsk( TMO tmout );
+ER tk_slp_tsk( TMO tmout )
+{
+	CONST W fncd = 0x80130100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tmout );
+	}
+	ER er = l_tk_slp_tsk( tmout );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_slp_tsk( TMO tmout )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd = E_OK;
 
@@ -206,6 +294,28 @@ SYSCALL ER tk_slp_tsk( TMO tmout )
  * Wakeup task
  */
 SYSCALL ER tk_wup_tsk( ID tskid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_wup_tsk( ID tskid );
+ER tk_wup_tsk( ID tskid )
+{
+	CONST W fncd = 0x80140100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid );
+	}
+	ER er = l_tk_wup_tsk( tskid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_wup_tsk( ID tskid )
+#endif /* USE_DBGSPT */
 {
 	TCB	*tcb;
 	TSTAT	state;
@@ -240,6 +350,28 @@ SYSCALL ER tk_wup_tsk( ID tskid )
  * Cancel wakeup request
  */
 SYSCALL INT tk_can_wup( ID tskid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL INT l_tk_can_wup( ID tskid );
+INT tk_can_wup( ID tskid )
+{
+	CONST W fncd = 0x80150100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, tskid );
+	}
+	INT er = l_tk_can_wup( tskid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL INT l_tk_can_wup( ID tskid )
+#endif /* USE_DBGSPT */
 {
 	TCB	*tcb;
 	ER	ercd = E_OK;
@@ -277,6 +409,28 @@ LOCAL CONST WSPEC knl_wspec_dly = { TTW_DLY, NULL, NULL };
  * Task delay
  */
 SYSCALL ER tk_dly_tsk( RELTIM dlytim )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_dly_tsk( RELTIM dlytim );
+ER tk_dly_tsk( RELTIM dlytim )
+{
+	CONST W fncd = 0x80460100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, dlytim );
+	}
+	ER er = l_tk_dly_tsk( dlytim );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_dly_tsk( RELTIM dlytim )
+#endif /* USE_DBGSPT */
 {
 	ER	ercd = E_OK;
 

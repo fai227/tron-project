@@ -64,6 +64,28 @@ SYSCALL ER tk_get_utc( SYSTIM *pk_tim )
  * Set system clock (TRON Time)
  */
 SYSCALL ER tk_set_tim( CONST SYSTIM *pk_tim )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_set_tim( CONST SYSTIM *pk_tim );
+ER tk_set_tim( CONST SYSTIM *pk_tim )
+{
+	CONST W fncd = 0x80430100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_tim );
+	}
+	ER er = l_tk_set_tim( pk_tim );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_set_tim( CONST SYSTIM *pk_tim )
+#endif /* USE_DBGSPT */
 {
 	LSYSTIM		utc_time;
 
@@ -83,6 +105,28 @@ SYSCALL ER tk_set_tim( CONST SYSTIM *pk_tim )
  * Refer system clock (TRON Time)
  */
 SYSCALL ER tk_get_tim( SYSTIM *pk_tim )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_get_tim( SYSTIM *pk_tim );
+ER tk_get_tim( SYSTIM *pk_tim )
+{
+	CONST W fncd = 0x80440100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_tim );
+	}
+	ER er = l_tk_get_tim( pk_tim );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_get_tim( SYSTIM *pk_tim )
+#endif /* USE_DBGSPT */
 {
 	LSYSTIM		utc_time;
 
@@ -101,6 +145,28 @@ SYSCALL ER tk_get_tim( SYSTIM *pk_tim )
  * Refer system operating time
  */
 SYSCALL ER tk_get_otm( SYSTIM *pk_tim )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_get_otm( SYSTIM *pk_tim );
+ER tk_get_otm( SYSTIM *pk_tim )
+{
+	CONST W fncd = 0x80450100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_tim );
+	}
+	ER er = l_tk_get_otm( pk_tim );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_get_otm( SYSTIM *pk_tim )
+#endif /* USE_DBGSPT */
 {
 	BEGIN_CRITICAL_SECTION;
 	*pk_tim = knl_toSYSTIM(knl_current_time);
@@ -212,6 +278,28 @@ LOCAL void knl_immediate_call_cychdr( CYCCB *cyccb )
  * Create cyclic handler 
  */
 SYSCALL ID tk_cre_cyc( CONST T_CCYC *pk_ccyc )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_cyc( CONST T_CCYC *pk_ccyc );
+ID tk_cre_cyc( CONST T_CCYC *pk_ccyc )
+{
+	CONST W fncd = 0x80470100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_ccyc );
+	}
+	ID er = l_tk_cre_cyc( pk_ccyc );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_cyc( CONST T_CCYC *pk_ccyc )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_CYCATR = {
@@ -288,6 +376,28 @@ SYSCALL ID tk_cre_cyc( CONST T_CCYC *pk_ccyc )
  * Delete cyclic handler 
  */
 SYSCALL ER tk_del_cyc( ID cycid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_cyc( ID cycid );
+ER tk_del_cyc( ID cycid )
+{
+	CONST W fncd = 0x80480100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, cycid );
+	}
+	ER er = l_tk_del_cyc( cycid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_cyc( ID cycid )
+#endif /* USE_DBGSPT */
 {
 	CYCCB	*cyccb;
 	ER	ercd = E_OK;
@@ -320,6 +430,28 @@ SYSCALL ER tk_del_cyc( ID cycid )
  * Start cyclic handler 
  */
 SYSCALL ER tk_sta_cyc( ID cycid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_sta_cyc( ID cycid );
+ER tk_sta_cyc( ID cycid )
+{
+	CONST W fncd = 0x80490100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, cycid );
+	}
+	ER er = l_tk_sta_cyc( cycid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_sta_cyc( ID cycid )
+#endif /* USE_DBGSPT */
 {
 	CYCCB	*cyccb;
 	ABSTIM	tm, cur;
@@ -377,6 +509,28 @@ SYSCALL ER tk_sta_cyc( ID cycid )
  * Stop cyclic handler 
  */
 SYSCALL ER tk_stp_cyc( ID cycid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_stp_cyc( ID cycid );
+ER tk_stp_cyc( ID cycid )
+{
+	CONST W fncd = 0x804a0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, cycid );
+	}
+	ER er = l_tk_stp_cyc( cycid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_stp_cyc( ID cycid )
+#endif /* USE_DBGSPT */
 {
 	CYCCB	*cyccb;
 	ER	ercd = E_OK;
@@ -406,6 +560,28 @@ SYSCALL ER tk_stp_cyc( ID cycid )
  * Refer cyclic handler state
  */
 SYSCALL ER tk_ref_cyc( ID cycid, T_RCYC* pk_rcyc )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_cyc( ID cycid, T_RCYC* pk_rcyc );
+ER tk_ref_cyc( ID cycid, T_RCYC* pk_rcyc )
+{
+	CONST W fncd = 0x804b0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, cycid, pk_rcyc );
+	}
+	ER er = l_tk_ref_cyc( cycid, pk_rcyc );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_cyc( ID cycid, T_RCYC* pk_rcyc )
+#endif /* USE_DBGSPT */
 {
 	CYCCB	*cyccb;
 	ABSTIM	tm, cur;
@@ -600,6 +776,28 @@ EXPORT void knl_call_almhdr( ALMCB *almcb )
  * Create alarm handler
  */
 SYSCALL ID tk_cre_alm( CONST T_CALM *pk_calm )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ID l_tk_cre_alm( CONST T_CALM *pk_calm );
+ID tk_cre_alm( CONST T_CALM *pk_calm )
+{
+	CONST W fncd = 0x804c0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, pk_calm );
+	}
+	ID er = l_tk_cre_alm( pk_calm );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ID l_tk_cre_alm( CONST T_CALM *pk_calm )
+#endif /* USE_DBGSPT */
 {
 #if CHK_RSATR
 	const ATR VALID_ALMATR = {
@@ -647,6 +845,28 @@ SYSCALL ID tk_cre_alm( CONST T_CALM *pk_calm )
  * Delete alarm handler
  */
 SYSCALL ER tk_del_alm( ID almid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_del_alm( ID almid );
+ER tk_del_alm( ID almid )
+{
+	CONST W fncd = 0x804d0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, almid );
+	}
+	ER er = l_tk_del_alm( almid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_del_alm( ID almid )
+#endif /* USE_DBGSPT */
 {
 	ALMCB	*almcb;
 	ER	ercd = E_OK;
@@ -692,6 +912,28 @@ LOCAL void knl_immediate_call_almhdr( ALMCB *almcb )
  * Start alarm handler
  */
 SYSCALL ER tk_sta_alm( ID almid, RELTIM almtim )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_sta_alm( ID almid, RELTIM almtim );
+ER tk_sta_alm( ID almid, RELTIM almtim )
+{
+	CONST W fncd = 0x804e0200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, almid, almtim );
+	}
+	ER er = l_tk_sta_alm( almid, almtim );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_sta_alm( ID almid, RELTIM almtim )
+#endif /* USE_DBGSPT */
 {
 	ALMCB	*almcb;
 	ER	ercd = E_OK;
@@ -732,6 +974,28 @@ SYSCALL ER tk_sta_alm( ID almid, RELTIM almtim )
  * Stop alarm handler
  */
 SYSCALL ER tk_stp_alm( ID almid )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_stp_alm( ID almid );
+ER tk_stp_alm( ID almid )
+{
+	CONST W fncd = 0x804f0100;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, almid );
+	}
+	ER er = l_tk_stp_alm( almid );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_stp_alm( ID almid )
+#endif /* USE_DBGSPT */
 {
 	ALMCB	*almcb;
 	ER	ercd = E_OK;
@@ -761,6 +1025,28 @@ SYSCALL ER tk_stp_alm( ID almid )
  * Refer alarm handler state
  */
 SYSCALL ER tk_ref_alm( ID almid, T_RALM *pk_ralm )
+#if USE_DBGSPT
+;
+IMPORT FP knl_hook_enterfn;
+IMPORT FP knl_hook_leavefn;
+LOCAL ER l_tk_ref_alm( ID almid, T_RALM *pk_ralm );
+ER tk_ref_alm( ID almid, T_RALM *pk_ralm )
+{
+	CONST W fncd = 0x80500200;
+	void *exinf;
+	if (knl_hook_enterfn != NULL) {
+		UW calinf;
+		asm("mov %0, lr" : "=r" (calinf));
+		exinf = ((void*(*)())knl_hook_enterfn)( fncd, calinf, almid, pk_ralm );
+	}
+	ER er = l_tk_ref_alm( almid, pk_ralm );
+	if (knl_hook_leavefn != NULL) {
+		knl_hook_leavefn( fncd, er, exinf );
+	}
+	return er;
+}
+LOCAL ER l_tk_ref_alm( ID almid, T_RALM *pk_ralm )
+#endif /* USE_DBGSPT */
 {
 	ALMCB	*almcb;
 	ABSTIM	tm, cur;
