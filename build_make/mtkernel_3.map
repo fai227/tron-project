@@ -4239,11 +4239,9 @@ END GROUP
                 0x00013714                led_cycle_micros
  .rodata        0x00013718      0x19d ./mtkernel_3/CAV/src/STG.o
  *fill*         0x000138b5        0x3 
- .rodata        0x000138b8       0x93 ./mtkernel_3/CAV/src/app_main.o
- *fill*         0x0001394b        0x1 
- .rodata        0x0001394c      0x137 ./mtkernel_3/CAV/src/drive.o
+ .rodata        0x000138b8       0x94 ./mtkernel_3/CAV/src/app_main.o
+ .rodata        0x0001394c      0x138 ./mtkernel_3/CAV/src/drive.o
                 0x0001394c                d_timer_clock_mhz
- *fill*         0x00013a83        0x1 
  .rodata        0x00013a84       0x25 ./mtkernel_3/CAV/src/iic.o
  *fill*         0x00013aa9        0x3 
  .rodata        0x00013aac        0xa ./mtkernel_3/CAV/src/radio.o
